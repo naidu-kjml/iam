@@ -10,3 +10,10 @@
 ## Usage
 
 Set `BALKAN_BE_URL` env var before running
+
+To install dependencies and start the project run:
+
+```
+make
+make start
+```
