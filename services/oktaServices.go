@@ -39,7 +39,7 @@ type oktaResponse struct {
 
 // GetUserByEmail : Fetches a Okta user by email
 func GetUserByEmail(email string) {
-	var url = viper.GetString("OKTA_URL") + "/users?email=" + email
+	var url = viper.GetString("OKTA_URL") + "/users/" + email
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Set("Authorization", viper.GetString("OKTA_TOKEN"))
 	log.Println(req.Header)
@@ -58,7 +58,7 @@ func GetUserByEmail(email string) {
 
 	defer response.Body.Close()
 
-	var result []oktaResponse
+	var result oktaResponse
 
 	json.NewDecoder(response.Body).Decode(&result)
 
