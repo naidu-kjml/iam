@@ -20,7 +20,8 @@ func main() {
 	log.Println("OKTA_URL", viper.GetString("OKTA_URL"))
 	log.Println("Server started on " + port)
 	router := httprouter.New()
-	router.GET("/", routes.GetOktaUserByEmail)
+	router.GET("/", routes.SayHello)
+	router.GET("/profile/okta", routes.GetOktaUserByEmail)
 
 	if err := http.ListenAndServe(":"+port, router); err != nil {
 		panic(err)
