@@ -2,22 +2,24 @@ package services
 
 import (
 	"encoding/json"
-	"github.com/spf13/viper"
 	"log"
 	"net/http"
+
+	"github.com/spf13/viper"
 )
 
-type userProfile struct {
-	EmployeeNumber string
-	FirstName      string
-	LastName       string
-	Position       string
-	Department     string
-	Email          string
-	Location       string
-	isVendor       bool
-	TeamMembership []string
-	Manager        string
+// UserProfile formatted user data
+type UserProfile struct {
+	EmployeeNumber string   `json:"employeeNumber"`
+	FirstName      string   `json:"firstName"`
+	LastName       string   `json:"lastName"`
+	Position       string   `json:"position"`
+	Department     string   `json:"department"`
+	Email          string   `json:"email"`
+	Location       string   `json:"location"`
+	IsVendor       bool     `json:"isVendor"`
+	TeamMembership []string `json:"teamMembership"`
+	Manager        string   `json:"manager"`
 }
 
 type apiUserProfile struct {
@@ -33,34 +35,47 @@ type apiUserProfile struct {
 	Manager          string
 }
 
+func formatUser(user apiUserProfile) UserProfile {
+	return UserProfile{
+		EmployeeNumber: user.EmployeeNumber,
+		FirstName:      user.FirstName,
+		LastName:       user.LastName,
+		Department:     user.Department,
+		Email:          user.Email,
+		Position:       user.KbJobPosition,
+		Location:       user.KbPlaceOfWork,
+		IsVendor:       user.KbIsVendor,
+		TeamMembership: user.KbTeamMembership,
+		Manager:        user.Manager,
+	}
+}
+
 type oktaResponse struct {
 	Profile apiUserProfile
 }
 
 // GetUserByEmail : Fetches a Okta user by email
-func GetUserByEmail(email string) {
-	var url = viper.GetString("OKTA_URL") + "/users/" + email
+func GetUserByEmail(email string) UserProfile {
+	var oktaURL = viper.GetString("OKTA_URL")
+	var oktaToken = viper.GetString("OKTA_TOKEN")
+
+	var url = oktaURL + "/users/" + email
+	log.Println("GET", url)
+
 	req, err := http.NewRequest("GET", url, nil)
-	req.Header.Set("Authorization", viper.GetString("OKTA_TOKEN"))
-	log.Println(req.Header)
+	req.Header.Set("Authorization", oktaToken)
 	if err != nil {
-		log.Println(err)
+		log.Println("Error creating new Request", err)
 	}
 
-	log.Println(url)
 	response, err := HTTPClient.Do(req)
-
 	if err != nil {
 		log.Println(err)
 	}
-
-	log.Println(response)
-
 	defer response.Body.Close()
 
-	var result oktaResponse
+	var data oktaResponse
+	json.NewDecoder(response.Body).Decode(&data)
 
-	json.NewDecoder(response.Body).Decode(&result)
-
-	log.Println(result)
+	return formatUser(data.Profile)
 }
