@@ -1,25 +1,23 @@
 package main
 
 import (
-	"github.com/julienschmidt/httprouter"
 	"log"
 	"net/http"
 
+	"github.com/julienschmidt/httprouter"
 	"github.com/spf13/viper"
 	routes "gitlab.skypicker.com/cs-devs/overseer-okta/routes"
 )
 
 func main() {
 	viper.AutomaticEnv()
-	log.Println(viper.GetString("OKTA_URL"))
+	viper.SetConfigFile(".env.yaml")
+	viper.ReadInConfig()
 
-	var port = "8080"
+	viper.SetDefault("PORT", "8080")
+	var port = viper.GetString("PORT")
 
-	// Override for default PORT setting
-	if viper.IsSet("PORT") {
-		port = viper.GetString("PORT")
-	}
-
+	log.Println("OKTA_URL", viper.GetString("OKTA_URL"))
 	log.Println("Server started on " + port)
 	router := httprouter.New()
 	router.GET("/", routes.GetOktaUserByEmail)
