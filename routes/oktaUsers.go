@@ -21,3 +21,14 @@ func GetOktaUserByEmail(w http.ResponseWriter, r *http.Request, _ httprouter.Par
 
 	w.Write(jsonData)
 }
+
+// GetOktaUsers : Get all Okta users
+func GetOktaUsers(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	var userData = services.GetUsers("")
+	jsonData, err := json.Marshal(userData)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	w.Write(jsonData)
+}

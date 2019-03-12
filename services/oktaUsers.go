@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-// UserProfile formatted user data
+// UserProfile : formatted user data
 type UserProfile struct {
 	EmployeeNumber string   `json:"employeeNumber"`
 	FirstName      string   `json:"firstName"`
@@ -78,4 +78,38 @@ func GetUserByEmail(email string) UserProfile {
 	json.NewDecoder(response.Body).Decode(&data)
 
 	return formatUser(data.Profile)
+}
+
+// GetUsers : Fetch all Okta users
+func GetUsers(after string) []UserProfile {
+	var oktaURL = viper.GetString("OKTA_URL")
+	var oktaToken = viper.GetString("OKTA_TOKEN")
+
+	var url = oktaURL + "/users/?after=" + after
+	log.Println("GET", url)
+
+	req, err := http.NewRequest("GET", url, nil)
+	req.Header.Set("Authorization", oktaToken)
+	if err != nil {
+		log.Println("Error creating new Request", err)
+	}
+
+	response, err := HTTPClient.Do(req)
+	if err != nil {
+		log.Println(err)
+	}
+	defer response.Body.Close()
+
+	var data []oktaResponse
+	json.NewDecoder(response.Body).Decode(&data)
+
+	var users = make([]UserProfile, len(data))
+	for i, user := range data {
+		users[i] = formatUser(user.Profile)
+	}
+	return users
+
+	// TODO get after parameter from the header below and make more requests to
+	// get the rest of the users.
+	// Link <https://kiwi.oktapreview.com/api/v1/users?after=000uiq5gshbbBhVnDO0h7&limit=200>; rel="next"
 }
