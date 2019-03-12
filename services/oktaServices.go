@@ -28,7 +28,7 @@ type apiUserProfile struct {
 	LastName         string
 	Department       string
 	Email            string
-	KbJobPosition    string   `json:"kb_job_position"`
+	KbJobPosition    string   `json:"kb_jobPosition"`
 	KbPlaceOfWork    string   `json:"kb_place_of_work"`
 	KbIsVendor       bool     `json:"kb_is_vendor"`
 	KbTeamMembership []string `json:"kb_team_membership"`
