@@ -18,12 +18,12 @@ func main() {
 	var port = viper.GetString("PORT")
 
 	log.Println("OKTA_URL", viper.GetString("OKTA_URL"))
-	log.Println("Server started on " + port)
+	log.Println("Server started on http://localhost:" + port)
 	router := httprouter.New()
 	router.GET("/", routes.SayHello)
 	router.GET("/profile/okta", routes.GetOktaUserByEmail)
 
-	if err := http.ListenAndServe(":"+port, router); err != nil {
+	if err := http.ListenAndServe("localhost:"+port, router); err != nil {
 		panic(err)
 	}
 }
