@@ -16,11 +16,15 @@ func GetOktaUserByEmail(w http.ResponseWriter, r *http.Request, _ httprouter.Par
 	var query = r.URL.Query
 	var email = query()["email"][0]
 
-	var userData = services.GetUserByEmail(email)
-
+	userData, err := services.GetUserByEmail(email)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 	jsonData, err := json.Marshal(userData)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	w.Write(jsonData)

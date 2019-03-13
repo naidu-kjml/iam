@@ -3,27 +3,17 @@ package services
 import (
 	"log"
 	"net/http"
+	"time"
 
 	jsoniter "github.com/json-iterator/go"
 
+	"github.com/go-redis/redis"
 	"github.com/spf13/viper"
+	"gitlab.skypicker.com/cs-devs/overseer-okta/cache"
+	"gitlab.skypicker.com/cs-devs/overseer-okta/types"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
-
-// UserProfile : formatted user data
-type UserProfile struct {
-	EmployeeNumber string   `json:"employeeNumber"`
-	FirstName      string   `json:"firstName"`
-	LastName       string   `json:"lastName"`
-	Position       string   `json:"position"`
-	Department     string   `json:"department"`
-	Email          string   `json:"email"`
-	Location       string   `json:"location"`
-	IsVendor       bool     `json:"isVendor"`
-	TeamMembership []string `json:"teamMembership"`
-	Manager        string   `json:"manager"`
-}
 
 type apiUserProfile struct {
 	EmployeeNumber   string
@@ -38,8 +28,8 @@ type apiUserProfile struct {
 	Manager          string
 }
 
-func formatUser(user apiUserProfile) UserProfile {
-	return UserProfile{
+func formatUser(user apiUserProfile) types.OktaProfile {
+	return types.OktaProfile{
 		EmployeeNumber: user.EmployeeNumber,
 		FirstName:      user.FirstName,
 		LastName:       user.LastName,
@@ -58,7 +48,18 @@ type oktaResponse struct {
 }
 
 // GetUserByEmail : Fetches a Okta user by email
-func GetUserByEmail(email string) UserProfile {
+func GetUserByEmail(email string) (types.OktaProfile, error) {
+	user, err := cache.GetOkta(email)
+	if err == nil {
+		// Cache hit
+		return user, nil
+	}
+	if err != redis.Nil {
+		// Error retrieving item
+		return user, err
+	}
+
+	// Cache miss
 	var oktaURL = viper.GetString("OKTA_URL")
 	var oktaToken = viper.GetString("OKTA_TOKEN")
 
@@ -68,23 +69,25 @@ func GetUserByEmail(email string) UserProfile {
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Set("Authorization", oktaToken)
 	if err != nil {
-		log.Println("Error creating new Request", err)
+		return user, err
 	}
 
 	response, err := HTTPClient.Do(req)
 	if err != nil {
-		log.Println(err)
+		return user, err
 	}
 	defer response.Body.Close()
 
 	var data oktaResponse
 	json.NewDecoder(response.Body).Decode(&data)
 
-	return formatUser(data.Profile)
+	user = formatUser(data.Profile)
+	err = cache.SetOkta(user.Email, user, time.Minute)
+	return user, err
 }
 
 // GetUsers : Fetch all Okta users
-func GetUsers(after string) []UserProfile {
+func GetUsers(after string) []types.OktaProfile {
 	var oktaURL = viper.GetString("OKTA_URL")
 	var oktaToken = viper.GetString("OKTA_TOKEN")
 
@@ -104,10 +107,9 @@ func GetUsers(after string) []UserProfile {
 	defer response.Body.Close()
 
 	var data []oktaResponse
-	var json = jsoniter.ConfigCompatibleWithStandardLibrary
 	json.NewDecoder(response.Body).Decode(&data)
 
-	var users = make([]UserProfile, len(data))
+	var users = make([]types.OktaProfile, len(data))
 	for i, user := range data {
 		users[i] = formatUser(user.Profile)
 	}
