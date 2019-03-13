@@ -1,12 +1,15 @@
 package services
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 
+	jsoniter "github.com/json-iterator/go"
+
 	"github.com/spf13/viper"
 )
+
+var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 // UserProfile : formatted user data
 type UserProfile struct {
@@ -101,6 +104,7 @@ func GetUsers(after string) []UserProfile {
 	defer response.Body.Close()
 
 	var data []oktaResponse
+	var json = jsoniter.ConfigCompatibleWithStandardLibrary
 	json.NewDecoder(response.Body).Decode(&data)
 
 	var users = make([]UserProfile, len(data))
