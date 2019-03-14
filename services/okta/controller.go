@@ -8,7 +8,7 @@ import (
 
 // GetUser returns an Okta user by email. It first tries to get it from cache,
 // and if not present there, it will fetch it from Okta API.
-func GetUser(email string) (Users, error) {
+func GetUser(email string) (User, error) {
 	user, err := CacheGet(email)
 	if err == nil {
 		// Cache hit

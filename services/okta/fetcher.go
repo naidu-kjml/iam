@@ -18,8 +18,8 @@ type apiUser struct {
 	Manager          string
 }
 
-func formatUser(user apiUser) Users {
-	return Users{
+func formatUser(user apiUser) User {
+	return User{
 		EmployeeNumber: user.EmployeeNumber,
 		FirstName:      user.FirstName,
 		LastName:       user.LastName,
@@ -38,7 +38,7 @@ type oktaResponse struct {
 }
 
 // FetchUser : Fetches a Okta user by email
-func FetchUser(email string) (Users, error) {
+func FetchUser(email string) (User, error) {
 	var oktaURL = viper.GetString("OKTA_URL")
 	var oktaToken = viper.GetString("OKTA_TOKEN")
 
@@ -52,7 +52,7 @@ func FetchUser(email string) (Users, error) {
 
 	err := shared.Fetch(request, &response)
 	if err != nil {
-		return Users{}, err
+		return User{}, err
 	}
 
 	var user = formatUser(response.Profile)
@@ -60,7 +60,7 @@ func FetchUser(email string) (Users, error) {
 }
 
 // FetchUsers : Fetch all Okta users
-func FetchUsers(after string) ([]Users, error) {
+func FetchUsers(after string) ([]User, error) {
 	var oktaURL = viper.GetString("OKTA_URL")
 	var oktaToken = viper.GetString("OKTA_TOKEN")
 
@@ -78,7 +78,7 @@ func FetchUsers(after string) ([]Users, error) {
 	}
 
 	// Create empty slice with the same length as the response we got from Okta.
-	var users = make([]Users, len(response))
+	var users = make([]User, len(response))
 	for i, user := range response {
 		users[i] = formatUser(user.Profile)
 	}

@@ -1,7 +1,7 @@
 package okta
 
-// Users : formatted user data provided by Okta
-type Users struct {
+// User : formatted user data provided by Okta
+type User struct {
 	EmployeeNumber string   `json:"employeeNumber"`
 	FirstName      string   `json:"firstName"`
 	LastName       string   `json:"lastName"`
