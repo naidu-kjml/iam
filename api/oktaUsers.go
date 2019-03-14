@@ -1,12 +1,11 @@
-package routes
+package api
 
 import (
 	"net/http"
 
 	jsoniter "github.com/json-iterator/go"
-
 	"github.com/julienschmidt/httprouter"
-	services "gitlab.skypicker.com/cs-devs/overseer-okta/services"
+	"gitlab.skypicker.com/cs-devs/overseer-okta/services/okta"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
@@ -16,7 +15,7 @@ func GetOktaUserByEmail(w http.ResponseWriter, r *http.Request, _ httprouter.Par
 	var query = r.URL.Query
 	var email = query()["email"][0]
 
-	userData, err := services.GetUserByEmail(email)
+	userData, err := okta.GetUserByEmail(email)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -32,7 +31,7 @@ func GetOktaUserByEmail(w http.ResponseWriter, r *http.Request, _ httprouter.Par
 
 // GetOktaUsers : Get all Okta users
 func GetOktaUsers(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	var userData = services.GetUsers("")
+	var userData = okta.GetUsers("")
 	jsonData, err := json.Marshal(userData)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

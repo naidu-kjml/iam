@@ -6,7 +6,7 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/spf13/viper"
-	routes "gitlab.skypicker.com/cs-devs/overseer-okta/routes"
+	"gitlab.skypicker.com/cs-devs/overseer-okta/api"
 )
 
 func main() {
@@ -20,8 +20,8 @@ func main() {
 	log.Println("OKTA_URL", viper.GetString("OKTA_URL"))
 	log.Println("Server started on http://localhost:" + port)
 	router := httprouter.New()
-	router.GET("/", routes.SayHello)
-	router.GET("/profile/okta", routes.GetOktaUserByEmail)
+	router.GET("/", api.SayHello)
+	router.GET("/profile/okta", api.GetOktaUserByEmail)
 
 	if err := http.ListenAndServe("localhost:"+port, router); err != nil {
 		panic(err)

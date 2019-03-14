@@ -1,7 +1,7 @@
-package types
+package okta
 
-// OktaProfile : formatted user data provided by Okta
-type OktaProfile struct {
+// Profile : formatted user data provided by Okta
+type Profile struct {
 	EmployeeNumber string   `json:"employeeNumber"`
 	FirstName      string   `json:"firstName"`
 	LastName       string   `json:"lastName"`

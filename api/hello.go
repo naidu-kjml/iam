@@ -1,9 +1,10 @@
-package routes
+package api
 
 import (
-	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strings"
+
+	"github.com/julienschmidt/httprouter"
 )
 
 // SayHello : Route for HelloWorld
