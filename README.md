@@ -21,3 +21,32 @@ make start
 
 You can use `make dev` on development to reload the server automatically on file
 changes.
+
+# Redis
+
+To run this project you need to have redis installed and running, you can use
+the following commands to do so.
+
+```shell
+# MacOS
+brew install redis
+brew services start redis
+
+# Linux
+# install using your package manager
+systemctl start redis
+
+# Docker
+docker run -it --rm -p 6379:6379 redis
+```
+
+You can use `redis-cli` to interact with redis (ie. check keys and values).
+Useful commands:
+
+```shell
+# Show all keys
+KEYS *
+
+# Show value for a key
+GET <key>
+```
