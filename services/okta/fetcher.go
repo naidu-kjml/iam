@@ -1,16 +1,11 @@
 package okta
 
 import (
-	"log"
-	"net/http"
-	"time"
-
-	"github.com/go-redis/redis"
 	"github.com/spf13/viper"
 	"gitlab.skypicker.com/cs-devs/overseer-okta/shared"
 )
 
-type apiProfile struct {
+type apiUser struct {
 	EmployeeNumber   string
 	FirstName        string
 	LastName         string
@@ -23,8 +18,8 @@ type apiProfile struct {
 	Manager          string
 }
 
-func formatProfile(user apiProfile) Profile {
-	return Profile{
+func formatUser(user apiUser) Users {
+	return Users{
 		EmployeeNumber: user.EmployeeNumber,
 		FirstName:      user.FirstName,
 		LastName:       user.LastName,
@@ -39,76 +34,55 @@ func formatProfile(user apiProfile) Profile {
 }
 
 type oktaResponse struct {
-	Profile apiProfile
+	Profile apiUser
 }
 
-// GetUserByEmail : Fetches a Okta user by email
-func GetUserByEmail(email string) (Profile, error) {
-	user, err := CacheGet(email)
-	if err == nil {
-		// Cache hit
-		return user, nil
-	}
-	if err != redis.Nil {
-		// Error retrieving item
-		return user, err
-	}
-
-	// Cache miss
+// FetchUser : Fetches a Okta user by email
+func FetchUser(email string) (Users, error) {
 	var oktaURL = viper.GetString("OKTA_URL")
 	var oktaToken = viper.GetString("OKTA_TOKEN")
 
-	var url = oktaURL + "/users/" + email
-	log.Println("GET", url)
-
-	req, err := http.NewRequest("GET", url, nil)
-	req.Header.Set("Authorization", oktaToken)
-	if err != nil {
-		return user, err
+	var response oktaResponse
+	var request = shared.Request{
+		Method: "GET",
+		URL:    oktaURL + "/users/" + email,
+		Body:   nil,
+		Token:  oktaToken,
 	}
 
-	response, err := shared.HTTPClient.Do(req)
+	err := shared.Fetch(request, &response)
 	if err != nil {
-		return user, err
+		return Users{}, err
 	}
-	defer response.Body.Close()
 
-	var data oktaResponse
-	shared.JSON.NewDecoder(response.Body).Decode(&data)
-
-	user = formatProfile(data.Profile)
-	err = CacheSet(user.Email, user, time.Minute)
-	return user, err
+	var user = formatUser(response.Profile)
+	return user, nil
 }
 
-// GetUsers : Fetch all Okta users
-func GetUsers(after string) []Profile {
+// FetchUsers : Fetch all Okta users
+func FetchUsers(after string) ([]Users, error) {
 	var oktaURL = viper.GetString("OKTA_URL")
 	var oktaToken = viper.GetString("OKTA_TOKEN")
 
-	var url = oktaURL + "/users/?after=" + after
-	log.Println("GET", url)
+	var response []oktaResponse
+	var request = shared.Request{
+		Method: "GET",
+		URL:    oktaURL + "/users/?after=" + after,
+		Body:   nil,
+		Token:  oktaToken,
+	}
 
-	req, err := http.NewRequest("GET", url, nil)
-	req.Header.Set("Authorization", oktaToken)
+	err := shared.Fetch(request, &response)
 	if err != nil {
-		log.Println("Error creating new Request", err)
+		return nil, err
 	}
 
-	response, err := shared.HTTPClient.Do(req)
-	if err != nil {
-		log.Println(err)
+	// Create empty slice with the same length as the response we got from Okta.
+	var users = make([]Users, len(response))
+	for i, user := range response {
+		users[i] = formatUser(user.Profile)
 	}
-	defer response.Body.Close()
-
-	var data []oktaResponse
-	shared.JSON.NewDecoder(response.Body).Decode(&data)
-
-	var users = make([]Profile, len(data))
-	for i, user := range data {
-		users[i] = formatProfile(user.Profile)
-	}
-	return users
+	return users, nil
 
 	// TODO get after parameter from the header below and make more requests to
 	// get the rest of the users.

@@ -21,7 +21,7 @@ func main() {
 	log.Println("Server started on http://localhost:" + port)
 	router := httprouter.New()
 	router.GET("/", api.SayHello)
-	router.GET("/profile/okta", api.GetOktaUserByEmail)
+	router.GET("/user/okta", api.GetOktaUserByEmail)
 
 	if err := http.ListenAndServe("localhost:"+port, router); err != nil {
 		panic(err)

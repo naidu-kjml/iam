@@ -11,26 +11,26 @@ var redisClient = redis.NewClient(&redis.Options{
 	Addr: "localhost:6379",
 })
 
-// CacheGet : get a cached Okta profile. `error` is redis.Nil when no value is found.
-func CacheGet(email string) (Profile, error) {
-	var profile Profile
+// CacheGet : get a cached Okta user. `error` is redis.Nil when no value is found.
+func CacheGet(email string) (Users, error) {
+	var user Users
 
 	data, err := redisClient.Get(email).Bytes()
 	if err != nil {
-		return profile, err
+		return user, err
 	}
 
-	err = shared.JSON.Unmarshal(data, &profile)
-	return profile, err
+	err = shared.JSON.Unmarshal(data, &user)
+	return user, err
 }
 
-// CacheSet : store an Okta profile to cache.
-func CacheSet(key string, profile Profile, ttl time.Duration) error {
-	strProfile, err := shared.JSON.Marshal(profile)
+// CacheSet : store an Okta user to cache.
+func CacheSet(key string, user Users, ttl time.Duration) error {
+	strUser, err := shared.JSON.Marshal(user)
 	if err != nil {
 		return err
 	}
 
-	_, err = redisClient.Set(key, strProfile, ttl).Result()
+	_, err = redisClient.Set(key, strUser, ttl).Result()
 	return err
 }
