@@ -8,15 +8,39 @@ start:
 dev:
 	reflex --start-service -r '\.go$$' make start
 
-go-mod-tidy: ## Check if go.mod and go.sum does not contains any unnecessary dependencies and remove them.
-	$(call before_job,Go mod tidy checking dependencies:)
-ifndef TMPDIR
+# Colorful output
+color_off = \033[0m
+color_cyan = \033[1;36m
+color_green = \033[1;32m
+
+define log_info
+	@printf "$(color_cyan)$(1)$(color_off)\n"
+endef
+define log_success
+	@printf "$(color_green)$(1)$(color_off)\n"
+endef
+
+test:
+	$(call log_info,Run tests and check race conditions)
+	# https://golang.org/doc/articles/race_detector.html
+	go test -race -v ./...
+	$(call log_success,All tests succeeded)
+
+go-mod-tidy:
+	$(call log_info,Check that go.mod and go.sum don't contain any unnecessary dependency)
 	$(eval TMPDIR=$(shell mktemp -d))
-endif
-	cp -fv go.mod $(TMPDIR)
-	cp -fv go.sum $(TMPDIR)
+	cp -f go.mod $(TMPDIR)
+	cp -f go.sum $(TMPDIR)
 	go mod tidy -v
 	diff -u $(TMPDIR)/go.mod go.mod
 	diff -u $(TMPDIR)/go.sum go.sum
-	rm -f $(TMPDIR)go.mod $(TMPDIR)go.sum
-	$(call after_job,Go mod check succeeded!)
+	rm -rf $(TMPDIR)
+	$(call log_success,Go mod check succeeded!)
+
+test/ci:
+	make test
+	make go-mod-tidy
+
+test/watch:
+	reflex --start-service -r '\.go$$' make test
+
