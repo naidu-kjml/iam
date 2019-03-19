@@ -1,10 +1,10 @@
-# Overseer Auth
+# Governant
 
 | What          | Where                                                      |
 | ------------- | ---------------------------------------------------------- |
 | Documentation | Not yet                                                    |
-| Discussion    |                                                            |
-| Maintainer    | [Mr. Picky](https://gitlab.skypicker.com/simon.prochazka/) |
+| Discussion    | #proj-governant                                           |
+| Maintainer    | [@simon](https://gitlab.skypicker.com/simon.prochazka/) |w
 
 ## Usage
 

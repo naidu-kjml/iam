@@ -2,7 +2,7 @@ package okta
 
 import (
 	"github.com/spf13/viper"
-	"gitlab.skypicker.com/cs-devs/overseer-okta/shared"
+	"gitlab.skypicker.com/cs-devs/governant/shared"
 )
 
 type apiUser struct {

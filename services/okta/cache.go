@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/go-redis/redis"
-	"gitlab.skypicker.com/cs-devs/overseer-okta/shared"
+	"gitlab.skypicker.com/cs-devs/governant/shared"
 )
 
 var redisClient = redis.NewClient(&redis.Options{

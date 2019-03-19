@@ -5,7 +5,7 @@ import (
 
 	jsoniter "github.com/json-iterator/go"
 	"github.com/julienschmidt/httprouter"
-	"gitlab.skypicker.com/cs-devs/overseer-okta/services/okta"
+	"gitlab.skypicker.com/cs-devs/governant/services/okta"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary

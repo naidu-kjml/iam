@@ -1,4 +1,4 @@
-module gitlab.skypicker.com/cs-devs/overseer-okta
+module gitlab.skypicker.com/cs-devs/governant
 
 go 1.12
 

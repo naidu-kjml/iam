@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"time"
 
-	"gitlab.skypicker.com/cs-devs/overseer-okta/services/okta"
+	"gitlab.skypicker.com/cs-devs/governant/services/okta"
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/spf13/viper"
-	"gitlab.skypicker.com/cs-devs/overseer-okta/api"
+	"gitlab.skypicker.com/cs-devs/governant/api"
 )
 
 func fillCache(ticker *time.Ticker) {
