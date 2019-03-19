@@ -1,6 +1,10 @@
 package okta
 
 import (
+	"net/http"
+	"regexp"
+	"strings"
+
 	"github.com/spf13/viper"
 	"gitlab.skypicker.com/cs-devs/governant/shared"
 )
@@ -50,41 +54,77 @@ func FetchUser(email string) (User, error) {
 		Token:  oktaToken,
 	}
 
-	err := shared.Fetch(request, &response)
+	httpResponse, err := shared.Fetch(request)
 	if err != nil {
 		return User{}, err
 	}
+
+	shared.GetRequestBody(httpResponse, &response)
 
 	var user = formatUser(response.Profile)
 	return user, nil
 }
 
-// FetchUsers : Fetch all Okta users
-func FetchUsers(after string) ([]User, error) {
-	var oktaURL = viper.GetString("OKTA_URL")
-	var oktaToken = viper.GetString("OKTA_TOKEN")
+// fetchUsers function used in iterations by FetchAllUsers
+func fetchUsers(url string, token string) ([]User, http.Header, error) {
 
 	var response []oktaResponse
 	var request = shared.Request{
 		Method: "GET",
-		URL:    oktaURL + "/users/?after=" + after,
+		URL:    url,
 		Body:   nil,
-		Token:  oktaToken,
+		Token:  token,
 	}
 
-	err := shared.Fetch(request, &response)
+	httpResponse, err := shared.Fetch(request)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
+
+	shared.GetRequestBody(httpResponse, &response)
 
 	// Create empty slice with the same length as the response we got from Okta.
 	var users = make([]User, len(response))
 	for i, user := range response {
 		users[i] = formatUser(user.Profile)
 	}
-	return users, nil
 
-	// TODO get after parameter from the header below and make more requests to
-	// get the rest of the users.
-	// Link <https://kiwi.oktapreview.com/api/v1/users?after=000uiq5gshbbBhVnDO0h7&limit=200>; rel="next"
+	return users, httpResponse.Header, nil
+}
+
+// FetchAllUsers : Fetch all Okta users
+func FetchAllUsers() ([]User, error) {
+
+	var allUsers []User
+	var err error
+
+	url := viper.GetString("OKTA_URL") + "/users/"
+	token := viper.GetString("OKTA_TOKEN")
+	hasNext := true
+
+	for hasNext {
+		hasNext = false
+		var users []User
+		var header http.Header
+
+		users, header, err = fetchUsers(url, token)
+
+		if err != nil {
+			return nil, err
+		}
+
+		linkHeader := header["Link"]
+		for _, link := range linkHeader {
+			if strings.Contains(link, "rel=\"next\"") {
+				regex := regexp.MustCompile(`(?:<)(.*)(?:>)`)
+				url = regex.FindStringSubmatch(link)[1]
+				if url != "" {
+					hasNext = true
+				}
+			}
+		}
+		allUsers = append(allUsers, users...)
+	}
+
+	return allUsers, err
 }

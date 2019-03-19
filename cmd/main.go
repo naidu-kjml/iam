@@ -12,18 +12,36 @@ import (
 	"gitlab.skypicker.com/cs-devs/governant/api"
 )
 
-func fillCache(ticker *time.Ticker) {
+func updateUserData() {
+
+	users, err := okta.FetchAllUsers()
+	if err != nil {
+		log.Println("Error fetching users", err)
+	}
+
+	err = okta.CacheMSet(users)
+	if err != nil {
+		log.Println("Error caching users", err)
+	}
+
+	log.Println("Cached ", len(users), " users")
+}
+
+func fillCache() {
+
+	// fill cache immediatelly (if not dev)
+	if viper.GetString("APP_ENV") != "dev" {
+		log.Println("Start caching users")
+		updateUserData()
+	}
+
+	// Run periodic task to fill in the cache
+	ticker := time.NewTicker(time.Minute * 10)
+	defer ticker.Stop()
+
 	for tick := range ticker.C {
 		log.Println("Start caching users", tick.Round(time.Second))
-		users, err := okta.FetchUsers("")
-		if err != nil {
-			log.Println("Error fetching users", err)
-		}
-
-		err = okta.CacheMSet(users)
-		if err != nil {
-			log.Println("Error caching users", err)
-		}
+		updateUserData()
 	}
 }
 
@@ -41,10 +59,7 @@ func main() {
 	router.GET("/", api.SayHello)
 	router.GET("/user/okta", api.GetOktaUserByEmail)
 
-	// Run periodic task to fill in the cache
-	ticker := time.NewTicker(time.Minute)
-	go fillCache(ticker)
-	defer ticker.Stop()
+	go fillCache()
 
 	err := http.ListenAndServe("localhost:"+port, router)
 	if err != nil {
