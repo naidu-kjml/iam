@@ -15,6 +15,12 @@ type Request struct {
 	Body   io.Reader
 }
 
+// APIError : returned on non-authorized request
+type APIError struct {
+	Message string
+	Code    int
+}
+
 var httpClient = &http.Client{
 	Timeout: time.Second * 10,
 }

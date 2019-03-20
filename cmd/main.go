@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"gitlab.skypicker.com/cs-devs/governant/services/okta"
+	"gitlab.skypicker.com/cs-devs/governant/shared"
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/spf13/viper"
@@ -45,6 +46,16 @@ func fillCache() {
 	}
 }
 
+func panicHandler(w http.ResponseWriter, r *http.Request, err interface{}) {
+	apiError, ok := err.(shared.APIError)
+	if ok {
+		http.Error(w, apiError.Message, apiError.Code)
+		return
+	}
+
+	log.Println(apiError)
+}
+
 func main() {
 	viper.AutomaticEnv()
 	viper.SetConfigFile(".env.yaml")
@@ -58,6 +69,7 @@ func main() {
 	router := httprouter.New()
 	router.GET("/", api.SayHello)
 	router.GET("/user/okta", api.GetOktaUserByEmail)
+	router.PanicHandler = panicHandler
 
 	go fillCache()
 
