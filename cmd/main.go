@@ -72,10 +72,13 @@ func init() {
 	viper.SetConfigFile(".env.yaml")
 	viper.ReadInConfig()
 	viper.SetDefault("PORT", "8080")
+	viper.SetDefault("SERVE_PATH", "/")
 
 	ravenDSN := viper.GetString("SENTRY_DSN")
 	if ravenDSN != "" {
 		raven.SetDSN(ravenDSN)
+	} else {
+		log.Println("SENTRY_DSN is not set. Error logging disabled.")
 	}
 
 	okta.InitCache()
@@ -84,15 +87,30 @@ func init() {
 func main() {
 	var port = viper.GetString("PORT")
 
+	// For deployments where we're not on root
+	var servePath = viper.GetString("SERVE_PATH")
+
 	router := httprouter.New()
-	router.GET("/", api.SayHello)
-	router.GET("/user/okta", api.GetOktaUserByEmail)
+
+	// App Routes
+	router.GET(servePath, api.SayHello)
+	router.GET(servePath+"user/okta", api.GetOktaUserByEmail)
 	router.PanicHandler = panicHandler
+
+	// 0.0.0.0 is specified to allow listening in Docker
+	var address = "0.0.0.0:" + port
+	server := &http.Server{
+		Handler:      router,
+		Addr:         address,
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+	}
 
 	go fillCache()
 
-	log.Println("🚀 Golang server starting on http://localhost:" + port)
-	err := http.ListenAndServe("localhost:"+port, router)
+	log.Println("🚀 Golang server starting on " + address + servePath)
+	err := server.ListenAndServe()
+
 	if err != nil {
 		panic(err)
 	}

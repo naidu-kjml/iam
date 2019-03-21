@@ -1,6 +1,14 @@
-FROM golang:latest 
+FROM golang:latest as builder
 RUN mkdir /app 
 ADD . /app/ 
 WORKDIR /app 
-RUN go build ./...
-CMD ["/app/build"]
+RUN make build
+
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+COPY --from=builder /app/main ./app
+EXPOSE 8080
+
+# host is required to correctly expose Go app
+ENTRYPOINT ./app --host="0.0.0.0"

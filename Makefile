@@ -44,3 +44,5 @@ test/ci:
 test/watch:
 	reflex --start-service -r '\.go$$' make test
 
+build:
+	CGO_ENABLED=0 go build cmd/main.go
