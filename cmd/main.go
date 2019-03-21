@@ -19,11 +19,15 @@ func updateUserData() {
 	users, err := okta.FetchAllUsers()
 	if err != nil {
 		log.Println("Error fetching users", err)
+		raven.CaptureError(err, nil)
+		return
 	}
 
 	err = okta.CacheMSet(users)
 	if err != nil {
 		log.Println("Error caching users", err)
+		raven.CaptureError(err, nil)
+		return
 	}
 
 	log.Println("Cached ", len(users), " users")
