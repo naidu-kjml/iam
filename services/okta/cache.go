@@ -1,6 +1,7 @@
 package okta
 
 import (
+	"strings"
 	"time"
 
 	"github.com/go-redis/redis"
@@ -26,7 +27,8 @@ func InitCache() {
 func CacheGet(email string) (User, error) {
 	var user User
 
-	data, err := redisClient.Get(email).Bytes()
+	lowerEmail := strings.ToLower(email)
+	data, err := redisClient.Get(lowerEmail).Bytes()
 	if err != nil {
 		return user, err
 	}
@@ -42,7 +44,8 @@ func CacheSet(key string, user User, ttl time.Duration) error {
 		return err
 	}
 
-	_, err = redisClient.Set(key, strUser, ttl).Result()
+	lowerKey := strings.ToLower(key)
+	_, err = redisClient.Set(lowerKey, strUser, ttl).Result()
 	return err
 }
 
@@ -55,7 +58,7 @@ func CacheMSet(users []User) error {
 			return err
 		}
 
-		pairs[i*2] = user.Email
+		pairs[i*2] = strings.ToLower(user.Email)
 		pairs[i*2+1] = strUser
 	}
 
