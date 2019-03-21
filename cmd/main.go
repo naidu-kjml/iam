@@ -8,6 +8,7 @@ import (
 	"gitlab.skypicker.com/cs-devs/governant/services/okta"
 	"gitlab.skypicker.com/cs-devs/governant/shared"
 
+	"github.com/getsentry/raven-go"
 	"github.com/julienschmidt/httprouter"
 	"github.com/spf13/viper"
 	"gitlab.skypicker.com/cs-devs/governant/api"
@@ -47,25 +48,36 @@ func fillCache() {
 }
 
 func panicHandler(w http.ResponseWriter, r *http.Request, err interface{}) {
-	apiError, ok := err.(shared.APIError)
-	if ok {
+	apiError, castingOk := err.(shared.APIError)
+	if castingOk {
+		raven.CaptureError(apiError, nil)
 		http.Error(w, apiError.Message, apiError.Code)
+		log.Println("[ERROR]", apiError)
 		return
 	}
 
-	log.Println(apiError)
+	if errorType, castingOk := err.(error); castingOk {
+		raven.CaptureError(errorType, nil)
+	}
+	log.Panic(err)
 }
 
-func main() {
+// Triggered before main()
+func init() {
 	viper.AutomaticEnv()
 	viper.SetConfigFile(".env.yaml")
 	viper.ReadInConfig()
-
 	viper.SetDefault("PORT", "8080")
+
+	ravenDSN := viper.GetString("SENTRY_DSN")
+	if ravenDSN != "" {
+		raven.SetDSN(ravenDSN)
+	}
+}
+
+func main() {
 	var port = viper.GetString("PORT")
 
-	log.Println("OKTA_URL", viper.GetString("OKTA_URL"))
-	log.Println("Server started on http://localhost:" + port)
 	router := httprouter.New()
 	router.GET("/", api.SayHello)
 	router.GET("/user/okta", api.GetOktaUserByEmail)
@@ -73,6 +85,7 @@ func main() {
 
 	go fillCache()
 
+	log.Println("🚀 Golang server starting on http://localhost:" + port)
 	err := http.ListenAndServe("localhost:"+port, router)
 	if err != nil {
 		panic(err)

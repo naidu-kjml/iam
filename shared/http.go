@@ -21,6 +21,10 @@ type APIError struct {
 	Code    int
 }
 
+func (err APIError) Error()  string{
+	return err.Message 
+}
+
 var httpClient = &http.Client{
 	Timeout: time.Second * 10,
 }
