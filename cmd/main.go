@@ -77,6 +77,8 @@ func init() {
 	if ravenDSN != "" {
 		raven.SetDSN(ravenDSN)
 	}
+
+	okta.InitCache()
 }
 
 func main() {
