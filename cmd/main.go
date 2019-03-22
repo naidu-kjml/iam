@@ -92,6 +92,14 @@ func main() {
 
 	router := httprouter.New()
 
+	// Healthcheck routes. Exposed on both /healthcheck and /servePath/healthcheck to allow easier k8s set up
+	router.GET("/healthcheck", api.Healthcheck)
+
+	// Prevent setting two routes
+	if servePath != "/" {
+		router.GET(servePath+"healthcheck", api.Healthcheck)
+	}
+
 	// App Routes
 	router.GET(servePath, api.SayHello)
 	router.GET(servePath+"user/okta", api.GetOktaUserByEmail)
