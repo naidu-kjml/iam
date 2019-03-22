@@ -26,6 +26,6 @@ func GetUser(email string) (User, error) {
 		return user, err
 	}
 
-	err = CacheSet(user.Email, user, time.Minute)
+	err = CacheSet(user.Email, user, time.Minute*10)
 	return user, err
 }

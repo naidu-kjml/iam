@@ -49,7 +49,7 @@ func FetchUser(email string) (User, error) {
 	var response oktaResponse
 	var request = shared.Request{
 		Method: "GET",
-		URL:    oktaURL + "/users/" + email,
+		URL:    shared.JoinURL(oktaURL, "/users/", email),
 		Body:   nil,
 		Token:  oktaToken,
 	}
@@ -59,7 +59,7 @@ func FetchUser(email string) (User, error) {
 		return User{}, err
 	}
 
-	shared.GetRequestBody(httpResponse, &response)
+	httpResponse.JSON(&response)
 
 	var user = formatUser(response.Profile)
 	return user, nil
@@ -81,7 +81,7 @@ func fetchUsers(url string, token string) ([]User, http.Header, error) {
 		return nil, nil, err
 	}
 
-	shared.GetRequestBody(httpResponse, &response)
+	httpResponse.JSON(&response)
 
 	// Create empty slice with the same length as the response we got from Okta.
 	var users = make([]User, len(response))
@@ -98,7 +98,7 @@ func FetchAllUsers() ([]User, error) {
 	var allUsers []User
 	var err error
 
-	url := viper.GetString("OKTA_URL") + "/users/"
+	url := shared.JoinURL(viper.GetString("OKTA_URL"), "/users/")
 	token := viper.GetString("OKTA_TOKEN")
 	hasNext := true
 
