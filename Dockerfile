@@ -10,5 +10,4 @@ WORKDIR /root/
 COPY --from=builder /app/main ./app
 EXPOSE 8080
 
-# host is required to correctly expose Go app
-ENTRYPOINT ./app --host="0.0.0.0"
+ENTRYPOINT ./app
