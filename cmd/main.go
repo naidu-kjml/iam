@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"time"
 
+	"gitlab.skypicker.com/cs-devs/governant/security"
 	"gitlab.skypicker.com/cs-devs/governant/services/okta"
 	"gitlab.skypicker.com/cs-devs/governant/shared"
 
@@ -102,7 +103,7 @@ func main() {
 
 	// App Routes
 	router.GET(servePath, api.SayHello)
-	router.GET(servePath+"user/okta", api.GetOktaUserByEmail)
+	router.GET(servePath+"user/okta", security.AuthWrapper(api.GetOktaUserByEmail))
 	router.PanicHandler = panicHandler
 
 	// 0.0.0.0 is specified to allow listening in Docker
