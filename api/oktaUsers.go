@@ -32,6 +32,7 @@ func GetOktaUserByEmail(w http.ResponseWriter, r *http.Request, _ httprouter.Par
 		return
 	}
 
+	w.Header().Set("Content-Type", "application/json")
 	w.Write(jsonData)
 }
 
