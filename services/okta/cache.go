@@ -7,9 +7,10 @@ import (
 	"github.com/go-redis/redis"
 	"github.com/spf13/viper"
 	"gitlab.skypicker.com/cs-devs/governant/shared"
+	redisTrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/go-redis/redis"
 )
 
-var redisClient *redis.Client
+var redisClient *redisTrace.Client
 
 // InitCache : initialize redis client based on environment variables
 func InitCache() {
@@ -18,9 +19,8 @@ func InitCache() {
 	var host = viper.GetString("REDIS_HOST")
 	var port = viper.GetString("REDIS_PORT")
 
-	redisClient = redis.NewClient(&redis.Options{
-		Addr: host + ":" + port,
-	})
+	opts := &redis.Options{Addr: host + ":" + port}
+	redisClient = redisTrace.NewClient(opts, redisTrace.WithServiceName("governant.redis"))
 }
 
 // CacheGet : get a cached Okta user. `error` is redis.Nil when no value is found.

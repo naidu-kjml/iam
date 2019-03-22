@@ -10,9 +10,10 @@ import (
 	"gitlab.skypicker.com/cs-devs/governant/shared"
 
 	"github.com/getsentry/raven-go"
-	"github.com/julienschmidt/httprouter"
 	"github.com/spf13/viper"
 	"gitlab.skypicker.com/cs-devs/governant/api"
+	"gopkg.in/DataDog/dd-trace-go.v1/contrib/julienschmidt/httprouter"
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 func updateUserData() {
@@ -82,6 +83,12 @@ func init() {
 		log.Println("SENTRY_DSN is not set. Error logging disabled.")
 	}
 
+	// Datadog tracer
+	tracer.Start(
+		tracer.WithServiceName("governant"),
+		tracer.WithGlobalTag("env", viper.GetString("DATADOG_ENV")),
+	)
+
 	okta.InitCache()
 }
 
@@ -91,7 +98,7 @@ func main() {
 	// For deployments where we're not on root
 	var servePath = viper.GetString("SERVE_PATH")
 
-	router := httprouter.New()
+	router := httprouter.New(httprouter.WithServiceName("governant.http.router"))
 
 	// Healthcheck routes. Exposed on both /healthcheck and /servePath/healthcheck to allow easier k8s set up
 	router.GET("/healthcheck", api.Healthcheck)
@@ -104,6 +111,7 @@ func main() {
 	// App Routes
 	router.GET(servePath, api.SayHello)
 	router.GET(servePath+"user/okta", security.AuthWrapper(api.GetOktaUserByEmail))
+
 	router.PanicHandler = panicHandler
 
 	// 0.0.0.0 is specified to allow listening in Docker
