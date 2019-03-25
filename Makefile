@@ -46,3 +46,9 @@ test/watch:
 
 build:
 	CGO_ENABLED=0 go build cmd/main.go
+ifndef CI_COMMIT_SHORT_SHA
+	$(call log_info,SENTRY_RELEASE not set)
+else
+	@printf "${color_green}SENTRY_RELEASE: ${CI_COMMIT_SHORT_SHA}${color_off}\n"
+	@echo "SENTRY_RELEASE: ${CI_COMMIT_SHORT_SHA}" >> .env.yaml
+endif

@@ -37,7 +37,7 @@ func updateUserData() {
 
 func fillCache() {
 
-	// fill cache immediatelly (if not dev)
+	// fill cache immediately (if not dev)
 	if viper.GetString("APP_ENV") != "dev" {
 		log.Println("Start caching users")
 		updateUserData()
@@ -79,6 +79,8 @@ func init() {
 	ravenDSN := viper.GetString("SENTRY_DSN")
 	if ravenDSN != "" {
 		raven.SetDSN(ravenDSN)
+		raven.SetEnvironment(viper.GetString("APP_ENV"))
+		raven.SetRelease(viper.GetString("SENTRY_RELEASE"))
 	} else {
 		log.Println("SENTRY_DSN is not set. Error logging disabled.")
 	}
