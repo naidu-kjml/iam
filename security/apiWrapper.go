@@ -6,6 +6,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"github.com/spf13/viper"
 	"gitlab.skypicker.com/cs-devs/governant/shared"
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 // AuthWrapper : Simple wrapper for Routers to validate token
@@ -38,6 +39,10 @@ func checkAuth(r *http.Request) {
 	}
 
 	var token = viper.Get("TOKEN_" + service + "_OKTA")
+
+	if span, ok := tracer.SpanFromContext(r.Context()); ok {
+		span.SetTag("  service_name", service)
+	}
 
 	if token == nil || token != requestToken {
 		panic(shared.APIError{Message: "Incorrect token", Code: 401})
