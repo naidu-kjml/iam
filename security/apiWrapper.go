@@ -37,7 +37,7 @@ func checkAuth(r *http.Request) {
 		panic(shared.APIError{Message: "Authorization header with token is mandatory", Code: 401})
 	}
 
-	var token = viper.Get("TOKEN." + service + ".OKTA")
+	var token = viper.Get("TOKEN_" + service + "_OKTA")
 
 	if token == nil || token != requestToken {
 		panic(shared.APIError{Message: "Incorrect token", Code: 401})

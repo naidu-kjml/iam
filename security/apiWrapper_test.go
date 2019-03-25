@@ -21,7 +21,7 @@ func TestCheckAuth(t *testing.T) {
 
 	assert.Panics(t, func() { checkAuth(req) }, "Should panic on invalid token")
 	req.Header.Set("Authorization", "valid token")
-	viper.Set("TOKEN.serviceName.OKTA", "valid token")
+	viper.Set("TOKEN_serviceName_OKTA", "valid token")
 
 	assert.NotPanics(t, func() { checkAuth(req) }, "Should not panic on valid request token")
 }
