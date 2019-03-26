@@ -1,6 +1,6 @@
 install_deps:
-	go get ./...
-	go get github.com/cespare/reflex
+	go mod download
+	GO111MODULE=off go get github.com/cespare/reflex
 
 start:
 	go run cmd/main.go
