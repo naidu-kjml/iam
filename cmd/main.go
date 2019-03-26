@@ -131,6 +131,6 @@ func main() {
 	err := server.ListenAndServe()
 
 	if err != nil {
-		panic(err)
+		log.Fatal(err.Error())
 	}
 }

@@ -46,10 +46,15 @@ func FetchUser(email string) (User, error) {
 	var oktaURL = viper.GetString("OKTA_URL")
 	var oktaToken = viper.GetString("OKTA_TOKEN")
 
+	userURL, err := shared.JoinURL(oktaURL, "/users/", email)
+	if err != nil {
+		return User{}, err
+	}
+
 	var response oktaResponse
 	var request = shared.Request{
 		Method: "GET",
-		URL:    shared.JoinURL(oktaURL, "/users/", email),
+		URL:    userURL,
 		Body:   nil,
 		Token:  oktaToken,
 	}
@@ -96,9 +101,11 @@ func fetchUsers(url string, token string) ([]User, http.Header, error) {
 func FetchAllUsers() ([]User, error) {
 
 	var allUsers []User
-	var err error
 
-	url := shared.JoinURL(viper.GetString("OKTA_URL"), "/users/")
+	url, err := shared.JoinURL(viper.GetString("OKTA_URL"), "/users/")
+	if err != nil {
+		return nil, err
+	}
 	token := viper.GetString("OKTA_TOKEN")
 	hasNext := true
 

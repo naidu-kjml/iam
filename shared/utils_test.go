@@ -1,6 +1,7 @@
 package shared
 
 import (
+	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -31,7 +32,8 @@ func TestJoinURL(t *testing.T) {
 
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
-			result := JoinURL(test.args[0], test.args[1:]...)
+			result, err := JoinURL(test.args[0], test.args[1:]...)
+			require.NoError(t, err)
 			assert.Equal(t, test.expected, result)
 		})
 	}

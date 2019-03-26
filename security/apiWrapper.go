@@ -1,6 +1,7 @@
 package security
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
@@ -12,7 +13,17 @@ import (
 // AuthWrapper : Simple wrapper for Routers to validate token
 func AuthWrapper(h httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-		checkAuth(r)
+		err := checkAuth(r)
+		if err != nil {
+			if apiErr, ok := err.(shared.APIError); ok {
+				http.Error(w, apiErr.Message, apiErr.Code)
+			} else {
+				http.Error(w, "Internal server error", http.StatusInternalServerError)
+			}
+
+			log.Println("[ERROR]", err.Error())
+			return
+		}
 
 		// Delegate request to the given handle
 		h(w, r, ps)
@@ -20,22 +31,21 @@ func AuthWrapper(h httprouter.Handle) httprouter.Handle {
 }
 
 // checkAuth : checks if user has proper token + user agent + query fields
-func checkAuth(r *http.Request) {
-
+func checkAuth(r *http.Request) error {
 	var query = r.URL.Query()
 	var requestToken = r.Header.Get("Authorization")
 	var service = r.Header.Get("User-Agent")
 
 	if _, exists := query["email"]; !exists {
-		panic(shared.APIError{Message: "Query field 'email' mandatory", Code: 401})
+		return shared.APIError{Message: "Query field 'email' mandatory", Code: 401}
 	}
 
 	if service == "" {
-		panic(shared.APIError{Message: "User-Agent header mandatory", Code: 401})
+		return shared.APIError{Message: "User-Agent header mandatory", Code: 401}
 	}
 
 	if requestToken == "" {
-		panic(shared.APIError{Message: "Authorization header with token is mandatory", Code: 401})
+		return shared.APIError{Message: "Authorization header with token is mandatory", Code: 401}
 	}
 
 	var token = viper.Get("TOKEN_" + service + "_OKTA")
@@ -45,6 +55,8 @@ func checkAuth(r *http.Request) {
 	}
 
 	if token == nil || token != requestToken {
-		panic(shared.APIError{Message: "Incorrect token", Code: 401})
+		return shared.APIError{Message: "Incorrect token", Code: 401}
 	}
+
+	return nil
 }
