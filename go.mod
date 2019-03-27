@@ -20,5 +20,6 @@ require (
 	github.com/stretchr/objx v0.1.1 // indirect
 	github.com/stretchr/testify v1.2.2
 	github.com/tinylib/msgp v1.1.0 // indirect
+	golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f
 	gopkg.in/DataDog/dd-trace-go.v1 v1.10.0
 )
