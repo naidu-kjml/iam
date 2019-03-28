@@ -18,12 +18,12 @@ func GetOktaUserByEmail(w http.ResponseWriter, r *http.Request, _ httprouter.Par
 
 	userData, err := okta.GetUser(email)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Service unavailable", http.StatusInternalServerError)
 		return
 	}
 	jsonData, err := json.Marshal(userData)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Service unavailable", http.StatusInternalServerError)
 		return
 	}
 
