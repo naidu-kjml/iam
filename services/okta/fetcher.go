@@ -1,6 +1,8 @@
 package okta
 
 import (
+	"errors"
+	"log"
 	"net/http"
 	"regexp"
 	"strings"
@@ -62,6 +64,11 @@ func FetchUser(email string) (User, error) {
 	httpResponse, err := shared.Fetch(request)
 	if err != nil {
 		return User{}, err
+	}
+	if httpResponse.StatusCode != 200 {
+		var errorMessage = "GET " + userURL + " returned error: " + httpResponse.Status
+		log.Println(errorMessage)
+		return User{}, errors.New(errorMessage)
 	}
 
 	httpResponse.JSON(&response)
