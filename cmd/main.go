@@ -5,19 +5,19 @@ import (
 	"net/http"
 	"time"
 
+	"gitlab.skypicker.com/cs-devs/governant/api"
 	"gitlab.skypicker.com/cs-devs/governant/security"
 	"gitlab.skypicker.com/cs-devs/governant/services/okta"
 	"gitlab.skypicker.com/cs-devs/governant/shared"
+	"gitlab.skypicker.com/cs-devs/governant/storage"
 
 	"github.com/getsentry/raven-go"
 	"github.com/spf13/viper"
-	"gitlab.skypicker.com/cs-devs/governant/api"
 	"gopkg.in/DataDog/dd-trace-go.v1/contrib/julienschmidt/httprouter"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
-func updateUserData() {
-
+func updateUserData(cache *storage.Cache) {
 	users, err := okta.FetchAllUsers()
 	if err != nil {
 		log.Println("Error fetching users", err)
@@ -25,7 +25,12 @@ func updateUserData() {
 		return
 	}
 
-	err = okta.CacheMSet(users)
+	pairs := make(map[string]interface{}, len(users))
+	for _, user := range users {
+		pairs[user.Email] = user
+	}
+
+	err = cache.MSet(pairs)
 	if err != nil {
 		log.Println("Error caching users", err)
 		raven.CaptureError(err, nil)
@@ -36,11 +41,15 @@ func updateUserData() {
 }
 
 func fillCache() {
+	cache := storage.NewCache(
+		viper.GetString("REDIS_HOST"),
+		viper.GetString("REDIS_PORT"),
+	)
 
 	// fill cache immediately (if not dev)
 	if viper.GetString("APP_ENV") != "dev" {
 		log.Println("Start caching users")
-		updateUserData()
+		updateUserData(cache)
 	}
 
 	// Run periodic task to fill in the cache
@@ -49,7 +58,7 @@ func fillCache() {
 
 	for tick := range ticker.C {
 		log.Println("Start caching users", tick.Round(time.Second))
-		updateUserData()
+		updateUserData(cache)
 	}
 }
 
@@ -75,6 +84,8 @@ func init() {
 	viper.ReadInConfig()
 	viper.SetDefault("PORT", "8080")
 	viper.SetDefault("SERVE_PATH", "/")
+	viper.SetDefault("REDIS_HOST", "localhost")
+	viper.SetDefault("REDIS_PORT", "6379")
 
 	ravenDSN := viper.GetString("SENTRY_DSN")
 	if ravenDSN != "" {
@@ -86,16 +97,21 @@ func init() {
 	}
 
 	// Datadog tracer
-	tracer.Start(
-		tracer.WithServiceName("governant"),
-		tracer.WithGlobalTag("env", viper.GetString("DATADOG_ENV")),
-	)
-
-	okta.InitCache()
+	datadogEnv := viper.GetString("DATADOG_ENV")
+	if datadogEnv != "" {
+		tracer.Start(
+			tracer.WithServiceName("governant"),
+			tracer.WithGlobalTag("env", datadogEnv),
+		)
+	}
 }
 
 func main() {
 	var port = viper.GetString("PORT")
+	cache := storage.NewCache(
+		viper.GetString("REDIS_HOST"),
+		viper.GetString("REDIS_PORT"),
+	)
 
 	// For deployments where we're not on root
 	var servePath = viper.GetString("SERVE_PATH")
@@ -112,7 +128,7 @@ func main() {
 
 	// App Routes
 	router.GET(servePath, api.SayHello)
-	router.GET(servePath+"user/okta", security.AuthWrapper(api.GetOktaUserByEmail))
+	router.GET(servePath+"user/okta", security.AuthWrapper(api.GetOktaUserByEmail(cache)))
 
 	router.PanicHandler = panicHandler
 

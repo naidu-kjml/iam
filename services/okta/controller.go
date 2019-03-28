@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/go-redis/redis"
+	"gitlab.skypicker.com/cs-devs/governant/storage"
 	"golang.org/x/sync/singleflight"
 )
 
@@ -11,8 +12,9 @@ var requestGroup singleflight.Group
 
 // GetUser returns an Okta user by email. It first tries to get it from cache,
 // and if not present there, it will fetch it from Okta API.
-func GetUser(email string) (User, error) {
-	user, err := CacheGet(email)
+func GetUser(cache *storage.Cache, email string) (User, error) {
+	var user User
+	err := cache.Get(email, &user)
 	if err == nil {
 		// Cache hit
 		return user, nil
@@ -32,7 +34,7 @@ func GetUser(email string) (User, error) {
 			return User{}, err
 		}
 
-		err = CacheSet(user.Email, user, time.Minute*10)
+		err = cache.Set(user.Email, user, time.Minute*10)
 		return user, err
 	})
 
