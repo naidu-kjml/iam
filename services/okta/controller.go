@@ -3,6 +3,7 @@ package okta
 import (
 	"time"
 
+	"github.com/getsentry/raven-go"
 	"github.com/go-redis/redis"
 	"gitlab.skypicker.com/cs-devs/governant/storage"
 	"golang.org/x/sync/singleflight"
@@ -35,7 +36,10 @@ func GetUser(cache *storage.Cache, email string) (User, error) {
 		}
 
 		err = cache.Set(user.Email, user, time.Minute*10)
-		return user, err
+		if err != nil {
+			raven.CaptureError(err, nil)
+		}
+		return user, nil
 	})
 
 	if err != nil {
