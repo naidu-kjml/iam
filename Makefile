@@ -1,3 +1,5 @@
+GOLANGCI_LINT := $(shell command -v golangci-lint 2> /dev/null)
+
 install_deps:
 	go mod download
 	GO111MODULE=off go get github.com/cespare/reflex
@@ -52,3 +54,13 @@ else
 	@printf "${color_green}SENTRY_RELEASE: ${CI_COMMIT_SHORT_SHA}${color_off}\n"
 	@echo "SENTRY_RELEASE: ${CI_COMMIT_SHORT_SHA}" >> .env.yaml
 endif
+
+
+lint-golangci: ## Runs golangci-lint. It outputs to the code-climate json file in if CI is defined.
+	$(call log_info, Running golangci-lint)
+ifndef GOLANGCI_LINT
+	@echo "Can\'t find executable of the golangci-lint. Make sure it is insatlled. See github.com\/golangci\/golangci-lint#install"
+	@exit 1
+endif
+	golangci-lint run $(if $(CI),--out-format code-climate > gl-code-quality-report.json)
+	$(call log_success,Linting with golangci-lint succeeded!)
