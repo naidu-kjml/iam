@@ -7,7 +7,6 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/spf13/viper"
 	"gitlab.skypicker.com/platform/security/iam/shared"
 )
 
@@ -43,12 +42,9 @@ type oktaResponse struct {
 	Profile apiUser
 }
 
-// FetchUser : Fetches a Okta user by email
-func FetchUser(email string) (User, error) {
-	var oktaURL = viper.GetString("OKTA_URL")
-	var oktaToken = viper.GetString("OKTA_TOKEN")
-
-	userURL, err := shared.JoinURL(oktaURL, "/users/", email)
+// fetchUser retrieves a user from Okta by email
+func (c *Client) fetchUser(email string) (User, error) {
+	userURL, err := shared.JoinURL(c.baseURL, "/users/", email)
 	if err != nil {
 		return User{}, err
 	}
@@ -58,7 +54,7 @@ func FetchUser(email string) (User, error) {
 		Method: "GET",
 		URL:    userURL,
 		Body:   nil,
-		Token:  oktaToken,
+		Token:  c.authToken,
 	}
 
 	httpResponse, err := shared.Fetch(request)
@@ -77,15 +73,15 @@ func FetchUser(email string) (User, error) {
 	return user, nil
 }
 
-// fetchUsers function used in iterations by FetchAllUsers
-func fetchUsers(url string, token string) ([]User, http.Header, error) {
+// fetchUsers is used in iterations by FetchAllUsers
+func (c *Client) fetchUsers(url string) ([]User, http.Header, error) {
 
 	var response []oktaResponse
 	var request = shared.Request{
 		Method: "GET",
 		URL:    url,
 		Body:   nil,
-		Token:  token,
+		Token:  c.authToken,
 	}
 
 	httpResponse, err := shared.Fetch(request)
@@ -104,16 +100,14 @@ func fetchUsers(url string, token string) ([]User, http.Header, error) {
 	return users, httpResponse.Header, nil
 }
 
-// FetchAllUsers : Fetch all Okta users
-func FetchAllUsers() ([]User, error) {
-
+// fetchAllUsers retrieves all Okta users
+func (c *Client) fetchAllUsers() ([]User, error) {
 	var allUsers []User
 
-	url, err := shared.JoinURL(viper.GetString("OKTA_URL"), "/users/")
+	url, err := shared.JoinURL(c.baseURL, "/users/")
 	if err != nil {
 		return nil, err
 	}
-	token := viper.GetString("OKTA_TOKEN")
 	hasNext := true
 
 	for hasNext {
@@ -121,7 +115,7 @@ func FetchAllUsers() ([]User, error) {
 		var users []User
 		var header http.Header
 
-		users, header, err = fetchUsers(url, token)
+		users, header, err = c.fetchUsers(url)
 
 		if err != nil {
 			return nil, err

@@ -8,8 +8,6 @@ import (
 	"gitlab.skypicker.com/platform/security/iam/api"
 	"gitlab.skypicker.com/platform/security/iam/security"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
-	"gitlab.skypicker.com/platform/security/iam/shared"
-	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
 	"github.com/spf13/viper"
@@ -17,39 +15,11 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
-func updateUserData(cache *storage.Cache) {
-	users, err := okta.FetchAllUsers()
-	if err != nil {
-		log.Println("Error fetching users", err)
-		raven.CaptureError(err, nil)
-		return
-	}
-
-	pairs := make(map[string]interface{}, len(users))
-	for _, user := range users {
-		pairs[user.Email] = user
-	}
-
-	err = cache.MSet(pairs)
-	if err != nil {
-		log.Println("Error caching users", err)
-		raven.CaptureError(err, nil)
-		return
-	}
-
-	log.Println("Cached ", len(users), " users")
-}
-
-func fillCache() {
-	cache := storage.NewCache(
-		viper.GetString("REDIS_HOST"),
-		viper.GetString("REDIS_PORT"),
-	)
-
+func fillCache(client *okta.Client) {
 	// fill cache immediately (if not dev)
 	if viper.GetString("APP_ENV") != "dev" {
 		log.Println("Start caching users")
-		updateUserData(cache)
+		client.SyncUsers()
 	}
 
 	// Run periodic task to fill in the cache
@@ -58,23 +28,8 @@ func fillCache() {
 
 	for tick := range ticker.C {
 		log.Println("Start caching users", tick.Round(time.Second))
-		updateUserData(cache)
+		client.SyncUsers()
 	}
-}
-
-func panicHandler(w http.ResponseWriter, r *http.Request, err interface{}) {
-	apiError, castingOk := err.(shared.APIError)
-	if castingOk {
-		raven.CaptureError(apiError, nil)
-		http.Error(w, apiError.Message, apiError.Code)
-		log.Println("[ERROR]", apiError)
-		return
-	}
-
-	if errorType, castingOk := err.(error); castingOk {
-		raven.CaptureError(errorType, nil)
-	}
-	log.Panic(err)
 }
 
 // Triggered before main()
@@ -107,14 +62,16 @@ func init() {
 }
 
 func main() {
-	var port = viper.GetString("PORT")
-	cache := storage.NewCache(
-		viper.GetString("REDIS_HOST"),
-		viper.GetString("REDIS_PORT"),
-	)
-
 	// For deployments where we're not on root
 	var servePath = viper.GetString("SERVE_PATH")
+	var port = viper.GetString("PORT")
+
+	var oktaClient = okta.NewClient(okta.ClientOpts{
+		BaseURL:   viper.GetString("OKTA_URL"),
+		AuthToken: viper.GetString("OKTA_TOKEN"),
+		CacheHost: viper.GetString("REDIS_HOST"),
+		CachePort: viper.GetString("REDIS_PORT"),
+	})
 
 	router := httprouter.New(httprouter.WithServiceName("governant.http.router"))
 
@@ -128,9 +85,9 @@ func main() {
 
 	// App Routes
 	router.GET(servePath, api.SayHello)
-	router.GET(servePath+"user/okta", security.AuthWrapper(api.GetOktaUserByEmail(cache)))
+	router.GET(servePath+"user/okta", security.AuthWrapper(api.GetOktaUserByEmail(oktaClient)))
 
-	router.PanicHandler = panicHandler
+	router.PanicHandler = api.PanicHandler
 
 	// 0.0.0.0 is specified to allow listening in Docker
 	var address = "0.0.0.0:" + port
@@ -141,7 +98,7 @@ func main() {
 		WriteTimeout: 10 * time.Second,
 	}
 
-	go fillCache()
+	go fillCache(oktaClient)
 
 	log.Println("🚀 Golang server starting on " + address + servePath)
 	err := server.ListenAndServe()

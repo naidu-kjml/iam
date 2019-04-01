@@ -9,13 +9,12 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/julienschmidt/httprouter"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
-	"gitlab.skypicker.com/platform/security/iam/storage"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 // GetOktaUserByEmail : Look up Okta user by email
-func GetOktaUserByEmail(cache *storage.Cache) httprouter.Handle {
+func GetOktaUserByEmail(client *okta.Client) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		var values, err = url.ParseQuery(r.URL.RawQuery)
 		if err != nil {
@@ -23,7 +22,7 @@ func GetOktaUserByEmail(cache *storage.Cache) httprouter.Handle {
 		}
 		var email = values.Get("email")
 
-		userData, err := okta.GetUser(cache, email)
+		userData, err := client.GetUser(email)
 		if err != nil {
 			http.Error(w, "Service unavailable", http.StatusInternalServerError)
 			return
