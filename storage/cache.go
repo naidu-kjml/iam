@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/go-redis/redis"
-	"gitlab.skypicker.com/cs-devs/governant/shared"
+	"gitlab.skypicker.com/platform/security/iam/shared"
 	redisTrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/go-redis/redis"
 )
 

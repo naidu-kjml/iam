@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/spf13/viper"
-	"gitlab.skypicker.com/cs-devs/governant/shared"
+	"gitlab.skypicker.com/platform/security/iam/shared"
 )
 
 type apiUser struct {

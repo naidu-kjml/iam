@@ -1,4 +1,4 @@
-module gitlab.skypicker.com/cs-devs/governant
+module gitlab.skypicker.com/platform/security/iam
 
 go 1.12
 

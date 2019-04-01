@@ -5,7 +5,7 @@ import (
 
 	"github.com/getsentry/raven-go"
 	"github.com/go-redis/redis"
-	"gitlab.skypicker.com/cs-devs/governant/storage"
+	"gitlab.skypicker.com/platform/security/iam/storage"
 	"golang.org/x/sync/singleflight"
 )
 

@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"time"
 
-	"gitlab.skypicker.com/cs-devs/governant/api"
-	"gitlab.skypicker.com/cs-devs/governant/security"
-	"gitlab.skypicker.com/cs-devs/governant/services/okta"
-	"gitlab.skypicker.com/cs-devs/governant/shared"
-	"gitlab.skypicker.com/cs-devs/governant/storage"
+	"gitlab.skypicker.com/platform/security/iam/api"
+	"gitlab.skypicker.com/platform/security/iam/security"
+	"gitlab.skypicker.com/platform/security/iam/services/okta"
+	"gitlab.skypicker.com/platform/security/iam/shared"
+	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
 	"github.com/spf13/viper"
