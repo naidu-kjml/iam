@@ -48,7 +48,7 @@ func loadEnv() {
 	viper.SetDefault("REDIS_PORT", "6379")
 }
 
-func initErrorTracking(token string, environment string, release string) {
+func initErrorTracking(token, environment, release string) {
 	if token == "" {
 		log.Println("SENTRY_DSN is not set. Error logging disabled.")
 		return
@@ -62,8 +62,7 @@ func initErrorTracking(token string, environment string, release string) {
 	raven.SetRelease(release)
 }
 
-// Triggered before main()
-func init() {
+func main() {
 	loadEnv()
 
 	initErrorTracking(viper.GetString("SENTRY_DSN"), viper.GetString("APP_ENV"), viper.GetString("SENTRY_RELEASE"))
@@ -76,9 +75,7 @@ func init() {
 			tracer.WithGlobalTag("env", datadogEnv),
 		)
 	}
-}
 
-func main() {
 	// For deployments where we're not on root
 	var servePath = viper.GetString("SERVE_PATH")
 	var port = viper.GetString("PORT")

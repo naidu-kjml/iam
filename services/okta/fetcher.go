@@ -23,7 +23,7 @@ type apiUser struct {
 	Manager          string
 }
 
-func formatUser(user apiUser) User {
+func formatUser(user *apiUser) User {
 	return User{
 		EmployeeNumber: user.EmployeeNumber,
 		FirstName:      user.FirstName,
@@ -67,9 +67,13 @@ func (c *Client) fetchUser(email string) (User, error) {
 		return User{}, errors.New(errorMessage)
 	}
 
-	httpResponse.JSON(&response)
+	jsonErr := httpResponse.JSON(&response)
 
-	var user = formatUser(response.Profile)
+	if jsonErr != nil {
+		return User{}, jsonErr
+	}
+
+	var user = formatUser(&response.Profile)
 	return user, nil
 }
 
@@ -89,12 +93,17 @@ func (c *Client) fetchUsers(url string) ([]User, http.Header, error) {
 		return nil, nil, err
 	}
 
-	httpResponse.JSON(&response)
+	jsonErr := httpResponse.JSON(&response)
+
+	if jsonErr != nil {
+		return nil, nil, jsonErr
+	}
 
 	// Create empty slice with the same length as the response we got from Okta.
 	var users = make([]User, len(response))
-	for i, user := range response {
-		users[i] = formatUser(user.Profile)
+	for i := range response {
+		user := &response[i]
+		users[i] = formatUser(&user.Profile)
 	}
 
 	return users, httpResponse.Header, nil

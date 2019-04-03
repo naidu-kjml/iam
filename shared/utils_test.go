@@ -1,10 +1,10 @@
 package shared
 
 import (
-	"github.com/stretchr/testify/require"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestJoinURL(t *testing.T) {
@@ -31,6 +31,9 @@ func TestJoinURL(t *testing.T) {
 	}
 
 	for name, test := range tests {
+		// scopelint has some issues here. https://github.com/kyoh86/scopelint/issues/4
+		test := test
+
 		t.Run(name, func(t *testing.T) {
 			result, err := JoinURL(test.args[0], test.args[1:]...)
 			require.NoError(t, err)

@@ -16,7 +16,7 @@ type Cache struct {
 }
 
 // NewCache initializes and returns a Cache
-func NewCache(host string, port string) *Cache {
+func NewCache(host, port string) *Cache {
 	opts := &redis.Options{Addr: net.JoinHostPort(host, port)}
 
 	return &Cache{

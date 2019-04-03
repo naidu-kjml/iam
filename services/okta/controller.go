@@ -55,7 +55,8 @@ func (c *Client) SyncUsers() {
 	}
 
 	pairs := make(map[string]interface{}, len(users))
-	for _, user := range users {
+	for i := range users {
+		user := &users[i]
 		pairs[user.Email] = user
 	}
 
