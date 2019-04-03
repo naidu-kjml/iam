@@ -1,6 +1,7 @@
 package api
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
@@ -9,5 +10,9 @@ import (
 // Healthcheck : Route for healthcheck
 func Healthcheck(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	var message = "Ok"
-	w.Write([]byte(message))
+	_, err := w.Write([]byte(message))
+
+	if err != nil {
+		log.Println("[ERROR] Failed to return healthcheck: ", err)
+	}
 }

@@ -27,13 +27,13 @@ func (c *Client) GetUser(email string) (User, error) {
 	// Deduplicate network calls and cache writes if this controller is called
 	// multiple times concurrently.
 	val, err, _ := c.group.Do(email, func() (interface{}, error) {
-		user, err := c.fetchUser(email)
-		if err != nil {
+		user, fetchErr := c.fetchUser(email)
+		if fetchErr != nil {
 			return User{}, err
 		}
 
-		err = c.cache.Set(user.Email, user, time.Minute*10)
-		if err != nil {
+		cacheErr := c.cache.Set(user.Email, user, time.Minute*10)
+		if cacheErr != nil {
 			raven.CaptureError(err, nil)
 		}
 		return user, nil

@@ -43,7 +43,6 @@ linters:
   - gochecknoglobals
 
 issues:
-  new-from-rev: origin/master
 
   exclude-rules:
     - path: _test\.go

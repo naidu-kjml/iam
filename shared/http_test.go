@@ -16,10 +16,7 @@ type BodyMock struct {
 }
 
 func (b *BodyMock) Read(p []byte) (int, error) {
-	// Convert string to byte array and assign it to the `p` argument
-	for i, el := range []byte(b.Value) {
-		p[i] = el
-	}
+	copy(p, b.Value)
 
 	return len(p), nil
 }
@@ -39,7 +36,11 @@ func TestJSON(t *testing.T) {
 	var res = Response{
 		&http.Response{Body: &body},
 	}
-	res.JSON(&expectedData)
+	err := res.JSON(&expectedData)
+
+	if err != nil {
+		panic(err)
+	}
 
 	body.AssertNumberOfCalls(t, "Close", 1)
 	assert.Equal(t, expectedData, Data{Message: "this is a test"})

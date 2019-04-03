@@ -55,8 +55,7 @@ else
 	@echo "SENTRY_RELEASE: ${CI_COMMIT_SHORT_SHA}" >> .env.yaml
 endif
 
-
-lint-golangci: ## Runs golangci-lint. It outputs to the code-climate json file in if CI is defined.
+lint: ## Runs golangci-lint. It outputs to the code-climate json file in if CI is defined.
 	$(call log_info, Running golangci-lint)
 ifndef GOLANGCI_LINT
 	@echo "Can\'t find executable of the golangci-lint. Make sure it is insatlled. See github.com\/golangci\/golangci-lint#install"

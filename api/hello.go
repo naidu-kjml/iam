@@ -1,16 +1,17 @@
 package api
 
 import (
+	"log"
 	"net/http"
-	"strings"
 
 	"github.com/julienschmidt/httprouter"
 )
 
 // SayHello : Route for HelloWorld
 func SayHello(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	message := r.URL.Path
-	message = strings.TrimPrefix(message, "/")
-	message = "Hello " + message
-	w.Write([]byte(message))
+	message := "42"
+	_, err := w.Write([]byte(message))
+	if err != nil {
+		log.Println("Hello World failed: ", err)
+	}
 }

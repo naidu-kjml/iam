@@ -32,24 +32,41 @@ func fillCache(client *okta.Client) {
 	}
 }
 
-// Triggered before main()
-func init() {
+func loadEnv() {
 	viper.AutomaticEnv()
 	viper.SetConfigFile(".env.yaml")
-	viper.ReadInConfig()
+	err := viper.ReadInConfig()
+
+	if err != nil {
+		log.Println("Config file failed to load. Defaulting to env.")
+	}
+
+	// Set defaults
 	viper.SetDefault("PORT", "8080")
 	viper.SetDefault("SERVE_PATH", "/")
 	viper.SetDefault("REDIS_HOST", "localhost")
 	viper.SetDefault("REDIS_PORT", "6379")
+}
 
-	ravenDSN := viper.GetString("SENTRY_DSN")
-	if ravenDSN != "" {
-		raven.SetDSN(ravenDSN)
-		raven.SetEnvironment(viper.GetString("APP_ENV"))
-		raven.SetRelease(viper.GetString("SENTRY_RELEASE"))
-	} else {
+func initErrorTracking(token string, environment string, release string) {
+	if token == "" {
 		log.Println("SENTRY_DSN is not set. Error logging disabled.")
+		return
 	}
+	err := raven.SetDSN(token)
+	if err != nil {
+		log.Println("[ERROR] Failed to set Raven DSN: ", err)
+	}
+
+	raven.SetEnvironment(environment)
+	raven.SetRelease(release)
+}
+
+// Triggered before main()
+func init() {
+	loadEnv()
+
+	initErrorTracking(viper.GetString("SENTRY_DSN"), viper.GetString("APP_ENV"), viper.GetString("SENTRY_RELEASE"))
 
 	// Datadog tracer
 	datadogEnv := viper.GetString("DATADOG_ENV")
