@@ -50,3 +50,11 @@ KEYS *
 # Show value for a key
 GET <key>
 ```
+
+# Secret Manager
+
+This service uses Vault for syncing secrets to our app.
+
+This service expects the following structure for Vault:
+/secret/governant/app_tokens
+/secret/governant/settings
