@@ -25,7 +25,7 @@ require (
 	github.com/opentracing/opentracing-go v1.0.2 // indirect
 	github.com/philhofer/fwd v1.0.0 // indirect
 	github.com/pierrec/lz4 v2.0.5+incompatible // indirect
-	github.com/pkg/errors v0.8.1 // indirect
+	github.com/pkg/errors v0.8.1
 	github.com/ryanuber/go-glob v1.0.0 // indirect
 	github.com/spf13/viper v1.3.1
 	github.com/stretchr/objx v0.1.1 // indirect

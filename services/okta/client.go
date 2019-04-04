@@ -9,6 +9,7 @@ import (
 type ClientOpts struct {
 	CacheHost string
 	CachePort string
+	CacheLock *storage.LockOpts
 	BaseURL   string
 	AuthToken string
 }
@@ -24,7 +25,7 @@ type Client struct {
 // NewClient creates an Okta client based on the given options
 func NewClient(opts ClientOpts) *Client {
 	return &Client{
-		cache:     storage.NewCache(opts.CacheHost, opts.CachePort),
+		cache:     storage.NewCache(opts.CacheHost, opts.CachePort, opts.CacheLock),
 		baseURL:   opts.BaseURL,
 		authToken: opts.AuthToken,
 	}

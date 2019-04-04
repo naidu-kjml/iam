@@ -8,6 +8,7 @@ import (
 	"gitlab.skypicker.com/platform/security/iam/api"
 	"gitlab.skypicker.com/platform/security/iam/security"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
+	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
 	"github.com/spf13/viper"
@@ -46,6 +47,8 @@ func loadEnv() {
 	viper.SetDefault("SERVE_PATH", "/")
 	viper.SetDefault("REDIS_HOST", "localhost")
 	viper.SetDefault("REDIS_PORT", "6379")
+	viper.SetDefault("REDIS_LOCK_RETRY_DELAY", "1s")
+	viper.SetDefault("REDIS_LOCK_EXPIRATION", "5s")
 }
 
 func initErrorTracking(token, environment, release string) {
@@ -85,6 +88,10 @@ func main() {
 		AuthToken: viper.GetString("OKTA_TOKEN"),
 		CacheHost: viper.GetString("REDIS_HOST"),
 		CachePort: viper.GetString("REDIS_PORT"),
+		CacheLock: &storage.LockOpts{
+			RetryDelay: viper.GetDuration("REDIS_LOCK_RETRY_DELAY"),
+			Expiration: viper.GetDuration("REDIS_LOCK_EXPIRATION"),
+		},
 	})
 
 	router := httprouter.New(httprouter.WithServiceName("governant.http.router"))

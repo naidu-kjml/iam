@@ -13,14 +13,16 @@ import (
 // Cache contains cache client
 type Cache struct {
 	client *redisTrace.Client
+	lock   *LockOpts
 }
 
 // NewCache initializes and returns a Cache
-func NewCache(host, port string) *Cache {
+func NewCache(host, port string, lock *LockOpts) *Cache {
 	opts := &redis.Options{Addr: net.JoinHostPort(host, port)}
 
 	return &Cache{
-		redisTrace.NewClient(opts, redisTrace.WithServiceName("governant.redis")),
+		client: redisTrace.NewClient(opts, redisTrace.WithServiceName("governant.redis")),
+		lock:   lock,
 	}
 }
 
@@ -49,6 +51,13 @@ func (c *Cache) Set(key string, value interface{}, ttl time.Duration) error {
 
 	lowerKey := strings.ToLower(key)
 	_, err = c.client.Set(lowerKey, strVal, ttl).Result()
+	return err
+}
+
+// Del deletes an item from cache
+func (c *Cache) Del(key string) error {
+	lowerKey := strings.ToLower(key)
+	_, err := c.client.Del(lowerKey).Result()
 	return err
 }
 

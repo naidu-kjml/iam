@@ -4,6 +4,8 @@ import (
 	"log"
 	"time"
 
+	"gitlab.skypicker.com/platform/security/iam/storage"
+
 	"github.com/getsentry/raven-go"
 	"github.com/go-redis/redis"
 )
@@ -27,6 +29,15 @@ func (c *Client) GetUser(email string) (User, error) {
 	// Deduplicate network calls and cache writes if this controller is called
 	// multiple times concurrently.
 	val, err, _ := c.group.Do(email, func() (interface{}, error) {
+		lockErr := c.cache.Lock(email)
+		if lockErr == storage.ErrLockExists {
+			// If there was a lock for this user, it means another instance was
+			// fetching its data recently, in that case we should be able to just get
+			// the data from cache.
+			return c.GetUser(email)
+		}
+		defer c.cache.Unlock(email)
+
 		user, fetchErr := c.fetchUser(email)
 		if fetchErr != nil {
 			return User{}, err
