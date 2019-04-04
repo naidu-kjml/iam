@@ -23,14 +23,15 @@ type localStorage struct {
 
 // SecretManager is the local struct for Vault connection
 type SecretManager struct {
-	client  *vault.Client
-	storage localStorage
+	client    *vault.Client
+	storage   localStorage
+	namespace string
 }
 
-var namespace = "/secret/governant"
+var requiredPrefix = "/secret"
 
 // CreateNewSecretManager create a new client to connect to Vault
-func CreateNewSecretManager(address, token string) *SecretManager {
+func CreateNewSecretManager(address, token, namespace string) *SecretManager {
 	client, _ := vault.NewClient(&vault.Config{
 		Address: address,
 	})
@@ -39,7 +40,7 @@ func CreateNewSecretManager(address, token string) *SecretManager {
 
 	client.SetNamespace(namespace)
 
-	return &SecretManager{client: client}
+	return &SecretManager{client: client, namespace: namespace}
 }
 
 // SyncAppTokens syncs all the available tokens from Vault and saves them to local state
@@ -112,7 +113,7 @@ func (s *SecretManager) GetSetting(key string) (string, error) {
 }
 
 func (s *SecretManager) fetchData(subpath string) (map[string]interface{}, error) {
-	response, err := s.client.Logical().Read(namespace + "/" + subpath)
+	response, err := s.client.Logical().Read(requiredPrefix + "/" + s.namespace + "/" + subpath)
 
 	if err != nil {
 		return nil, err
