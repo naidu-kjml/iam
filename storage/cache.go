@@ -21,7 +21,7 @@ func NewCache(host, port string, lock *LockOpts) *Cache {
 	opts := &redis.Options{Addr: net.JoinHostPort(host, port)}
 
 	return &Cache{
-		client: redisTrace.NewClient(opts, redisTrace.WithServiceName("governant.redis")),
+		client: redisTrace.NewClient(opts, redisTrace.WithServiceName("kiwi-iam.redis")),
 		lock:   lock,
 	}
 }
