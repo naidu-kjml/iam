@@ -72,8 +72,10 @@ func main() {
 
 	// Datadog tracer
 	datadogEnv := viper.GetString("DATADOG_ENV")
-	if datadogEnv != "" {
+	datadogAddr := viper.GetString("DATADOG_ADDR")
+	if datadogAddr != "" {
 		tracer.Start(
+			tracer.WithAgentAddr(datadogAddr),
 			tracer.WithServiceName("governant"),
 			tracer.WithGlobalTag("env", datadogEnv),
 		)
