@@ -33,12 +33,33 @@ func fillCache(client *okta.Client) {
 	}
 }
 
-func loadEnv() {
-	viper.AutomaticEnv()
-	viper.SetConfigFile(".env.yaml")
-	err := viper.ReadInConfig()
+func syncVault(client *security.VaultManager) {
+	log.Println("Start token sync with Vault")
+	err := client.SyncAppTokens()
 
 	if err != nil {
+		log.Println("[ERROR] failed to sync tokens with Vault: ", err)
+	}
+
+	ticker := time.NewTicker(time.Minute * 10)
+	defer ticker.Stop()
+
+	for tick := range ticker.C {
+		log.Println("Start caching app tokens from Vault", tick.Round(time.Second))
+		err := client.SyncAppTokens()
+
+		if err != nil {
+			log.Println("[ERROR] failed to sync tokens with Vault: ", err)
+		}
+	}
+}
+
+func loadEnv() security.SecretManager {
+	viper.AutomaticEnv()
+	viper.SetConfigFile(".env.yaml")
+	configErr := viper.ReadInConfig()
+
+	if configErr != nil {
 		log.Println("Config file failed to load. Defaulting to env.")
 	}
 
@@ -49,6 +70,32 @@ func loadEnv() {
 	viper.SetDefault("REDIS_PORT", "6379")
 	viper.SetDefault("REDIS_LOCK_RETRY_DELAY", "1s")
 	viper.SetDefault("REDIS_LOCK_EXPIRATION", "5s")
+
+	// Load data from Vault and set them if possible
+	vaultClient, vaultErr := security.CreateNewVaultClient(
+		viper.GetString("VAULT_ADDR"),
+		viper.GetString("VAULT_TOKEN"),
+		viper.GetString("VAULT_NAMESPACE"),
+	)
+	if vaultErr == nil {
+		// This sync needs to happen synchronously
+		err := vaultClient.SyncAppSettings()
+
+		// If Vault is set up, but connection fails or settings are empty then kill the app as oktaToken will not be available
+		if err != nil {
+			panic(err)
+		}
+
+		go syncVault(vaultClient)
+
+		return vaultClient
+	}
+
+	log.Println("Vault integration disabled: ", vaultErr)
+
+	localSecretManager := security.CreateNewLocalSecretManager()
+
+	return localSecretManager
 }
 
 func initErrorTracking(token, environment, release string) {
@@ -66,7 +113,7 @@ func initErrorTracking(token, environment, release string) {
 }
 
 func main() {
-	loadEnv()
+	secretManager := loadEnv()
 
 	initErrorTracking(viper.GetString("SENTRY_DSN"), viper.GetString("APP_ENV"), viper.GetString("SENTRY_RELEASE"))
 
@@ -83,9 +130,11 @@ func main() {
 	var servePath = viper.GetString("SERVE_PATH")
 	var port = viper.GetString("PORT")
 
+	oktaToken, _ := secretManager.GetSetting("OKTA_TOKEN")
+
 	var oktaClient = okta.NewClient(okta.ClientOpts{
 		BaseURL:   viper.GetString("OKTA_URL"),
-		AuthToken: viper.GetString("OKTA_TOKEN"),
+		AuthToken: oktaToken,
 		CacheHost: viper.GetString("REDIS_HOST"),
 		CachePort: viper.GetString("REDIS_PORT"),
 		CacheLock: &storage.LockOpts{
@@ -106,7 +155,7 @@ func main() {
 
 	// App Routes
 	router.GET(servePath, api.SayHello)
-	router.GET(servePath+"user/okta", security.AuthWrapper(api.GetOktaUserByEmail(oktaClient)))
+	router.GET(servePath+"user/okta", security.AuthWrapper(api.GetOktaUserByEmail(oktaClient), secretManager))
 
 	router.PanicHandler = api.PanicHandler
 
