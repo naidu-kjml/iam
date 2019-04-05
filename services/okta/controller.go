@@ -58,6 +58,13 @@ func (c *Client) GetUser(email string) (User, error) {
 
 // SyncUsers gets all users from Okta and saves them into cache.
 func (c *Client) SyncUsers() {
+	lockErr := c.cache.Lock("sync_users")
+	if lockErr == storage.ErrLockExists {
+		log.Println("Aborted, users were already fetched")
+		return
+	}
+	defer c.cache.Unlock("sync_users")
+
 	users, err := c.fetchAllUsers()
 	if err != nil {
 		log.Println("Error fetching users", err)
