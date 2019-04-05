@@ -3,6 +3,7 @@ package api
 import (
 	"log"
 	"net/http"
+	"net/mail"
 	"net/url"
 
 	"github.com/getsentry/raven-go"
@@ -21,6 +22,11 @@ func GetOktaUserByEmail(client *okta.Client) httprouter.Handle {
 			http.Error(w, "Bad request", http.StatusBadRequest)
 		}
 		var email = values.Get("email")
+		_, err = mail.ParseAddress(email)
+		if err != nil {
+			http.Error(w, "Invalid email", http.StatusBadRequest)
+			return
+		}
 
 		userData, err := client.GetUser(email)
 		if err != nil {
