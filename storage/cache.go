@@ -6,9 +6,11 @@ import (
 	"time"
 
 	"github.com/go-redis/redis"
-	"gitlab.skypicker.com/platform/security/iam/shared"
+	jsoniter "github.com/json-iterator/go"
 	redisTrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/go-redis/redis"
 )
+
+var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 // Cache contains cache client
 type Cache struct {
@@ -37,14 +39,14 @@ func (c *Cache) Get(key string, value interface{}) error {
 		return err
 	}
 
-	err = shared.JSON.Unmarshal(data, &value)
+	err = json.Unmarshal(data, &value)
 	return err
 }
 
 // Set writes data to cache with the specified lifespan
 // `key` is case insensitive.
 func (c *Cache) Set(key string, value interface{}, ttl time.Duration) error {
-	strVal, err := shared.JSON.Marshal(value)
+	strVal, err := json.Marshal(value)
 	if err != nil {
 		return err
 	}
@@ -68,7 +70,7 @@ func (c *Cache) MSet(pairs map[string]interface{}) error {
 
 	for key, value := range pairs {
 		args[i] = strings.ToLower(key)
-		strValue, err := shared.JSON.Marshal(value)
+		strValue, err := json.Marshal(value)
 		if err != nil {
 			return err
 		}

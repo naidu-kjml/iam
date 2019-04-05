@@ -1,6 +1,6 @@
 package shared
 
-// APIError : used for errors that will be returned to the client
+// APIError used for errors that will be returned to the client
 type APIError struct {
 	Message string
 	Code    int

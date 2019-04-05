@@ -5,13 +5,17 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	jsoniter "github.com/json-iterator/go"
 )
+
+var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 var httpClient = &http.Client{
 	Timeout: time.Second * 10,
 }
 
-// Request : options for an HTTP request created using shared.Fetch
+// Request contains options for an HTTP request created using shared.Fetch
 type Request struct {
 	Method string
 	URL    string
@@ -25,7 +29,7 @@ type Response struct {
 	*http.Response
 }
 
-// JSON : retrieve data from HTTP response and store it in the struct pointed by
+// JSON retrieves data from HTTP response and store it in the struct pointed by
 // `body` (note: `body` should be a pointer to the struct you expect the HTTP
 // call to return)
 func (res Response) JSON(body interface{}) error {
@@ -33,10 +37,10 @@ func (res Response) JSON(body interface{}) error {
 	// response's body.
 	defer res.Body.Close()
 
-	return JSON.NewDecoder(res.Body).Decode(&body)
+	return json.NewDecoder(res.Body).Decode(&body)
 }
 
-// Fetch : make an HTTP request and returns response
+// Fetch makes an HTTP request and returns response
 func Fetch(req Request) (*Response, error) {
 	log.Println(req.Method, req.URL)
 	httpReq, err := http.NewRequest(req.Method, req.URL, req.Body)

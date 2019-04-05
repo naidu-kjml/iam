@@ -7,7 +7,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-// Healthcheck : Route for healthcheck
+// Healthcheck is a route for healthcheck
 func Healthcheck(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	var message = "Ok"
 	_, err := w.Write([]byte(message))

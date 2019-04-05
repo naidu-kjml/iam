@@ -10,7 +10,7 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
-// AuthWrapper : Simple wrapper for Routers to validate token
+// AuthWrapper wraps a router to validate the authentication token
 func AuthWrapper(h httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		err := checkAuth(r)
@@ -30,7 +30,7 @@ func AuthWrapper(h httprouter.Handle) httprouter.Handle {
 	}
 }
 
-// checkAuth : checks if user has proper token + user agent + query fields
+// checkAuth checks if user has proper token + user agent + query fields
 func checkAuth(r *http.Request) error {
 	var query = r.URL.Query()
 	var requestToken = r.Header.Get("Authorization")
