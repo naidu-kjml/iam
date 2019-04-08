@@ -1,0 +1,9 @@
+[markdown]
+files = *.md
+bears = MarkdownBear
+
+[commit]
+bears = GitCommitBear
+shortlog_length = 72
+shortlog_trailing_period = no
+ignore_length_regex = https?://

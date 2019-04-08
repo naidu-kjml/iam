@@ -1,10 +1,10 @@
 # Governant
 
-| What          | Where                                                      |
-| ------------- | ---------------------------------------------------------- |
-| Documentation | Not yet                                                    |
-| Discussion    | #proj-governant                                           |
-| Maintainer    | [@simon](https://gitlab.skypicker.com/simon.prochazka/) |w
+| What          | Where                                                   |
+| ------------- | ------------------------------------------------------- |
+| Documentation | Not yet                                                 |
+| Discussion    | #proj-governant                                         |
+| Maintainer    | [@simon](https://gitlab.skypicker.com/simon.prochazka/) |
 
 ## Usage
 
