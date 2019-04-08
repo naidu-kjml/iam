@@ -80,7 +80,7 @@ func (s *VaultManager) SyncAppTokens() error {
 
 // GetAppToken gets a token used by an outside service
 func (s *VaultManager) GetAppToken(app string) (string, error) {
-	data := s.storage.settings[app]
+	data := s.storage.tokens[app]
 
 	if data == "" {
 		return "", errors.New("app " + app + " not found in SecretManager")
