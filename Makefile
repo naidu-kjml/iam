@@ -63,3 +63,6 @@ ifndef GOLANGCI_LINT
 endif
 	golangci-lint run $(if $(CI),--out-format code-climate > gl-code-quality-report.json)
 	$(call log_success,Linting with golangci-lint succeeded!)
+
+coala:
+	docker run -ti -v "$(shell pwd)":/app --workdir=/app coala/base:0.11 coala -n -j 4
