@@ -143,7 +143,7 @@ func main() {
 		},
 	})
 
-	router := httprouter.New(httprouter.WithServiceName("governant.http.router"))
+	router := httprouter.New(httprouter.WithServiceName("kiwi-iam.http.router"))
 
 	// Healthcheck routes. Exposed on both /healthcheck and /servePath/healthcheck to allow easier k8s set up
 	router.GET("/healthcheck", api.Healthcheck)
