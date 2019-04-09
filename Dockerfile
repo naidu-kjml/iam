@@ -6,9 +6,9 @@ ARG CI_COMMIT_SHORT_SHA
 RUN make build
 
 FROM alpine:3.9.2
-RUN apk add --no-cache --virtual=.run-deps ca-certificates
+RUN  apk add --no-cache --virtual=.run-deps ca-certificates &&\
+  mkdir /dist/
 
-RUN mkdir /dist/
 WORKDIR /dist/
 COPY --from=builder /app/main ./app
 COPY --from=builder /app/.env.yaml .env.yaml
