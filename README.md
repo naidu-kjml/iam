@@ -1,10 +1,10 @@
 # Governant
 
-| What          | Where                                                   |
-| ------------- | ------------------------------------------------------- |
-| Documentation | Not yet                                                 |
-| Discussion    | #proj-governant                                         |
-| Maintainer    | [@simon](https://gitlab.skypicker.com/simon.prochazka/) |
+| What          | Where                                                             |
+| ------------- | ----------------------------------------------------------------- |
+| Documentation | Not yet                                                           |
+| Discussion    | [#proj-kiwi-iam](https://skypicker.slack.com/messages/CE7KLCKCP/) |
+| Maintainer    | [@simon](https://gitlab.skypicker.com/simon.prochazka/)           |
 
 ## Usage
 
@@ -58,3 +58,9 @@ This service uses Vault for syncing secrets to our app.
 This service expects the following structure for Vault:
 /secret/governant/app_tokens
 /secret/governant/settings
+
+## Contributing
+
+- Run `make test/ci` and `make lint` before pushing changes
+- Commit messages should be at most 72 characters long
+- Commit messages should start with the scope of the changes introduced by the commit
