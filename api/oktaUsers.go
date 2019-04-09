@@ -29,6 +29,10 @@ func GetOktaUserByEmail(client *okta.Client) httprouter.Handle {
 		}
 
 		userData, err := client.GetUser(email)
+		if err == okta.ErrUserNotFound {
+			http.Error(w, "User "+email+" not found", http.StatusNotFound)
+			return
+		}
 		if err != nil {
 			http.Error(w, "Service unavailable", http.StatusInternalServerError)
 			return

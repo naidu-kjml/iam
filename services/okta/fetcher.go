@@ -42,6 +42,9 @@ type oktaResponse struct {
 	Profile apiUser
 }
 
+// ErrUserNotFound is returned when a user is not present in Okta
+var ErrUserNotFound = errors.New("user not found")
+
 // fetchUser retrieves a user from Okta by email
 func (c *Client) fetchUser(email string) (User, error) {
 	userURL, err := shared.JoinURL(c.baseURL, "/users/", email)
@@ -61,7 +64,10 @@ func (c *Client) fetchUser(email string) (User, error) {
 	if err != nil {
 		return User{}, err
 	}
-	if httpResponse.StatusCode != 200 {
+	if httpResponse.StatusCode == http.StatusNotFound {
+		return User{}, ErrUserNotFound
+	}
+	if httpResponse.StatusCode != http.StatusOK {
 		var errorMessage = "GET " + userURL + " returned error: " + httpResponse.Status
 		log.Println(errorMessage)
 		return User{}, errors.New(errorMessage)

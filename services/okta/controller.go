@@ -40,12 +40,12 @@ func (c *Client) GetUser(email string) (User, error) {
 
 		user, fetchErr := c.fetchUser(email)
 		if fetchErr != nil {
-			return User{}, err
+			return User{}, fetchErr
 		}
 
 		cacheErr := c.cache.Set(user.Email, user, time.Minute*10)
 		if cacheErr != nil {
-			raven.CaptureError(err, nil)
+			raven.CaptureError(cacheErr, nil)
 		}
 		return user, nil
 	})
