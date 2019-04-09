@@ -1,11 +1,11 @@
-FROM golang:latest as builder
+FROM golang:1.12.3 as builder
 RUN mkdir /app
-ADD . /app/
+COPY . /app/
 WORKDIR /app
 ARG CI_COMMIT_SHORT_SHA
 RUN make build
 
-FROM alpine:latest
+FROM alpine:3.9.2
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /app/main ./app
