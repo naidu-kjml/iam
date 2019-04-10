@@ -1,11 +1,7 @@
 {
   "commitMessagePrefix": "deps:",
   "labels": [
-    "importance/low",
-    "difficulty/low",
-    "process/needs-review",
-    "type/feature",
-    "dependency"
+    "importance/low"
   ],
   "pipenv": {
     "enabled": true
