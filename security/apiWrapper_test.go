@@ -32,23 +32,22 @@ func createFakeManager() SecretManager {
 }
 
 func TestGetServiceName(t *testing.T) {
-	tests := []string{
-		"balkan",
-		"BALKAN/4704b82 (Kiwi.com sandbox)",
-		"balkan/1.42.1 (Kiwi.com sandbox)",
-		"balkan/1.42.1",
+	tests := map[string]string{
+		"balkan":                            "BALKAN",
+		"BALKAN/4704b82 (Kiwi.com sandbox)": "BALKAN",
+		"balkan/1.42.1 (Kiwi.com sandbox)":  "BALKAN",
+		"balkan-graphql/1.42.1":             "BALKAN-GRAPHQL",
+		"balkan_graphql/1.42.1":             "BALKAN_GRAPHQL",
+		"balkan graphql/1.42.1":             "BALKAN_GRAPHQL",
 	}
-	for _, test := range tests {
+
+	for test, expected := range tests {
 		res, err := getServiceName(test)
-		assert.Equal(t, res, "BALKAN")
+		assert.Equal(t, res, expected)
 		assert.Equal(t, err, nil)
 	}
 
-	res, err := getServiceName("balkan-graphql/1.42.1")
-	assert.Equal(t, res, "BALKAN-GRAPHQL")
-	assert.Equal(t, err, nil)
-
-	res, err = getServiceName("")
+	res, err := getServiceName("")
 	assert.Equal(t, res, "")
 	assert.Error(t, err)
 }

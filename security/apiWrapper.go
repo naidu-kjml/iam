@@ -37,6 +37,7 @@ var serviceRe = regexp.MustCompile(`^[^\/]*`)
 func getServiceName(userAgent string) (string, error) {
 	byteService := serviceRe.Find([]byte(userAgent))
 	strService := strings.ToUpper(string(byteService))
+	strService = strings.ReplaceAll(strService, " ", "_")
 
 	if strService == "" {
 		return "", errors.New("no service found")
