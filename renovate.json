@@ -1,7 +1,7 @@
 {
   "commitMessagePrefix": "deps:",
   "labels": [
-    "importance/low"
+    "importance:low"
   ],
   "pipenv": {
     "enabled": true
