@@ -44,6 +44,7 @@ func (res Response) JSON(body interface{}) error {
 func Fetch(req Request) (*Response, error) {
 	log.Println(req.Method, req.URL)
 	httpReq, err := http.NewRequest(req.Method, req.URL, req.Body)
+	httpReq.Header.Set("User-Agent", "kiwi-iam")
 	httpReq.Header.Set("Authorization", req.Token)
 	if err != nil {
 		return nil, err
