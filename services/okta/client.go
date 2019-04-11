@@ -7,17 +7,17 @@ import (
 
 // ClientOpts contains options to create an Okta client
 type ClientOpts struct {
-	CacheHost string
-	CachePort string
-	CacheLock *storage.LockOpts
-	BaseURL   string
-	AuthToken string
+	Cache       *storage.RedisCache
+	LockManager *storage.LockManager
+	BaseURL     string
+	AuthToken   string
 }
 
 // Client represent an Okta client
 type Client struct {
 	group     singleflight.Group
-	cache     *storage.Cache
+	cache     *storage.RedisCache
+	lock      *storage.LockManager
 	baseURL   string
 	authToken string
 }
@@ -25,7 +25,8 @@ type Client struct {
 // NewClient creates an Okta client based on the given options
 func NewClient(opts ClientOpts) *Client {
 	return &Client{
-		cache:     storage.NewCache(opts.CacheHost, opts.CachePort, opts.CacheLock),
+		cache:     opts.Cache,
+		lock:      opts.LockManager,
 		baseURL:   opts.BaseURL,
 		authToken: opts.AuthToken,
 	}

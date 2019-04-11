@@ -12,19 +12,17 @@ import (
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
-// Cache contains cache client
-type Cache struct {
+// RedisCache contains redis client
+type RedisCache struct {
 	client *redisTrace.Client
-	lock   *LockOpts
 }
 
-// NewCache initializes and returns a Cache
-func NewCache(host, port string, lock *LockOpts) *Cache {
+// NewRedisCache initializes and returns a RedisCache
+func NewRedisCache(host, port string) *RedisCache {
 	opts := &redis.Options{Addr: net.JoinHostPort(host, port)}
 
-	return &Cache{
-		client: redisTrace.NewClient(opts, redisTrace.WithServiceName("kiwi-iam.redis")),
-		lock:   lock,
+	return &RedisCache{
+		redisTrace.NewClient(opts, redisTrace.WithServiceName("kiwi-iam.redis")),
 	}
 }
 
@@ -32,7 +30,7 @@ func NewCache(host, port string, lock *LockOpts) *Cache {
 // `key` is case insensitive.
 // `value` is a pointer to the variable that will receive the data.
 // `error` is redis.Nil when no value is found.
-func (c *Cache) Get(key string, value interface{}) error {
+func (c *RedisCache) Get(key string, value interface{}) error {
 	lowerKey := strings.ToLower(key)
 	data, err := c.client.Get(lowerKey).Bytes()
 	if err != nil {
@@ -45,7 +43,7 @@ func (c *Cache) Get(key string, value interface{}) error {
 
 // Set writes data to cache with the specified lifespan
 // `key` is case insensitive.
-func (c *Cache) Set(key string, value interface{}, ttl time.Duration) error {
+func (c *RedisCache) Set(key string, value interface{}, ttl time.Duration) error {
 	strVal, err := json.Marshal(value)
 	if err != nil {
 		return err
@@ -57,14 +55,14 @@ func (c *Cache) Set(key string, value interface{}, ttl time.Duration) error {
 }
 
 // Del deletes an item from cache
-func (c *Cache) Del(key string) error {
+func (c *RedisCache) Del(key string) error {
 	lowerKey := strings.ToLower(key)
 	_, err := c.client.Del(lowerKey).Result()
 	return err
 }
 
 // MSet writes items to cache in bulk
-func (c *Cache) MSet(pairs map[string]interface{}) error {
+func (c *RedisCache) MSet(pairs map[string]interface{}) error {
 	args := make([]interface{}, len(pairs)*2)
 	i := 0
 

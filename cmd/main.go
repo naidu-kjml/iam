@@ -131,16 +131,20 @@ func main() {
 	var port = viper.GetString("PORT")
 
 	oktaToken, _ := secretManager.GetSetting("OKTA_TOKEN")
-
+	cache := storage.NewRedisCache(
+		viper.GetString("REDIS_HOST"),
+		viper.GetString("REDIS_PORT"),
+	)
+	lock := storage.NewLockManager(
+		cache,
+		viper.GetDuration("REDIS_LOCK_RETRY_DELAY"),
+		viper.GetDuration("REDIS_LOCK_EXPIRATION"),
+	)
 	var oktaClient = okta.NewClient(okta.ClientOpts{
-		BaseURL:   viper.GetString("OKTA_URL"),
-		AuthToken: oktaToken,
-		CacheHost: viper.GetString("REDIS_HOST"),
-		CachePort: viper.GetString("REDIS_PORT"),
-		CacheLock: &storage.LockOpts{
-			RetryDelay: viper.GetDuration("REDIS_LOCK_RETRY_DELAY"),
-			Expiration: viper.GetDuration("REDIS_LOCK_EXPIRATION"),
-		},
+		BaseURL:     viper.GetString("OKTA_URL"),
+		AuthToken:   oktaToken,
+		Cache:       cache,
+		LockManager: lock,
 	})
 
 	router := httprouter.New(httprouter.WithServiceName("kiwi-iam.http.router"))
