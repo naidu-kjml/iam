@@ -1,0 +1,3 @@
+payment-cards:
+  read:
+    groups: ["CS", "CS Systems"]
