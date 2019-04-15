@@ -2,6 +2,9 @@
 files = *.md
 bears = MarkdownBear
 
+[yaml]
+bears = YAMLLintBear
+
 [commit]
 bears = GitCommitBear
 shortlog_length = 72
