@@ -14,8 +14,12 @@ import (
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
+type userDataService interface {
+	GetUser(string) (okta.User, error)
+}
+
 // getOktaUserByEmail looks up an Okta user by email
-func getOktaUserByEmail(client *okta.Client) httprouter.Handle {
+func getOktaUserByEmail(client userDataService) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		var values, err = url.ParseQuery(r.URL.RawQuery)
 		if err != nil {
