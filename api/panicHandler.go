@@ -8,8 +8,8 @@ import (
 	"gitlab.skypicker.com/platform/security/iam/shared"
 )
 
-// PanicHandler prevents the server crashing due to unhandled panics
-func PanicHandler(w http.ResponseWriter, r *http.Request, err interface{}) {
+// panicHandler prevents the server crashing due to unhandled panics
+func panicHandler(w http.ResponseWriter, r *http.Request, err interface{}) {
 	apiError, castingOk := err.(shared.APIError)
 	if castingOk {
 		raven.CaptureError(apiError, nil)

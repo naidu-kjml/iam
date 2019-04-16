@@ -11,18 +11,18 @@ func CreateRouter(serviceName, servePath string, oktaClient *okta.Client, secret
 	router := httprouter.New(httprouter.WithServiceName(serviceName))
 
 	// Healthcheck routes. Exposed on both /healthcheck and /servePath/healthcheck to allow easier k8s set up
-	router.GET("/healthcheck", Healthcheck)
+	router.GET("/healthcheck", healthcheck)
 
 	// Prevent setting two routes
 	if servePath != "/" {
-		router.GET(servePath+"healthcheck", Healthcheck)
+		router.GET(servePath+"healthcheck", healthcheck)
 	}
 
 	// App Routes
-	router.GET(servePath, SayHello)
-	router.GET(servePath+"user/okta", security.AuthWrapper(GetOktaUserByEmail(oktaClient), secretManager))
+	router.GET(servePath, sayHello)
+	router.GET(servePath+"user/okta", security.AuthWrapper(getOktaUserByEmail(oktaClient), secretManager))
 
-	router.PanicHandler = PanicHandler
+	router.PanicHandler = panicHandler
 
 	return router
 }
