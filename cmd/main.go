@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"net"
 	"net/http"
 	"time"
 
@@ -149,17 +150,23 @@ func main() {
 	router := api.CreateRouter("kiwi-iam.http.router", viper.GetString("SERVE_PATH"), oktaClient, secretManager)
 
 	// 0.0.0.0 is specified to allow listening in Docker
-	var address = "0.0.0.0:" + port
+	var address = "0.0.0.0"
+	if viper.GetBool("USE_LOCALHOST") {
+		address = "localhost"
+	}
+
+	var serveAddr = net.JoinHostPort(address, port)
+
 	server := &http.Server{
 		Handler:      router,
-		Addr:         address,
+		Addr:         serveAddr,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 10 * time.Second,
 	}
 
 	go fillCache(oktaClient)
 
-	log.Println("🚀 Golang server starting on " + address + servePath)
+	log.Println("🚀 Golang server starting on " + serveAddr + servePath)
 	err := server.ListenAndServe()
 
 	if err != nil {
