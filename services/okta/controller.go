@@ -56,7 +56,16 @@ func (c *Client) GetUser(email string) (User, error) {
 	return val.(User), nil
 }
 
-// SyncUsers gets all users from Okta and saves them into cache.
+// GetTeams retrieves from cache a map of all teams and their member count.
+func (c *Client) GetTeams() (map[string]int, error) {
+	var teams map[string]int
+	err := c.cache.Get("teams", &teams)
+	return teams, err
+}
+
+// SyncUsers gets all users from Okta and saves them into cache. Also generates
+// a map of all possible teams and the number of users in them, and saves them
+// into cache.
 func (c *Client) SyncUsers() {
 	lockErr := c.lock.Create("sync_users")
 	if lockErr == storage.ErrLockExists {
@@ -84,6 +93,13 @@ func (c *Client) SyncUsers() {
 		raven.CaptureError(err, nil)
 		return
 	}
-
 	log.Println("Cached ", len(users), " users")
+
+	nTeams, err := cacheTeams(c.cache, users)
+	if err != nil {
+		log.Println("Error caching teams", err)
+		raven.CaptureError(err, nil)
+		return
+	}
+	log.Println("Cached ", nTeams, " teams")
 }
