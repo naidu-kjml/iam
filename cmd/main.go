@@ -12,7 +12,6 @@ import (
 
 	"github.com/getsentry/raven-go"
 	"github.com/spf13/viper"
-	"gopkg.in/DataDog/dd-trace-go.v1/contrib/julienschmidt/httprouter"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
@@ -147,21 +146,7 @@ func main() {
 		LockManager: lock,
 	})
 
-	router := httprouter.New(httprouter.WithServiceName("kiwi-iam.http.router"))
-
-	// Healthcheck routes. Exposed on both /healthcheck and /servePath/healthcheck to allow easier k8s set up
-	router.GET("/healthcheck", api.Healthcheck)
-
-	// Prevent setting two routes
-	if servePath != "/" {
-		router.GET(servePath+"healthcheck", api.Healthcheck)
-	}
-
-	// App Routes
-	router.GET(servePath, api.SayHello)
-	router.GET(servePath+"user/okta", security.AuthWrapper(api.GetOktaUserByEmail(oktaClient), secretManager))
-
-	router.PanicHandler = api.PanicHandler
+	router := api.CreateRouter("kiwi-iam.http.router", viper.GetString("SERVE_PATH"), oktaClient, secretManager)
 
 	// 0.0.0.0 is specified to allow listening in Docker
 	var address = "0.0.0.0:" + port
