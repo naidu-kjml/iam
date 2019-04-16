@@ -20,6 +20,7 @@ func CreateRouter(serviceName, servePath string, oktaClient *okta.Client, secret
 
 	// App Routes
 	router.GET(servePath, sayHello)
+	router.GET(servePath+"v1/user", security.AuthWrapper(getOktaUserByEmail(oktaClient), secretManager))
 	router.GET(servePath+"user/okta", security.AuthWrapper(getOktaUserByEmail(oktaClient), secretManager))
 
 	router.PanicHandler = panicHandler
