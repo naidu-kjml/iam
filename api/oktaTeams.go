@@ -6,10 +6,13 @@ import (
 
 	"github.com/getsentry/raven-go"
 	"github.com/julienschmidt/httprouter"
-	"gitlab.skypicker.com/platform/security/iam/services/okta"
 )
 
-func getTeams(client *okta.Client) httprouter.Handle {
+type teamsGetter interface {
+	GetTeams() (map[string]int, error)
+}
+
+func getTeams(client teamsGetter) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		teams, err := client.GetTeams()
 		if err != nil {
