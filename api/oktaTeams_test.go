@@ -25,7 +25,7 @@ func TestInternalError(t *testing.T) {
 	tg := &mockTeamsGetter{}
 	tg.On("GetTeams").Return(map[string]int{}, errors.New(errMessage))
 
-	request, _ := http.NewRequest("GET", "/?email=test@test.com", nil)
+	request, _ := http.NewRequest("GET", "/", nil)
 	response := httptest.NewRecorder()
 
 	router := httprouter.New()
@@ -41,7 +41,7 @@ func TestGetTeams(t *testing.T) {
 	tg := &mockTeamsGetter{}
 	tg.On("GetTeams").Return(map[string]int{"team1": 3, "team2": 1, "team3": 1}, nil)
 
-	request, _ := http.NewRequest("GET", "/?email=test@test.com", nil)
+	request, _ := http.NewRequest("GET", "/", nil)
 	response := httptest.NewRecorder()
 
 	router := httprouter.New()

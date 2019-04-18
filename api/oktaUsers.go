@@ -20,8 +20,13 @@ func getOktaUserByEmail(client *okta.Client) httprouter.Handle {
 		var values, err = url.ParseQuery(r.URL.RawQuery)
 		if err != nil {
 			http.Error(w, "Bad request", http.StatusBadRequest)
+			return
 		}
 		var email = values.Get("email")
+		if email == "" {
+			http.Error(w, "Missing email", http.StatusBadRequest)
+			return
+		}
 		_, err = mail.ParseAddress(email)
 		if err != nil {
 			http.Error(w, "Invalid email", http.StatusBadRequest)

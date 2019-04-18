@@ -45,19 +45,14 @@ func getServiceName(userAgent string) (string, error) {
 	return strService, nil
 }
 
-// checkAuth checks if user has proper token + user agent + query fields
+// checkAuth checks if user has proper token + user agent
 func checkAuth(r *http.Request, secretManager SecretManager) error {
-	var query = r.URL.Query()
 	var requestToken = r.Header.Get("Authorization")
 	var userAgent = r.Header.Get("User-Agent")
 
 	service, err := getServiceName(userAgent)
 	if err != nil {
 		return shared.APIError{Message: "User-Agent header mandatory", Code: 401}
-	}
-
-	if _, exists := query["email"]; !exists {
-		return shared.APIError{Message: "Query field 'email' mandatory", Code: 401}
 	}
 
 	if requestToken == "" {
