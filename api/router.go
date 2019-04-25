@@ -7,22 +7,38 @@ import (
 )
 
 // CreateRouter creates a new router instance
-func CreateRouter(serviceName, servePath string, oktaClient *okta.Client, secretManager security.SecretManager) *httprouter.Router {
+func CreateRouter(serviceName string, oktaClient *okta.Client, secretManager security.SecretManager) *httprouter.Router {
 	router := httprouter.New(httprouter.WithServiceName(serviceName))
 
-	// Healthcheck routes. Exposed on both /healthcheck and /servePath/healthcheck to allow easier k8s set up
+	// Healthcheck routes.
 	router.GET("/healthcheck", healthcheck)
 
-	// Prevent setting two routes
-	if servePath != "/" {
-		router.GET(servePath+"healthcheck", healthcheck)
-	}
+	// Hello World Route
+	router.GET("/", sayHello)
 
-	// App Routes
-	router.GET(servePath, sayHello)
-	router.GET(servePath+"v1/user", security.AuthWrapper(getOktaUserByEmail(oktaClient), secretManager))
-	router.GET(servePath+"v1/teams", security.AuthWrapper(getTeams(oktaClient), secretManager))
-	router.GET(servePath+"user/okta", security.AuthWrapper(addDeprecationWarning(getOktaUserByEmail(oktaClient)), secretManager))
+	// App routes
+	router.GET(
+		"/v1/user",
+		security.AuthWrapper(
+			getOktaUserByEmail(oktaClient),
+			secretManager,
+		),
+	)
+	router.GET(
+		"/v1/teams",
+		security.AuthWrapper(
+			getTeams(oktaClient),
+			secretManager,
+		),
+	)
+	router.GET(
+		"/user/okta", security.AuthWrapper(
+			addDeprecationWarning(
+				getOktaUserByEmail(oktaClient),
+			),
+			secretManager,
+		),
+	)
 
 	router.PanicHandler = panicHandler
 

@@ -126,8 +126,6 @@ func main() {
 		)
 	}
 
-	// For deployments where we're not on root
-	var servePath = viper.GetString("SERVE_PATH")
 	var port = viper.GetString("PORT")
 
 	oktaToken, _ := secretManager.GetSetting("OKTA_TOKEN")
@@ -147,7 +145,7 @@ func main() {
 		LockManager: lock,
 	})
 
-	router := api.CreateRouter("kiwi-iam.http.router", viper.GetString("SERVE_PATH"), oktaClient, secretManager)
+	router := api.CreateRouter("kiwi-iam.http.router", oktaClient, secretManager)
 
 	// 0.0.0.0 is specified to allow listening in Docker
 	var address = "0.0.0.0"
@@ -166,7 +164,7 @@ func main() {
 
 	go fillCache(oktaClient)
 
-	log.Println("🚀 Golang server starting on " + serveAddr + servePath)
+	log.Println("🚀 Golang server starting on " + serveAddr)
 	err := server.ListenAndServe()
 
 	if err != nil {
