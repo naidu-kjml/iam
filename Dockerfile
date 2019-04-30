@@ -12,6 +12,7 @@ RUN  apk add --no-cache --virtual=.run-deps ca-certificates &&\
 WORKDIR /app
 COPY --from=builder /app/main ./main
 COPY --from=builder /app/.env.yaml .env.yaml
+COPY --from=builder /app/.well-known .well-known/
 EXPOSE 8080
 
 USER nobody
