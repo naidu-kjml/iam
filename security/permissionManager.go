@@ -149,7 +149,7 @@ func getServicePermissions(service string) ([]Permission, error) {
 		return nil, err
 	}
 
-	filename, err := shared.JoinURL("permissions/", service+".yaml")
+	filename, err := shared.JoinURL("permissions/", strings.ToLower(service)+".yaml")
 	if err != nil {
 		return nil, err
 	}
