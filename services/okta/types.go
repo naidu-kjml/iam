@@ -12,4 +12,5 @@ type User struct {
 	IsVendor       bool     `json:"isVendor"`
 	TeamMembership []string `json:"teamMembership"`
 	Manager        string   `json:"manager"`
+	Permissions    []string `json:"permissions"`
 }

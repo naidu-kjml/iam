@@ -42,31 +42,55 @@ func TestGetServiceName(t *testing.T) {
 	}
 
 	for test, expected := range tests {
-		res, err := getServiceName(test)
-		assert.Equal(t, res, expected)
+		res, err := GetServiceName(test)
+		assert.Equal(t, expected, res)
 		assert.Equal(t, err, nil)
 	}
 
-	res, err := getServiceName("")
-	assert.Equal(t, res, "")
+	res, err := GetServiceName("")
+	assert.Equal(t, "", res)
 	assert.Error(t, err)
+}
+
+func TestCheckServiceName(t *testing.T) {
+	tests := map[string]bool{
+		"balkan":            false,
+		"balkan_PROD1-test": false,
+		"balkan%2f../":      true,
+		"balkan/../":        true,
+		"":                  true,
+		"balkan$":           true,
+	}
+
+	for input, shouldError := range tests {
+		if shouldError {
+			assert.Error(t, checkServiceName(input))
+		} else {
+			assert.NoError(t, checkServiceName(input))
+		}
+	}
 }
 
 func TestCheckAuth(t *testing.T) {
 	secrets := createFakeManager()
 
 	req, _ := http.NewRequest("GET", "http://example.com/", nil)
-	assert.Error(t, checkAuth(req, secrets), "Should error on missing email")
+	err := checkAuth(req, secrets)
+	assert.Error(t, err, "Should error on missing email")
 
 	req, _ = http.NewRequest("GET", "http://example.com/?email=email@example.com", nil)
-	assert.Error(t, checkAuth(req, secrets), "Should error on missing User-Agent")
+	err = checkAuth(req, secrets)
+	assert.Error(t, err, "Should error on missing User-Agent")
 	req.Header.Set("User-Agent", "serviceName/version (Kiwi.com environment)")
 
-	assert.Error(t, checkAuth(req, secrets), "Should error on missing Authorization header")
+	err = checkAuth(req, secrets)
+	assert.Error(t, err, "Should error on missing Authorization header")
 	req.Header.Set("Authorization", "invalid token")
 
-	assert.Error(t, checkAuth(req, secrets), "Should error on invalid token")
+	err = checkAuth(req, secrets)
+	assert.Error(t, err, "Should error on invalid token")
 	req.Header.Set("Authorization", "valid token")
 
-	assert.NoError(t, checkAuth(req, secrets), "Should not error on valid request token")
+	err = checkAuth(req, secrets)
+	assert.NoError(t, err, "Should not error on valid request token")
 }

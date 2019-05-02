@@ -12,7 +12,11 @@ import (
 const wellKnownFolder string = ".well-known"
 
 // CreateRouter creates a new router instance
-func CreateRouter(serviceName string, oktaClient *okta.Client, secretManager security.SecretManager) *httprouter.Router {
+func CreateRouter(
+	serviceName string,
+	oktaClient *okta.Client,
+	permissionManager security.PermissionManager,
+	secretManager security.SecretManager) *httprouter.Router {
 	router := httprouter.New(httprouter.WithServiceName(serviceName))
 
 	router.Handler(
@@ -33,7 +37,7 @@ func CreateRouter(serviceName string, oktaClient *okta.Client, secretManager sec
 	router.GET(
 		"/v1/user",
 		security.AuthWrapper(
-			getOktaUserByEmail(oktaClient),
+			getOktaUserByEmail(oktaClient, permissionManager),
 			secretManager,
 		),
 	)
@@ -47,7 +51,7 @@ func CreateRouter(serviceName string, oktaClient *okta.Client, secretManager sec
 	router.GET(
 		"/user/okta", security.AuthWrapper(
 			addDeprecationWarning(
-				getOktaUserByEmail(oktaClient),
+				getOktaUserByEmail(oktaClient, permissionManager),
 			),
 			secretManager,
 		),

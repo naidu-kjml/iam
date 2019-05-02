@@ -41,3 +41,8 @@ func TestJoinURL(t *testing.T) {
 		})
 	}
 }
+
+func TestStringInSlice(t *testing.T) {
+	assert.True(t, StringInSlice("some", []string{"where", "some"}))
+	assert.False(t, StringInSlice("some", []string{"where", "somehere"}))
+}

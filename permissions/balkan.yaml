@@ -1,3 +1,11 @@
 payment-cards:
+  details:
+    - team:CS
   read:
-    groups: ["CS", "CS Systems"]
+    - team:Engineering
+
+comments:
+  read:
+    - team:Engineering/Content + CS Systems
+  write:
+    - team:CS Systems

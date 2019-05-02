@@ -32,17 +32,35 @@ func AuthWrapper(h httprouter.Handle, secretManager SecretManager) httprouter.Ha
 	}
 }
 
-var serviceRe = regexp.MustCompile(`^[^\/]*`)
+const (
+	serviceNamePattern string = `^[\w\s-]+`
+)
 
-func getServiceName(userAgent string) (string, error) {
-	byteService := serviceRe.Find([]byte(userAgent))
-	strService := strings.ToUpper(string(byteService))
-	strService = strings.ReplaceAll(strService, " ", "_")
+var serviceNameRe = regexp.MustCompile(serviceNamePattern)
 
-	if strService == "" {
+// It's important to add $ in order to match the whole string
+var checkServiceNameRe = regexp.MustCompile(serviceNamePattern + "$")
+
+func checkServiceName(service string) error {
+	safe := checkServiceNameRe.MatchString(service)
+	if !safe {
+		return errors.New("service name has to match " + serviceNamePattern + "$")
+	}
+
+	return nil
+}
+
+// GetServiceName returns the service name based on the given user agent.
+func GetServiceName(userAgent string) (string, error) {
+	service := serviceNameRe.FindString(userAgent)
+	if service == "" {
 		return "", errors.New("no service found")
 	}
-	return strService, nil
+
+	service = strings.ToUpper(service)
+	service = strings.ReplaceAll(service, " ", "_")
+
+	return service, nil
 }
 
 // checkAuth checks if user has proper token + user agent
@@ -50,7 +68,7 @@ func checkAuth(r *http.Request, secretManager SecretManager) error {
 	var requestToken = r.Header.Get("Authorization")
 	var userAgent = r.Header.Get("User-Agent")
 
-	service, err := getServiceName(userAgent)
+	service, err := GetServiceName(userAgent)
 	if err != nil {
 		return shared.APIError{Message: "User-Agent header mandatory", Code: 401}
 	}

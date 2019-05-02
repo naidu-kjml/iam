@@ -114,6 +114,7 @@ func initErrorTracking(token, environment, release string) {
 
 func main() {
 	secretManager := loadEnv()
+	permissionManager := security.NewYamlPermissionManager()
 
 	initErrorTracking(viper.GetString("SENTRY_DSN"), viper.GetString("APP_ENV"), viper.GetString("SENTRY_RELEASE"))
 
@@ -145,7 +146,7 @@ func main() {
 		LockManager: lock,
 	})
 
-	router := api.CreateRouter("kiwi-iam.http.router", oktaClient, secretManager)
+	router := api.CreateRouter("kiwi-iam.http.router", oktaClient, permissionManager, secretManager)
 
 	// 0.0.0.0 is specified to allow listening in Docker
 	var address = "0.0.0.0"

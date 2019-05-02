@@ -37,7 +37,7 @@ func TestCacheTeams(t *testing.T) {
 		"team3": 1,
 	}
 	nTeams, err := cacheTeams(cache, users)
-	assert.Nil(t, err)
+	assert.NoError(t, err)
 	assert.Equal(t, 3, nTeams)
 	assert.Equal(t, expected, cache.data["teams"])
 }
