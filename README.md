@@ -8,6 +8,8 @@
 
 ## Usage
 
+This project uses some of our own custom Go packages. If you encounter issues please consult: <https://gitlab.skypicker.com/go/packages#usage>
+
 Create `.env.yaml` file and set environment variables. Check `.env-sample.yaml`
 to see all the possible variables.
 

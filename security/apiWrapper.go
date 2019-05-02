@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/julienschmidt/httprouter"
+	"gitlab.skypicker.com/go/packages/useragent"
 	"gitlab.skypicker.com/platform/security/iam/shared"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
@@ -51,8 +52,19 @@ func checkServiceName(service string) error {
 }
 
 // GetServiceName returns the service name based on the given user agent.
-func GetServiceName(userAgent string) (string, error) {
-	service := serviceNameRe.FindString(userAgent)
+func GetServiceName(incomingUserAgent string) (string, error) {
+	ua, err := useragent.Parse(incomingUserAgent)
+
+	if err == nil {
+		return strings.ToUpper(ua.Name), nil
+	}
+	if err != nil {
+		// Log is temp. This should be pushed to Datadog when possible.
+		log.Printf("User agent [%v] failed: [%v]", incomingUserAgent, err)
+	}
+
+	// This block should be removed after all services adhere to RFC 22.
+	service := serviceNameRe.FindString(incomingUserAgent)
 	if service == "" {
 		return "", errors.New("no service found")
 	}

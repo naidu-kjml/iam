@@ -3,7 +3,13 @@ RUN mkdir /app
 COPY . /app/
 WORKDIR /app
 ARG CI_COMMIT_SHORT_SHA
-RUN make build
+ARG GITLAB_USERNAME
+ARG GITLAB_PASSWORD
+RUN echo "machine gitlab.skypicker.com " >> ~/.netrc &&\
+  echo "  login $(curl -sS http://httpenv/v1/gitlab-user||echo $GITLAB_USERNAME)" >> ~/.netrc && \
+  echo "  password $(curl -sS http://httpenv/v1/gitlab-password||echo $GITLAB_PASSWORD)" >> ~/.netrc && \
+  make build &&\
+  rm ~/.netrc
 
 FROM alpine:3.9.3
 RUN  apk add --no-cache --virtual=.run-deps ca-certificates &&\
