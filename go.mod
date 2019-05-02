@@ -35,7 +35,7 @@ require (
 	golang.org/x/sync v0.0.0-20190425150253-112230192c58
 	golang.org/x/text v0.3.2 // indirect
 	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4 // indirect
-	gopkg.in/DataDog/dd-trace-go.v1 v1.12.1
+	gopkg.in/DataDog/dd-trace-go.v1 v1.13.0
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20190409140830-cdc409dda467
 )
