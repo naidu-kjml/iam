@@ -19,6 +19,7 @@ WORKDIR /app
 COPY --from=builder /app/main ./main
 COPY --from=builder /app/.env.yaml .env.yaml
 COPY --from=builder /app/.well-known .well-known/
+COPY --from=builder /app/permissions permissions/
 EXPOSE 8080
 
 USER nobody
