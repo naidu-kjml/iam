@@ -1,0 +1,10 @@
+name: Basic functionality
+testcases:
+  - name: Test that server responds correctly to hello world
+    steps:
+      - type: http
+        method: GET
+        url: "{{.url}}/"
+        assertions:
+          - result.body ShouldEqual 42
+          - result.statuscode ShouldEqual 200

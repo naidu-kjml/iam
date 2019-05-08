@@ -1,0 +1,38 @@
+version: "3.4"
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    command: ["nginx-debug", "-g", "daemon off;"]
+
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
+
+  kiwi-iam:
+    build:
+      args:
+        GITLAB_USERNAME: "{GITLAB_USERNAME}"
+        GITLAB_PASSWORD: "{GITLAB_PASSWORD}"
+      context: ../../
+      dockerfile: Dockerfile
+    env_file:
+      - iam.env
+    links:
+      - redis
+      - nginx
+    expose:
+      - 8080
+
+  venom:
+    build:
+      context: ./venom
+      dockerfile: Dockerfile
+    environment:
+      IAM_URL: http://kiwi-iam:8080
+    links:
+      - kiwi-iam:kiwi-iam

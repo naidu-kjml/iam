@@ -1,0 +1,2 @@
+# url of the conveyance-store without slash at the end.
+url: "{{.IAM_URL}}"
