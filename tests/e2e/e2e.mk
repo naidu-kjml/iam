@@ -5,7 +5,6 @@ run-e2e:
 	make test-e2e-env-start
 	make test-e2e-iam
 	make test-e2e-venom
-	make test-e2e-env-stop
 
 
 # test-e2e-env-start starts the test environment with docker-compose:
@@ -39,4 +38,4 @@ test-e2e-venom:
 	$(call after_job,Venom integration tests completed!)
 
 test-e2e-env-stop: ## Stop test environment
-	docker-compose down -v
+	cd $(ROOT_DIR) && docker-compose down -v
