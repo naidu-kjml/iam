@@ -76,11 +76,17 @@ func loadEnv() secrets.SecretManager {
 	viper.SetDefault("REDIS_LOCK_RETRY_DELAY", "1s")
 	viper.SetDefault("REDIS_LOCK_EXPIRATION", "5s")
 
+	tokenConfig, err := secrets.CreateNewConfigurationMapper()
+	if err != nil {
+		panic(err)
+	}
+
 	// Load data from Vault and set them if possible
 	vaultClient, vaultErr := secrets.CreateNewVaultClient(
 		viper.GetString("VAULT_ADDR"),
 		viper.GetString("VAULT_TOKEN"),
 		viper.GetString("VAULT_NAMESPACE"),
+		tokenConfig,
 	)
 	if vaultErr == nil {
 		// This sync needs to happen synchronously
@@ -98,7 +104,7 @@ func loadEnv() secrets.SecretManager {
 
 	log.Println("Vault integration disabled: ", vaultErr)
 
-	localSecretManager := secrets.CreateNewLocalSecretManager()
+	localSecretManager := secrets.CreateNewLocalSecretManager(tokenConfig)
 
 	return localSecretManager
 }

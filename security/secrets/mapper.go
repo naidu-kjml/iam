@@ -20,12 +20,12 @@ const configurationFile string = "config/secrets/secrets.yaml"
 type ServiceConfiguration struct {
 	Name                string   `yaml:"serviceName"`
 	AllowedEnvironments []string `yaml:"allowedEnvironments"`
-	KeyBase             string   `yaml:"KeyBase"`
+	TokenBase           string   `yaml:"tokenBase"`
 }
 
 // Configuration represents services' secrets configuration
 type Configuration struct {
-	Mappigns []ServiceConfiguration `yaml:"mappings"`
+	Mappings []ServiceConfiguration `yaml:"mappings"`
 }
 
 // CreateNewConfigurationMapper initializes a mapper from a local yaml configuration
@@ -38,23 +38,22 @@ func CreateNewConfigurationMapper() (*Mapper, error) {
 	return &Mapper{config}, nil
 }
 
-// GetKeyName returns a service's key name based on the current mapping
-func (m Mapper) GetKeyName(serviceName, environment string) (string, error) {
-	for _, service := range m.config.Mappigns {
+// GetTokenName returns a service's token name based on the current mapping
+func (m Mapper) GetTokenName(serviceName, environment string) (string, error) {
+	for _, service := range m.config.Mappings {
 		if strings.EqualFold(serviceName, service.Name) {
 			if environment == "" {
-				return service.KeyBase, nil
+				return service.TokenBase, nil
 			}
 			if shared.StringInSlice(environment, service.AllowedEnvironments) {
-				return service.KeyBase + "_" + strings.ToUpper(environment), nil
+				return service.TokenBase + "_" + strings.ToUpper(environment), nil
 			}
 
 			return "", errors.New("environment '" + environment + "' is not allowed")
 		}
 	}
 
-	// If there are no mappings use the service name in upper case
-	return strings.ToUpper(serviceName), nil
+	return "", errors.New("unknown service '" + serviceName + "'")
 }
 
 func readConfiguration() (Configuration, error) {

@@ -53,27 +53,32 @@ func CheckServiceName(service string) error {
 	return nil
 }
 
-// GetServiceName returns the service name based on the given user agent
-func GetServiceName(incomingUserAgent string) (string, error) {
+// Service holds the requesting service's name and environment
+type Service struct {
+	Name        string
+	Environment string
+}
+
+// GetService returns the service name and environment based on the given user agent
+func GetService(incomingUserAgent string) (Service, error) {
 	ua, err := useragent.Parse(incomingUserAgent)
 
 	if err == nil {
-		return strings.ToUpper(ua.Name), nil
+		return Service{ua.Name, ua.Environment}, nil
 	}
-
-	// Log is temp. This should be pushed to Datadog when possible.
+	// Log is temp. This should be pushed to Datadog when possible
 	log.Printf("User agent [%v] failed: [%v]", incomingUserAgent, err)
 
 	// This block should be removed after all services adhere to RFC 22
 	service := serviceNameRe.FindString(incomingUserAgent)
 	if service == "" {
-		return "", errors.New("no service found")
+		return Service{}, errors.New("no service found")
 	}
 
 	service = strings.ToUpper(service)
 	service = strings.ReplaceAll(service, " ", "_")
 
-	return service, nil
+	return Service{service, ""}, nil
 }
 
 // checkAuth checks if user has proper token + user agent
@@ -81,7 +86,7 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager) error {
 	var requestToken = r.Header.Get("Authorization")
 	var userAgent = r.Header.Get("User-Agent")
 
-	service, err := GetServiceName(userAgent)
+	service, err := GetService(userAgent)
 	if err != nil {
 		return shared.APIError{Message: "User-Agent header mandatory", Code: 401}
 	}
@@ -92,17 +97,16 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager) error {
 
 	if span, ok := tracer.SpanFromContext(r.Context()); ok {
 		span.SetTag("user-agent", userAgent)
-		span.SetTag("service-name", service)
+		span.SetTag("service-name", service.Name)
 	}
 
-	token, err := secretManager.GetAppToken(service)
-
+	token, err := secretManager.GetAppToken(service.Name, service.Environment)
 	if err != nil {
-		return shared.APIError{Message: "Missing token", Code: 401}
+		return shared.APIError{Message: "Unauthorized: " + err.Error(), Code: 401}
 	}
 
 	if token != requestToken {
-		return shared.APIError{Message: "Incorrect token", Code: 401}
+		return shared.APIError{Message: "Unauthorized: incorrect token", Code: 401}
 	}
 
 	return nil

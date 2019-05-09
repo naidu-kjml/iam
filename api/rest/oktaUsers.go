@@ -42,7 +42,7 @@ func getOktaUserByEmail(client userDataService, permissionManager permissionMana
 			return
 		}
 
-		service, err := security.GetServiceName(r.Header.Get("User-Agent"))
+		service, err := security.GetService(r.Header.Get("User-Agent"))
 		if err != nil {
 			http.Error(w, "Invalid user agent", http.StatusBadRequest)
 			return
@@ -58,7 +58,7 @@ func getOktaUserByEmail(client userDataService, permissionManager permissionMana
 			return
 		}
 
-		permissions, err := permissionManager.GetUserPermissions(service, oktaUser.TeamMembership)
+		permissions, err := permissionManager.GetUserPermissions(service.Name, oktaUser.TeamMembership)
 		if err != nil {
 			log.Println("[ERROR]", err.Error())
 			raven.CaptureError(err, nil)

@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetKeyName(t *testing.T) {
+func TestGetTokenName(t *testing.T) {
 	mapper := Mapper{
 		Configuration{
 			[]ServiceConfiguration{
@@ -29,11 +29,11 @@ func TestGetKeyName(t *testing.T) {
 		{"BALKAN", "balkan", ""},
 		{"NEST_PRODUCTION", "TRANSACTIONAL_MESSAGING_-_NEST_APP", "production"},
 		{"", "Balkan", "notsimondev"},
-		{"UNKNOWN", "unknown", "whatever"},
+		{"", "unknown", "whatever"},
 	}
 
 	for _, test := range tests {
-		result, err := mapper.GetKeyName(test[1], test[2])
+		result, err := mapper.GetTokenName(test[1], test[2])
 		if test[0] == "" {
 			assert.Error(t, err)
 		} else {

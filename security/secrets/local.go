@@ -8,19 +8,25 @@ import (
 
 // LocalSecretManager is just a struct
 type LocalSecretManager struct {
+	TokenMapper *Mapper
 }
 
 // CreateNewLocalSecretManager creates a new secret manager hooked up to Viper
-func CreateNewLocalSecretManager() *LocalSecretManager {
-	return &LocalSecretManager{}
+func CreateNewLocalSecretManager(m *Mapper) *LocalSecretManager {
+	return &LocalSecretManager{m}
 }
 
 // GetAppToken gets the token from Viper
-func (s LocalSecretManager) GetAppToken(app string) (string, error) {
-	token := viper.GetString("TOKEN_" + app)
+func (s LocalSecretManager) GetAppToken(app, environment string) (string, error) {
+	tokenName, err := s.TokenMapper.GetTokenName(app, environment)
+	if err != nil {
+		return "", err
+	}
+
+	token := viper.GetString("TOKEN_" + tokenName)
 
 	if token == "" {
-		return "", errors.New("token not found")
+		return "", errors.New("token '" + tokenName + "' not found")
 	}
 
 	return token, nil

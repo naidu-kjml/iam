@@ -14,42 +14,41 @@ type mockedSecretManager struct {
 	mock.Mock
 }
 
-func (s *mockedSecretManager) GetAppToken(app string) (string, error) {
-	if app == "SERVICENAME" {
+func (s *mockedSecretManager) GetAppToken(app, environment string) (string, error) {
+	if app == "serviceName" && environment == "environment" {
 		return "valid token", nil
 	}
 	return "", errors.New("wrong token bro")
 }
 
 func (s *mockedSecretManager) GetSetting(app string) (string, error) {
-	if app == "SERVICENAME" {
-		return "valid token", nil
-	}
-	return "", errors.New("wrong token bro")
+	return "", nil
 }
 
 func createFakeManager() secrets.SecretManager {
 	return &mockedSecretManager{}
 }
 
-func TestGetServiceName(t *testing.T) {
-	tests := map[string]string{
-		"balkan":                            "BALKAN",
-		"BALKAN/4704b82 (Kiwi.com sandbox)": "BALKAN",
-		"balkan/1.42.1 (Kiwi.com sandbox)":  "BALKAN",
-		"balkan-graphql/1.42.1":             "BALKAN-GRAPHQL",
-		"balkan_graphql/1.42.1":             "BALKAN_GRAPHQL",
-		"balkan graphql/1.42.1":             "BALKAN_GRAPHQL",
+func TestGetService(t *testing.T) {
+	tests := map[string][]string{
+		"balkan":                            {"BALKAN", ""},
+		"BALKAN/4704b82 (Kiwi.com sandbox)": {"BALKAN", "sandbox"},
+		"balkan/1.42.1 (Kiwi.com sandbox)":  {"balkan", "sandbox"},
+		"balkan-graphql/1.42.1":             {"BALKAN-GRAPHQL", ""},
+		"balkan_graphql/1.42.1":             {"BALKAN_GRAPHQL", ""},
+		"balkan graphql/1.42.1":             {"BALKAN_GRAPHQL", ""},
 	}
 
 	for test, expected := range tests {
-		res, err := GetServiceName(test)
-		assert.Equal(t, expected, res)
-		assert.Equal(t, err, nil)
+		res, err := GetService(test)
+		assert.Equal(t, expected[0], res.Name)
+		assert.Equal(t, expected[1], res.Environment)
+		assert.NoError(t, err)
 	}
 
-	res, err := GetServiceName("")
-	assert.Equal(t, "", res)
+	res, err := GetService("")
+	assert.Equal(t, "", res.Name)
+	assert.Equal(t, "", res.Environment)
 	assert.Error(t, err)
 }
 

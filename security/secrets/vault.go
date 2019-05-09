@@ -25,13 +25,14 @@ type localStorage struct {
 type VaultManager struct {
 	client    *vault.Client
 	storage   localStorage
+	mapper    *Mapper
 	namespace string
 }
 
 var requiredPrefix = "/secret"
 
 // CreateNewVaultClient create a new client to connect to Vault
-func CreateNewVaultClient(address, token, namespace string) (*VaultManager, error) {
+func CreateNewVaultClient(address, token, namespace string, mapper *Mapper) (*VaultManager, error) {
 	if address == "" {
 		return nil, errors.New("missing Vault address")
 	}
@@ -52,7 +53,7 @@ func CreateNewVaultClient(address, token, namespace string) (*VaultManager, erro
 
 	client.SetNamespace(namespace)
 
-	return &VaultManager{client: client, namespace: namespace}, nil
+	return &VaultManager{client: client, namespace: namespace, mapper: mapper}, nil
 }
 
 // SyncAppTokens syncs all the available tokens from Vault and saves them to local state
@@ -79,11 +80,15 @@ func (s *VaultManager) SyncAppTokens() error {
 }
 
 // GetAppToken gets a token used by an outside service
-func (s *VaultManager) GetAppToken(app string) (string, error) {
-	data := s.storage.tokens[app]
+func (s *VaultManager) GetAppToken(app, environment string) (string, error) {
+	tokenName, err := s.mapper.GetTokenName(app, environment)
+	if err != nil {
+		return "", err
+	}
+	data := s.storage.tokens[tokenName]
 
 	if data == "" {
-		return "", errors.New("app " + app + " not found in SecretManager")
+		return "", errors.New("token '" + tokenName + "' not found in SecretManager")
 	}
 
 	return data, nil
@@ -118,7 +123,7 @@ func (s *VaultManager) GetSetting(key string) (string, error) {
 	data := s.storage.settings[key]
 
 	if data == "" {
-		return "", errors.New("key " + key + " not found in SecretManager")
+		return "", errors.New("key '" + key + "' not found in SecretManager")
 	}
 
 	return data, nil
