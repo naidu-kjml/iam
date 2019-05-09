@@ -125,9 +125,10 @@ func initErrorTracking(token, environment, release string) {
 
 func main() {
 	secretManager := loadEnv()
-	permissionManager := permissions.NewYamlPermissionManager()
-
 	initErrorTracking(viper.GetString("SENTRY_DSN"), viper.GetString("APP_ENV"), viper.GetString("SENTRY_RELEASE"))
+
+	permissionManager := permissions.NewYamlPermissionManager()
+	go permissionManager.LoadPermissions()
 
 	// Datadog tracer
 	datadogEnv := viper.GetString("DATADOG_ENV")

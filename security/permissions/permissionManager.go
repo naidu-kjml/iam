@@ -2,12 +2,14 @@ package permissions
 
 import (
 	"fmt"
+	"log"
 	"os"
+	"path/filepath"
 	"strings"
 
-	"gitlab.skypicker.com/platform/security/iam/security"
 	"gitlab.skypicker.com/platform/security/iam/shared"
 
+	"github.com/getsentry/raven-go"
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v3"
 )
@@ -18,11 +20,15 @@ type PermissionManager interface {
 }
 
 // YamlPermissionManager is used to map okta user groups to permissions defined in a local yaml configuration
-type YamlPermissionManager struct{}
+type YamlPermissionManager struct {
+	permissions map[string][]Permission
+}
 
 // NewYamlPermissionManager creates an permission manager
 func NewYamlPermissionManager() *YamlPermissionManager {
-	return &YamlPermissionManager{}
+	return &YamlPermissionManager{
+		permissions: map[string][]Permission{},
+	}
 }
 
 // Rule specifies a group of users
@@ -144,42 +150,46 @@ func flattenNode(node *yaml.Node, out map[string][]string, prefix string) error 
 	return nil
 }
 
-func getServicePermissions(service string) ([]Permission, error) {
-	err := security.CheckServiceName(service)
-	if err != nil {
-		return nil, err
-	}
+// LoadPermissions reads permissions from YAML files and stores them in memory
+func (p YamlPermissionManager) LoadPermissions() {
+	err := filepath.Walk("config/permissions", func(path string, info os.FileInfo, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+		if info.IsDir() {
+			return nil
+		}
 
-	filename, err := shared.JoinURL("config/permissions/", strings.ToLower(service)+".yaml")
-	if err != nil {
-		return nil, err
-	}
+		contents, err := readFile(path)
+		if err != nil {
+			return err
+		}
 
-	contents, err := readFile(filename)
-	if err != nil {
-		return nil, err
-	}
+		// Flatten contents
+		servicePermissions, err := flattenDocumentNode(&contents)
+		if err != nil {
+			return err
+		}
 
-	// Flatten contents
-	servicePermissions, err := flattenDocumentNode(&contents)
-	if err != nil {
-		return nil, err
-	}
+		permissions, err := createPermissions(servicePermissions)
+		if err != nil {
+			return err
+		}
 
-	permissions, err := createPermissions(servicePermissions)
-	if err != nil {
-		return nil, err
-	}
+		service := strings.ReplaceAll(info.Name(), ".yaml", "")
+		p.permissions[service] = permissions
+		return nil
+	})
 
-	return permissions, nil
+	if err != nil {
+		log.Println("Error loading permissions ", err)
+		raven.CaptureError(err, nil)
+	}
 }
 
 // GetUserPermissions returns only permissions (associated with a service) that the given user has.
 func (p YamlPermissionManager) GetUserPermissions(service string, teamMembership []string) ([]string, error) {
-	allPermissions, err := getServicePermissions(service)
-	if err != nil {
-		return nil, err
-	}
+	allPermissions := p.permissions[strings.ToLower(service)]
 	return getApplicablePermissions(allPermissions, teamMembership), nil
 }
 
