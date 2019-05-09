@@ -10,7 +10,7 @@ import (
 type LocalSecretManager struct {
 }
 
-// CreateNewLocalSecretManager creeates a new secret manager hooked up to Viper
+// CreateNewLocalSecretManager creates a new secret manager hooked up to Viper
 func CreateNewLocalSecretManager() *LocalSecretManager {
 	return &LocalSecretManager{}
 }

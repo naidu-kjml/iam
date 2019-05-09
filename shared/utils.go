@@ -3,6 +3,7 @@ package shared
 import (
 	"net/url"
 	"path"
+	"strings"
 )
 
 // JoinURL parses and joins a base URL to a path safely
@@ -18,10 +19,10 @@ func JoinURL(baseURL string, pathname ...string) (string, error) {
 	return u.String(), nil
 }
 
-// StringInSlice checks whether str matches any string in slice.
+// StringInSlice checks whether str matches (case-insensitive) any string in slice.
 func StringInSlice(str string, slice []string) bool {
 	for _, s := range slice {
-		if s == str {
+		if strings.EqualFold(s, str) {
 			return true
 		}
 	}
