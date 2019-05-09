@@ -7,7 +7,8 @@ import (
 	"time"
 
 	restAPI "gitlab.skypicker.com/platform/security/iam/api/rest"
-	"gitlab.skypicker.com/platform/security/iam/security"
+	"gitlab.skypicker.com/platform/security/iam/security/permissions"
+	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
@@ -37,7 +38,7 @@ func fillCache(client *okta.Client) {
 	}
 }
 
-func syncVault(client *security.VaultManager) {
+func syncVault(client *secrets.VaultManager) {
 	log.Println("Start token sync with Vault")
 	err := client.SyncAppTokens()
 
@@ -58,7 +59,7 @@ func syncVault(client *security.VaultManager) {
 	}
 }
 
-func loadEnv() security.SecretManager {
+func loadEnv() secrets.SecretManager {
 	viper.AutomaticEnv()
 	viper.SetConfigFile(".env.yaml")
 	configErr := viper.ReadInConfig()
@@ -76,7 +77,7 @@ func loadEnv() security.SecretManager {
 	viper.SetDefault("REDIS_LOCK_EXPIRATION", "5s")
 
 	// Load data from Vault and set them if possible
-	vaultClient, vaultErr := security.CreateNewVaultClient(
+	vaultClient, vaultErr := secrets.CreateNewVaultClient(
 		viper.GetString("VAULT_ADDR"),
 		viper.GetString("VAULT_TOKEN"),
 		viper.GetString("VAULT_NAMESPACE"),
@@ -97,7 +98,7 @@ func loadEnv() security.SecretManager {
 
 	log.Println("Vault integration disabled: ", vaultErr)
 
-	localSecretManager := security.CreateNewLocalSecretManager()
+	localSecretManager := secrets.CreateNewLocalSecretManager()
 
 	return localSecretManager
 }
@@ -118,7 +119,7 @@ func initErrorTracking(token, environment, release string) {
 
 func main() {
 	secretManager := loadEnv()
-	permissionManager := security.NewYamlPermissionManager()
+	permissionManager := permissions.NewYamlPermissionManager()
 
 	initErrorTracking(viper.GetString("SENTRY_DSN"), viper.GetString("APP_ENV"), viper.GetString("SENTRY_RELEASE"))
 

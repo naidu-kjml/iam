@@ -1,4 +1,4 @@
-package security
+package secrets
 
 // SecretManager is a interface that describes how we want to use secrets
 type SecretManager interface {

@@ -1,10 +1,11 @@
-package security
+package permissions
 
 import (
 	"fmt"
 	"os"
 	"strings"
 
+	"gitlab.skypicker.com/platform/security/iam/security"
 	"gitlab.skypicker.com/platform/security/iam/shared"
 
 	"github.com/pkg/errors"
@@ -144,12 +145,12 @@ func flattenNode(node *yaml.Node, out map[string][]string, prefix string) error 
 }
 
 func getServicePermissions(service string) ([]Permission, error) {
-	err := checkServiceName(service)
+	err := security.CheckServiceName(service)
 	if err != nil {
 		return nil, err
 	}
 
-	filename, err := shared.JoinURL("permissions/", strings.ToLower(service)+".yaml")
+	filename, err := shared.JoinURL("config/permissions/", strings.ToLower(service)+".yaml")
 	if err != nil {
 		return nil, err
 	}

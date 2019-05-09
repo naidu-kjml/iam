@@ -5,6 +5,8 @@ import (
 	"strings"
 
 	"gitlab.skypicker.com/platform/security/iam/security"
+	"gitlab.skypicker.com/platform/security/iam/security/permissions"
+	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
 	"gopkg.in/DataDog/dd-trace-go.v1/contrib/julienschmidt/httprouter"
 )
@@ -15,8 +17,8 @@ const wellKnownFolder string = ".well-known"
 func CreateRouter(
 	serviceName string,
 	oktaClient *okta.Client,
-	permissionManager security.PermissionManager,
-	secretManager security.SecretManager) *httprouter.Router {
+	permissionManager permissions.PermissionManager,
+	secretManager secrets.SecretManager) *httprouter.Router {
 	router := httprouter.New(httprouter.WithServiceName(serviceName))
 
 	router.Handler(

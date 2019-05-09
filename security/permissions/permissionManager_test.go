@@ -1,4 +1,4 @@
-package security
+package permissions
 
 import (
 	"testing"

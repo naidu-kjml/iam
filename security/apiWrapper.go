@@ -9,12 +9,13 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 	"gitlab.skypicker.com/go/packages/useragent"
+	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/shared"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 // AuthWrapper wraps a router to validate the authentication token
-func AuthWrapper(h httprouter.Handle, secretManager SecretManager) httprouter.Handle {
+func AuthWrapper(h httprouter.Handle, secretManager secrets.SecretManager) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		err := checkAuth(r, secretManager)
 		if err != nil {
@@ -42,7 +43,8 @@ var serviceNameRe = regexp.MustCompile(serviceNamePattern)
 // It's important to add $ in order to match the whole string
 var checkServiceNameRe = regexp.MustCompile(serviceNamePattern + "$")
 
-func checkServiceName(service string) error {
+// CheckServiceName returns if the given service name contains expected characters only
+func CheckServiceName(service string) error {
 	safe := checkServiceNameRe.MatchString(service)
 	if !safe {
 		return errors.New("service name has to match " + serviceNamePattern + "$")
@@ -51,7 +53,7 @@ func checkServiceName(service string) error {
 	return nil
 }
 
-// GetServiceName returns the service name based on the given user agent.
+// GetServiceName returns the service name based on the given user agent
 func GetServiceName(incomingUserAgent string) (string, error) {
 	ua, err := useragent.Parse(incomingUserAgent)
 
@@ -62,7 +64,7 @@ func GetServiceName(incomingUserAgent string) (string, error) {
 	// Log is temp. This should be pushed to Datadog when possible.
 	log.Printf("User agent [%v] failed: [%v]", incomingUserAgent, err)
 
-	// This block should be removed after all services adhere to RFC 22.
+	// This block should be removed after all services adhere to RFC 22
 	service := serviceNameRe.FindString(incomingUserAgent)
 	if service == "" {
 		return "", errors.New("no service found")
@@ -75,7 +77,7 @@ func GetServiceName(incomingUserAgent string) (string, error) {
 }
 
 // checkAuth checks if user has proper token + user agent
-func checkAuth(r *http.Request, secretManager SecretManager) error {
+func checkAuth(r *http.Request, secretManager secrets.SecretManager) error {
 	var requestToken = r.Header.Get("Authorization")
 	var userAgent = r.Header.Get("User-Agent")
 

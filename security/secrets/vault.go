@@ -1,4 +1,4 @@
-package security
+package secrets
 
 // This package expects the following structure for Vault.
 // /secret/governant/app_tokens

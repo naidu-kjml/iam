@@ -7,6 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 )
 
 type mockedSecretManager struct {
@@ -27,7 +28,7 @@ func (s *mockedSecretManager) GetSetting(app string) (string, error) {
 	return "", errors.New("wrong token bro")
 }
 
-func createFakeManager() SecretManager {
+func createFakeManager() secrets.SecretManager {
 	return &mockedSecretManager{}
 }
 
@@ -64,33 +65,33 @@ func TestCheckServiceName(t *testing.T) {
 
 	for input, shouldError := range tests {
 		if shouldError {
-			assert.Error(t, checkServiceName(input))
+			assert.Error(t, CheckServiceName(input))
 		} else {
-			assert.NoError(t, checkServiceName(input))
+			assert.NoError(t, CheckServiceName(input))
 		}
 	}
 }
 
 func TestCheckAuth(t *testing.T) {
-	secrets := createFakeManager()
+	m := createFakeManager()
 
 	req, _ := http.NewRequest("GET", "http://example.com/", nil)
-	err := checkAuth(req, secrets)
+	err := checkAuth(req, m)
 	assert.Error(t, err, "Should error on missing email")
 
 	req, _ = http.NewRequest("GET", "http://example.com/?email=email@example.com", nil)
-	err = checkAuth(req, secrets)
+	err = checkAuth(req, m)
 	assert.Error(t, err, "Should error on missing User-Agent")
 	req.Header.Set("User-Agent", "serviceName/version (Kiwi.com environment)")
 
-	err = checkAuth(req, secrets)
+	err = checkAuth(req, m)
 	assert.Error(t, err, "Should error on missing Authorization header")
 	req.Header.Set("Authorization", "invalid token")
 
-	err = checkAuth(req, secrets)
+	err = checkAuth(req, m)
 	assert.Error(t, err, "Should error on invalid token")
 	req.Header.Set("Authorization", "valid token")
 
-	err = checkAuth(req, secrets)
+	err = checkAuth(req, m)
 	assert.NoError(t, err, "Should not error on valid request token")
 }
