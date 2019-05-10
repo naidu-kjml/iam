@@ -21,6 +21,8 @@ func fillCache(client *okta.Client) {
 	if viper.GetString("APP_ENV") != "dev" {
 		log.Println("Start caching users")
 		client.SyncUsers()
+		log.Println("Start caching groups")
+		client.SyncGroups()
 	}
 
 	// Run periodic task to fill in the cache
@@ -30,6 +32,8 @@ func fillCache(client *okta.Client) {
 	for tick := range ticker.C {
 		log.Println("Start caching users", tick.Round(time.Second))
 		client.SyncUsers()
+		log.Println("Start caching groups", tick.Round(time.Second))
+		client.SyncGroups()
 	}
 }
 

@@ -58,10 +58,9 @@ func GetServiceName(incomingUserAgent string) (string, error) {
 	if err == nil {
 		return strings.ToUpper(ua.Name), nil
 	}
-	if err != nil {
-		// Log is temp. This should be pushed to Datadog when possible.
-		log.Printf("User agent [%v] failed: [%v]", incomingUserAgent, err)
-	}
+
+	// Log is temp. This should be pushed to Datadog when possible.
+	log.Printf("User agent [%v] failed: [%v]", incomingUserAgent, err)
 
 	// This block should be removed after all services adhere to RFC 22.
 	service := serviceNameRe.FindString(incomingUserAgent)

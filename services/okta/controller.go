@@ -63,6 +63,13 @@ func (c *Client) GetTeams() (map[string]int, error) {
 	return teams, err
 }
 
+// GetGroups retrieves Okta groups
+func (c *Client) GetGroups() ([]Group, error) {
+	var groups []Group
+	err := c.cache.Get("groups", &groups)
+	return groups, err
+}
+
 // SyncUsers gets all users from Okta and saves them into cache. Also generates
 // a map of all possible teams and the number of users in them, and saves them
 // into cache.
@@ -102,4 +109,22 @@ func (c *Client) SyncUsers() {
 		return
 	}
 	log.Println("Cached ", nTeams, " teams")
+}
+
+// SyncGroups gets all groups from Okta and saves them into cache.
+func (c *Client) SyncGroups() {
+	groups, err := c.fetchAllGroups()
+	if err != nil {
+		log.Println("Error fetching groups", err)
+		raven.CaptureError(err, nil)
+		return
+	}
+
+	cacheErr := c.cache.Set("groups", groups, 0)
+	if cacheErr != nil {
+		log.Println("Error caching groups", cacheErr)
+		raven.CaptureError(cacheErr, nil)
+		return
+	}
+	log.Println("Cached ", len(groups), " groups")
 }

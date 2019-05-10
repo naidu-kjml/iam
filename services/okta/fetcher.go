@@ -115,6 +115,8 @@ func (c *Client) fetchUsers(url string) ([]User, http.Header, error) {
 	return users, httpResponse.Header, nil
 }
 
+var oktaLinkPattern = regexp.MustCompile(`(?:<)(.*)(?:>)`)
+
 // fetchAllUsers retrieves all Okta users
 func (c *Client) fetchAllUsers() ([]User, error) {
 	var allUsers []User
@@ -139,8 +141,7 @@ func (c *Client) fetchAllUsers() ([]User, error) {
 		linkHeader := header["Link"]
 		for _, link := range linkHeader {
 			if strings.Contains(link, "rel=\"next\"") {
-				regex := regexp.MustCompile(`(?:<)(.*)(?:>)`)
-				url = regex.FindStringSubmatch(link)[1]
+				url = oktaLinkPattern.FindStringSubmatch(link)[1]
 				if url != "" {
 					hasNext = true
 				}

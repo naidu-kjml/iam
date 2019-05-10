@@ -49,6 +49,13 @@ func CreateRouter(
 		),
 	)
 	router.GET(
+		"/v1/groups",
+		security.AuthWrapper(
+			getGroups(oktaClient),
+			secretManager,
+		),
+	)
+	router.GET(
 		"/user/okta", security.AuthWrapper(
 			addDeprecationWarning(
 				getOktaUserByEmail(oktaClient, permissionManager),
