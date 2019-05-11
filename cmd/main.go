@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"gitlab.skypicker.com/platform/security/iam/api"
+	restAPI "gitlab.skypicker.com/platform/security/iam/api/rest"
 	"gitlab.skypicker.com/platform/security/iam/security"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
 	"gitlab.skypicker.com/platform/security/iam/storage"
@@ -150,7 +150,7 @@ func main() {
 		LockManager: lock,
 	})
 
-	router := api.CreateRouter("kiwi-iam.http.router", oktaClient, permissionManager, secretManager)
+	router := restAPI.CreateRouter("kiwi-iam.http.router", oktaClient, permissionManager, secretManager)
 
 	// 0.0.0.0 is specified to allow listening in Docker
 	var address = "0.0.0.0"
