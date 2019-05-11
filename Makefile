@@ -25,7 +25,7 @@ endef
 test:
 	$(call log_info,Run tests and check race conditions)
 	# https://golang.org/doc/articles/race_detector.html
-	go test -race -v ./...
+	go test -race -v ./... -cover
 	$(call log_success,All tests succeeded)
 
 go-mod-tidy:
