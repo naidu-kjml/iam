@@ -11,7 +11,7 @@ RUN echo "machine gitlab.skypicker.com " >> ~/.netrc &&\
   make build &&\
   rm ~/.netrc
 
-FROM alpine:3.9.3
+FROM alpine:3.9.4
 RUN  apk add --no-cache --virtual=.run-deps ca-certificates &&\
   mkdir /app
 
