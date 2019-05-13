@@ -32,7 +32,7 @@ require (
 	github.com/stretchr/testify v1.3.0
 	github.com/tinylib/msgp v1.1.0 // indirect
 	gitlab.skypicker.com/go/packages v0.0.0-20190502120350-d82eb114d1d0
-	golang.org/x/net v0.0.0-20190424120254-4829fb13d2c6 // indirect
+	golang.org/x/net v0.0.0-20190513145509-a4d6f7feada5 // indirect
 	golang.org/x/sync v0.0.0-20190425150253-112230192c58
 	golang.org/x/text v0.3.2 // indirect
 	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4 // indirect
