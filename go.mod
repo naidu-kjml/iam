@@ -4,7 +4,7 @@ go 1.12
 
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
-	github.com/certifi/gocertifi v0.0.0-20190415150122-92f724a62f3e // indirect
+	github.com/certifi/gocertifi v0.0.0-20190513150117-d2eda7129713 // indirect
 	github.com/getsentry/raven-go v0.2.0
 	github.com/go-redis/redis v6.15.2+incompatible
 	github.com/golang/protobuf v1.3.1 // indirect
