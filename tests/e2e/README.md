@@ -9,5 +9,6 @@ When running locally it is important to first set up environment variables in yo
 ```sh
 export GITLAB_USERNAME=tester@kiwi.com
 export GITLAB_PASSWORD=your-access-token-from-gitlab
+make build-iam
 make run-e2e
 ```

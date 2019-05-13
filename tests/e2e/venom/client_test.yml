@@ -20,12 +20,12 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=tesr@tester.kiwi"
+        url: "{{.url}}/v1/user?email=test@tester.kiwi"
         headers:
           User-Agent: Venom
           authorization: "testtoken"
         assertions:
-          - "result.body ShouldEqual 'User tesr@tester.kiwi not found\n'"
+          - "result.body ShouldEqual 'User test@tester.kiwi not found\n'"
           - result.statuscode ShouldEqual 404
   - name: Test getting existing user
     steps:
