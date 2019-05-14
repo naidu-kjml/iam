@@ -10,7 +10,7 @@
     "passwordChanged": "1992-11-16T14:33:52.000Z",
     "profile": {
       "kb_is_vendor": false,
-      "lastName": "Tester2",
+      "lastName": "Cached",
       "kb_place_of_work": "Praha",
       "kb_team_membership": [
         "",
@@ -21,14 +21,14 @@
       ],
       "manager": "The Boss",
       "kb_jobPositionLevel": "None",
-      "secondEmail": "tester@tester.kiwi",
-      "login": "tester@tester.kiwi",
+      "secondEmail": "cached@tester.kiwi",
+      "login": "cached@tester.kiwi",
       "kb_jobPosition": "Janitor",
       "employeeNumber": "74981356543567654",
       "firstName": "Test",
       "mobilePhone": "",
       "department": "Engineering/Content + CS Systems/CS systems/CS Systems Frontend",
-      "email": "tester@tester.kiwi"
+      "email": "cached@tester.kiwi"
     },
     "credentials": {
       "password": {},

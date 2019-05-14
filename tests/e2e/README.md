@@ -9,6 +9,11 @@ When running locally it is important to first set up environment variables in yo
 ```sh
 export GITLAB_USERNAME=tester@kiwi.com
 export GITLAB_PASSWORD=your-access-token-from-gitlab
-make build-iam
-make run-e2e
+make e2e
 ```
+
+If you didn't make changes on IAM or mocks (eg. you only created e2e tests) you
+can run `make e2e/nobuild` which will skip the image builds.
+
+Both `make e2e` and `make e2e/nobuild` start a test environment using
+docker-compose, to tear down this environment run `e2e/env-stop`.

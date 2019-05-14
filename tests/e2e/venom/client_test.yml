@@ -12,7 +12,7 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=tester@test.kiwi"
+        url: "{{.url}}/v1/user?email=cached@test.kiwi"
         assertions:
           - "result.body ShouldEqual 'Authorization header with token is mandatory\n'"
           - result.statuscode ShouldEqual 401
@@ -31,13 +31,13 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=tester@tester.kiwi"
+        url: "{{.url}}/v1/user?email=cached@tester.kiwi"
         headers:
           User-Agent: Venom
           authorization: "Bearer testtoken"
         assertions:
           - result.bodyjson.firstname ShouldEqual Test
-          - result.bodyjson.lastname ShouldEqual Tester2
+          - result.bodyjson.lastname ShouldEqual Cached
           - result.bodyjson.location ShouldEqual Praha
           - result.bodyjson.position ShouldEqual Janitor
           - result.bodyjson.department ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
@@ -46,13 +46,28 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=tester@tester.kiwi"
+        url: "{{.url}}/v1/user?email=cached@tester.kiwi"
         headers:
           User-Agent: Venom
           authorization: "testtoken"
         assertions:
           - result.bodyjson.firstname ShouldEqual Test
-          - result.bodyjson.lastname ShouldEqual Tester2
+          - result.bodyjson.lastname ShouldEqual Cached
+          - result.bodyjson.location ShouldEqual Praha
+          - result.bodyjson.position ShouldEqual Janitor
+          - result.bodyjson.department ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
+          - result.statuscode ShouldEqual 200
+  - name: Test getting existing non-cached user
+    steps:
+      - type: http
+        method: GET
+        url: "{{.url}}/v1/user?email=fetched@tester.kiwi"
+        headers:
+          User-Agent: Venom
+          authorization: "Bearer testtoken"
+        assertions:
+          - result.bodyjson.firstname ShouldEqual Test
+          - result.bodyjson.lastname ShouldEqual Fetched
           - result.bodyjson.location ShouldEqual Praha
           - result.bodyjson.position ShouldEqual Janitor
           - result.bodyjson.department ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
