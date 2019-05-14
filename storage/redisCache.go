@@ -1,12 +1,16 @@
 package storage
 
 import (
+	"log"
 	"net"
+	"regexp"
 	"strings"
 	"time"
 
+	"github.com/getsentry/raven-go"
 	"github.com/go-redis/redis"
 	jsoniter "github.com/json-iterator/go"
+	"github.com/pkg/errors"
 	redisTrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/go-redis/redis"
 )
 
@@ -15,17 +19,27 @@ var json = jsoniter.ConfigCompatibleWithStandardLibrary
 // RedisCache contains redis client
 type RedisCache struct {
 	client *redisTrace.Client
+	backup InMemoryCache
 }
 
 // ErrNotFound is returned when an item is not present in cache
 var ErrNotFound = errors.New("item not found")
+
+var redisDownRegex = regexp.MustCompile(`^dial tcp .* connect: connection refused|dial tcp: lookup .* no such host|EOF$`)
+
+// isConnectionRefused returns whether the error passed as an argument is a redis
+// connection error or not.
+func isConnectionRefused(err error) bool {
+	return err != nil && redisDownRegex.Match(([]byte(err.Error())))
+}
 
 // NewRedisCache initializes and returns a RedisCache
 func NewRedisCache(host, port string) *RedisCache {
 	opts := &redis.Options{Addr: net.JoinHostPort(host, port)}
 
 	return &RedisCache{
-		redisTrace.NewClient(opts, redisTrace.WithServiceName("kiwi-iam.redis")),
+		client: redisTrace.NewClient(opts, redisTrace.WithServiceName("kiwi-iam.redis")),
+		backup: NewInMemoryCache(),
 	}
 }
 
@@ -44,7 +58,11 @@ func (c *RedisCache) Get(key string, value interface{}) error {
 		return ErrNotFound
 	}
 
-	err = json.Unmarshal(data, &value)
+	if isConnectionRefused(err) {
+		log.Println("Redis down using inMemory GET")
+		raven.CaptureMessage("Redis down using inMemory GET", nil)
+		err = c.backup.Get(key, value)
+	}
 	return err
 }
 
@@ -58,6 +76,11 @@ func (c *RedisCache) Set(key string, value interface{}, ttl time.Duration) error
 
 	lowerKey := strings.ToLower(key)
 	_, err = c.client.Set(lowerKey, strVal, ttl).Result()
+	if isConnectionRefused(err) {
+		log.Println("Redis down using inMemory SET")
+		raven.CaptureMessage("Redis down using inMemory SET", nil)
+		err = c.backup.Set(key, value)
+	}
 	return err
 }
 
@@ -65,6 +88,12 @@ func (c *RedisCache) Set(key string, value interface{}, ttl time.Duration) error
 func (c *RedisCache) Del(key string) error {
 	lowerKey := strings.ToLower(key)
 	_, err := c.client.Del(lowerKey).Result()
+	if isConnectionRefused(err) {
+		log.Println("Redis down using inMemory DEL")
+		raven.CaptureMessage("Redis down using inMemory DEL", nil)
+		c.backup.Del(key)
+		return nil
+	}
 	return err
 }
 
@@ -84,5 +113,10 @@ func (c *RedisCache) MSet(pairs map[string]interface{}) error {
 	}
 
 	_, err := c.client.MSet(args...).Result()
+	if isConnectionRefused(err) {
+		log.Println("Redis down using inMemory MSET")
+		raven.CaptureMessage("Redis down using inMemory MSET", nil)
+		err = c.backup.MSet(pairs)
+	}
 	return err
 }
