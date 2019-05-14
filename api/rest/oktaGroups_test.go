@@ -6,11 +6,11 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/go-redis/redis"
 	"github.com/julienschmidt/httprouter"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
+	"gitlab.skypicker.com/platform/security/iam/storage"
 )
 
 type mockGroupsGetter struct {
@@ -39,7 +39,7 @@ func TestGetGroupsErrors(t *testing.T) {
 	assert.NotEqual(t, errMessage, response.Body.String())
 
 	// No value found in cache
-	g.On("GetGroups").Return([]okta.Group{}, redis.Nil).Once()
+	g.On("GetGroups").Return([]okta.Group{}, storage.ErrNotFound).Once()
 	response = httptest.NewRecorder()
 	router.ServeHTTP(response, request)
 

@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"github.com/getsentry/raven-go"
-	"github.com/go-redis/redis"
 	"github.com/pkg/errors"
 )
 
@@ -55,7 +54,7 @@ func (l *LockManager) Create(name string) error {
 	if exists {
 		return ErrLockExists
 	}
-	if err != redis.Nil {
+	if err != ErrNotFound {
 		err = errors.Wrap(err, "error checking if a lock exists")
 		raven.CaptureError(err, nil)
 	}

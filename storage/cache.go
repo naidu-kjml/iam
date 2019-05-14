@@ -17,6 +17,9 @@ type RedisCache struct {
 	client *redisTrace.Client
 }
 
+// ErrNotFound is returned when an item is not present in cache
+var ErrNotFound = errors.New("item not found")
+
 // NewRedisCache initializes and returns a RedisCache
 func NewRedisCache(host, port string) *RedisCache {
 	opts := &redis.Options{Addr: net.JoinHostPort(host, port)}
@@ -29,12 +32,16 @@ func NewRedisCache(host, port string) *RedisCache {
 // Get retrieves an item from cache.
 // `key` is case insensitive.
 // `value` is a pointer to the variable that will receive the data.
-// `error` is redis.Nil when no value is found.
+// `error` is ErrNotFound when no value is found.
 func (c *RedisCache) Get(key string, value interface{}) error {
 	lowerKey := strings.ToLower(key)
 	data, err := c.client.Get(lowerKey).Bytes()
-	if err != nil {
+	if err == nil {
+		err = json.Unmarshal(data, &value)
 		return err
+	}
+	if err == redis.Nil {
+		return ErrNotFound
 	}
 
 	err = json.Unmarshal(data, &value)

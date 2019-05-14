@@ -7,7 +7,6 @@ import (
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
-	"github.com/go-redis/redis"
 )
 
 // GetUser returns an Okta user by email. It first tries to get it from cache,
@@ -20,7 +19,7 @@ func (c *Client) GetUser(email string) (User, error) {
 		return user, nil
 	}
 
-	if err != redis.Nil {
+	if err != storage.ErrNotFound {
 		// Not a cache hit, not a cache miss, something went wrong
 		return User{}, err
 	}

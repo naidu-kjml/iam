@@ -4,7 +4,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-redis/redis"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )
@@ -25,7 +24,7 @@ func (c *mockCache) Get(key string, value interface{}) error {
 	v, ok := c.data[key]
 	if ok == false || time.Since(v.expiration) > 0 {
 		delete(c.data, key)
-		return redis.Nil
+		return ErrNotFound
 
 	}
 	// ineffective assignment of `value`
