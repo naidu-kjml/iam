@@ -42,3 +42,18 @@ testcases:
           - result.bodyjson.position ShouldEqual Janitor
           - result.bodyjson.department ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
           - result.statuscode ShouldEqual 200
+  - name: Test getting existing user with deprecated token scheme
+    steps:
+      - type: http
+        method: GET
+        url: "{{.url}}/v1/user?email=tester@tester.kiwi"
+        headers:
+          User-Agent: Venom
+          authorization: "testtoken"
+        assertions:
+          - result.bodyjson.firstname ShouldEqual Test
+          - result.bodyjson.lastname ShouldEqual Tester2
+          - result.bodyjson.location ShouldEqual Praha
+          - result.bodyjson.position ShouldEqual Janitor
+          - result.bodyjson.department ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
+          - result.statuscode ShouldEqual 200
