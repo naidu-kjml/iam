@@ -8,7 +8,7 @@
 
 ## Usage
 
-This project uses some of our own custom Go packages. If you encounter issues please consult: <https://gitlab.skypicker.com/go/packages#usage>
+This project uses some of our own custom Go packages. If you encounter issues please consult <https://gitlab.skypicker.com/go/packages#usage>.
 
 Create `.env.yaml` file and set environment variables. Check `.env-sample.yaml`
 to see all the possible variables.
@@ -55,14 +55,15 @@ GET <key>
 
 # Secret Manager
 
-This service uses Vault for syncing secrets to our app.
+This service uses Vault for syncing secrets to our app. The base path is `secret/governant`.
 
-This service expects the following structure for Vault:
-/secret/governant/app_tokens
-/secret/governant/settings
+The following structure is expected:
+
+- `secret/governant/{environment}/app_tokens`
+- `secret/governant/{environment}/settings`
 
 ## Contributing
 
-- Run `make test/ci` and `make lint` before pushing changes
-- Commit messages should be at most 72 characters long
-- Commit messages should start with the scope of the changes introduced by the commit
+- Run `make test/ci`, `make lint`, and [`make e2e`](tests/e2e/README.md)  before pushing changes.
+- Commit messages should be at most 72 characters long.
+- Commit messages should start with the scope of the changes introduced by the commit.
