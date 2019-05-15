@@ -94,3 +94,16 @@ func TestCheckAuth(t *testing.T) {
 	err = checkAuth(req, m)
 	assert.NoError(t, err, "Should not error on valid request token")
 }
+
+func TestGetToken(t *testing.T) {
+	tests := map[string]string{
+		"Bearer token":        "token",
+		"token":               "token",
+		"Bearer Bearer token": "Bearer token",
+	}
+
+	for test, expected := range tests {
+		actual := getToken(test)
+		assert.Equal(t, expected, actual)
+	}
+}

@@ -23,7 +23,7 @@ testcases:
         url: "{{.url}}/v1/user?email=test@tester.kiwi"
         headers:
           User-Agent: Venom
-          authorization: "testtoken"
+          authorization: "Bearer testtoken"
         assertions:
           - "result.body ShouldEqual 'User test@tester.kiwi not found\n'"
           - result.statuscode ShouldEqual 404
@@ -34,7 +34,7 @@ testcases:
         url: "{{.url}}/v1/user?email=tester@tester.kiwi"
         headers:
           User-Agent: Venom
-          authorization: "testtoken"
+          authorization: "Bearer testtoken"
         assertions:
           - result.bodyjson.firstname ShouldEqual Test
           - result.bodyjson.lastname ShouldEqual Tester2

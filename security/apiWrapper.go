@@ -83,8 +83,8 @@ func GetService(incomingUserAgent string) (Service, error) {
 
 // checkAuth checks if user has proper token + user agent
 func checkAuth(r *http.Request, secretManager secrets.SecretManager) error {
-	var requestToken = r.Header.Get("Authorization")
-	var userAgent = r.Header.Get("User-Agent")
+	requestToken := getToken(r.Header.Get("Authorization"))
+	userAgent := r.Header.Get("User-Agent")
 
 	service, err := GetService(userAgent)
 	if err != nil {
@@ -110,4 +110,8 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager) error {
 	}
 
 	return nil
+}
+
+func getToken(authorization string) string {
+	return strings.Replace(authorization, "Bearer ", "", 1)
 }
