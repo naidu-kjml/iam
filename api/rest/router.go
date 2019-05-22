@@ -4,11 +4,12 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/julienschmidt/httprouter"
 	"gitlab.skypicker.com/platform/security/iam/security"
 	"gitlab.skypicker.com/platform/security/iam/security/permissions"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
-	"gopkg.in/DataDog/dd-trace-go.v1/contrib/julienschmidt/httprouter"
+	tracingRouter "gopkg.in/DataDog/dd-trace-go.v1/contrib/julienschmidt/httprouter"
 )
 
 const wellKnownFolder string = ".well-known"
@@ -25,8 +26,8 @@ func CreateRouter(
 	oktaClient *okta.Client,
 	permissionManager permissions.PermissionManager,
 	secretManager secrets.SecretManager,
-	metricClient metricService) *httprouter.Router {
-	router := httprouter.New(httprouter.WithServiceName(serviceName))
+	metricClient metricService) *tracingRouter.Router {
+	router := tracingRouter.New(tracingRouter.WithServiceName(serviceName))
 
 	router.Handler(
 		"GET",
@@ -42,40 +43,22 @@ func CreateRouter(
 	// Hello World Route
 	router.GET("/", sayHello)
 
-	// App routes
-	router.GET(
-		"/v1/user",
-		security.AuthWrapper(
-			getOktaUserByEmail(oktaClient, permissionManager),
-			secretManager,
-			metricClient,
-		),
-	)
-	router.GET(
-		"/v1/teams",
-		security.AuthWrapper(
-			getTeams(oktaClient),
-			secretManager,
-			metricClient,
-		),
-	)
-	router.GET(
-		"/v1/groups",
-		security.AuthWrapper(
-			getGroups(oktaClient),
-			secretManager,
-			metricClient,
-		),
-	)
-	router.GET(
-		"/user/okta", security.AuthWrapper(
-			addDeprecationWarning(
-				getOktaUserByEmail(oktaClient, permissionManager),
+	addEndpoint := func(path string, handler httprouter.Handle) {
+		router.GET(path,
+			security.AuthWrapper(
+				handler,
+				secretManager,
+				metricClient,
 			),
-			secretManager,
-			metricClient,
-		),
-	)
+		)
+	}
+
+	// App routes
+	addEndpoint("/v1/user", getOktaUserByEmail(oktaClient, permissionManager))
+
+	addEndpoint("/v1/teams", getTeams(oktaClient))
+
+	addEndpoint("/v1/groups", getGroups(oktaClient))
 
 	router.PanicHandler = panicHandler
 
