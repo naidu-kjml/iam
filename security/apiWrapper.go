@@ -2,7 +2,6 @@ package security
 
 import (
 	"errors"
-	"fmt"
 	"log"
 	"net/http"
 	"regexp"
@@ -11,11 +10,14 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"gitlab.skypicker.com/go/packages/useragent"
 	"gitlab.skypicker.com/platform/security/iam/api"
+	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 type metricService interface {
+	// Incr increments by 1 a metric identified by name.
+	// tags should be in format name:value and can be created with Tag function to escape the values
 	Incr(string, ...string)
 }
 
@@ -115,8 +117,8 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClien
 	}
 	metricClient.Incr(
 		"incoming.requests",
-		fmt.Sprintf("service-name:%v", service.Name),
-		fmt.Sprintf("service-environment:%v", service.Environment),
+		monitoring.Tag("service-name", service.Name),
+		monitoring.Tag("service-environment", service.Environment),
 	)
 
 	return nil

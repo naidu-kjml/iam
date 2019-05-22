@@ -113,7 +113,7 @@ func TestHappyPathCheckAuth(t *testing.T) {
 	m.AssertNotCalled(t, "Incr")
 
 	req.Header.Set("Authorization", "valid token")
-	m.On("Incr", "incoming.requests", []string{"service-name:servicename", "service-environment:environment"}})
+	m.On("Incr", "incoming.requests", []string{"service-name:servicename", "service-environment:environment"})
 	err = checkAuth(req, s, m)
 	assert.NoError(t, err, "Should not error on valid request token")
 	m.AssertNumberOfCalls(t, "Incr", 1)

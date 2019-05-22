@@ -14,6 +14,8 @@ import (
 const wellKnownFolder string = ".well-known"
 
 type metricService interface {
+	// Incr increments by 1 a metric identified by name.
+	// tags should be in format name:value and can be created with Tag function to escape the values
 	Incr(string, ...string)
 }
 
