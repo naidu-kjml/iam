@@ -72,3 +72,16 @@ testcases:
           - result.bodyjson.position ShouldEqual Janitor
           - result.bodyjson.department ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
           - result.statuscode ShouldEqual 200
+  - name: Test GET /v1/teams
+    steps:
+      - type: http
+        method: GET
+        url: "{{.url}}/v1/teams"
+        headers:
+          User-Agent: Venom
+          authorization: "Bearer testtoken"
+        assertions:
+          - result.bodyjson.engineering ShouldEqual 2
+          - result.bodyjson.engineering_content_+_cs_systems ShouldEqual 1
+          - result.bodyjson.engineering_utitlies ShouldEqual 1
+          - result.statuscode ShouldEqual 200
