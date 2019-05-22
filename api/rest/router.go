@@ -13,12 +13,17 @@ import (
 
 const wellKnownFolder string = ".well-known"
 
+type metricService interface {
+	Incr(string, ...string)
+}
+
 // CreateRouter creates a new router instance
 func CreateRouter(
 	serviceName string,
 	oktaClient *okta.Client,
 	permissionManager permissions.PermissionManager,
-	secretManager secrets.SecretManager) *httprouter.Router {
+	secretManager secrets.SecretManager,
+	metricClient metricService) *httprouter.Router {
 	router := httprouter.New(httprouter.WithServiceName(serviceName))
 
 	router.Handler(
@@ -41,6 +46,7 @@ func CreateRouter(
 		security.AuthWrapper(
 			getOktaUserByEmail(oktaClient, permissionManager),
 			secretManager,
+			metricClient,
 		),
 	)
 	router.GET(
@@ -48,6 +54,7 @@ func CreateRouter(
 		security.AuthWrapper(
 			getTeams(oktaClient),
 			secretManager,
+			metricClient,
 		),
 	)
 	router.GET(
@@ -55,6 +62,7 @@ func CreateRouter(
 		security.AuthWrapper(
 			getGroups(oktaClient),
 			secretManager,
+			metricClient,
 		),
 	)
 	router.GET(
@@ -63,6 +71,7 @@ func CreateRouter(
 				getOktaUserByEmail(oktaClient, permissionManager),
 			),
 			secretManager,
+			metricClient,
 		),
 	)
 

@@ -25,11 +25,15 @@ services:
     links:
       - redis
       - nginx
+      - datadog_mock
     expose:
       - 8080
+    ports:
+      - "8080:8080"
     depends_on:
       - nginx
       - redis
+      - datadog_mock
 
   venom:
     build:
@@ -40,3 +44,9 @@ services:
       - kiwi-iam:kiwi-iam
     depends_on:
       - kiwi-iam
+
+  datadog_mock:
+    image: catkins/statsd-logger
+    container_name: datadog
+    expose:
+      - 8125

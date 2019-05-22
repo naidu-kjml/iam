@@ -29,6 +29,14 @@ func createFakeManager() secrets.SecretManager {
 	return &mockedSecretManager{}
 }
 
+type mockedMetricsService struct {
+	mock.Mock
+}
+
+func (m *mockedMetricsService) Incr(serviceName string, tags ...string) {
+	m.Called(serviceName, tags)
+}
+
 func TestGetService(t *testing.T) {
 	tests := map[string][]string{
 		"balkan":                            {"BALKAN", ""},
@@ -71,28 +79,44 @@ func TestCheckServiceName(t *testing.T) {
 	}
 }
 
-func TestCheckAuth(t *testing.T) {
-	m := createFakeManager()
+func TestUnhappyPathCheckAuth(t *testing.T) {
+	s := createFakeManager()
+	m := &mockedMetricsService{}
 
 	req, _ := http.NewRequest("GET", "http://example.com/", nil)
-	err := checkAuth(req, m)
+	err := checkAuth(req, s, m)
 	assert.Error(t, err, "Should error on missing email")
 
 	req, _ = http.NewRequest("GET", "http://example.com/?email=email@example.com", nil)
-	err = checkAuth(req, m)
+	err = checkAuth(req, s, m)
 	assert.Error(t, err, "Should error on missing User-Agent")
+
 	req.Header.Set("User-Agent", "serviceName/version (Kiwi.com environment)")
-
-	err = checkAuth(req, m)
+	err = checkAuth(req, s, m)
 	assert.Error(t, err, "Should error on missing Authorization header")
+
 	req.Header.Set("Authorization", "invalid token")
-
-	err = checkAuth(req, m)
+	err = checkAuth(req, s, m)
 	assert.Error(t, err, "Should error on invalid token")
-	req.Header.Set("Authorization", "valid token")
+	m.AssertNotCalled(t, "Incr")
+}
 
-	err = checkAuth(req, m)
+func TestHappyPathCheckAuth(t *testing.T) {
+	s := createFakeManager()
+	m := &mockedMetricsService{}
+
+	req, _ := http.NewRequest("GET", "http://example.com/?email=email@example.com", nil)
+
+	req.Header.Set("User-Agent", "serviceName/version (Kiwi.com environment)")
+	err := checkAuth(req, s, m)
+	assert.Error(t, err, "Should error on missing Authorization header")
+	m.AssertNotCalled(t, "Incr")
+
+	req.Header.Set("Authorization", "valid token")
+	m.On("Incr", "incoming.requests", []string{"service-name:serviceName", "service-environment:environment"})
+	err = checkAuth(req, s, m)
 	assert.NoError(t, err, "Should not error on valid request token")
+	m.AssertNumberOfCalls(t, "Incr", 1)
 }
 
 func TestGetToken(t *testing.T) {

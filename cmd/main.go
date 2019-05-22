@@ -7,6 +7,7 @@ import (
 	"time"
 
 	restAPI "gitlab.skypicker.com/platform/security/iam/api/rest"
+	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/security/permissions"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
@@ -158,7 +159,18 @@ func main() {
 		LockManager: lock,
 	})
 
-	router := restAPI.CreateRouter("kiwi-iam.http.router", oktaClient, permissionManager, secretManager)
+	// Metrics initialisation
+	metricClient, metricErr := monitoring.CreateNewMetricService(monitoring.MetricSettings{
+		Host:        viper.GetString("DD_AGENT_HOST"),
+		Port:        "8125",
+		Namespace:   "kiwi_iam.",
+		Environment: viper.GetString("APP_ENV"),
+	})
+	if metricErr != nil {
+		log.Println("[ERROR]", metricErr)
+	}
+
+	router := restAPI.CreateRouter("kiwi-iam.http.router", oktaClient, permissionManager, secretManager, metricClient)
 
 	// 0.0.0.0 is specified to allow listening in Docker
 	var address = "0.0.0.0"

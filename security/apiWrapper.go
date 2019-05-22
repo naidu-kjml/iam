@@ -2,6 +2,7 @@ package security
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
 	"regexp"
@@ -14,10 +15,14 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
+type metricService interface {
+	Incr(string, ...string)
+}
+
 // AuthWrapper wraps a router to validate the authentication token
-func AuthWrapper(h httprouter.Handle, secretManager secrets.SecretManager) httprouter.Handle {
+func AuthWrapper(h httprouter.Handle, secretManager secrets.SecretManager, metricClient metricService) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-		err := checkAuth(r, secretManager)
+		err := checkAuth(r, secretManager, metricClient)
 		if err != nil {
 			if apiErr, ok := err.(api.Error); ok {
 				http.Error(w, apiErr.Message, apiErr.Code)
@@ -82,7 +87,7 @@ func GetService(incomingUserAgent string) (Service, error) {
 }
 
 // checkAuth checks if user has proper token + user agent
-func checkAuth(r *http.Request, secretManager secrets.SecretManager) error {
+func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClient metricService) error {
 	requestToken := getToken(r.Header.Get("Authorization"))
 	userAgent := r.Header.Get("User-Agent")
 
@@ -108,6 +113,11 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager) error {
 	if token != requestToken {
 		return api.Error{Message: "Unauthorized: incorrect token", Code: 401}
 	}
+	metricClient.Incr(
+		"incoming.requests",
+		fmt.Sprintf("service-name:%v", service.Name),
+		fmt.Sprintf("service-environment:%v", service.Environment),
+	)
 
 	return nil
 }
