@@ -1,9 +1,11 @@
-package shared
+package okta
 
 import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
+	"path"
 	"time"
 
 	jsoniter "github.com/json-iterator/go"
@@ -56,4 +58,17 @@ func Fetch(req Request) (*Response, error) {
 	}
 
 	return &Response{httpRes}, nil
+}
+
+// joinURL parses and joins a base URL to a path safely
+func joinURL(baseURL string, pathname ...string) (string, error) {
+	u, err := url.Parse(baseURL)
+	if err != nil {
+		return "", err
+	}
+
+	// prepend u.Path to pathname slice
+	elems := append([]string{u.Path}, pathname...)
+	u.Path = path.Join(elems...)
+	return u.String(), nil
 }

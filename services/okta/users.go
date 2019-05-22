@@ -6,11 +6,9 @@ import (
 	"net/http"
 	"regexp"
 	"strings"
-
-	"gitlab.skypicker.com/platform/security/iam/shared"
 )
 
-type apiUser struct {
+type oktaUserProfile struct {
 	EmployeeNumber   string
 	FirstName        string
 	LastName         string
@@ -23,7 +21,7 @@ type apiUser struct {
 	Manager          string
 }
 
-func formatUser(user *apiUser) User {
+func formatUser(user *oktaUserProfile) User {
 	return User{
 		EmployeeNumber: user.EmployeeNumber,
 		FirstName:      user.FirstName,
@@ -38,29 +36,27 @@ func formatUser(user *apiUser) User {
 	}
 }
 
-type oktaResponse struct {
-	Profile apiUser
-}
-
 // ErrUserNotFound is returned when a user is not present in Okta
 var ErrUserNotFound = errors.New("user not found")
 
 // fetchUser retrieves a user from Okta by email
 func (c *Client) fetchUser(email string) (User, error) {
-	userURL, err := shared.JoinURL(c.baseURL, "/users/", email)
+	userURL, err := joinURL(c.baseURL, "/users/", email)
 	if err != nil {
 		return User{}, err
 	}
 
-	var response oktaResponse
-	var request = shared.Request{
+	var response struct {
+		Profile oktaUserProfile
+	}
+	var request = Request{
 		Method: "GET",
 		URL:    userURL,
 		Body:   nil,
 		Token:  c.authToken,
 	}
 
-	httpResponse, err := shared.Fetch(request)
+	httpResponse, err := Fetch(request)
 	if err != nil {
 		return User{}, err
 	}
@@ -86,15 +82,17 @@ func (c *Client) fetchUser(email string) (User, error) {
 // fetchUsers is used in iterations by FetchAllUsers
 func (c *Client) fetchUsers(url string) ([]User, http.Header, error) {
 
-	var response []oktaResponse
-	var request = shared.Request{
+	var response []struct {
+		Profile oktaUserProfile
+	}
+	var request = Request{
 		Method: "GET",
 		URL:    url,
 		Body:   nil,
 		Token:  c.authToken,
 	}
 
-	httpResponse, err := shared.Fetch(request)
+	httpResponse, err := Fetch(request)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -121,7 +119,7 @@ var oktaLinkPattern = regexp.MustCompile(`(?:<)(.*)(?:>)`)
 func (c *Client) fetchAllUsers() ([]User, error) {
 	var allUsers []User
 
-	url, err := shared.JoinURL(c.baseURL, "/users/")
+	url, err := joinURL(c.baseURL, "/users/")
 	if err != nil {
 		return nil, err
 	}

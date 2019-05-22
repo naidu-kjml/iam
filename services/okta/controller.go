@@ -9,6 +9,21 @@ import (
 	"github.com/getsentry/raven-go"
 )
 
+// User contains formatted user data provided by Okta
+type User struct {
+	EmployeeNumber string   `json:"employeeNumber"`
+	FirstName      string   `json:"firstName"`
+	LastName       string   `json:"lastName"`
+	Position       string   `json:"position"`
+	Department     string   `json:"department"`
+	Email          string   `json:"email"`
+	Location       string   `json:"location"`
+	IsVendor       bool     `json:"isVendor"`
+	TeamMembership []string `json:"teamMembership"`
+	Manager        string   `json:"manager"`
+	Permissions    []string `json:"permissions"`
+}
+
 // GetUser returns an Okta user by email. It first tries to get it from cache,
 // and if not present there, it will fetch it from Okta API.
 func (c *Client) GetUser(email string) (User, error) {

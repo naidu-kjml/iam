@@ -84,7 +84,7 @@ func TestGetApplicablePermissions(t *testing.T) {
 
 	tests := []TestCase{
 		{
-			Membership: []string{"Engineering", "Engineering/Content + CS Systems"},
+			Membership: []string{"Engineering", "Engineering/Content + cs systems"},
 			Expected:   []string{"key1:read", "key1:write"},
 		},
 		{

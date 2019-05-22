@@ -1,16 +1,16 @@
-package api
+package rest
 
 import (
 	"log"
 	"net/http"
 
 	"github.com/getsentry/raven-go"
-	"gitlab.skypicker.com/platform/security/iam/shared"
+	"gitlab.skypicker.com/platform/security/iam/api"
 )
 
 // panicHandler prevents the server crashing due to unhandled panics
 func panicHandler(w http.ResponseWriter, r *http.Request, err interface{}) {
-	apiError, castingOk := err.(shared.APIError)
+	apiError, castingOk := err.(api.Error)
 	if castingOk {
 		raven.CaptureError(apiError, nil)
 		http.Error(w, apiError.Message, apiError.Code)

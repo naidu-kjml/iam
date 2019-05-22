@@ -9,8 +9,8 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 	"gitlab.skypicker.com/go/packages/useragent"
+	"gitlab.skypicker.com/platform/security/iam/api"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
-	"gitlab.skypicker.com/platform/security/iam/shared"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
@@ -19,7 +19,7 @@ func AuthWrapper(h httprouter.Handle, secretManager secrets.SecretManager) httpr
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		err := checkAuth(r, secretManager)
 		if err != nil {
-			if apiErr, ok := err.(shared.APIError); ok {
+			if apiErr, ok := err.(api.Error); ok {
 				http.Error(w, apiErr.Message, apiErr.Code)
 			} else {
 				http.Error(w, "Internal server error", http.StatusInternalServerError)
@@ -88,11 +88,11 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager) error {
 
 	service, err := GetService(userAgent)
 	if err != nil {
-		return shared.APIError{Message: "User-Agent header mandatory", Code: 401}
+		return api.Error{Message: "User-Agent header mandatory", Code: 401}
 	}
 
 	if requestToken == "" {
-		return shared.APIError{Message: "Authorization header with token is mandatory", Code: 401}
+		return api.Error{Message: "Authorization header with token is mandatory", Code: 401}
 	}
 
 	if span, ok := tracer.SpanFromContext(r.Context()); ok {
@@ -102,11 +102,11 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager) error {
 
 	token, err := secretManager.GetAppToken(service.Name, service.Environment)
 	if err != nil {
-		return shared.APIError{Message: "Unauthorized: " + err.Error(), Code: 401}
+		return api.Error{Message: "Unauthorized: " + err.Error(), Code: 401}
 	}
 
 	if token != requestToken {
-		return shared.APIError{Message: "Unauthorized: incorrect token", Code: 401}
+		return api.Error{Message: "Unauthorized: incorrect token", Code: 401}
 	}
 
 	return nil

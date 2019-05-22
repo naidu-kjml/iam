@@ -7,8 +7,6 @@ import (
 	"path/filepath"
 	"strings"
 
-	"gitlab.skypicker.com/platform/security/iam/shared"
-
 	"github.com/getsentry/raven-go"
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v3"
@@ -196,10 +194,16 @@ func (p YamlPermissionManager) GetUserPermissions(service string, teamMembership
 func getApplicablePermissions(allPermissions []Permission, teamMembership []string) []string {
 	var permissions []string
 
+	tm := map[string]bool{}
+	for _, team := range teamMembership {
+		tm[strings.ToLower(team)] = true
+	}
+
 	for _, permission := range allPermissions {
 		for _, rule := range permission.Rules {
 			if rule.Type == "team" {
-				if shared.StringInSlice(strings.TrimSpace(rule.Value), teamMembership) {
+				teamName := strings.TrimSpace(strings.ToLower(rule.Value))
+				if tm[teamName] {
 					permissions = append(permissions, permission.Name)
 					// Skip other rules if permission is already given
 					break

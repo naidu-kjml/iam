@@ -1,11 +1,51 @@
-package shared
+package okta
 
 import (
+	"net/http"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )
+
+// Mock body for HTTP response. It implements the io.ReadWriter interface
+// by exposing the Read and Close methods.
+type BodyMock struct {
+	mock.Mock
+	Value string
+}
+
+func (b *BodyMock) Read(p []byte) (int, error) {
+	copy(p, b.Value)
+
+	return len(p), nil
+}
+
+func (b *BodyMock) Close() error {
+	b.Called()
+	return nil
+}
+
+func TestJSON(t *testing.T) {
+	var body = BodyMock{Value: `{ "message": "this is a test" }`}
+	body.On("Close").Return()
+
+	type Data struct{ Message string }
+	var expectedData Data
+
+	var res = Response{
+		&http.Response{Body: &body},
+	}
+	err := res.JSON(&expectedData)
+
+	if err != nil {
+		panic(err)
+	}
+
+	body.AssertNumberOfCalls(t, "Close", 1)
+	assert.Equal(t, expectedData, Data{Message: "this is a test"})
+}
 
 func TestJoinURL(t *testing.T) {
 	tests := map[string]struct {
@@ -35,15 +75,9 @@ func TestJoinURL(t *testing.T) {
 		test := test
 
 		t.Run(name, func(t *testing.T) {
-			result, err := JoinURL(test.args[0], test.args[1:]...)
+			result, err := joinURL(test.args[0], test.args[1:]...)
 			require.NoError(t, err)
 			assert.Equal(t, test.expected, result)
 		})
 	}
-}
-
-func TestStringInSlice(t *testing.T) {
-	assert.True(t, StringInSlice("some", []string{"where", "some"}))
-	assert.True(t, StringInSlice("caseinsensitive", []string{"CaseInsensitive"}))
-	assert.False(t, StringInSlice("some", []string{"where", "somehere"}))
 }

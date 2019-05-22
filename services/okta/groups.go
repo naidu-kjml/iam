@@ -4,8 +4,6 @@ import (
 	"net/http"
 	"strings"
 	"time"
-
-	"gitlab.skypicker.com/platform/security/iam/shared"
 )
 
 // Group represents an Okta group
@@ -28,14 +26,14 @@ func (c *Client) fetchGroups(url string) ([]Group, http.Header, error) {
 		LastMembershipUpdated time.Time
 		LastFetched           time.Time
 	}
-	var request = shared.Request{
+	var request = Request{
 		Method: "GET",
 		URL:    url,
 		Body:   nil,
 		Token:  c.authToken,
 	}
 
-	httpResponse, err := shared.Fetch(request)
+	httpResponse, err := Fetch(request)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -62,7 +60,7 @@ func (c *Client) fetchGroups(url string) ([]Group, http.Header, error) {
 func (c *Client) fetchAllGroups() ([]Group, error) {
 	var allGroups []Group
 
-	url, err := shared.JoinURL(c.baseURL, "/groups/")
+	url, err := joinURL(c.baseURL, "/groups/")
 	if err != nil {
 		return nil, err
 	}

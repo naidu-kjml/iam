@@ -5,7 +5,6 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-	"gitlab.skypicker.com/platform/security/iam/shared"
 	"gopkg.in/yaml.v3"
 )
 
@@ -45,7 +44,7 @@ func (m Mapper) GetTokenName(serviceName, environment string) (string, error) {
 			if environment == "" {
 				return service.TokenBase, nil
 			}
-			if shared.StringInSlice(environment, service.AllowedEnvironments) {
+			if stringInSlice(environment, service.AllowedEnvironments) {
 				return service.TokenBase + "_" + strings.ToUpper(environment), nil
 			}
 
