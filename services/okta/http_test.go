@@ -2,8 +2,10 @@ package okta
 
 import (
 	"net/http"
+	"net/http/httptest"
 	"testing"
 
+	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
@@ -80,4 +82,29 @@ func TestJoinURL(t *testing.T) {
 			assert.Equal(t, test.expected, result)
 		})
 	}
+}
+
+func mockHandler(t *testing.T) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		assert.Equal(t, "token", r.Header.Get("Authorization"))
+		assert.Equal(t, "kiwi-iam/version (Kiwi.com test)", r.Header.Get("User-Agent"))
+
+		_, _ = w.Write([]byte("Okay"))
+	})
+}
+
+func TestFetch(t *testing.T) {
+	ts := httptest.NewServer(mockHandler(t))
+	defer ts.Close()
+
+	viper.Set("APP_ENV", "test")
+	viper.Set("SENTRY_RELEASE", "version")
+
+	_, err := Fetch(Request{
+		Method: "GET",
+		URL:    ts.URL,
+		Token:  "token",
+	})
+
+	assert.NoError(t, err, "HTTP request should be sent without errors")
 }

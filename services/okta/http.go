@@ -8,7 +8,10 @@ import (
 	"path"
 	"time"
 
+	"github.com/getsentry/raven-go"
 	jsoniter "github.com/json-iterator/go"
+	"gitlab.skypicker.com/go/packages/useragent"
+	"gitlab.skypicker.com/platform/security/iam/config/cfg"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
@@ -44,9 +47,24 @@ func (res Response) JSON(body interface{}) error {
 
 // Fetch makes an HTTP request and returns response
 func Fetch(req Request) (*Response, error) {
+	var iam cfg.ServiceConfig
+	_ = cfg.LoadConfigs(&iam)
+
 	log.Println(req.Method, req.URL)
 	httpReq, err := http.NewRequest(req.Method, req.URL, req.Body)
-	httpReq.Header.Set("User-Agent", "kiwi-iam")
+
+	ua := useragent.UserAgent{
+		Name:        "kiwi-iam",
+		Environment: iam.Environment,
+		Version:     iam.Release,
+	}
+	uaString, uaErr := ua.Format()
+	if uaErr != nil {
+		log.Println("[ERR]", uaErr)
+		raven.CaptureError(uaErr, nil)
+	}
+
+	httpReq.Header.Set("User-Agent", uaString)
 	httpReq.Header.Set("Authorization", req.Token)
 	if err != nil {
 		return nil, err
