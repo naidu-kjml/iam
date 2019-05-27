@@ -30,6 +30,6 @@ require (
 	gitlab.skypicker.com/go/packages v0.0.0-20190502120350-d82eb114d1d0
 	golang.org/x/sync v0.0.0-20190425150253-112230192c58
 	golang.org/x/text v0.3.2 // indirect
-	gopkg.in/DataDog/dd-trace-go.v1 v1.13.0
+	gopkg.in/DataDog/dd-trace-go.v1 v1.14.0
 	gopkg.in/yaml.v3 v3.0.0-20190409140830-cdc409dda467
 )
