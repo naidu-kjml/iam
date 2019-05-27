@@ -7,7 +7,7 @@ services:
     command: ["nginx-debug", "-g", "daemon off;"]
 
   redis:
-    image: redis:5.0.4
+    image: redis:5.0.5
     container_name: cache
     expose:
       - 6379
