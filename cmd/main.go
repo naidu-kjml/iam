@@ -7,6 +7,7 @@ import (
 	"time"
 
 	restAPI "gitlab.skypicker.com/platform/security/iam/api/rest"
+	"gitlab.skypicker.com/platform/security/iam/config/cfg"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/security/permissions"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
@@ -14,18 +15,14 @@ import (
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
-	"github.com/spf13/viper"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 func fillCache(client *okta.Client) {
-	// fill cache immediately (if not dev)
-	if viper.GetString("APP_ENV") != "dev" {
-		log.Println("Start caching users")
-		client.SyncUsers()
-		log.Println("Start caching groups")
-		client.SyncGroups()
-	}
+	log.Println("Start caching users")
+	client.SyncUsers()
+	log.Println("Start caching groups")
+	client.SyncGroups()
 
 	// Run periodic task to fill in the cache
 	ticker := time.NewTicker(time.Minute * 10)
@@ -60,23 +57,7 @@ func syncVault(client *secrets.VaultManager) {
 	}
 }
 
-func loadEnv() secrets.SecretManager {
-	viper.AutomaticEnv()
-	viper.SetConfigFile(".env.yaml")
-	configErr := viper.ReadInConfig()
-
-	if configErr != nil {
-		log.Println("Config file failed to load. Defaulting to env.")
-	}
-
-	// Set defaults
-	viper.SetDefault("PORT", "8080")
-	viper.SetDefault("SERVE_PATH", "/")
-	viper.SetDefault("REDIS_HOST", "localhost")
-	viper.SetDefault("REDIS_PORT", "6379")
-	viper.SetDefault("REDIS_LOCK_RETRY_DELAY", "1s")
-	viper.SetDefault("REDIS_LOCK_EXPIRATION", "5s")
-
+func createSecretManager(vault cfg.VaultConfig) secrets.SecretManager {
 	tokenConfig, err := secrets.CreateNewConfigurationMapper()
 	if err != nil {
 		panic(err)
@@ -84,9 +65,9 @@ func loadEnv() secrets.SecretManager {
 
 	// Load data from Vault and set them if possible
 	vaultClient, vaultErr := secrets.CreateNewVaultClient(
-		viper.GetString("VAULT_ADDR"),
-		viper.GetString("VAULT_TOKEN"),
-		viper.GetString("VAULT_NAMESPACE"),
+		vault.Address,
+		vault.Token,
+		vault.Namespace,
 		tokenConfig,
 	)
 	if vaultErr == nil {
@@ -110,61 +91,75 @@ func loadEnv() secrets.SecretManager {
 	return localSecretManager
 }
 
-func initErrorTracking(token, environment, release string) {
-	if token == "" {
+func initErrorTracking(sentry cfg.SentryConfig) {
+	if sentry.Token == "" {
 		log.Println("SENTRY_DSN is not set. Error logging disabled.")
 		return
 	}
-	err := raven.SetDSN(token)
+	err := raven.SetDSN(sentry.Token)
 	if err != nil {
 		log.Println("[ERROR] Failed to set Raven DSN: ", err)
 	}
 
-	raven.SetEnvironment(environment)
-	raven.SetRelease(release)
+	raven.SetEnvironment(sentry.Environment)
+	raven.SetRelease(sentry.Release)
 }
 
 func main() {
-	secretManager := loadEnv()
-	initErrorTracking(viper.GetString("SENTRY_DSN"), viper.GetString("APP_ENV"), viper.GetString("SENTRY_RELEASE"))
+	cfg.InitEnv()
+
+	var (
+		iamConfig     cfg.ServiceConfig
+		oktaConfig    cfg.OktaConfig
+		storageConfig cfg.StorageConfig
+		datadogConfig cfg.DatadogConfig
+		sentryConfig  cfg.SentryConfig
+		vaultConfig   cfg.VaultConfig
+	)
+
+	// If there is an error loading the envs kill the app, as nothing will work without them.
+	if err := cfg.LoadConfigs(&iamConfig, &oktaConfig, &storageConfig, &datadogConfig, &sentryConfig, &vaultConfig); err != nil {
+		log.Println("[ERROR]", err.Error())
+		panic(err)
+	}
+
+	initErrorTracking(sentryConfig)
+	secretManager := createSecretManager(vaultConfig)
 
 	permissionManager := permissions.NewYamlPermissionManager()
 	go permissionManager.LoadPermissions()
 
 	// Datadog tracer
-	datadogEnv := viper.GetString("DATADOG_ENV")
-	if datadogEnv != "" {
+	if datadogConfig.Environment != "" {
 		tracer.Start(
 			tracer.WithServiceName("kiwi-iam"),
-			tracer.WithGlobalTag("env", datadogEnv),
+			tracer.WithGlobalTag("env", datadogConfig.Environment),
 		)
 	}
 
-	var port = viper.GetString("PORT")
-
-	oktaToken, _ := secretManager.GetSetting("OKTA_TOKEN")
 	cache := storage.NewRedisCache(
-		viper.GetString("REDIS_HOST"),
-		viper.GetString("REDIS_PORT"),
+		storageConfig.RedisHost,
+		storageConfig.RedisPort,
 	)
 	lock := storage.NewLockManager(
 		cache,
-		viper.GetDuration("REDIS_LOCK_RETRY_DELAY"),
-		viper.GetDuration("REDIS_LOCK_EXPIRATION"),
+		storageConfig.LockRetryDelay,
+		storageConfig.LockExpiration,
 	)
-	var oktaClient = okta.NewClient(okta.ClientOpts{
-		BaseURL:     viper.GetString("OKTA_URL"),
+	oktaToken, _ := secretManager.GetSetting("OKTA_TOKEN")
+	oktaClient := okta.NewClient(okta.ClientOpts{
+		BaseURL:     oktaConfig.URL,
 		AuthToken:   oktaToken,
 		Cache:       cache,
 		LockManager: lock,
 	})
 
-	// Metrics initialisation
+	// Metrics initialization
 	metricClient, metricErr := monitoring.CreateNewMetricService(monitoring.MetricSettings{
-		Host:        viper.GetString("DD_AGENT_HOST"),
+		Host:        datadogConfig.AgentHost,
 		Port:        "8125",
 		Namespace:   "kiwi_iam.",
-		Environment: viper.GetString("APP_ENV"),
+		Environment: iamConfig.Environment,
 	})
 	if metricErr != nil {
 		log.Println("[ERROR]", metricErr)
@@ -174,12 +169,11 @@ func main() {
 
 	// 0.0.0.0 is specified to allow listening in Docker
 	var address = "0.0.0.0"
-	if viper.GetBool("USE_LOCALHOST") {
+	if iamConfig.UseLocalhost {
 		address = "localhost"
 	}
 
-	var serveAddr = net.JoinHostPort(address, port)
-
+	var serveAddr = net.JoinHostPort(address, iamConfig.Port)
 	server := &http.Server{
 		Handler:      router,
 		Addr:         serveAddr,
@@ -187,12 +181,12 @@ func main() {
 		WriteTimeout: 10 * time.Second,
 	}
 
-	go fillCache(oktaClient)
+	if iamConfig.Environment != "dev" {
+		go fillCache(oktaClient)
+	}
 
 	log.Println("🚀 Golang server starting on " + serveAddr)
-	err := server.ListenAndServe()
-
-	if err != nil {
+	if err := server.ListenAndServe(); err != nil {
 		log.Fatal(err.Error())
 	}
 }
