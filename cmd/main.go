@@ -9,7 +9,6 @@ import (
 	restAPI "gitlab.skypicker.com/platform/security/iam/api/rest"
 	"gitlab.skypicker.com/platform/security/iam/config/cfg"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
-	"gitlab.skypicker.com/platform/security/iam/security/permissions"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
 	"gitlab.skypicker.com/platform/security/iam/storage"
@@ -125,9 +124,6 @@ func main() {
 
 	initErrorTracking(sentryConfig)
 	secretManager := createSecretManager(vaultConfig)
-
-	permissionManager := permissions.NewYamlPermissionManager()
-	go permissionManager.LoadPermissions()
 
 	// Datadog tracer
 	if datadogConfig.Environment != "" {
