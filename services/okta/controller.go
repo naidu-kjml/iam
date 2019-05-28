@@ -74,23 +74,19 @@ func (c *Client) GetUser(email string) (User, error) {
 
 // AddPermissions adds Okta groups to the given user object.
 func (c *Client) AddPermissions(user *User, service string) error {
-	cachedMemberships := make(map[string][]string)
+	cachedGroupMemberships := make(map[string][]string)
 
-	err := c.cache.Get("group-memberships", &cachedMemberships)
+	err := c.cache.Get(service, &cachedGroupMemberships)
 	if err != nil {
 		if err != storage.ErrNotFound {
 			return err
 		}
 	}
 
-	groupPrefix := iamGroupPrefix + strings.ToLower(service) + ":"
 	user.Permissions = make([]string, 0)
-
-	for groupName, users := range cachedMemberships {
-		if strings.HasPrefix(groupName, groupPrefix) {
-			if secrets.StringInSlice(user.EmployeeNumber, users) {
-				user.Permissions = append(user.Permissions, strings.Replace(groupName, groupPrefix, "", 1))
-			}
+	for groupName, users := range cachedGroupMemberships {
+		if secrets.StringInSlice(user.EmployeeNumber, users) {
+			user.Permissions = append(user.Permissions, groupName)
 		}
 	}
 
@@ -185,21 +181,25 @@ func (c *Client) SyncGroups() {
 }
 
 func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
-	cachedMemberships := make(map[string][]string)
-
-	err := c.cache.Get("group-memeberships", &cachedMemberships)
-	if err != nil {
-		if err != storage.ErrNotFound {
-			return err
-		}
-	}
+	cachedGroupMemberships := make(map[string][]string)
 
 	for _, membership := range memberships {
-		cachedMemberships[membership.GroupName] = membership.Users
-	}
+		// iam-serviceName:rule
+		groupParts := strings.SplitAfterN(membership.GroupName, ":", 2)
+		serviceName := strings.Replace(strings.TrimRight(groupParts[0], ":"), iamGroupPrefix, "", 1)
 
-	if err := c.cache.Set("group-memberships", cachedMemberships, 0); err != nil {
-		return err
+		err := c.cache.Get(serviceName, &cachedGroupMemberships)
+		if err != nil {
+			if err != storage.ErrNotFound {
+				return err
+			}
+		}
+
+		cachedGroupMemberships[groupParts[1]] = membership.Users
+
+		if err := c.cache.Set(serviceName, cachedGroupMemberships, 0); err != nil {
+			return err
+		}
 	}
 
 	return nil
