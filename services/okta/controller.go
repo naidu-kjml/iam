@@ -2,8 +2,10 @@ package okta
 
 import (
 	"log"
+	"strings"
 	"time"
 
+	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
@@ -70,6 +72,31 @@ func (c *Client) GetUser(email string) (User, error) {
 	return val.(User), nil
 }
 
+// AddPermissions adds Okta groups to the given user object.
+func (c *Client) AddPermissions(user *User, service string) error {
+	cachedMemberships := make(map[string][]string)
+
+	err := c.cache.Get("group-memberships", &cachedMemberships)
+	if err != nil {
+		if err != storage.ErrNotFound {
+			return err
+		}
+	}
+
+	groupPrefix := iamGroupPrefix + strings.ToLower(service) + ":"
+	user.Permissions = make([]string, 0)
+
+	for groupName, users := range cachedMemberships {
+		if strings.HasPrefix(groupName, groupPrefix) {
+			if secrets.StringInSlice(user.EmployeeNumber, users) {
+				user.Permissions = append(user.Permissions, strings.Replace(groupName, groupPrefix, "", 1))
+			}
+		}
+	}
+
+	return nil
+}
+
 // GetTeams retrieves from cache a map of all teams and their member count.
 func (c *Client) GetTeams() (map[string]int, error) {
 	var teams map[string]int
@@ -114,7 +141,7 @@ func (c *Client) SyncUsers() {
 		raven.CaptureError(err, nil)
 		return
 	}
-	log.Println("Cached ", len(users), " users")
+	log.Println("Cached", len(users), "users")
 
 	nTeams, err := cacheTeams(c.cache, users)
 	if err != nil {
@@ -122,23 +149,58 @@ func (c *Client) SyncUsers() {
 		raven.CaptureError(err, nil)
 		return
 	}
-	log.Println("Cached ", nTeams, " teams")
+	log.Println("Cached", nTeams, "teams")
 }
 
 // SyncGroups gets all groups from Okta and saves them into cache.
 func (c *Client) SyncGroups() {
-	groups, err := c.fetchAllGroups()
+	syncStart := time.Now().UTC()
+
+	groups, err := c.fetchModifiedGroups()
 	if err != nil {
 		log.Println("Error fetching groups", err)
 		raven.CaptureError(err, nil)
 		return
 	}
 
-	cacheErr := c.cache.Set("groups", groups, 0)
-	if cacheErr != nil {
-		log.Println("Error caching groups", cacheErr)
-		raven.CaptureError(cacheErr, nil)
+	// We need to keep track of users assigned to various groups
+	groupMemberships, err := c.fetchGroupMemberships(groups)
+	if err != nil {
+		log.Println("Error fetching group memberships ", err)
+		raven.CaptureError(err, nil)
 		return
 	}
-	log.Println("Cached ", len(groups), " groups")
+
+	if len(groupMemberships) > 0 {
+		if err = c.updateGroupMemberships(groupMemberships); err != nil {
+			log.Println("Error updating group memeberships ", err)
+			raven.CaptureError(err, nil)
+			return
+		}
+
+	}
+
+	c.lastGroupSync = syncStart
+	log.Println("Cached", len(groupMemberships), "group memberships")
+}
+
+func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
+	cachedMemberships := make(map[string][]string)
+
+	err := c.cache.Get("group-memeberships", &cachedMemberships)
+	if err != nil {
+		if err != storage.ErrNotFound {
+			return err
+		}
+	}
+
+	for _, membership := range memberships {
+		cachedMemberships[membership.GroupName] = membership.Users
+	}
+
+	if err := c.cache.Set("group-memberships", cachedMemberships, 0); err != nil {
+		return err
+	}
+
+	return nil
 }

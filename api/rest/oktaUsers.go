@@ -17,14 +17,11 @@ var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 type userDataService interface {
 	GetUser(string) (okta.User, error)
-}
-
-type permissionManager interface {
-	GetUserPermissions(string, []string) ([]string, error)
+	AddPermissions(*okta.User, string) error
 }
 
 // getOktaUserByEmail looks up an Okta user by email
-func getOktaUserByEmail(client userDataService, permissionManager permissionManager) httprouter.Handle {
+func getOktaUserByEmail(client userDataService) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		var values, err = url.ParseQuery(r.URL.RawQuery)
 		if err != nil {
@@ -58,12 +55,10 @@ func getOktaUserByEmail(client userDataService, permissionManager permissionMana
 			return
 		}
 
-		permissions, err := permissionManager.GetUserPermissions(service.Name, oktaUser.TeamMembership)
-		if err != nil {
+		if err = client.AddPermissions(&oktaUser, service.Name); err != nil {
 			log.Println("[ERROR]", err.Error())
 			raven.CaptureError(err, nil)
 		}
-		oktaUser.Permissions = permissions
 
 		w.Header().Set("Content-Type", "application/json")
 		je := json.NewEncoder(w)

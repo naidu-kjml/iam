@@ -6,7 +6,6 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 	"gitlab.skypicker.com/platform/security/iam/security"
-	"gitlab.skypicker.com/platform/security/iam/security/permissions"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
 	tracingRouter "gopkg.in/DataDog/dd-trace-go.v1/contrib/julienschmidt/httprouter"
@@ -24,7 +23,6 @@ type metricService interface {
 func CreateRouter(
 	serviceName string,
 	oktaClient *okta.Client,
-	permissionManager permissions.PermissionManager,
 	secretManager secrets.SecretManager,
 	metricClient metricService) *tracingRouter.Router {
 	router := tracingRouter.New(tracingRouter.WithServiceName(serviceName))
@@ -54,7 +52,7 @@ func CreateRouter(
 	}
 
 	// App routes
-	addEndpoint("/v1/user", getOktaUserByEmail(oktaClient, permissionManager))
+	addEndpoint("/v1/user", getOktaUserByEmail(oktaClient))
 
 	addEndpoint("/v1/teams", getTeams(oktaClient))
 

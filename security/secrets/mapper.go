@@ -44,7 +44,7 @@ func (m Mapper) GetTokenName(serviceName, environment string) (string, error) {
 			if environment == "" {
 				return service.TokenBase, nil
 			}
-			if stringInSlice(environment, service.AllowedEnvironments) {
+			if StringInSlice(environment, service.AllowedEnvironments) {
 				return service.TokenBase + "_" + strings.ToUpper(environment), nil
 			}
 

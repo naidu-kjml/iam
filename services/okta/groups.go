@@ -1,10 +1,15 @@
 package okta
 
 import (
+	"fmt"
+	"log"
 	"net/http"
+	gourl "net/url"
 	"strings"
 	"time"
 )
+
+const iamGroupPrefix = "iam-"
 
 // Group represents an Okta group
 type Group struct {
@@ -43,22 +48,25 @@ func (c *Client) fetchGroups(url string) ([]Group, http.Header, error) {
 		return nil, nil, jsonErr
 	}
 
-	// Create empty slice with the same length as the response
-	var groups = make([]Group, len(response))
+	var groups []Group
 	for i := range response {
 		group := &response[i]
-		groups[i] = Group{
-			ID:                    group.ID,
-			Name:                  group.Profile.Name,
-			Description:           group.Profile.Description,
-			LastMembershipUpdated: group.LastMembershipUpdated,
+		if strings.HasPrefix(group.Profile.Name, iamGroupPrefix) {
+			groups = append(groups, Group{
+				ID:                    group.ID,
+				Name:                  group.Profile.Name,
+				Description:           group.Profile.Description,
+				LastMembershipUpdated: group.LastMembershipUpdated,
+			})
 		}
 	}
 	return groups, httpResponse.Header, nil
 }
 
-func (c *Client) fetchAllGroups() ([]Group, error) {
+func (c *Client) fetchModifiedGroups() ([]Group, error) {
 	var allGroups []Group
+	filter := "?filter=" + gourl.QueryEscape("lastMembershipUpdated gt \""+oktaTimeFormat(c.lastGroupSync)+"\"")
+	log.Println(filter)
 
 	url, err := joinURL(c.baseURL, "/groups/")
 	if err != nil {
@@ -68,7 +76,7 @@ func (c *Client) fetchAllGroups() ([]Group, error) {
 
 	for hasNext {
 		hasNext = false
-		groups, header, fetchErr := c.fetchGroups(url)
+		groups, header, fetchErr := c.fetchGroups(url + filter)
 		if fetchErr != nil {
 			return nil, fetchErr
 		}
@@ -86,4 +94,10 @@ func (c *Client) fetchAllGroups() ([]Group, error) {
 	}
 
 	return allGroups, nil
+}
+
+func oktaTimeFormat(t time.Time) string {
+	return fmt.Sprintf("%d-%02d-%02dT%02d:%02d:%02d.0Z",
+		t.Year(), t.Month(), t.Day(),
+		t.Hour(), t.Minute(), t.Second())
 }

@@ -165,7 +165,7 @@ func main() {
 		log.Println("[ERROR]", metricErr)
 	}
 
-	router := restAPI.CreateRouter("kiwi-iam.http.router", oktaClient, permissionManager, secretManager, metricClient)
+	router := restAPI.CreateRouter("kiwi-iam.http.router", oktaClient, secretManager, metricClient)
 
 	// 0.0.0.0 is specified to allow listening in Docker
 	var address = "0.0.0.0"
