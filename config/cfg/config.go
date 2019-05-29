@@ -102,7 +102,7 @@ type SentryConfig struct {
 
 // VaultConfig stores configuration values for Vault client
 type VaultConfig struct {
-	Token     string `mapstructure:"VAULT_ADDR"`
-	Address   string `mapstructure:"VAULT_TOKEN"`
+	Token     string `mapstructure:"VAULT_TOKEN"`
+	Address   string `mapstructure:"VAULT_ADDR"`
 	Namespace string `mapstructure:"VAULT_NAMESPACE"`
 }
