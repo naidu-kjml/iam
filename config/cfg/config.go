@@ -25,7 +25,7 @@ func InitEnv() {
 	// Environment used for sentry, user agent. Removes user syncing if set to dev.
 	viper.SetDefault("APP_ENV", "")
 	// Uses localhost intead of 0.0.0.0, useful for OSX.
-	viper.SetDefault("USE_LOCALHOST", true)
+	viper.SetDefault("USE_LOCALHOST", false)
 
 	// This is only used locally, when deployed, IAM fetches the token from Vault.
 	viper.SetDefault("OKTA_TOKEN", "")
