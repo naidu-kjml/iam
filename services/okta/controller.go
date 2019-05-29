@@ -5,7 +5,6 @@ import (
 	"strings"
 	"time"
 
-	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
@@ -25,6 +24,8 @@ type User struct {
 	Manager        string   `json:"manager"`
 	Permissions    []string `json:"permissions"`
 }
+
+const groupMembershipPrefix = "group-membership:"
 
 // GetUser returns an Okta user by email. It first tries to get it from cache,
 // and if not present there, it will fetch it from Okta API.
@@ -74,9 +75,9 @@ func (c *Client) GetUser(email string) (User, error) {
 
 // AddPermissions adds Okta groups to the given user object.
 func (c *Client) AddPermissions(user *User, service string) error {
-	cachedGroupMemberships := make(map[string][]string)
+	cachedGroupMemberships := make(map[string]map[string]bool)
 
-	err := c.cache.Get(service, &cachedGroupMemberships)
+	err := c.cache.Get(groupMembershipPrefix+service, &cachedGroupMemberships)
 	if err != nil {
 		if err != storage.ErrNotFound {
 			return err
@@ -85,7 +86,7 @@ func (c *Client) AddPermissions(user *User, service string) error {
 
 	user.Permissions = make([]string, 0)
 	for groupName, users := range cachedGroupMemberships {
-		if secrets.StringInSlice(user.EmployeeNumber, users) {
+		if users[user.EmployeeNumber] {
 			user.Permissions = append(user.Permissions, groupName)
 		}
 	}
@@ -176,17 +177,20 @@ func (c *Client) SyncGroups() {
 
 	}
 
-	c.lastGroupSync = syncStart
+	if err = c.cache.Set("groups-sync-timestamp", syncStart, 0); err != nil {
+		log.Println("Error while caching last synchronization time ", err)
+		raven.CaptureError(err, nil)
+	}
 	log.Println("Cached", len(groupMemberships), "group memberships")
 }
 
 func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
-	cachedGroupMemberships := make(map[string][]string)
+	cachedGroupMemberships := make(map[string]map[string]bool)
 
 	for _, membership := range memberships {
 		// iam-serviceName:rule
 		groupParts := strings.SplitAfterN(membership.GroupName, ":", 2)
-		serviceName := strings.Replace(strings.TrimRight(groupParts[0], ":"), iamGroupPrefix, "", 1)
+		serviceName := groupMembershipPrefix + strings.Replace(strings.TrimRight(groupParts[0], ":"), iamGroupPrefix, "", 1)
 
 		err := c.cache.Get(serviceName, &cachedGroupMemberships)
 		if err != nil {
@@ -195,7 +199,13 @@ func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
 			}
 		}
 
-		cachedGroupMemberships[groupParts[1]] = membership.Users
+		if _, ok := cachedGroupMemberships[groupParts[1]]; !ok {
+			cachedGroupMemberships[groupParts[1]] = make(map[string]bool)
+		}
+
+		for _, userid := range membership.Users {
+			cachedGroupMemberships[groupParts[1]][userid] = true
+		}
 
 		if err := c.cache.Set(serviceName, cachedGroupMemberships, 0); err != nil {
 			return err

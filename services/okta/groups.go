@@ -7,6 +7,9 @@ import (
 	gourl "net/url"
 	"strings"
 	"time"
+
+	"github.com/getsentry/raven-go"
+	"gitlab.skypicker.com/platform/security/iam/storage"
 )
 
 const iamGroupPrefix = "iam-"
@@ -65,7 +68,7 @@ func (c *Client) fetchGroups(url string) ([]Group, http.Header, error) {
 
 func (c *Client) fetchModifiedGroups() ([]Group, error) {
 	var allGroups []Group
-	filter := "?filter=" + gourl.QueryEscape("lastMembershipUpdated gt \""+oktaTimeFormat(c.lastGroupSync)+"\"")
+	filter := "?filter=" + gourl.QueryEscape("lastMembershipUpdated gt \""+c.getLastSyncTime()+"\"")
 	log.Println(filter)
 
 	url, err := joinURL(c.baseURL, "/groups/")
@@ -94,6 +97,18 @@ func (c *Client) fetchModifiedGroups() ([]Group, error) {
 	}
 
 	return allGroups, nil
+}
+
+func (c *Client) getLastSyncTime() string {
+	timestamp := time.Time{}
+	if err := c.cache.Get("groups-sync-timestamp", &timestamp); err != nil {
+		if err != storage.ErrNotFound {
+			log.Println("[ERROR]", err.Error())
+			raven.CaptureError(err, nil)
+		}
+	}
+
+	return oktaTimeFormat(timestamp)
 }
 
 func oktaTimeFormat(t time.Time) string {
