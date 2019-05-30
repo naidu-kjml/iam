@@ -98,7 +98,7 @@ func (c *RedisCache) Del(key string) error {
 }
 
 // MSet writes items to cache in bulk
-func (c *RedisCache) MSet(pairs map[string]interface{}) error {
+func (c *RedisCache) MSet(pairs map[string]interface{}, ttl time.Duration) error {
 	args := make([]interface{}, len(pairs)*2)
 	i := 0
 
@@ -117,6 +117,25 @@ func (c *RedisCache) MSet(pairs map[string]interface{}) error {
 		log.Println("Redis down using inMemory MSET")
 		raven.CaptureMessage("Redis down using inMemory MSET", nil)
 		err = c.backup.MSet(pairs)
+		return err
 	}
+
+	// MSET doesn't support an expiration, so if an expiration was defined, set it
+	// manually. A pipeline is used to send all the commands in one request. The
+	// commands are not executed all in one atomic transaction to avoid blocking
+	// incoming requests.
+	if ttl != 0 {
+		pipe := c.client.Pipeline()
+		for key := range pairs {
+			pipe.Expire(key, ttl)
+		}
+		_, expErr := pipe.Exec()
+		if expErr != nil {
+			log.Println("Error setting keys expiration")
+			raven.CaptureError(expErr, nil)
+		}
+
+	}
+
 	return err
 }

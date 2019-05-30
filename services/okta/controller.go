@@ -149,7 +149,7 @@ func (c *Client) SyncUsers() {
 		pairs[user.Email] = user
 	}
 
-	err = c.cache.MSet(pairs)
+	err = c.cache.MSet(pairs, time.Hour*24)
 	if err != nil {
 		log.Println("Error caching users", err)
 		raven.CaptureError(err, nil)
