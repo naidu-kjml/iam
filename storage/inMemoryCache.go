@@ -2,14 +2,21 @@ package storage
 
 import (
 	"strings"
+	"time"
 )
 
+// item represent a value in cache
+type item struct {
+	value      []byte
+	expiration time.Time
+}
+
 // InMemoryCache is an in memory cache used as a backup when Redis is unavailable
-type InMemoryCache map[string][]byte
+type InMemoryCache map[string]item
 
 // NewInMemoryCache initializes and returns an InMemoryCache
 func NewInMemoryCache() InMemoryCache {
-	return make(map[string][]byte)
+	return make(map[string]item)
 }
 
 // Get retrieves an item from cache.
@@ -20,21 +27,33 @@ func (c InMemoryCache) Get(key string, value interface{}) error {
 	lowerKey := strings.ToLower(key)
 	data, ok := c[lowerKey]
 	if ok {
-		return json.Unmarshal(data, &value)
+		if time.Now().Before(data.expiration) || data.expiration.IsZero() {
+			return json.Unmarshal(data.value, &value)
+		}
+		// Item is expired
+		c.Del(key)
 	}
 
 	return ErrNotFound
 }
 
 // Set writes data to cache. `key` is case insensitive.
-func (c InMemoryCache) Set(key string, value interface{}) error {
+func (c InMemoryCache) Set(key string, value interface{}, ttl time.Duration) error {
 	strVal, err := json.Marshal(value)
 	if err != nil {
 		return err
 	}
 
+	expiration := time.Time{}
+	if ttl != 0 {
+		expiration = time.Now().Add(ttl)
+	}
+
 	lowerKey := strings.ToLower(key)
-	c[lowerKey] = strVal
+	c[lowerKey] = item{
+		strVal,
+		expiration,
+	}
 	return nil
 }
 
@@ -45,7 +64,7 @@ func (c InMemoryCache) Del(key string) {
 }
 
 // MSet writes items to cache in bulk
-func (c InMemoryCache) MSet(pairs map[string]interface{}) error {
+func (c InMemoryCache) MSet(pairs map[string]interface{}, ttl time.Duration) error {
 	bytePairs := make(map[string][]byte)
 
 	// Go through all values and convert them to byte arrays first, then write to
@@ -59,9 +78,16 @@ func (c InMemoryCache) MSet(pairs map[string]interface{}) error {
 		bytePairs[key] = strValue
 	}
 
+	expiration := time.Time{}
+	if ttl != 0 {
+		expiration = time.Now().Add(ttl)
+	}
 	for key, value := range bytePairs {
 		lowerKey := strings.ToLower(key)
-		c[lowerKey] = value
+		c[lowerKey] = item{
+			value,
+			expiration,
+		}
 	}
 	return nil
 }

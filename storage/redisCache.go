@@ -79,7 +79,7 @@ func (c *RedisCache) Set(key string, value interface{}, ttl time.Duration) error
 	if isConnectionRefused(err) {
 		log.Println("Redis down using inMemory SET")
 		raven.CaptureMessage("Redis down using inMemory SET", nil)
-		err = c.backup.Set(key, value)
+		err = c.backup.Set(key, value, ttl)
 	}
 	return err
 }
@@ -116,7 +116,7 @@ func (c *RedisCache) MSet(pairs map[string]interface{}, ttl time.Duration) error
 	if isConnectionRefused(err) {
 		log.Println("Redis down using inMemory MSET")
 		raven.CaptureMessage("Redis down using inMemory MSET", nil)
-		err = c.backup.MSet(pairs)
+		err = c.backup.MSet(pairs, ttl)
 		return err
 	}
 
