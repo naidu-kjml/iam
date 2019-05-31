@@ -59,6 +59,7 @@ func getOktaUserByEmail(client userDataService) httprouter.Handle {
 			log.Println("[ERROR]", err.Error())
 			raven.CaptureError(err, nil)
 		}
+		oktaUser.OktaID = "" // OktaID is important only internally, service have no use for it
 
 		w.Header().Set("Content-Type", "application/json")
 		je := json.NewEncoder(w)

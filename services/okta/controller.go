@@ -1,6 +1,7 @@
 package okta
 
 import (
+	"fmt"
 	"log"
 	"strings"
 	"time"
@@ -12,6 +13,7 @@ import (
 
 // User contains formatted user data provided by Okta
 type User struct {
+	OktaID         string   `json:"oktaId,omitempty"` // Exported to be cache-able
 	EmployeeNumber string   `json:"employeeNumber"`
 	FirstName      string   `json:"firstName"`
 	LastName       string   `json:"lastName"`
@@ -76,15 +78,30 @@ func (c *Client) GetUser(email string) (User, error) {
 // AddPermissions adds Okta groups to the given user object.
 func (c *Client) AddPermissions(user *User, service string) error {
 	cachedGroupMemberships := make(map[string]map[string]bool)
+	user.Permissions = make([]string, 0)
 
 	err := c.cache.Get(groupMembershipPrefix+service, &cachedGroupMemberships)
 	if err != nil {
 		if err != storage.ErrNotFound {
 			return err
 		}
+		// Ask Okta in case of cache miss
+		groups, err := c.fetchGroups(user.OktaID, "")
+		if err != nil {
+			return err
+		}
+
+		groupPrefix := iamGroupPrefix + strings.ToLower(service) + ":"
+
+		for _, group := range groups {
+			if strings.HasPrefix(group.Name, groupPrefix) {
+				user.Permissions = append(user.Permissions, strings.Replace(group.Name, groupPrefix, "", 1))
+			}
+		}
+
+		return nil
 	}
 
-	user.Permissions = make([]string, 0)
 	for groupName, users := range cachedGroupMemberships {
 		if users[user.EmployeeNumber] {
 			user.Permissions = append(user.Permissions, groupName)
@@ -153,7 +170,7 @@ func (c *Client) SyncUsers() {
 func (c *Client) SyncGroups() {
 	syncStart := time.Now().UTC()
 
-	groups, err := c.fetchModifiedGroups()
+	groups, err := c.fetchGroups("", c.getLastSyncTime())
 	if err != nil {
 		log.Println("Error fetching groups", err)
 		raven.CaptureError(err, nil)
@@ -213,4 +230,22 @@ func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
 	}
 
 	return nil
+}
+
+func (c *Client) getLastSyncTime() string {
+	timestamp := time.Time{}
+	if err := c.cache.Get("groups-sync-timestamp", &timestamp); err != nil {
+		if err != storage.ErrNotFound {
+			log.Println("[ERROR]", err.Error())
+			raven.CaptureError(err, nil)
+		}
+	}
+
+	return oktaTimeFormat(timestamp)
+}
+
+func oktaTimeFormat(t time.Time) string {
+	return fmt.Sprintf("%d-%02d-%02dT%02d:%02d:%02d.0Z",
+		t.Year(), t.Month(), t.Day(),
+		t.Hour(), t.Minute(), t.Second())
 }

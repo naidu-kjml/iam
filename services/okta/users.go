@@ -4,8 +4,6 @@ import (
 	"errors"
 	"log"
 	"net/http"
-	"regexp"
-	"strings"
 )
 
 type oktaUserProfile struct {
@@ -21,8 +19,9 @@ type oktaUserProfile struct {
 	Manager          string
 }
 
-func formatUser(user *oktaUserProfile) User {
+func formatUser(oktaID string, user *oktaUserProfile) User {
 	return User{
+		OktaID:         oktaID,
 		EmployeeNumber: user.EmployeeNumber,
 		FirstName:      user.FirstName,
 		LastName:       user.LastName,
@@ -47,6 +46,7 @@ func (c *Client) fetchUser(email string) (User, error) {
 	}
 
 	var response struct {
+		ID      string
 		Profile oktaUserProfile
 	}
 	var request = Request{
@@ -75,45 +75,9 @@ func (c *Client) fetchUser(email string) (User, error) {
 		return User{}, jsonErr
 	}
 
-	var user = formatUser(&response.Profile)
+	var user = formatUser(response.ID, &response.Profile)
 	return user, nil
 }
-
-// fetchUsers is used in iterations by FetchAllUsers
-func (c *Client) fetchUsers(url string) ([]User, http.Header, error) {
-
-	var response []struct {
-		Profile oktaUserProfile
-	}
-	var request = Request{
-		Method: "GET",
-		URL:    url,
-		Body:   nil,
-		Token:  c.authToken,
-	}
-
-	httpResponse, err := Fetch(request)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	jsonErr := httpResponse.JSON(&response)
-
-	if jsonErr != nil {
-		return nil, nil, jsonErr
-	}
-
-	// Create empty slice with the same length as the response we got from Okta.
-	var users = make([]User, len(response))
-	for i := range response {
-		user := &response[i]
-		users[i] = formatUser(&user.Profile)
-	}
-
-	return users, httpResponse.Header, nil
-}
-
-var oktaLinkPattern = regexp.MustCompile(`(?:<)(.*)(?:>)`)
 
 // fetchAllUsers retrieves all Okta users
 func (c *Client) fetchAllUsers() ([]User, error) {
@@ -123,28 +87,29 @@ func (c *Client) fetchAllUsers() ([]User, error) {
 	if err != nil {
 		return nil, err
 	}
-	hasNext := true
 
-	for hasNext {
-		hasNext = false
-		var users []User
-		var header http.Header
+	var resources []struct {
+		ID      string
+		Profile oktaUserProfile
+	}
 
-		users, header, err = c.fetchUsers(url)
+	responses, err := c.fetchPagedResource(url)
+	if err != nil {
+		return nil, err
+	}
 
-		if err != nil {
-			return nil, err
+	for _, response := range responses {
+		jsonErr := response.JSON(&resources)
+		if jsonErr != nil {
+			return nil, jsonErr
 		}
 
-		linkHeader := header["Link"]
-		for _, link := range linkHeader {
-			if strings.Contains(link, "rel=\"next\"") {
-				url = oktaLinkPattern.FindStringSubmatch(link)[1]
-				if url != "" {
-					hasNext = true
-				}
-			}
+		var users = make([]User, len(resources))
+		for i := range resources {
+			user := &resources[i]
+			users[i] = formatUser(user.ID, &user.Profile)
 		}
+
 		allUsers = append(allUsers, users...)
 	}
 
