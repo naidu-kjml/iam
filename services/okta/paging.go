@@ -15,7 +15,7 @@ func (c *Client) fetchResource(url string) (*Response, error) {
 		Token:  c.authToken,
 	}
 
-	httpResponse, err := Fetch(request)
+	httpResponse, err := c.fetch(request)
 	if err != nil {
 		return &Response{}, err
 	}

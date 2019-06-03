@@ -25,6 +25,11 @@ type Metrics struct {
 
 // CreateNewMetricService creates an instance of Metrics and returns it
 func CreateNewMetricService(settings MetricSettings) (*Metrics, error) {
+	if settings.Host == "" || settings.Port == "" {
+		log.Println("Datadog metrics disabled.")
+		return &Metrics{rate: 1.0}, nil
+	}
+
 	address := net.JoinHostPort(settings.Host, settings.Port)
 	dataDogClient, ddErr := statsd.New(
 		address,

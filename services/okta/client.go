@@ -1,6 +1,8 @@
 package okta
 
 import (
+	"gitlab.skypicker.com/platform/security/iam/config/cfg"
+	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 	"golang.org/x/sync/singleflight"
 )
@@ -11,6 +13,8 @@ type ClientOpts struct {
 	LockManager *storage.LockManager
 	BaseURL     string
 	AuthToken   string
+	IAMConfig   *cfg.ServiceConfig
+	Metrics     *monitoring.Metrics
 }
 
 // Client represent an Okta client
@@ -20,6 +24,8 @@ type Client struct {
 	lock      *storage.LockManager
 	baseURL   string
 	authToken string
+	iamConfig *cfg.ServiceConfig
+	metrics   *monitoring.Metrics
 }
 
 // NewClient creates an Okta client based on the given options
@@ -29,5 +35,7 @@ func NewClient(opts ClientOpts) *Client {
 		lock:      opts.LockManager,
 		baseURL:   opts.BaseURL,
 		authToken: opts.AuthToken,
+		iamConfig: opts.IAMConfig,
+		metrics:   opts.Metrics,
 	}
 }

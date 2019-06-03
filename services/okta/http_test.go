@@ -5,10 +5,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
+	"gitlab.skypicker.com/platform/security/iam/config/cfg"
 )
 
 // Mock body for HTTP response. It implements the io.ReadWriter interface
@@ -97,10 +97,14 @@ func TestFetch(t *testing.T) {
 	ts := httptest.NewServer(mockHandler(t))
 	defer ts.Close()
 
-	viper.Set("APP_ENV", "test")
-	viper.Set("SENTRY_RELEASE", "version")
+	c := NewClient(ClientOpts{
+		IAMConfig: &cfg.ServiceConfig{
+			Environment: "test",
+			Release:     "version",
+		},
+	})
 
-	_, err := Fetch(Request{
+	_, err := c.fetch(Request{
 		Method: "GET",
 		URL:    ts.URL,
 		Token:  "token",

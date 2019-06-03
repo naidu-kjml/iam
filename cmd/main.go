@@ -133,6 +133,17 @@ func main() {
 		)
 	}
 
+	// Metrics initialization
+	metricClient, metricErr := monitoring.CreateNewMetricService(monitoring.MetricSettings{
+		Host:        datadogConfig.AgentHost,
+		Port:        "8125",
+		Namespace:   "kiwi_iam.",
+		Environment: iamConfig.Environment,
+	})
+	if metricErr != nil {
+		log.Println("[ERROR]", metricErr)
+	}
+
 	cache := storage.NewRedisCache(
 		storageConfig.RedisHost,
 		storageConfig.RedisPort,
@@ -148,18 +159,9 @@ func main() {
 		AuthToken:   oktaToken,
 		Cache:       cache,
 		LockManager: lock,
+		IAMConfig:   &iamConfig,
+		Metrics:     metricClient,
 	})
-
-	// Metrics initialization
-	metricClient, metricErr := monitoring.CreateNewMetricService(monitoring.MetricSettings{
-		Host:        datadogConfig.AgentHost,
-		Port:        "8125",
-		Namespace:   "kiwi_iam.",
-		Environment: iamConfig.Environment,
-	})
-	if metricErr != nil {
-		log.Println("[ERROR]", metricErr)
-	}
 
 	router := restAPI.CreateRouter("kiwi-iam.http.router", oktaClient, secretManager, metricClient)
 

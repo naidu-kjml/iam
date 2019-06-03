@@ -56,7 +56,7 @@ func (c *Client) fetchUser(email string) (User, error) {
 		Token:  c.authToken,
 	}
 
-	httpResponse, err := Fetch(request)
+	httpResponse, err := c.fetch(request)
 	if err != nil {
 		return User{}, err
 	}
