@@ -13,18 +13,19 @@ import (
 
 // User contains formatted user data provided by Okta
 type User struct {
-	OktaID         string   `json:"oktaId,omitempty"` // Exported to be cache-able
-	EmployeeNumber string   `json:"employeeNumber"`
-	FirstName      string   `json:"firstName"`
-	LastName       string   `json:"lastName"`
-	Position       string   `json:"position"`
-	Department     string   `json:"department"`
-	Email          string   `json:"email"`
-	Location       string   `json:"location"`
-	IsVendor       bool     `json:"isVendor"`
-	TeamMembership []string `json:"teamMembership"`
-	Manager        string   `json:"manager"`
-	Permissions    []string `json:"permissions"`
+	OktaID          string   `json:"oktaId,omitempty"` // Exported to be cache-able
+	EmployeeNumber  string   `json:"employeeNumber"`
+	FirstName       string   `json:"firstName"`
+	LastName        string   `json:"lastName"`
+	Position        string   `json:"position"`
+	Department      string   `json:"department"`
+	Email           string   `json:"email"`
+	Location        string   `json:"location"`
+	IsVendor        bool     `json:"isVendor"`
+	TeamMembership  []string `json:"teamMembership"`
+	GroupMembership []Group  `json:"groupMembership"`
+	Manager         string   `json:"manager"`
+	Permissions     []string `json:"permissions"`
 }
 
 const groupMembershipPrefix = "group-membership:"
@@ -85,8 +86,9 @@ func (c *Client) AddPermissions(user *User, service string) error {
 		if err != storage.ErrNotFound {
 			return err
 		}
-		// Ask Okta in case of cache miss
-		groups, err := c.fetchGroups(user.OktaID, "")
+
+		// Get cached groups or ask Okta in case of cache miss.
+		groups, err := c.getUserGroups(user)
 		if err != nil {
 			return err
 		}
@@ -199,37 +201,6 @@ func (c *Client) SyncGroups() {
 		raven.CaptureError(err, nil)
 	}
 	log.Println("Cached", len(groupMemberships), "group memberships")
-}
-
-func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
-	cachedGroupMemberships := make(map[string]map[string]bool)
-
-	for _, membership := range memberships {
-		// iam-serviceName:rule
-		groupParts := strings.SplitAfterN(membership.GroupName, ":", 2)
-		serviceName := groupMembershipPrefix + strings.Replace(strings.TrimRight(groupParts[0], ":"), iamGroupPrefix, "", 1)
-
-		err := c.cache.Get(serviceName, &cachedGroupMemberships)
-		if err != nil {
-			if err != storage.ErrNotFound {
-				return err
-			}
-		}
-
-		if _, ok := cachedGroupMemberships[groupParts[1]]; !ok {
-			cachedGroupMemberships[groupParts[1]] = make(map[string]bool)
-		}
-
-		for _, userid := range membership.Users {
-			cachedGroupMemberships[groupParts[1]][userid] = true
-		}
-
-		if err := c.cache.Set(serviceName, cachedGroupMemberships, 0); err != nil {
-			return err
-		}
-	}
-
-	return nil
 }
 
 func (c *Client) getLastSyncTime() string {

@@ -1,5 +1,11 @@
 package okta
 
+import (
+	"strings"
+
+	"gitlab.skypicker.com/platform/security/iam/storage"
+)
+
 // GroupMembership holds the current user ids for users who are part of a given group
 type GroupMembership struct {
 	GroupID   string
@@ -56,4 +62,35 @@ func (c *Client) fetchGroupMemberships(groups []Group) ([]GroupMembership, error
 	}
 
 	return groupMemberships, nil
+}
+
+func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
+	cachedGroupMemberships := make(map[string]map[string]bool)
+
+	for _, membership := range memberships {
+		// iam-serviceName:rule
+		groupParts := strings.SplitAfterN(membership.GroupName, ":", 2)
+		serviceName := groupMembershipPrefix + strings.Replace(strings.TrimRight(groupParts[0], ":"), iamGroupPrefix, "", 1)
+
+		err := c.cache.Get(serviceName, &cachedGroupMemberships)
+		if err != nil {
+			if err != storage.ErrNotFound {
+				return err
+			}
+		}
+
+		if _, ok := cachedGroupMemberships[groupParts[1]]; !ok {
+			cachedGroupMemberships[groupParts[1]] = make(map[string]bool)
+		}
+
+		for _, userid := range membership.Users {
+			cachedGroupMemberships[groupParts[1]][userid] = true
+		}
+
+		if err := c.cache.Set(serviceName, cachedGroupMemberships, 0); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

@@ -4,6 +4,9 @@ import (
 	gourl "net/url"
 	"strings"
 	"time"
+
+	"github.com/getsentry/raven-go"
+	"gitlab.skypicker.com/platform/security/iam/storage"
 )
 
 const iamGroupPrefix = "iam-"
@@ -73,4 +76,46 @@ func (c *Client) fetchGroups(userID, since string) ([]Group, error) {
 	}
 
 	return allGroups, nil
+}
+
+func (c *Client) getUserGroups(user *User) ([]Group, error) {
+	if user.GroupMembership != nil {
+		// Group membership is cached, don't fetch it.
+		return user.GroupMembership, nil
+	}
+
+	lockName := user.Email + ":groupMembership"
+	// Deduplicate network calls and cache writes if this function is called
+	// multiple times within the same instance.
+	val, err, _ := c.group.Do(lockName, func() (interface{}, error) {
+		lockErr := c.lock.Create(lockName)
+		if lockErr == storage.ErrLockExists {
+			// If there was a lock, it means another instance was fetching this data
+			// recently, in that case, we should be able to just get the data from
+			// cache.
+			var u User
+			if err := c.cache.Get(user.Email, &u); err != nil {
+				return nil, err
+			}
+			return u.GroupMembership, nil
+		}
+		defer c.lock.Delete(lockName)
+
+		groups, fetchErr := c.fetchGroups(user.OktaID, "")
+		if fetchErr != nil {
+			return nil, fetchErr
+		}
+		user.GroupMembership = groups
+
+		cacheErr := c.cache.Set(user.Email, user, 15*time.Minute)
+		if cacheErr != nil {
+			raven.CaptureError(cacheErr, nil)
+		}
+		return groups, nil
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return val.([]Group), nil
 }
