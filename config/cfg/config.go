@@ -22,7 +22,7 @@ func InitEnv() {
 	// are retrieved, we set all defaults here.
 	viper.SetDefault("PORT", "8080")
 	viper.SetDefault("SERVE_PATH", "/")
-	// Environment used for sentry, user agent. Removes user syncing if set to dev.
+	// Environment used for sentry, user agent, datadog. Removes user syncing if set to dev.
 	viper.SetDefault("APP_ENV", "")
 	// Uses localhost intead of 0.0.0.0, useful for OSX.
 	viper.SetDefault("USE_LOCALHOST", false)
@@ -42,7 +42,7 @@ func InitEnv() {
 	// generation, and for finding regressions on Sentry.
 	viper.SetDefault("SENTRY_RELEASE", "")
 
-	viper.SetDefault("DATADOG_ENV", "")
+	// Env is taken from APP_ENV.
 	viper.SetDefault("DATADOG_ADDR", "")
 	viper.SetDefault("DD_AGENT_HOST", "")
 
@@ -88,7 +88,7 @@ type StorageConfig struct {
 
 // DatadogConfig stores configuration values for Datadog client
 type DatadogConfig struct {
-	Environment string `mapstructure:"DATADOG_ENV"`
+	Environment string `mapstructure:"APP_ENV"`
 	URL         string `mapstructure:"DATADOG_ADDR"`
 	AgentHost   string `mapstructure:"DD_AGENT_HOST"`
 }
