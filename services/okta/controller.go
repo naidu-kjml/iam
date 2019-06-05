@@ -23,7 +23,7 @@ type User struct {
 	Location        string   `json:"location"`
 	IsVendor        bool     `json:"isVendor"`
 	TeamMembership  []string `json:"teamMembership"`
-	GroupMembership []Group  `json:"groupMembership"`
+	GroupMembership []Group  `json:"groupMembership,omitempty"`
 	Manager         string   `json:"manager"`
 	Permissions     []string `json:"permissions"`
 }

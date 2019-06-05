@@ -20,6 +20,8 @@ type oktaUserProfile struct {
 }
 
 func formatUser(oktaID string, user *oktaUserProfile) User {
+	teamMembership := append(user.KbTeamMembership[:0:0], user.KbTeamMembership...)
+
 	return User{
 		OktaID:         oktaID,
 		EmployeeNumber: user.EmployeeNumber,
@@ -30,7 +32,7 @@ func formatUser(oktaID string, user *oktaUserProfile) User {
 		Position:       user.KbJobPosition,
 		Location:       user.KbPlaceOfWork,
 		IsVendor:       user.KbIsVendor,
-		TeamMembership: user.KbTeamMembership,
+		TeamMembership: teamMembership,
 		Manager:        user.Manager,
 	}
 }
