@@ -87,6 +87,15 @@ func (c *Client) AddPermissions(user *User, service string) error {
 			return err
 		}
 
+		timestamp := time.Time{}
+		_ = c.cache.Get("groups-sync-timestamp", &timestamp)
+		if time.Now().Before(timestamp.Add(10 * time.Minute)) {
+			// If there are no groups cached for the service and it's less than 10
+			// minutes from the last sync, we assume that there are no groups for that
+			// service.
+			return nil
+		}
+
 		// Get cached groups or ask Okta in case of cache miss.
 		groups, err := c.getUserGroups(user)
 		if err != nil {
