@@ -1,0 +1,6174 @@
+[
+  {
+    "id": "0f0ccb37-f459-4eab-9463-89d129f1298e",
+    "status": "active",
+    "created": "2019-05-05T20:00:27.713Z",
+    "activated": "2019-05-05T20:00:27.713Z",
+    "statusChanged": "2019-05-05T20:00:27.713Z",
+    "lastLogin": "2019-05-05T20:00:27.713Z",
+    "lastUpdated": "2019-05-05T20:00:27.713Z",
+    "passwordChanged": "2019-05-05T20:00:27.713Z",
+    "profile": {
+      "firstName": "Ron",
+      "lastName": "Nienow",
+      "email": "Ron_Nienow54@kiwi.com",
+      "employeeNumber": "498867242",
+      "mobilePhone": "823.552.8897",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Linniemouth",
+      "kb_team_membership": ["Automotive", "Toys"],
+      "manager": "Jasen Koepp",
+      "kb_jobPositionLevel": "Legacy Paradigm Supervisor",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "a60128e1-f56c-4dae-9d3f-128b3e410734",
+    "status": "active",
+    "created": "2018-11-16T08:52:09.635Z",
+    "activated": "2018-11-16T08:52:09.635Z",
+    "statusChanged": "2018-11-16T08:52:09.635Z",
+    "lastLogin": "2018-11-16T08:52:09.635Z",
+    "lastUpdated": "2018-11-16T08:52:09.635Z",
+    "passwordChanged": "2018-11-16T08:52:09.635Z",
+    "profile": {
+      "firstName": "Darwin",
+      "lastName": "Hahn",
+      "email": "Darwin84@kiwi.com",
+      "employeeNumber": "546632932",
+      "mobilePhone": "1-877-190-5272 x7594",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Lake Verna",
+      "kb_team_membership": ["Music"],
+      "manager": "Lupe Jacobson",
+      "kb_jobPositionLevel": "District Assurance Technician",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d5a0c1fc-112e-422d-91a3-b781b53129e6",
+    "status": "active",
+    "created": "2018-07-20T14:21:20.162Z",
+    "activated": "2018-07-20T14:21:20.162Z",
+    "statusChanged": "2018-07-20T14:21:20.162Z",
+    "lastLogin": "2018-07-20T14:21:20.162Z",
+    "lastUpdated": "2018-07-20T14:21:20.162Z",
+    "passwordChanged": "2018-07-20T14:21:20.162Z",
+    "profile": {
+      "firstName": "Gail",
+      "lastName": "Halvorson",
+      "email": "Gail41@kiwi.com",
+      "employeeNumber": "157558403",
+      "mobilePhone": "290.654.7456 x548",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Klingmouth",
+      "kb_team_membership": ["Grocery", "Kids", "Jewelery", "Beauty", "Books"],
+      "manager": "Ariane McCullough",
+      "kb_jobPositionLevel": "Dynamic Intranet Facilitator",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "380856b6-d9e2-44d5-b57a-76426faf1d1b",
+    "status": "active",
+    "created": "2018-12-22T06:02:37.144Z",
+    "activated": "2018-12-22T06:02:37.144Z",
+    "statusChanged": "2018-12-22T06:02:37.144Z",
+    "lastLogin": "2018-12-22T06:02:37.144Z",
+    "lastUpdated": "2018-12-22T06:02:37.144Z",
+    "passwordChanged": "2018-12-22T06:02:37.144Z",
+    "profile": {
+      "firstName": "Dorris",
+      "lastName": "Schulist",
+      "email": "Dorris88@kiwi.com",
+      "employeeNumber": "472190366",
+      "mobilePhone": "211.844.1297 x472",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Lake Raymundoburgh",
+      "kb_team_membership": [],
+      "manager": "Tavares Gerhold",
+      "kb_jobPositionLevel": "Global Metrics Officer",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5eb3b2c4-a61a-4313-a5dd-d6a9142b2981",
+    "status": "active",
+    "created": "2018-09-02T09:17:50.979Z",
+    "activated": "2018-09-02T09:17:50.979Z",
+    "statusChanged": "2018-09-02T09:17:50.979Z",
+    "lastLogin": "2018-09-02T09:17:50.979Z",
+    "lastUpdated": "2018-09-02T09:17:50.979Z",
+    "passwordChanged": "2018-09-02T09:17:50.979Z",
+    "profile": {
+      "firstName": "Araceli",
+      "lastName": "Langosh",
+      "email": "Araceli_Langosh@kiwi.com",
+      "employeeNumber": "428555099",
+      "mobilePhone": "(428) 842-0570 x696",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Hyattfurt",
+      "kb_team_membership": ["Movies", "Tools"],
+      "manager": "Gabriella Walker",
+      "kb_jobPositionLevel": "Global Directives Representative",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "b9561ca0-b40c-42d0-b8e9-4a552c7481ed",
+    "status": "active",
+    "created": "2018-08-19T11:05:16.089Z",
+    "activated": "2018-08-19T11:05:16.089Z",
+    "statusChanged": "2018-08-19T11:05:16.089Z",
+    "lastLogin": "2018-08-19T11:05:16.089Z",
+    "lastUpdated": "2018-08-19T11:05:16.089Z",
+    "passwordChanged": "2018-08-19T11:05:16.089Z",
+    "profile": {
+      "firstName": "Linnie",
+      "lastName": "O'Connell",
+      "email": "Linnie0@kiwi.com",
+      "employeeNumber": "735688207",
+      "mobilePhone": "1-214-469-6583",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Davismouth",
+      "kb_team_membership": [],
+      "manager": "Everett Crooks",
+      "kb_jobPositionLevel": "Investor Security Manager",
+      "department": "Sports"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "3eace45d-5f0b-425c-bafc-34d1917b6c00",
+    "status": "active",
+    "created": "2018-10-08T21:26:16.240Z",
+    "activated": "2018-10-08T21:26:16.240Z",
+    "statusChanged": "2018-10-08T21:26:16.240Z",
+    "lastLogin": "2018-10-08T21:26:16.240Z",
+    "lastUpdated": "2018-10-08T21:26:16.240Z",
+    "passwordChanged": "2018-10-08T21:26:16.240Z",
+    "profile": {
+      "firstName": "Francisco",
+      "lastName": "O'Reilly",
+      "email": "Francisco.OReilly77@kiwi.com",
+      "employeeNumber": "812118258",
+      "mobilePhone": "(261) 478-8714 x73681",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "West Herbertfort",
+      "kb_team_membership": [],
+      "manager": "Hollie MacGyver",
+      "kb_jobPositionLevel": "Global Functionality Facilitator",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "56fad5a4-0269-4beb-a8d1-4a4cc6608f07",
+    "status": "active",
+    "created": "2019-02-20T22:18:57.764Z",
+    "activated": "2019-02-20T22:18:57.764Z",
+    "statusChanged": "2019-02-20T22:18:57.764Z",
+    "lastLogin": "2019-02-20T22:18:57.764Z",
+    "lastUpdated": "2019-02-20T22:18:57.764Z",
+    "passwordChanged": "2019-02-20T22:18:57.764Z",
+    "profile": {
+      "firstName": "Aylin",
+      "lastName": "Schowalter",
+      "email": "Aylin.Schowalter@kiwi.com",
+      "employeeNumber": "35875566",
+      "mobilePhone": "1-151-123-6983 x21620",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "West Aliaburgh",
+      "kb_team_membership": [],
+      "manager": "Dax Eichmann",
+      "kb_jobPositionLevel": "Customer Data Director",
+      "department": "Movies"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "b8ae166c-3f3a-4ee0-9b72-81e050033db1",
+    "status": "active",
+    "created": "2018-12-08T00:03:40.374Z",
+    "activated": "2018-12-08T00:03:40.374Z",
+    "statusChanged": "2018-12-08T00:03:40.374Z",
+    "lastLogin": "2018-12-08T00:03:40.374Z",
+    "lastUpdated": "2018-12-08T00:03:40.374Z",
+    "passwordChanged": "2018-12-08T00:03:40.374Z",
+    "profile": {
+      "firstName": "Derek",
+      "lastName": "Hermiston",
+      "email": "Derek_Hermiston83@kiwi.com",
+      "employeeNumber": "316767486",
+      "mobilePhone": "(992) 198-3978 x8430",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Bashirianberg",
+      "kb_team_membership": [],
+      "manager": "Lesly Haley",
+      "kb_jobPositionLevel": "Legacy Communications Developer",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "074b77f1-811a-4ab4-912c-2dafa8b51b1c",
+    "status": "active",
+    "created": "2018-12-01T03:07:26.034Z",
+    "activated": "2018-12-01T03:07:26.034Z",
+    "statusChanged": "2018-12-01T03:07:26.034Z",
+    "lastLogin": "2018-12-01T03:07:26.034Z",
+    "lastUpdated": "2018-12-01T03:07:26.034Z",
+    "passwordChanged": "2018-12-01T03:07:26.034Z",
+    "profile": {
+      "firstName": "Cooper",
+      "lastName": "Lebsack",
+      "email": "Cooper.Lebsack@kiwi.com",
+      "employeeNumber": "102193039",
+      "mobilePhone": "668.700.9955 x5852",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "South Deshawn",
+      "kb_team_membership": ["Movies", "Industrial", "Garden", "Automotive"],
+      "manager": "Tamia Altenwerth",
+      "kb_jobPositionLevel": "Legacy Integration Consultant",
+      "department": "Home"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "eadf2372-1b2b-45f4-8eb1-a57e633c2b73",
+    "status": "active",
+    "created": "2018-08-21T09:08:09.426Z",
+    "activated": "2018-08-21T09:08:09.426Z",
+    "statusChanged": "2018-08-21T09:08:09.426Z",
+    "lastLogin": "2018-08-21T09:08:09.426Z",
+    "lastUpdated": "2018-08-21T09:08:09.426Z",
+    "passwordChanged": "2018-08-21T09:08:09.426Z",
+    "profile": {
+      "firstName": "Lavern",
+      "lastName": "Rippin",
+      "email": "Lavern50@kiwi.com",
+      "employeeNumber": "220494101",
+      "mobilePhone": "492-760-8821 x437",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Noe",
+      "kb_team_membership": ["Jewelery", "Clothing"],
+      "manager": "Vernice Wunsch",
+      "kb_jobPositionLevel": "Product Accounts Liaison",
+      "department": "Movies"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "b17ff27a-c7c2-46c8-9d43-fdcc79e89796",
+    "status": "active",
+    "created": "2019-04-28T20:21:12.354Z",
+    "activated": "2019-04-28T20:21:12.354Z",
+    "statusChanged": "2019-04-28T20:21:12.354Z",
+    "lastLogin": "2019-04-28T20:21:12.354Z",
+    "lastUpdated": "2019-04-28T20:21:12.354Z",
+    "passwordChanged": "2019-04-28T20:21:12.354Z",
+    "profile": {
+      "firstName": "Rashawn",
+      "lastName": "Runolfsson",
+      "email": "Rashawn83@kiwi.com",
+      "employeeNumber": "161055462",
+      "mobilePhone": "189-941-9763",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Kodyport",
+      "kb_team_membership": ["Movies"],
+      "manager": "Hoyt Waelchi",
+      "kb_jobPositionLevel": "Lead Usability Consultant",
+      "department": "Baby"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "f79e4916-48f6-4114-96f5-6e1722823e04",
+    "status": "active",
+    "created": "2019-05-21T08:21:40.407Z",
+    "activated": "2019-05-21T08:21:40.407Z",
+    "statusChanged": "2019-05-21T08:21:40.407Z",
+    "lastLogin": "2019-05-21T08:21:40.407Z",
+    "lastUpdated": "2019-05-21T08:21:40.407Z",
+    "passwordChanged": "2019-05-21T08:21:40.407Z",
+    "profile": {
+      "firstName": "Destany",
+      "lastName": "Daniel",
+      "email": "Destany_Daniel@kiwi.com",
+      "employeeNumber": "430983706",
+      "mobilePhone": "1-196-407-9794 x617",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Lake Garrickberg",
+      "kb_team_membership": ["Baby", "Industrial"],
+      "manager": "Dorris Toy",
+      "kb_jobPositionLevel": "Dynamic Configuration Liaison",
+      "department": "Beauty"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "96411a3d-2464-4c50-92de-4e22c5304185",
+    "status": "active",
+    "created": "2019-04-16T11:09:56.550Z",
+    "activated": "2019-04-16T11:09:56.550Z",
+    "statusChanged": "2019-04-16T11:09:56.550Z",
+    "lastLogin": "2019-04-16T11:09:56.550Z",
+    "lastUpdated": "2019-04-16T11:09:56.550Z",
+    "passwordChanged": "2019-04-16T11:09:56.550Z",
+    "profile": {
+      "firstName": "Keenan",
+      "lastName": "Bashirian",
+      "email": "Keenan.Bashirian@kiwi.com",
+      "employeeNumber": "85430418",
+      "mobilePhone": "081.642.0419 x8064",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Aliciahaven",
+      "kb_team_membership": ["Toys", "Kids", "Outdoors", "Health"],
+      "manager": "Lilian Schowalter",
+      "kb_jobPositionLevel": "Chief Tactics Analyst",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "dfa1300d-f581-46f8-8b90-83ed18f8f424",
+    "status": "active",
+    "created": "2019-04-01T13:53:21.867Z",
+    "activated": "2019-04-01T13:53:21.867Z",
+    "statusChanged": "2019-04-01T13:53:21.867Z",
+    "lastLogin": "2019-04-01T13:53:21.867Z",
+    "lastUpdated": "2019-04-01T13:53:21.867Z",
+    "passwordChanged": "2019-04-01T13:53:21.867Z",
+    "profile": {
+      "firstName": "Enos",
+      "lastName": "McKenzie",
+      "email": "Enos.McKenzie6@kiwi.com",
+      "employeeNumber": "808954566",
+      "mobilePhone": "972.154.7096",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Port Tyshawnstad",
+      "kb_team_membership": [
+        "Jewelery",
+        "Clothing",
+        "Outdoors",
+        "Garden",
+        "Books"
+      ],
+      "manager": "Maurice Russel",
+      "kb_jobPositionLevel": "Central Web Engineer",
+      "department": "Health"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "ecb4d1e9-4aa5-4107-becd-34b9fa644858",
+    "status": "active",
+    "created": "2018-08-07T02:17:02.285Z",
+    "activated": "2018-08-07T02:17:02.285Z",
+    "statusChanged": "2018-08-07T02:17:02.285Z",
+    "lastLogin": "2018-08-07T02:17:02.285Z",
+    "lastUpdated": "2018-08-07T02:17:02.285Z",
+    "passwordChanged": "2018-08-07T02:17:02.285Z",
+    "profile": {
+      "firstName": "Mable",
+      "lastName": "Ullrich",
+      "email": "Mable51@kiwi.com",
+      "employeeNumber": "318119247",
+      "mobilePhone": "788-874-4946",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Micheleview",
+      "kb_team_membership": ["Books", "Jewelery", "Sports", "Shoes", "Grocery"],
+      "manager": "Conrad Terry",
+      "kb_jobPositionLevel": "Senior Tactics Engineer",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "98317fc9-9ea9-465f-8177-312ea8ecc0a5",
+    "status": "active",
+    "created": "2019-05-31T15:36:34.824Z",
+    "activated": "2019-05-31T15:36:34.824Z",
+    "statusChanged": "2019-05-31T15:36:34.824Z",
+    "lastLogin": "2019-05-31T15:36:34.824Z",
+    "lastUpdated": "2019-05-31T15:36:34.824Z",
+    "passwordChanged": "2019-05-31T15:36:34.824Z",
+    "profile": {
+      "firstName": "Garett",
+      "lastName": "Larkin",
+      "email": "Garett.Larkin57@kiwi.com",
+      "employeeNumber": "802803291",
+      "mobilePhone": "248-522-8689 x11673",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Beahanberg",
+      "kb_team_membership": ["Shoes"],
+      "manager": "Bennett King",
+      "kb_jobPositionLevel": "Senior Brand Associate",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "a0f24a79-051f-4816-9f2c-d34abc2d62fb",
+    "status": "active",
+    "created": "2018-11-02T22:26:35.504Z",
+    "activated": "2018-11-02T22:26:35.504Z",
+    "statusChanged": "2018-11-02T22:26:35.504Z",
+    "lastLogin": "2018-11-02T22:26:35.504Z",
+    "lastUpdated": "2018-11-02T22:26:35.504Z",
+    "passwordChanged": "2018-11-02T22:26:35.504Z",
+    "profile": {
+      "firstName": "Madyson",
+      "lastName": "Wolf",
+      "email": "Madyson86@kiwi.com",
+      "employeeNumber": "816222168",
+      "mobilePhone": "623.455.4894 x6251",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Grover",
+      "kb_team_membership": [
+        "Garden",
+        "Games",
+        "Beauty",
+        "Jewelery",
+        "Clothing"
+      ],
+      "manager": "Briana Heidenreich",
+      "kb_jobPositionLevel": "Product Research Coordinator",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "2bbce738-075e-4288-a7be-2bf7f0984a6e",
+    "status": "active",
+    "created": "2019-02-13T14:58:47.383Z",
+    "activated": "2019-02-13T14:58:47.383Z",
+    "statusChanged": "2019-02-13T14:58:47.383Z",
+    "lastLogin": "2019-02-13T14:58:47.383Z",
+    "lastUpdated": "2019-02-13T14:58:47.383Z",
+    "passwordChanged": "2019-02-13T14:58:47.383Z",
+    "profile": {
+      "firstName": "Nakia",
+      "lastName": "Hartmann",
+      "email": "Nakia_Hartmann7@kiwi.com",
+      "employeeNumber": "62787486",
+      "mobilePhone": "448.050.3248 x385",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "North Jazmin",
+      "kb_team_membership": ["Computers", "Outdoors"],
+      "manager": "Casper Schowalter",
+      "kb_jobPositionLevel": "Human Security Analyst",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "91c4a8c9-5fa6-487b-b518-ff80dd9f01fe",
+    "status": "active",
+    "created": "2018-07-27T14:13:03.688Z",
+    "activated": "2018-07-27T14:13:03.688Z",
+    "statusChanged": "2018-07-27T14:13:03.688Z",
+    "lastLogin": "2018-07-27T14:13:03.688Z",
+    "lastUpdated": "2018-07-27T14:13:03.688Z",
+    "passwordChanged": "2018-07-27T14:13:03.688Z",
+    "profile": {
+      "firstName": "Scottie",
+      "lastName": "Walsh",
+      "email": "Scottie.Walsh89@kiwi.com",
+      "employeeNumber": "590506212",
+      "mobilePhone": "860-710-5343",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Huldafurt",
+      "kb_team_membership": ["Garden", "Music"],
+      "manager": "Adrienne McKenzie",
+      "kb_jobPositionLevel": "Product Assurance Administrator",
+      "department": "Health"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "60642a9c-2f5a-47c5-9ed4-41da37d23788",
+    "status": "active",
+    "created": "2018-09-09T08:05:31.033Z",
+    "activated": "2018-09-09T08:05:31.033Z",
+    "statusChanged": "2018-09-09T08:05:31.033Z",
+    "lastLogin": "2018-09-09T08:05:31.033Z",
+    "lastUpdated": "2018-09-09T08:05:31.033Z",
+    "passwordChanged": "2018-09-09T08:05:31.033Z",
+    "profile": {
+      "firstName": "Delbert",
+      "lastName": "Hegmann",
+      "email": "Delbert_Hegmann96@kiwi.com",
+      "employeeNumber": "109407504",
+      "mobilePhone": "(890) 882-1122",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "West Mosemouth",
+      "kb_team_membership": ["Movies"],
+      "manager": "Wellington Corkery",
+      "kb_jobPositionLevel": "Regional Branding Analyst",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "bda25b54-ae8d-4b4d-a11b-7c85fe402b75",
+    "status": "active",
+    "created": "2019-04-24T20:46:12.234Z",
+    "activated": "2019-04-24T20:46:12.234Z",
+    "statusChanged": "2019-04-24T20:46:12.234Z",
+    "lastLogin": "2019-04-24T20:46:12.234Z",
+    "lastUpdated": "2019-04-24T20:46:12.234Z",
+    "passwordChanged": "2019-04-24T20:46:12.234Z",
+    "profile": {
+      "firstName": "Pierce",
+      "lastName": "Senger",
+      "email": "Pierce.Senger@kiwi.com",
+      "employeeNumber": "144985393",
+      "mobilePhone": "1-777-721-5620 x74328",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Jamil",
+      "kb_team_membership": ["Computers", "Outdoors", "Computers", "Music"],
+      "manager": "Arthur Nolan",
+      "kb_jobPositionLevel": "Lead Branding Facilitator",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "30471683-56b2-49da-a25c-791329b345f0",
+    "status": "active",
+    "created": "2018-06-13T13:21:58.825Z",
+    "activated": "2018-06-13T13:21:58.825Z",
+    "statusChanged": "2018-06-13T13:21:58.825Z",
+    "lastLogin": "2018-06-13T13:21:58.825Z",
+    "lastUpdated": "2018-06-13T13:21:58.825Z",
+    "passwordChanged": "2018-06-13T13:21:58.825Z",
+    "profile": {
+      "firstName": "Jorge",
+      "lastName": "Cummerata",
+      "email": "Jorge.Cummerata97@kiwi.com",
+      "employeeNumber": "368021499",
+      "mobilePhone": "(780) 909-2442 x34293",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Fredyfort",
+      "kb_team_membership": ["Kids", "Beauty", "Books", "Computers"],
+      "manager": "Vada Ledner",
+      "kb_jobPositionLevel": "Global Security Designer",
+      "department": "Beauty"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "0476ab31-f4d9-4f32-8d54-4a4a317bb8e5",
+    "status": "active",
+    "created": "2018-12-14T17:05:16.858Z",
+    "activated": "2018-12-14T17:05:16.858Z",
+    "statusChanged": "2018-12-14T17:05:16.858Z",
+    "lastLogin": "2018-12-14T17:05:16.858Z",
+    "lastUpdated": "2018-12-14T17:05:16.858Z",
+    "passwordChanged": "2018-12-14T17:05:16.858Z",
+    "profile": {
+      "firstName": "Carolanne",
+      "lastName": "Harber",
+      "email": "Carolanne81@kiwi.com",
+      "employeeNumber": "401492435",
+      "mobilePhone": "606.977.5813",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Lake Oliver",
+      "kb_team_membership": ["Shoes"],
+      "manager": "Nico Brakus",
+      "kb_jobPositionLevel": "Direct Response Associate",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5a845e96-ca33-44c6-be31-8a9dc5d4b217",
+    "status": "active",
+    "created": "2018-11-09T21:06:37.793Z",
+    "activated": "2018-11-09T21:06:37.793Z",
+    "statusChanged": "2018-11-09T21:06:37.793Z",
+    "lastLogin": "2018-11-09T21:06:37.793Z",
+    "lastUpdated": "2018-11-09T21:06:37.793Z",
+    "passwordChanged": "2018-11-09T21:06:37.793Z",
+    "profile": {
+      "firstName": "Lamont",
+      "lastName": "Langworth",
+      "email": "Lamont18@kiwi.com",
+      "employeeNumber": "879293817",
+      "mobilePhone": "107.169.5032",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Shanelland",
+      "kb_team_membership": [],
+      "manager": "Paige Howell",
+      "kb_jobPositionLevel": "Internal Tactics Producer",
+      "department": "Beauty"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "0cdcbdbb-06ae-41ee-a8d8-411d389f10d9",
+    "status": "active",
+    "created": "2018-08-01T11:28:48.321Z",
+    "activated": "2018-08-01T11:28:48.321Z",
+    "statusChanged": "2018-08-01T11:28:48.321Z",
+    "lastLogin": "2018-08-01T11:28:48.321Z",
+    "lastUpdated": "2018-08-01T11:28:48.321Z",
+    "passwordChanged": "2018-08-01T11:28:48.321Z",
+    "profile": {
+      "firstName": "Rahsaan",
+      "lastName": "Ward",
+      "email": "Rahsaan88@kiwi.com",
+      "employeeNumber": "678125464",
+      "mobilePhone": "689.777.4182 x66563",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Swaniawskiborough",
+      "kb_team_membership": ["Home", "Shoes", "Automotive", "Baby"],
+      "manager": "Sharon Runolfsdottir",
+      "kb_jobPositionLevel": "Global Web Designer",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "81dcb0fe-2927-4213-aeb7-69b221231353",
+    "status": "active",
+    "created": "2018-12-21T23:48:58.412Z",
+    "activated": "2018-12-21T23:48:58.412Z",
+    "statusChanged": "2018-12-21T23:48:58.412Z",
+    "lastLogin": "2018-12-21T23:48:58.412Z",
+    "lastUpdated": "2018-12-21T23:48:58.412Z",
+    "passwordChanged": "2018-12-21T23:48:58.412Z",
+    "profile": {
+      "firstName": "Bethel",
+      "lastName": "Maggio",
+      "email": "Bethel.Maggio@kiwi.com",
+      "employeeNumber": "263203188",
+      "mobilePhone": "829-142-8886 x8275",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Waelchishire",
+      "kb_team_membership": ["Grocery", "Industrial", "Shoes"],
+      "manager": "Dina Rowe",
+      "kb_jobPositionLevel": "Central Division Coordinator",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d7c226aa-d88f-4926-83d6-d2d893d15e04",
+    "status": "active",
+    "created": "2018-06-15T02:56:15.956Z",
+    "activated": "2018-06-15T02:56:15.956Z",
+    "statusChanged": "2018-06-15T02:56:15.956Z",
+    "lastLogin": "2018-06-15T02:56:15.956Z",
+    "lastUpdated": "2018-06-15T02:56:15.956Z",
+    "passwordChanged": "2018-06-15T02:56:15.956Z",
+    "profile": {
+      "firstName": "Lauriane",
+      "lastName": "Kovacek",
+      "email": "Lauriane.Kovacek@kiwi.com",
+      "employeeNumber": "331545085",
+      "mobilePhone": "886.135.0977",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Paucekstad",
+      "kb_team_membership": ["Clothing", "Shoes", "Outdoors", "Garden"],
+      "manager": "Rex Reilly",
+      "kb_jobPositionLevel": "District Interactions Director",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d4c6bbcb-707d-426a-8702-9057c7a665c9",
+    "status": "active",
+    "created": "2018-08-26T09:00:18.769Z",
+    "activated": "2018-08-26T09:00:18.769Z",
+    "statusChanged": "2018-08-26T09:00:18.769Z",
+    "lastLogin": "2018-08-26T09:00:18.769Z",
+    "lastUpdated": "2018-08-26T09:00:18.769Z",
+    "passwordChanged": "2018-08-26T09:00:18.769Z",
+    "profile": {
+      "firstName": "Estelle",
+      "lastName": "Jast",
+      "email": "Estelle_Jast6@kiwi.com",
+      "employeeNumber": "145128122",
+      "mobilePhone": "(177) 841-2713 x1430",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Kulasbury",
+      "kb_team_membership": ["Books", "Health"],
+      "manager": "Mariah Turcotte",
+      "kb_jobPositionLevel": "Global Paradigm Coordinator",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "0d5d9f6a-89c0-4802-972f-71ad9e27f2f0",
+    "status": "active",
+    "created": "2019-03-12T05:47:43.729Z",
+    "activated": "2019-03-12T05:47:43.729Z",
+    "statusChanged": "2019-03-12T05:47:43.729Z",
+    "lastLogin": "2019-03-12T05:47:43.729Z",
+    "lastUpdated": "2019-03-12T05:47:43.729Z",
+    "passwordChanged": "2019-03-12T05:47:43.729Z",
+    "profile": {
+      "firstName": "Jamir",
+      "lastName": "Herzog",
+      "email": "Jamir.Herzog22@kiwi.com",
+      "employeeNumber": "162129376",
+      "mobilePhone": "169-878-1034 x194",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Vinceport",
+      "kb_team_membership": ["Shoes"],
+      "manager": "Elvie Leffler",
+      "kb_jobPositionLevel": "Human Directives Associate",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "1202e4b7-56e2-42ec-b56c-09f0349a7f24",
+    "status": "active",
+    "created": "2018-06-27T06:48:09.990Z",
+    "activated": "2018-06-27T06:48:09.990Z",
+    "statusChanged": "2018-06-27T06:48:09.990Z",
+    "lastLogin": "2018-06-27T06:48:09.990Z",
+    "lastUpdated": "2018-06-27T06:48:09.990Z",
+    "passwordChanged": "2018-06-27T06:48:09.990Z",
+    "profile": {
+      "firstName": "Jaime",
+      "lastName": "Stark",
+      "email": "Jaime40@kiwi.com",
+      "employeeNumber": "879247158",
+      "mobilePhone": "546.781.3196 x3650",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Ian",
+      "kb_team_membership": ["Shoes", "Industrial"],
+      "manager": "Dayton Hudson",
+      "kb_jobPositionLevel": "Forward Operations Engineer",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "8a243cbc-3a0b-40ee-b3bc-26b989bdff18",
+    "status": "active",
+    "created": "2019-02-07T13:04:32.400Z",
+    "activated": "2019-02-07T13:04:32.400Z",
+    "statusChanged": "2019-02-07T13:04:32.400Z",
+    "lastLogin": "2019-02-07T13:04:32.400Z",
+    "lastUpdated": "2019-02-07T13:04:32.400Z",
+    "passwordChanged": "2019-02-07T13:04:32.400Z",
+    "profile": {
+      "firstName": "Araceli",
+      "lastName": "Wilkinson",
+      "email": "Araceli56@kiwi.com",
+      "employeeNumber": "79790682",
+      "mobilePhone": "1-240-004-6171 x69418",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Lake Gabemouth",
+      "kb_team_membership": ["Books", "Toys"],
+      "manager": "Roel McClure",
+      "kb_jobPositionLevel": "Forward Tactics Consultant",
+      "department": "Movies"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d60ecea6-c6f2-46fa-b63c-b13fe0a889ed",
+    "status": "active",
+    "created": "2019-01-20T23:36:58.411Z",
+    "activated": "2019-01-20T23:36:58.411Z",
+    "statusChanged": "2019-01-20T23:36:58.411Z",
+    "lastLogin": "2019-01-20T23:36:58.411Z",
+    "lastUpdated": "2019-01-20T23:36:58.411Z",
+    "passwordChanged": "2019-01-20T23:36:58.411Z",
+    "profile": {
+      "firstName": "Paige",
+      "lastName": "Satterfield",
+      "email": "Paige.Satterfield33@kiwi.com",
+      "employeeNumber": "105495768",
+      "mobilePhone": "454.403.6856 x375",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "North Lillianaton",
+      "kb_team_membership": ["Computers"],
+      "manager": "Hillary Balistreri",
+      "kb_jobPositionLevel": "International Factors Technician",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "c7feed25-af82-4855-896e-a8e61976407c",
+    "status": "active",
+    "created": "2018-11-12T14:29:10.141Z",
+    "activated": "2018-11-12T14:29:10.141Z",
+    "statusChanged": "2018-11-12T14:29:10.141Z",
+    "lastLogin": "2018-11-12T14:29:10.141Z",
+    "lastUpdated": "2018-11-12T14:29:10.141Z",
+    "passwordChanged": "2018-11-12T14:29:10.141Z",
+    "profile": {
+      "firstName": "Brant",
+      "lastName": "Heathcote",
+      "email": "Brant_Heathcote86@kiwi.com",
+      "employeeNumber": "745492524",
+      "mobilePhone": "207-024-1919 x5412",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Charleneside",
+      "kb_team_membership": [
+        "Clothing",
+        "Tools",
+        "Electronics",
+        "Tools",
+        "Clothing"
+      ],
+      "manager": "Clarabelle Herzog",
+      "kb_jobPositionLevel": "Internal Infrastructure Architect",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "bf621c13-7c09-4d7b-9b6b-394c56b79811",
+    "status": "active",
+    "created": "2018-11-23T22:20:28.678Z",
+    "activated": "2018-11-23T22:20:28.678Z",
+    "statusChanged": "2018-11-23T22:20:28.678Z",
+    "lastLogin": "2018-11-23T22:20:28.678Z",
+    "lastUpdated": "2018-11-23T22:20:28.678Z",
+    "passwordChanged": "2018-11-23T22:20:28.678Z",
+    "profile": {
+      "firstName": "Stephen",
+      "lastName": "Stracke",
+      "email": "Stephen.Stracke94@kiwi.com",
+      "employeeNumber": "963421017",
+      "mobilePhone": "596-209-6289 x951",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "South Aida",
+      "kb_team_membership": ["Home"],
+      "manager": "Damian Daniel",
+      "kb_jobPositionLevel": "Investor Infrastructure Orchestrator",
+      "department": "Home"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "a5d858fc-9805-4adc-b1d4-dc4499479c1b",
+    "status": "active",
+    "created": "2018-09-03T20:32:31.758Z",
+    "activated": "2018-09-03T20:32:31.758Z",
+    "statusChanged": "2018-09-03T20:32:31.758Z",
+    "lastLogin": "2018-09-03T20:32:31.758Z",
+    "lastUpdated": "2018-09-03T20:32:31.758Z",
+    "passwordChanged": "2018-09-03T20:32:31.758Z",
+    "profile": {
+      "firstName": "Jolie",
+      "lastName": "Abshire",
+      "email": "Jolie_Abshire@kiwi.com",
+      "employeeNumber": "897445576",
+      "mobilePhone": "999-690-8716 x493",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Lake Kacieshire",
+      "kb_team_membership": [
+        "Toys",
+        "Automotive",
+        "Electronics",
+        "Electronics"
+      ],
+      "manager": "Ulices Jast",
+      "kb_jobPositionLevel": "Principal Security Technician",
+      "department": "Sports"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "f175db12-7803-4abf-801f-1f619564b652",
+    "status": "active",
+    "created": "2018-07-03T08:21:37.587Z",
+    "activated": "2018-07-03T08:21:37.587Z",
+    "statusChanged": "2018-07-03T08:21:37.587Z",
+    "lastLogin": "2018-07-03T08:21:37.587Z",
+    "lastUpdated": "2018-07-03T08:21:37.587Z",
+    "passwordChanged": "2018-07-03T08:21:37.587Z",
+    "profile": {
+      "firstName": "Manley",
+      "lastName": "Hoeger",
+      "email": "Manley.Hoeger55@kiwi.com",
+      "employeeNumber": "806785189",
+      "mobilePhone": "399.462.5079 x991",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Halvorsonport",
+      "kb_team_membership": ["Home", "Grocery"],
+      "manager": "Lemuel Farrell",
+      "kb_jobPositionLevel": "Central Security Designer",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "51c9e930-d981-40f5-b977-4931194aa327",
+    "status": "active",
+    "created": "2018-06-06T21:53:56.104Z",
+    "activated": "2018-06-06T21:53:56.104Z",
+    "statusChanged": "2018-06-06T21:53:56.104Z",
+    "lastLogin": "2018-06-06T21:53:56.104Z",
+    "lastUpdated": "2018-06-06T21:53:56.104Z",
+    "passwordChanged": "2018-06-06T21:53:56.104Z",
+    "profile": {
+      "firstName": "Garrison",
+      "lastName": "Armstrong",
+      "email": "Garrison39@kiwi.com",
+      "employeeNumber": "49201509",
+      "mobilePhone": "736-322-6407 x7722",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Lake Marielle",
+      "kb_team_membership": ["Movies", "Industrial", "Baby", "Garden"],
+      "manager": "Giovani Pacocha",
+      "kb_jobPositionLevel": "Direct Brand Facilitator",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "9fc8fa65-90a8-4d09-8b9b-788f5872244f",
+    "status": "active",
+    "created": "2019-01-04T03:45:37.484Z",
+    "activated": "2019-01-04T03:45:37.484Z",
+    "statusChanged": "2019-01-04T03:45:37.484Z",
+    "lastLogin": "2019-01-04T03:45:37.484Z",
+    "lastUpdated": "2019-01-04T03:45:37.484Z",
+    "passwordChanged": "2019-01-04T03:45:37.484Z",
+    "profile": {
+      "firstName": "Elta",
+      "lastName": "Reichel",
+      "email": "Elta10@kiwi.com",
+      "employeeNumber": "332735450",
+      "mobilePhone": "019-842-8746 x490",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Rosenbaummouth",
+      "kb_team_membership": [],
+      "manager": "Angelica Krajcik",
+      "kb_jobPositionLevel": "Forward Interactions Producer",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d4a9eb2e-d86b-4788-8ce4-7def608d6e2c",
+    "status": "active",
+    "created": "2018-09-09T06:53:34.588Z",
+    "activated": "2018-09-09T06:53:34.588Z",
+    "statusChanged": "2018-09-09T06:53:34.588Z",
+    "lastLogin": "2018-09-09T06:53:34.588Z",
+    "lastUpdated": "2018-09-09T06:53:34.588Z",
+    "passwordChanged": "2018-09-09T06:53:34.588Z",
+    "profile": {
+      "firstName": "Daphney",
+      "lastName": "Sipes",
+      "email": "Daphney53@kiwi.com",
+      "employeeNumber": "294263733",
+      "mobilePhone": "(635) 673-3120 x5586",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Chandlerberg",
+      "kb_team_membership": ["Beauty"],
+      "manager": "Caroline Prosacco",
+      "kb_jobPositionLevel": "Dynamic Infrastructure Technician",
+      "department": "Movies"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "9bc77ddf-b7af-4b61-bbd5-eebace3a9006",
+    "status": "active",
+    "created": "2019-02-15T04:06:27.498Z",
+    "activated": "2019-02-15T04:06:27.498Z",
+    "statusChanged": "2019-02-15T04:06:27.498Z",
+    "lastLogin": "2019-02-15T04:06:27.498Z",
+    "lastUpdated": "2019-02-15T04:06:27.498Z",
+    "passwordChanged": "2019-02-15T04:06:27.498Z",
+    "profile": {
+      "firstName": "Herminio",
+      "lastName": "Fay",
+      "email": "Herminio.Fay98@kiwi.com",
+      "employeeNumber": "579847638",
+      "mobilePhone": "196.410.3948",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Bentown",
+      "kb_team_membership": ["Toys", "Beauty", "Kids"],
+      "manager": "Annetta Luettgen",
+      "kb_jobPositionLevel": "Chief Research Supervisor",
+      "department": "Home"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "07a56e41-93d6-4a43-b86f-dd4832b47dcd",
+    "status": "active",
+    "created": "2019-01-13T09:07:16.933Z",
+    "activated": "2019-01-13T09:07:16.933Z",
+    "statusChanged": "2019-01-13T09:07:16.933Z",
+    "lastLogin": "2019-01-13T09:07:16.933Z",
+    "lastUpdated": "2019-01-13T09:07:16.933Z",
+    "passwordChanged": "2019-01-13T09:07:16.933Z",
+    "profile": {
+      "firstName": "Alberto",
+      "lastName": "Berge",
+      "email": "Alberto.Berge@kiwi.com",
+      "employeeNumber": "382071578",
+      "mobilePhone": "522-738-2978",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Jackson",
+      "kb_team_membership": [
+        "Tools",
+        "Beauty",
+        "Automotive",
+        "Garden",
+        "Automotive"
+      ],
+      "manager": "Hunter Abernathy",
+      "kb_jobPositionLevel": "National Data Facilitator",
+      "department": "Jewelery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "8fb167e3-469e-4676-bdbf-d810f878e496",
+    "status": "active",
+    "created": "2018-07-06T13:16:00.208Z",
+    "activated": "2018-07-06T13:16:00.208Z",
+    "statusChanged": "2018-07-06T13:16:00.208Z",
+    "lastLogin": "2018-07-06T13:16:00.208Z",
+    "lastUpdated": "2018-07-06T13:16:00.208Z",
+    "passwordChanged": "2018-07-06T13:16:00.208Z",
+    "profile": {
+      "firstName": "Braden",
+      "lastName": "Sanford",
+      "email": "Braden5@kiwi.com",
+      "employeeNumber": "872843668",
+      "mobilePhone": "665-782-1023",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Arlene",
+      "kb_team_membership": ["Beauty", "Computers"],
+      "manager": "Julia Ullrich",
+      "kb_jobPositionLevel": "Chief Assurance Agent",
+      "department": "Industrial"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "0736ac1d-a79f-4e8d-9bc1-1b0816c602d7",
+    "status": "active",
+    "created": "2019-01-27T13:32:45.884Z",
+    "activated": "2019-01-27T13:32:45.884Z",
+    "statusChanged": "2019-01-27T13:32:45.884Z",
+    "lastLogin": "2019-01-27T13:32:45.884Z",
+    "lastUpdated": "2019-01-27T13:32:45.884Z",
+    "passwordChanged": "2019-01-27T13:32:45.884Z",
+    "profile": {
+      "firstName": "Colton",
+      "lastName": "Kunze",
+      "email": "Colton_Kunze51@kiwi.com",
+      "employeeNumber": "502132599",
+      "mobilePhone": "735.050.3817 x660",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Kristofermouth",
+      "kb_team_membership": ["Sports", "Movies"],
+      "manager": "Chad Blanda",
+      "kb_jobPositionLevel": "International Mobility Director",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "0cbd9b3c-d539-4588-96cf-125ac27165f5",
+    "status": "active",
+    "created": "2019-05-26T22:28:53.978Z",
+    "activated": "2019-05-26T22:28:53.978Z",
+    "statusChanged": "2019-05-26T22:28:53.978Z",
+    "lastLogin": "2019-05-26T22:28:53.978Z",
+    "lastUpdated": "2019-05-26T22:28:53.978Z",
+    "passwordChanged": "2019-05-26T22:28:53.978Z",
+    "profile": {
+      "firstName": "Hertha",
+      "lastName": "Wilderman",
+      "email": "Hertha7@kiwi.com",
+      "employeeNumber": "572577748",
+      "mobilePhone": "886-395-5342 x773",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Queenborough",
+      "kb_team_membership": ["Baby", "Health"],
+      "manager": "Estella Leuschke",
+      "kb_jobPositionLevel": "Forward Intranet Developer",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "df0c16a0-e9e7-488f-bdec-d84cb911a813",
+    "status": "active",
+    "created": "2019-04-02T01:49:45.480Z",
+    "activated": "2019-04-02T01:49:45.480Z",
+    "statusChanged": "2019-04-02T01:49:45.480Z",
+    "lastLogin": "2019-04-02T01:49:45.480Z",
+    "lastUpdated": "2019-04-02T01:49:45.480Z",
+    "passwordChanged": "2019-04-02T01:49:45.480Z",
+    "profile": {
+      "firstName": "Hellen",
+      "lastName": "Blick",
+      "email": "Hellen2@kiwi.com",
+      "employeeNumber": "194877919",
+      "mobilePhone": "911-627-3657 x896",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Stokeschester",
+      "kb_team_membership": ["Clothing", "Clothing", "Grocery", "Toys"],
+      "manager": "Oleta King",
+      "kb_jobPositionLevel": "Corporate Brand Associate",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "ee775dae-e0ff-429a-b557-fa4bc7d2beb5",
+    "status": "active",
+    "created": "2018-12-08T12:37:36.226Z",
+    "activated": "2018-12-08T12:37:36.226Z",
+    "statusChanged": "2018-12-08T12:37:36.226Z",
+    "lastLogin": "2018-12-08T12:37:36.226Z",
+    "lastUpdated": "2018-12-08T12:37:36.226Z",
+    "passwordChanged": "2018-12-08T12:37:36.226Z",
+    "profile": {
+      "firstName": "Jason",
+      "lastName": "Nolan",
+      "email": "Jason67@kiwi.com",
+      "employeeNumber": "154415627",
+      "mobilePhone": "(227) 222-1760 x586",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Harrisside",
+      "kb_team_membership": ["Automotive", "Jewelery", "Baby"],
+      "manager": "Eldred Swift",
+      "kb_jobPositionLevel": "Internal Factors Developer",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "2686d110-7644-449a-8ad6-2121c063f6a2",
+    "status": "active",
+    "created": "2018-10-24T02:27:31.623Z",
+    "activated": "2018-10-24T02:27:31.623Z",
+    "statusChanged": "2018-10-24T02:27:31.623Z",
+    "lastLogin": "2018-10-24T02:27:31.623Z",
+    "lastUpdated": "2018-10-24T02:27:31.623Z",
+    "passwordChanged": "2018-10-24T02:27:31.623Z",
+    "profile": {
+      "firstName": "Garry",
+      "lastName": "Block",
+      "email": "Garry_Block@kiwi.com",
+      "employeeNumber": "26850201",
+      "mobilePhone": "283.614.9476",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Dessiebury",
+      "kb_team_membership": ["Baby", "Toys"],
+      "manager": "Greyson Bruen",
+      "kb_jobPositionLevel": "Dynamic Operations Administrator",
+      "department": "Beauty"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "049bc3e2-acda-4f25-9540-513bb7cf0829",
+    "status": "active",
+    "created": "2018-06-09T06:16:30.904Z",
+    "activated": "2018-06-09T06:16:30.904Z",
+    "statusChanged": "2018-06-09T06:16:30.904Z",
+    "lastLogin": "2018-06-09T06:16:30.904Z",
+    "lastUpdated": "2018-06-09T06:16:30.904Z",
+    "passwordChanged": "2018-06-09T06:16:30.904Z",
+    "profile": {
+      "firstName": "Celine",
+      "lastName": "Maggio",
+      "email": "Celine.Maggio@kiwi.com",
+      "employeeNumber": "596814071",
+      "mobilePhone": "(093) 080-7732 x3080",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Melany",
+      "kb_team_membership": [],
+      "manager": "Jakayla Harris",
+      "kb_jobPositionLevel": "Direct Markets Designer",
+      "department": "Beauty"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "fdce6299-2d3d-4ee1-a2fb-aac1b047be28",
+    "status": "active",
+    "created": "2018-11-19T00:02:52.524Z",
+    "activated": "2018-11-19T00:02:52.524Z",
+    "statusChanged": "2018-11-19T00:02:52.524Z",
+    "lastLogin": "2018-11-19T00:02:52.524Z",
+    "lastUpdated": "2018-11-19T00:02:52.524Z",
+    "passwordChanged": "2018-11-19T00:02:52.524Z",
+    "profile": {
+      "firstName": "Jared",
+      "lastName": "Stiedemann",
+      "email": "Jared54@kiwi.com",
+      "employeeNumber": "18677195",
+      "mobilePhone": "(347) 132-0561 x8068",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Champlinfort",
+      "kb_team_membership": ["Shoes", "Jewelery", "Health"],
+      "manager": "Kathleen Prohaska",
+      "kb_jobPositionLevel": "Corporate Data Producer",
+      "department": "Home"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "fd9cb18b-7a5e-4732-89c6-aaa11c14de57",
+    "status": "active",
+    "created": "2019-04-17T04:46:43.929Z",
+    "activated": "2019-04-17T04:46:43.929Z",
+    "statusChanged": "2019-04-17T04:46:43.929Z",
+    "lastLogin": "2019-04-17T04:46:43.929Z",
+    "lastUpdated": "2019-04-17T04:46:43.929Z",
+    "passwordChanged": "2019-04-17T04:46:43.929Z",
+    "profile": {
+      "firstName": "Kristian",
+      "lastName": "O'Hara",
+      "email": "Kristian.OHara42@kiwi.com",
+      "employeeNumber": "574585636",
+      "mobilePhone": "(015) 674-1457 x66897",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "McGlynnfurt",
+      "kb_team_membership": ["Home", "Health", "Outdoors", "Automotive"],
+      "manager": "Ignatius Ritchie",
+      "kb_jobPositionLevel": "Customer Branding Manager",
+      "department": "Beauty"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "0a03937e-0bc0-4fe0-9257-300335a40644",
+    "status": "active",
+    "created": "2019-05-27T23:44:32.181Z",
+    "activated": "2019-05-27T23:44:32.181Z",
+    "statusChanged": "2019-05-27T23:44:32.181Z",
+    "lastLogin": "2019-05-27T23:44:32.181Z",
+    "lastUpdated": "2019-05-27T23:44:32.181Z",
+    "passwordChanged": "2019-05-27T23:44:32.181Z",
+    "profile": {
+      "firstName": "Ebony",
+      "lastName": "Kuhlman",
+      "email": "Ebony.Kuhlman47@kiwi.com",
+      "employeeNumber": "57377082",
+      "mobilePhone": "(413) 850-6449",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "New Salvatore",
+      "kb_team_membership": ["Games"],
+      "manager": "Lula Johns",
+      "kb_jobPositionLevel": "International Quality Agent",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "bed2171c-0155-4522-9d30-21bfd439f8e1",
+    "status": "active",
+    "created": "2018-11-28T08:08:57.094Z",
+    "activated": "2018-11-28T08:08:57.094Z",
+    "statusChanged": "2018-11-28T08:08:57.094Z",
+    "lastLogin": "2018-11-28T08:08:57.094Z",
+    "lastUpdated": "2018-11-28T08:08:57.094Z",
+    "passwordChanged": "2018-11-28T08:08:57.094Z",
+    "profile": {
+      "firstName": "Citlalli",
+      "lastName": "Dach",
+      "email": "Citlalli.Dach56@kiwi.com",
+      "employeeNumber": "181946800",
+      "mobilePhone": "589.968.9317",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Moenton",
+      "kb_team_membership": ["Baby", "Outdoors", "Beauty", "Home"],
+      "manager": "Darron Senger",
+      "kb_jobPositionLevel": "Legacy Quality Planner",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "3cb270c5-2fce-4573-8e47-c868e77d6082",
+    "status": "active",
+    "created": "2019-05-01T05:14:06.149Z",
+    "activated": "2019-05-01T05:14:06.149Z",
+    "statusChanged": "2019-05-01T05:14:06.149Z",
+    "lastLogin": "2019-05-01T05:14:06.149Z",
+    "lastUpdated": "2019-05-01T05:14:06.149Z",
+    "passwordChanged": "2019-05-01T05:14:06.149Z",
+    "profile": {
+      "firstName": "Velva",
+      "lastName": "Huels",
+      "email": "Velva.Huels1@kiwi.com",
+      "employeeNumber": "59855569",
+      "mobilePhone": "1-656-718-7901 x5766",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Lake Robbie",
+      "kb_team_membership": ["Home", "Toys", "Grocery", "Kids", "Automotive"],
+      "manager": "Alanis DuBuque",
+      "kb_jobPositionLevel": "International Solutions Developer",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "4ac6f92d-233b-4e66-92ba-791e4e66e48c",
+    "status": "active",
+    "created": "2018-08-30T05:49:37.953Z",
+    "activated": "2018-08-30T05:49:37.953Z",
+    "statusChanged": "2018-08-30T05:49:37.953Z",
+    "lastLogin": "2018-08-30T05:49:37.953Z",
+    "lastUpdated": "2018-08-30T05:49:37.953Z",
+    "passwordChanged": "2018-08-30T05:49:37.953Z",
+    "profile": {
+      "firstName": "Waldo",
+      "lastName": "Littel",
+      "email": "Waldo.Littel@kiwi.com",
+      "employeeNumber": "778255230",
+      "mobilePhone": "1-645-094-7700",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "North Asha",
+      "kb_team_membership": ["Health", "Music"],
+      "manager": "Desiree Ullrich",
+      "kb_jobPositionLevel": "Human Implementation Engineer",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "69a60f96-9e08-4387-a5bc-716c67db00cd",
+    "status": "active",
+    "created": "2018-10-26T16:34:20.198Z",
+    "activated": "2018-10-26T16:34:20.198Z",
+    "statusChanged": "2018-10-26T16:34:20.198Z",
+    "lastLogin": "2018-10-26T16:34:20.198Z",
+    "lastUpdated": "2018-10-26T16:34:20.198Z",
+    "passwordChanged": "2018-10-26T16:34:20.198Z",
+    "profile": {
+      "firstName": "Kiarra",
+      "lastName": "Kuhic",
+      "email": "Kiarra_Kuhic@kiwi.com",
+      "employeeNumber": "661100874",
+      "mobilePhone": "1-860-055-9157 x643",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "West Michelle",
+      "kb_team_membership": [
+        "Jewelery",
+        "Computers",
+        "Electronics",
+        "Jewelery",
+        "Grocery"
+      ],
+      "manager": "Demetrius Gusikowski",
+      "kb_jobPositionLevel": "Forward Data Orchestrator",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "e43ea1a8-922b-4a07-9bb8-5dd40d1be565",
+    "status": "active",
+    "created": "2019-06-02T01:51:34.425Z",
+    "activated": "2019-06-02T01:51:34.425Z",
+    "statusChanged": "2019-06-02T01:51:34.425Z",
+    "lastLogin": "2019-06-02T01:51:34.425Z",
+    "lastUpdated": "2019-06-02T01:51:34.425Z",
+    "passwordChanged": "2019-06-02T01:51:34.425Z",
+    "profile": {
+      "firstName": "Ronny",
+      "lastName": "Roberts",
+      "email": "Ronny54@kiwi.com",
+      "employeeNumber": "960523070",
+      "mobilePhone": "(121) 972-7981",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Hodkiewiczstad",
+      "kb_team_membership": ["Games", "Beauty", "Grocery"],
+      "manager": "Darwin DuBuque",
+      "kb_jobPositionLevel": "Central Mobility Director",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "7661affd-756d-4bf2-815a-153b19ff56d3",
+    "status": "active",
+    "created": "2018-10-13T12:59:53.345Z",
+    "activated": "2018-10-13T12:59:53.345Z",
+    "statusChanged": "2018-10-13T12:59:53.345Z",
+    "lastLogin": "2018-10-13T12:59:53.345Z",
+    "lastUpdated": "2018-10-13T12:59:53.345Z",
+    "passwordChanged": "2018-10-13T12:59:53.345Z",
+    "profile": {
+      "firstName": "Walton",
+      "lastName": "Wisozk",
+      "email": "Walton.Wisozk70@kiwi.com",
+      "employeeNumber": "64231290",
+      "mobilePhone": "746.223.3106 x189",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Port Dallin",
+      "kb_team_membership": ["Shoes", "Books", "Computers"],
+      "manager": "Greyson Huel",
+      "kb_jobPositionLevel": "Regional Directives Analyst",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "1abe704e-a528-45d2-bc3f-9823bf4343be",
+    "status": "active",
+    "created": "2018-12-17T02:10:40.694Z",
+    "activated": "2018-12-17T02:10:40.694Z",
+    "statusChanged": "2018-12-17T02:10:40.694Z",
+    "lastLogin": "2018-12-17T02:10:40.694Z",
+    "lastUpdated": "2018-12-17T02:10:40.694Z",
+    "passwordChanged": "2018-12-17T02:10:40.694Z",
+    "profile": {
+      "firstName": "Demetris",
+      "lastName": "Herman",
+      "email": "Demetris_Herman31@kiwi.com",
+      "employeeNumber": "393510846",
+      "mobilePhone": "1-042-023-7679",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Aylamouth",
+      "kb_team_membership": [],
+      "manager": "Tremayne Hessel",
+      "kb_jobPositionLevel": "Human Web Orchestrator",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "daa88675-210a-4983-9c06-e75fb220ede5",
+    "status": "active",
+    "created": "2019-01-06T06:22:24.062Z",
+    "activated": "2019-01-06T06:22:24.062Z",
+    "statusChanged": "2019-01-06T06:22:24.062Z",
+    "lastLogin": "2019-01-06T06:22:24.062Z",
+    "lastUpdated": "2019-01-06T06:22:24.062Z",
+    "passwordChanged": "2019-01-06T06:22:24.062Z",
+    "profile": {
+      "firstName": "Adolf",
+      "lastName": "Satterfield",
+      "email": "Adolf12@kiwi.com",
+      "employeeNumber": "674033738",
+      "mobilePhone": "(858) 867-7455 x9726",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Turcottefurt",
+      "kb_team_membership": ["Jewelery", "Games", "Music"],
+      "manager": "Dino Orn",
+      "kb_jobPositionLevel": "National Solutions Manager",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "124db21d-41d1-4748-a2ca-1c95ada4725a",
+    "status": "active",
+    "created": "2018-08-31T14:46:57.814Z",
+    "activated": "2018-08-31T14:46:57.814Z",
+    "statusChanged": "2018-08-31T14:46:57.814Z",
+    "lastLogin": "2018-08-31T14:46:57.814Z",
+    "lastUpdated": "2018-08-31T14:46:57.814Z",
+    "passwordChanged": "2018-08-31T14:46:57.814Z",
+    "profile": {
+      "firstName": "Jarret",
+      "lastName": "Wilkinson",
+      "email": "Jarret85@kiwi.com",
+      "employeeNumber": "64187766",
+      "mobilePhone": "092.741.4188 x456",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "West Jasen",
+      "kb_team_membership": ["Toys", "Shoes"],
+      "manager": "Guiseppe Quigley",
+      "kb_jobPositionLevel": "Human Marketing Strategist",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "88262168-6b0b-4e8e-b789-ffde612a9b60",
+    "status": "active",
+    "created": "2018-06-18T06:44:07.637Z",
+    "activated": "2018-06-18T06:44:07.637Z",
+    "statusChanged": "2018-06-18T06:44:07.637Z",
+    "lastLogin": "2018-06-18T06:44:07.637Z",
+    "lastUpdated": "2018-06-18T06:44:07.637Z",
+    "passwordChanged": "2018-06-18T06:44:07.637Z",
+    "profile": {
+      "firstName": "Catherine",
+      "lastName": "Kovacek",
+      "email": "Catherine_Kovacek@kiwi.com",
+      "employeeNumber": "367007697",
+      "mobilePhone": "1-864-600-0770",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "New Manuela",
+      "kb_team_membership": ["Tools"],
+      "manager": "Julie Heidenreich",
+      "kb_jobPositionLevel": "Central Infrastructure Coordinator",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "68c63bcc-fc35-474e-acc5-a612f8ec9628",
+    "status": "active",
+    "created": "2019-03-31T22:01:41.083Z",
+    "activated": "2019-03-31T22:01:41.083Z",
+    "statusChanged": "2019-03-31T22:01:41.083Z",
+    "lastLogin": "2019-03-31T22:01:41.083Z",
+    "lastUpdated": "2019-03-31T22:01:41.083Z",
+    "passwordChanged": "2019-03-31T22:01:41.083Z",
+    "profile": {
+      "firstName": "Grace",
+      "lastName": "Gutkowski",
+      "email": "Grace88@kiwi.com",
+      "employeeNumber": "634837119",
+      "mobilePhone": "954.136.8823",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "North Verlie",
+      "kb_team_membership": ["Outdoors", "Electronics", "Grocery"],
+      "manager": "Danielle Hegmann",
+      "kb_jobPositionLevel": "Investor Security Manager",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5ab2aab9-21e3-4928-950f-d39e24a09dca",
+    "status": "active",
+    "created": "2019-04-20T04:00:51.207Z",
+    "activated": "2019-04-20T04:00:51.207Z",
+    "statusChanged": "2019-04-20T04:00:51.207Z",
+    "lastLogin": "2019-04-20T04:00:51.207Z",
+    "lastUpdated": "2019-04-20T04:00:51.207Z",
+    "passwordChanged": "2019-04-20T04:00:51.207Z",
+    "profile": {
+      "firstName": "Alexa",
+      "lastName": "Cummerata",
+      "email": "Alexa_Cummerata1@kiwi.com",
+      "employeeNumber": "879490379",
+      "mobilePhone": "(782) 314-5967 x78788",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "West Philip",
+      "kb_team_membership": ["Music", "Jewelery", "Grocery", "Beauty"],
+      "manager": "Adell Zboncak",
+      "kb_jobPositionLevel": "Global Accountability Officer",
+      "department": "Jewelery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "71416dac-cf82-46e9-8ac6-39873bc5b80d",
+    "status": "active",
+    "created": "2018-09-30T19:01:26.818Z",
+    "activated": "2018-09-30T19:01:26.818Z",
+    "statusChanged": "2018-09-30T19:01:26.818Z",
+    "lastLogin": "2018-09-30T19:01:26.818Z",
+    "lastUpdated": "2018-09-30T19:01:26.818Z",
+    "passwordChanged": "2018-09-30T19:01:26.818Z",
+    "profile": {
+      "firstName": "Jimmie",
+      "lastName": "Purdy",
+      "email": "Jimmie.Purdy@kiwi.com",
+      "employeeNumber": "271417476",
+      "mobilePhone": "1-624-641-2237",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "South Bianka",
+      "kb_team_membership": [
+        "Electronics",
+        "Toys",
+        "Kids",
+        "Grocery",
+        "Outdoors"
+      ],
+      "manager": "Roderick Zemlak",
+      "kb_jobPositionLevel": "Product Metrics Analyst",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "6de868cf-fead-40e0-9395-6ed5981ed8e9",
+    "status": "active",
+    "created": "2018-08-28T08:51:56.485Z",
+    "activated": "2018-08-28T08:51:56.485Z",
+    "statusChanged": "2018-08-28T08:51:56.485Z",
+    "lastLogin": "2018-08-28T08:51:56.485Z",
+    "lastUpdated": "2018-08-28T08:51:56.485Z",
+    "passwordChanged": "2018-08-28T08:51:56.485Z",
+    "profile": {
+      "firstName": "Garrett",
+      "lastName": "O'Keefe",
+      "email": "Garrett48@kiwi.com",
+      "employeeNumber": "429520916",
+      "mobilePhone": "(211) 183-3786 x478",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "West Carroll",
+      "kb_team_membership": ["Jewelery"],
+      "manager": "Raul Gleichner",
+      "kb_jobPositionLevel": "Legacy Division Strategist",
+      "department": "Jewelery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "9d7fe20e-411c-4d93-819a-0bb27c671dc5",
+    "status": "active",
+    "created": "2018-12-09T20:16:12.224Z",
+    "activated": "2018-12-09T20:16:12.224Z",
+    "statusChanged": "2018-12-09T20:16:12.224Z",
+    "lastLogin": "2018-12-09T20:16:12.224Z",
+    "lastUpdated": "2018-12-09T20:16:12.224Z",
+    "passwordChanged": "2018-12-09T20:16:12.224Z",
+    "profile": {
+      "firstName": "Elwin",
+      "lastName": "McKenzie",
+      "email": "Elwin26@kiwi.com",
+      "employeeNumber": "611940970",
+      "mobilePhone": "728-106-9524 x13277",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "South Alayna",
+      "kb_team_membership": [],
+      "manager": "Anderson Kertzmann",
+      "kb_jobPositionLevel": "Chief Web Developer",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d16d5e2b-931a-424a-8575-82790b7575b3",
+    "status": "active",
+    "created": "2019-05-28T00:13:54.136Z",
+    "activated": "2019-05-28T00:13:54.136Z",
+    "statusChanged": "2019-05-28T00:13:54.136Z",
+    "lastLogin": "2019-05-28T00:13:54.136Z",
+    "lastUpdated": "2019-05-28T00:13:54.136Z",
+    "passwordChanged": "2019-05-28T00:13:54.136Z",
+    "profile": {
+      "firstName": "Carli",
+      "lastName": "Bailey",
+      "email": "Carli33@kiwi.com",
+      "employeeNumber": "98420187",
+      "mobilePhone": "(316) 338-2904 x856",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Raynorside",
+      "kb_team_membership": [],
+      "manager": "Drew White",
+      "kb_jobPositionLevel": "Lead Paradigm Strategist",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "58d12eda-9c1b-4391-8050-e5256e94db5a",
+    "status": "active",
+    "created": "2019-05-27T06:11:44.008Z",
+    "activated": "2019-05-27T06:11:44.008Z",
+    "statusChanged": "2019-05-27T06:11:44.008Z",
+    "lastLogin": "2019-05-27T06:11:44.008Z",
+    "lastUpdated": "2019-05-27T06:11:44.008Z",
+    "passwordChanged": "2019-05-27T06:11:44.008Z",
+    "profile": {
+      "firstName": "Vicky",
+      "lastName": "Koss",
+      "email": "Vicky_Koss@kiwi.com",
+      "employeeNumber": "83569444",
+      "mobilePhone": "1-222-790-0562 x1124",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Ratkeport",
+      "kb_team_membership": ["Automotive", "Outdoors"],
+      "manager": "Arvilla Dickens",
+      "kb_jobPositionLevel": "Forward Creative Strategist",
+      "department": "Jewelery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "1bf36a22-64cb-4ba6-97be-cc65e738ae4a",
+    "status": "active",
+    "created": "2018-06-16T08:36:25.021Z",
+    "activated": "2018-06-16T08:36:25.021Z",
+    "statusChanged": "2018-06-16T08:36:25.021Z",
+    "lastLogin": "2018-06-16T08:36:25.021Z",
+    "lastUpdated": "2018-06-16T08:36:25.021Z",
+    "passwordChanged": "2018-06-16T08:36:25.021Z",
+    "profile": {
+      "firstName": "Cleo",
+      "lastName": "Bailey",
+      "email": "Cleo.Bailey@kiwi.com",
+      "employeeNumber": "661075161",
+      "mobilePhone": "767-832-7632 x79233",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Cynthia",
+      "kb_team_membership": ["Outdoors", "Games"],
+      "manager": "Jany Torphy",
+      "kb_jobPositionLevel": "Product Security Developer",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "c2cca260-609f-4c6e-a754-1ba29e18590c",
+    "status": "active",
+    "created": "2018-06-12T19:34:09.237Z",
+    "activated": "2018-06-12T19:34:09.237Z",
+    "statusChanged": "2018-06-12T19:34:09.237Z",
+    "lastLogin": "2018-06-12T19:34:09.237Z",
+    "lastUpdated": "2018-06-12T19:34:09.237Z",
+    "passwordChanged": "2018-06-12T19:34:09.237Z",
+    "profile": {
+      "firstName": "Hudson",
+      "lastName": "Gerlach",
+      "email": "Hudson_Gerlach13@kiwi.com",
+      "employeeNumber": "328431873",
+      "mobilePhone": "589-171-3244 x038",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Strosinborough",
+      "kb_team_membership": [
+        "Toys",
+        "Computers",
+        "Clothing",
+        "Sports",
+        "Industrial"
+      ],
+      "manager": "Vada Schoen",
+      "kb_jobPositionLevel": "Regional Accounts Manager",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "dc51eea8-baeb-415f-9c49-ecd164800d40",
+    "status": "active",
+    "created": "2019-05-01T18:38:01.838Z",
+    "activated": "2019-05-01T18:38:01.838Z",
+    "statusChanged": "2019-05-01T18:38:01.838Z",
+    "lastLogin": "2019-05-01T18:38:01.838Z",
+    "lastUpdated": "2019-05-01T18:38:01.838Z",
+    "passwordChanged": "2019-05-01T18:38:01.838Z",
+    "profile": {
+      "firstName": "Creola",
+      "lastName": "Funk",
+      "email": "Creola_Funk@kiwi.com",
+      "employeeNumber": "777553736",
+      "mobilePhone": "649.050.1200",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Doyleberg",
+      "kb_team_membership": [
+        "Electronics",
+        "Electronics",
+        "Garden",
+        "Games",
+        "Books"
+      ],
+      "manager": "Watson Sawayn",
+      "kb_jobPositionLevel": "Regional Data Director",
+      "department": "Jewelery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "eb5da3c6-fd1a-427a-ad78-66277439a1b2",
+    "status": "active",
+    "created": "2019-04-11T06:09:57.482Z",
+    "activated": "2019-04-11T06:09:57.482Z",
+    "statusChanged": "2019-04-11T06:09:57.482Z",
+    "lastLogin": "2019-04-11T06:09:57.482Z",
+    "lastUpdated": "2019-04-11T06:09:57.482Z",
+    "passwordChanged": "2019-04-11T06:09:57.482Z",
+    "profile": {
+      "firstName": "Cassandra",
+      "lastName": "Blanda",
+      "email": "Cassandra_Blanda@kiwi.com",
+      "employeeNumber": "459118333",
+      "mobilePhone": "1-584-774-1788 x354",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Zoeside",
+      "kb_team_membership": ["Sports", "Electronics"],
+      "manager": "Jamarcus McKenzie",
+      "kb_jobPositionLevel": "Forward Optimization Associate",
+      "department": "Clothing"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "88c460c4-7f21-4af9-820a-771157bcbd8e",
+    "status": "active",
+    "created": "2019-04-18T20:00:22.563Z",
+    "activated": "2019-04-18T20:00:22.563Z",
+    "statusChanged": "2019-04-18T20:00:22.563Z",
+    "lastLogin": "2019-04-18T20:00:22.563Z",
+    "lastUpdated": "2019-04-18T20:00:22.563Z",
+    "passwordChanged": "2019-04-18T20:00:22.563Z",
+    "profile": {
+      "firstName": "Norma",
+      "lastName": "Sawayn",
+      "email": "Norma.Sawayn@kiwi.com",
+      "employeeNumber": "610298589",
+      "mobilePhone": "(175) 936-0578 x244",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Framibury",
+      "kb_team_membership": ["Toys"],
+      "manager": "June Herman",
+      "kb_jobPositionLevel": "Product Implementation Liaison",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "023ab5af-6433-4761-bae2-6453ce6c3db1",
+    "status": "active",
+    "created": "2019-03-13T05:26:08.217Z",
+    "activated": "2019-03-13T05:26:08.217Z",
+    "statusChanged": "2019-03-13T05:26:08.217Z",
+    "lastLogin": "2019-03-13T05:26:08.217Z",
+    "lastUpdated": "2019-03-13T05:26:08.217Z",
+    "passwordChanged": "2019-03-13T05:26:08.217Z",
+    "profile": {
+      "firstName": "Bart",
+      "lastName": "Conn",
+      "email": "Bart98@kiwi.com",
+      "employeeNumber": "267550264",
+      "mobilePhone": "(250) 115-0011 x509",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Ruthehaven",
+      "kb_team_membership": [
+        "Toys",
+        "Toys",
+        "Electronics",
+        "Industrial",
+        "Jewelery"
+      ],
+      "manager": "Dorthy Lindgren",
+      "kb_jobPositionLevel": "Investor Security Engineer",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "535e5098-8f8d-4b5b-8c0a-722cb69bd50c",
+    "status": "active",
+    "created": "2019-01-01T15:37:37.716Z",
+    "activated": "2019-01-01T15:37:37.716Z",
+    "statusChanged": "2019-01-01T15:37:37.716Z",
+    "lastLogin": "2019-01-01T15:37:37.716Z",
+    "lastUpdated": "2019-01-01T15:37:37.716Z",
+    "passwordChanged": "2019-01-01T15:37:37.716Z",
+    "profile": {
+      "firstName": "Antonetta",
+      "lastName": "Rowe",
+      "email": "Antonetta.Rowe@kiwi.com",
+      "employeeNumber": "279243906",
+      "mobilePhone": "181-911-4620 x093",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Port Joshuahland",
+      "kb_team_membership": ["Garden", "Computers"],
+      "manager": "Martina Lindgren",
+      "kb_jobPositionLevel": "Regional Accounts Orchestrator",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "560b9c29-8fb6-44ea-84a0-53854f006c6e",
+    "status": "active",
+    "created": "2018-10-16T23:06:37.650Z",
+    "activated": "2018-10-16T23:06:37.650Z",
+    "statusChanged": "2018-10-16T23:06:37.650Z",
+    "lastLogin": "2018-10-16T23:06:37.650Z",
+    "lastUpdated": "2018-10-16T23:06:37.650Z",
+    "passwordChanged": "2018-10-16T23:06:37.650Z",
+    "profile": {
+      "firstName": "Madeline",
+      "lastName": "Stoltenberg",
+      "email": "Madeline.Stoltenberg14@kiwi.com",
+      "employeeNumber": "339239338",
+      "mobilePhone": "985-717-6720 x721",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Neomabury",
+      "kb_team_membership": ["Kids", "Health", "Outdoors"],
+      "manager": "Genevieve Hermiston",
+      "kb_jobPositionLevel": "Direct Web Technician",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "a1b2d3b9-f2a3-4bcb-8f6a-21b438da53e0",
+    "status": "active",
+    "created": "2018-11-09T11:06:42.779Z",
+    "activated": "2018-11-09T11:06:42.779Z",
+    "statusChanged": "2018-11-09T11:06:42.779Z",
+    "lastLogin": "2018-11-09T11:06:42.779Z",
+    "lastUpdated": "2018-11-09T11:06:42.779Z",
+    "passwordChanged": "2018-11-09T11:06:42.779Z",
+    "profile": {
+      "firstName": "Laisha",
+      "lastName": "Cartwright",
+      "email": "Laisha.Cartwright33@kiwi.com",
+      "employeeNumber": "46799689",
+      "mobilePhone": "214-008-9366",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Enoch",
+      "kb_team_membership": [],
+      "manager": "Abdul Rempel",
+      "kb_jobPositionLevel": "Future Security Liaison",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "b0f0ffae-1c06-4ad3-a842-2b9880aca165",
+    "status": "active",
+    "created": "2018-12-22T16:05:20.528Z",
+    "activated": "2018-12-22T16:05:20.528Z",
+    "statusChanged": "2018-12-22T16:05:20.528Z",
+    "lastLogin": "2018-12-22T16:05:20.528Z",
+    "lastUpdated": "2018-12-22T16:05:20.528Z",
+    "passwordChanged": "2018-12-22T16:05:20.528Z",
+    "profile": {
+      "firstName": "Macie",
+      "lastName": "Hoppe",
+      "email": "Macie48@kiwi.com",
+      "employeeNumber": "1521256",
+      "mobilePhone": "324-894-7733",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Vinnieton",
+      "kb_team_membership": ["Sports", "Beauty"],
+      "manager": "Fredrick Spencer",
+      "kb_jobPositionLevel": "Dynamic Web Agent",
+      "department": "Garden"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "b55c06d6-8216-4aa2-ac9e-51c6813c847f",
+    "status": "active",
+    "created": "2018-07-02T01:03:48.840Z",
+    "activated": "2018-07-02T01:03:48.840Z",
+    "statusChanged": "2018-07-02T01:03:48.840Z",
+    "lastLogin": "2018-07-02T01:03:48.840Z",
+    "lastUpdated": "2018-07-02T01:03:48.840Z",
+    "passwordChanged": "2018-07-02T01:03:48.840Z",
+    "profile": {
+      "firstName": "Gaetano",
+      "lastName": "Steuber",
+      "email": "Gaetano_Steuber@kiwi.com",
+      "employeeNumber": "488326481",
+      "mobilePhone": "102.652.5158 x161",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Hughfort",
+      "kb_team_membership": ["Garden", "Movies", "Computers"],
+      "manager": "Luella Gleichner",
+      "kb_jobPositionLevel": "National Applications Associate",
+      "department": "Garden"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "44364aae-b702-406e-8237-14340724865b",
+    "status": "active",
+    "created": "2019-05-22T19:20:51.560Z",
+    "activated": "2019-05-22T19:20:51.560Z",
+    "statusChanged": "2019-05-22T19:20:51.560Z",
+    "lastLogin": "2019-05-22T19:20:51.560Z",
+    "lastUpdated": "2019-05-22T19:20:51.560Z",
+    "passwordChanged": "2019-05-22T19:20:51.560Z",
+    "profile": {
+      "firstName": "Frank",
+      "lastName": "Bahringer",
+      "email": "Frank_Bahringer50@kiwi.com",
+      "employeeNumber": "319011664",
+      "mobilePhone": "381-056-8862",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Vickymouth",
+      "kb_team_membership": [],
+      "manager": "Adeline Langosh",
+      "kb_jobPositionLevel": "National Research Designer",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "3c12d052-1da1-4e48-98fe-f09b524c455d",
+    "status": "active",
+    "created": "2018-12-06T08:30:41.013Z",
+    "activated": "2018-12-06T08:30:41.013Z",
+    "statusChanged": "2018-12-06T08:30:41.013Z",
+    "lastLogin": "2018-12-06T08:30:41.013Z",
+    "lastUpdated": "2018-12-06T08:30:41.013Z",
+    "passwordChanged": "2018-12-06T08:30:41.013Z",
+    "profile": {
+      "firstName": "Samanta",
+      "lastName": "Dietrich",
+      "email": "Samanta.Dietrich4@kiwi.com",
+      "employeeNumber": "469499471",
+      "mobilePhone": "(070) 747-3142 x04108",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Chesleyborough",
+      "kb_team_membership": [],
+      "manager": "Ray Hammes",
+      "kb_jobPositionLevel": "National Intranet Technician",
+      "department": "Movies"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "abef7d9e-de71-44c1-ba20-2d4344c7f131",
+    "status": "active",
+    "created": "2019-04-18T03:46:45.503Z",
+    "activated": "2019-04-18T03:46:45.503Z",
+    "statusChanged": "2019-04-18T03:46:45.503Z",
+    "lastLogin": "2019-04-18T03:46:45.503Z",
+    "lastUpdated": "2019-04-18T03:46:45.503Z",
+    "passwordChanged": "2019-04-18T03:46:45.503Z",
+    "profile": {
+      "firstName": "Alexzander",
+      "lastName": "Gleichner",
+      "email": "Alexzander0@kiwi.com",
+      "employeeNumber": "810121310",
+      "mobilePhone": "1-676-187-8052",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Buckridgeborough",
+      "kb_team_membership": ["Kids", "Toys", "Kids"],
+      "manager": "Hettie Hirthe",
+      "kb_jobPositionLevel": "Central Program Officer",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "2dadd6bd-97b0-424e-9899-452218b412e5",
+    "status": "active",
+    "created": "2018-06-08T07:37:29.715Z",
+    "activated": "2018-06-08T07:37:29.715Z",
+    "statusChanged": "2018-06-08T07:37:29.715Z",
+    "lastLogin": "2018-06-08T07:37:29.715Z",
+    "lastUpdated": "2018-06-08T07:37:29.715Z",
+    "passwordChanged": "2018-06-08T07:37:29.715Z",
+    "profile": {
+      "firstName": "Nola",
+      "lastName": "Bergstrom",
+      "email": "Nola46@kiwi.com",
+      "employeeNumber": "528079234",
+      "mobilePhone": "1-349-432-4595 x080",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Reggie",
+      "kb_team_membership": [],
+      "manager": "Maribel Welch",
+      "kb_jobPositionLevel": "Forward Web Director",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "bd317c4c-66b6-4e40-8e0e-2ea99496ba71",
+    "status": "active",
+    "created": "2019-04-17T23:20:59.225Z",
+    "activated": "2019-04-17T23:20:59.225Z",
+    "statusChanged": "2019-04-17T23:20:59.225Z",
+    "lastLogin": "2019-04-17T23:20:59.225Z",
+    "lastUpdated": "2019-04-17T23:20:59.225Z",
+    "passwordChanged": "2019-04-17T23:20:59.225Z",
+    "profile": {
+      "firstName": "Cynthia",
+      "lastName": "Hamill",
+      "email": "Cynthia.Hamill2@kiwi.com",
+      "employeeNumber": "649456069",
+      "mobilePhone": "1-680-855-3563 x4071",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "North Maureenton",
+      "kb_team_membership": ["Baby", "Grocery", "Beauty", "Outdoors"],
+      "manager": "Ebony Bogan",
+      "kb_jobPositionLevel": "Future Configuration Strategist",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "3173e048-5842-4544-b5f5-022ce68cb8b4",
+    "status": "active",
+    "created": "2018-12-20T08:34:54.369Z",
+    "activated": "2018-12-20T08:34:54.369Z",
+    "statusChanged": "2018-12-20T08:34:54.369Z",
+    "lastLogin": "2018-12-20T08:34:54.369Z",
+    "lastUpdated": "2018-12-20T08:34:54.369Z",
+    "passwordChanged": "2018-12-20T08:34:54.369Z",
+    "profile": {
+      "firstName": "Else",
+      "lastName": "Walter",
+      "email": "Else.Walter@kiwi.com",
+      "employeeNumber": "849668360",
+      "mobilePhone": "(624) 539-7351",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Elmoremouth",
+      "kb_team_membership": ["Grocery"],
+      "manager": "Velda Corwin",
+      "kb_jobPositionLevel": "Product Operations Agent",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "115b4b23-d685-4dcf-bcf0-299e8d425031",
+    "status": "active",
+    "created": "2018-07-22T13:46:04.029Z",
+    "activated": "2018-07-22T13:46:04.029Z",
+    "statusChanged": "2018-07-22T13:46:04.029Z",
+    "lastLogin": "2018-07-22T13:46:04.029Z",
+    "lastUpdated": "2018-07-22T13:46:04.029Z",
+    "passwordChanged": "2018-07-22T13:46:04.029Z",
+    "profile": {
+      "firstName": "Viviane",
+      "lastName": "Dietrich",
+      "email": "Viviane.Dietrich@kiwi.com",
+      "employeeNumber": "101769822",
+      "mobilePhone": "365-417-4253 x162",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Konopelskihaven",
+      "kb_team_membership": ["Music", "Jewelery", "Shoes"],
+      "manager": "Hank Gutkowski",
+      "kb_jobPositionLevel": "Senior Markets Technician",
+      "department": "Health"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5e380af7-212b-4dd4-94a9-ee185579a071",
+    "status": "active",
+    "created": "2019-04-03T02:31:01.590Z",
+    "activated": "2019-04-03T02:31:01.590Z",
+    "statusChanged": "2019-04-03T02:31:01.590Z",
+    "lastLogin": "2019-04-03T02:31:01.590Z",
+    "lastUpdated": "2019-04-03T02:31:01.590Z",
+    "passwordChanged": "2019-04-03T02:31:01.590Z",
+    "profile": {
+      "firstName": "Jaclyn",
+      "lastName": "Schimmel",
+      "email": "Jaclyn.Schimmel@kiwi.com",
+      "employeeNumber": "244863321",
+      "mobilePhone": "149.453.1091 x876",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "East Brennan",
+      "kb_team_membership": ["Jewelery", "Computers"],
+      "manager": "Freddy Padberg",
+      "kb_jobPositionLevel": "Regional Factors Coordinator",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "e02325f0-410b-4bfb-a822-6e4e304c9c33",
+    "status": "active",
+    "created": "2018-12-09T03:58:13.558Z",
+    "activated": "2018-12-09T03:58:13.558Z",
+    "statusChanged": "2018-12-09T03:58:13.558Z",
+    "lastLogin": "2018-12-09T03:58:13.558Z",
+    "lastUpdated": "2018-12-09T03:58:13.558Z",
+    "passwordChanged": "2018-12-09T03:58:13.558Z",
+    "profile": {
+      "firstName": "Rosella",
+      "lastName": "Blick",
+      "email": "Rosella_Blick17@kiwi.com",
+      "employeeNumber": "742788784",
+      "mobilePhone": "694-344-5930",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Port Glennie",
+      "kb_team_membership": ["Kids"],
+      "manager": "Trevor Mayert",
+      "kb_jobPositionLevel": "Direct Program Facilitator",
+      "department": "Movies"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "3aef4362-ee63-4727-a2b2-dea5796ee6dc",
+    "status": "active",
+    "created": "2019-02-02T14:20:35.312Z",
+    "activated": "2019-02-02T14:20:35.312Z",
+    "statusChanged": "2019-02-02T14:20:35.312Z",
+    "lastLogin": "2019-02-02T14:20:35.312Z",
+    "lastUpdated": "2019-02-02T14:20:35.312Z",
+    "passwordChanged": "2019-02-02T14:20:35.312Z",
+    "profile": {
+      "firstName": "Carmel",
+      "lastName": "Orn",
+      "email": "Carmel.Orn@kiwi.com",
+      "employeeNumber": "959477720",
+      "mobilePhone": "(643) 905-9783",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Mayermouth",
+      "kb_team_membership": [
+        "Garden",
+        "Movies",
+        "Clothing",
+        "Books",
+        "Automotive"
+      ],
+      "manager": "Alia Sanford",
+      "kb_jobPositionLevel": "Principal Applications Technician",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "a216291a-1fc9-4dd5-ac4b-5fc32f313e5d",
+    "status": "active",
+    "created": "2018-08-26T19:54:41.498Z",
+    "activated": "2018-08-26T19:54:41.498Z",
+    "statusChanged": "2018-08-26T19:54:41.498Z",
+    "lastLogin": "2018-08-26T19:54:41.498Z",
+    "lastUpdated": "2018-08-26T19:54:41.498Z",
+    "passwordChanged": "2018-08-26T19:54:41.498Z",
+    "profile": {
+      "firstName": "Fermin",
+      "lastName": "Kohler",
+      "email": "Fermin_Kohler46@kiwi.com",
+      "employeeNumber": "423834545",
+      "mobilePhone": "536.540.7102",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Desireemouth",
+      "kb_team_membership": [
+        "Computers",
+        "Outdoors",
+        "Movies",
+        "Books",
+        "Baby"
+      ],
+      "manager": "Beverly Rempel",
+      "kb_jobPositionLevel": "Corporate Branding Developer",
+      "department": "Baby"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "8e3ac49e-8266-47fc-97bd-fac15a636efb",
+    "status": "active",
+    "created": "2019-01-21T22:49:21.465Z",
+    "activated": "2019-01-21T22:49:21.465Z",
+    "statusChanged": "2019-01-21T22:49:21.465Z",
+    "lastLogin": "2019-01-21T22:49:21.465Z",
+    "lastUpdated": "2019-01-21T22:49:21.465Z",
+    "passwordChanged": "2019-01-21T22:49:21.465Z",
+    "profile": {
+      "firstName": "Fabiola",
+      "lastName": "Dickens",
+      "email": "Fabiola.Dickens@kiwi.com",
+      "employeeNumber": "715736381",
+      "mobilePhone": "1-146-687-0836",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Lake Amberland",
+      "kb_team_membership": ["Garden", "Electronics", "Beauty"],
+      "manager": "Kendra Kuhn",
+      "kb_jobPositionLevel": "Internal Solutions Manager",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "57e584c2-81ee-4bdf-b7d3-00f6b540c1a9",
+    "status": "active",
+    "created": "2018-12-30T12:48:48.792Z",
+    "activated": "2018-12-30T12:48:48.792Z",
+    "statusChanged": "2018-12-30T12:48:48.792Z",
+    "lastLogin": "2018-12-30T12:48:48.792Z",
+    "lastUpdated": "2018-12-30T12:48:48.792Z",
+    "passwordChanged": "2018-12-30T12:48:48.792Z",
+    "profile": {
+      "firstName": "Fae",
+      "lastName": "Ernser",
+      "email": "Fae73@kiwi.com",
+      "employeeNumber": "953970117",
+      "mobilePhone": "(610) 181-4677 x38868",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Tiahaven",
+      "kb_team_membership": ["Grocery", "Baby", "Kids"],
+      "manager": "Waino Okuneva",
+      "kb_jobPositionLevel": "National Tactics Assistant",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "227809e5-2314-4a02-b161-0c3a335e54eb",
+    "status": "active",
+    "created": "2019-02-26T02:29:42.021Z",
+    "activated": "2019-02-26T02:29:42.021Z",
+    "statusChanged": "2019-02-26T02:29:42.021Z",
+    "lastLogin": "2019-02-26T02:29:42.021Z",
+    "lastUpdated": "2019-02-26T02:29:42.021Z",
+    "passwordChanged": "2019-02-26T02:29:42.021Z",
+    "profile": {
+      "firstName": "Arlie",
+      "lastName": "Yost",
+      "email": "Arlie_Yost@kiwi.com",
+      "employeeNumber": "309236377",
+      "mobilePhone": "(698) 467-6444",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Urielfort",
+      "kb_team_membership": ["Tools", "Shoes", "Clothing", "Shoes"],
+      "manager": "Lilliana Carroll",
+      "kb_jobPositionLevel": "Regional Mobility Producer",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5c0454bf-0899-4014-8467-81460ebf0c65",
+    "status": "active",
+    "created": "2019-01-06T00:18:42.038Z",
+    "activated": "2019-01-06T00:18:42.038Z",
+    "statusChanged": "2019-01-06T00:18:42.038Z",
+    "lastLogin": "2019-01-06T00:18:42.038Z",
+    "lastUpdated": "2019-01-06T00:18:42.038Z",
+    "passwordChanged": "2019-01-06T00:18:42.038Z",
+    "profile": {
+      "firstName": "Alda",
+      "lastName": "Bartell",
+      "email": "Alda_Bartell63@kiwi.com",
+      "employeeNumber": "252607793",
+      "mobilePhone": "(146) 232-0242 x69799",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Calitown",
+      "kb_team_membership": ["Movies"],
+      "manager": "Monserrat Price",
+      "kb_jobPositionLevel": "Investor Group Assistant",
+      "department": "Industrial"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "c2bf5787-143d-4861-9b6a-7952bfb18f7b",
+    "status": "active",
+    "created": "2018-07-24T11:31:56.348Z",
+    "activated": "2018-07-24T11:31:56.348Z",
+    "statusChanged": "2018-07-24T11:31:56.348Z",
+    "lastLogin": "2018-07-24T11:31:56.348Z",
+    "lastUpdated": "2018-07-24T11:31:56.348Z",
+    "passwordChanged": "2018-07-24T11:31:56.348Z",
+    "profile": {
+      "firstName": "Jeffry",
+      "lastName": "Pollich",
+      "email": "Jeffry.Pollich7@kiwi.com",
+      "employeeNumber": "749579359",
+      "mobilePhone": "1-703-974-6067 x901",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "North Garrison",
+      "kb_team_membership": [
+        "Clothing",
+        "Jewelery",
+        "Sports",
+        "Games",
+        "Music"
+      ],
+      "manager": "Carlo Bernhard",
+      "kb_jobPositionLevel": "Senior Operations Developer",
+      "department": "Computers"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "3cbb77c1-35cb-4768-b046-050c1c80b162",
+    "status": "active",
+    "created": "2018-09-17T04:44:06.612Z",
+    "activated": "2018-09-17T04:44:06.612Z",
+    "statusChanged": "2018-09-17T04:44:06.612Z",
+    "lastLogin": "2018-09-17T04:44:06.612Z",
+    "lastUpdated": "2018-09-17T04:44:06.612Z",
+    "passwordChanged": "2018-09-17T04:44:06.612Z",
+    "profile": {
+      "firstName": "Angelo",
+      "lastName": "Waelchi",
+      "email": "Angelo54@kiwi.com",
+      "employeeNumber": "202499452",
+      "mobilePhone": "130.286.7242",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "West Salvador",
+      "kb_team_membership": ["Baby"],
+      "manager": "Hilton D'Amore",
+      "kb_jobPositionLevel": "Dynamic Metrics Engineer",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "b2ff084b-aa8f-4b80-bd49-de5ae90dfdd0",
+    "status": "active",
+    "created": "2019-01-10T16:53:43.523Z",
+    "activated": "2019-01-10T16:53:43.523Z",
+    "statusChanged": "2019-01-10T16:53:43.523Z",
+    "lastLogin": "2019-01-10T16:53:43.523Z",
+    "lastUpdated": "2019-01-10T16:53:43.523Z",
+    "passwordChanged": "2019-01-10T16:53:43.523Z",
+    "profile": {
+      "firstName": "Kayley",
+      "lastName": "Koepp",
+      "email": "Kayley.Koepp@kiwi.com",
+      "employeeNumber": "994793041",
+      "mobilePhone": "1-944-758-5659 x01863",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Flavieburgh",
+      "kb_team_membership": ["Baby"],
+      "manager": "Jeffrey Satterfield",
+      "kb_jobPositionLevel": "Investor Research Agent",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "ed7e7aa8-2c52-4876-9ad8-46155db1781c",
+    "status": "active",
+    "created": "2018-07-28T08:10:54.452Z",
+    "activated": "2018-07-28T08:10:54.452Z",
+    "statusChanged": "2018-07-28T08:10:54.452Z",
+    "lastLogin": "2018-07-28T08:10:54.452Z",
+    "lastUpdated": "2018-07-28T08:10:54.452Z",
+    "passwordChanged": "2018-07-28T08:10:54.452Z",
+    "profile": {
+      "firstName": "Norris",
+      "lastName": "Mueller",
+      "email": "Norris_Mueller@kiwi.com",
+      "employeeNumber": "652572416",
+      "mobilePhone": "(041) 543-0130 x027",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Elianstad",
+      "kb_team_membership": [
+        "Industrial",
+        "Grocery",
+        "Clothing",
+        "Automotive",
+        "Computers"
+      ],
+      "manager": "Vidal Langosh",
+      "kb_jobPositionLevel": "Customer Accounts Manager",
+      "department": "Jewelery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "443b2966-fc35-4494-8a80-0c23c391109c",
+    "status": "active",
+    "created": "2019-01-04T11:29:20.277Z",
+    "activated": "2019-01-04T11:29:20.277Z",
+    "statusChanged": "2019-01-04T11:29:20.277Z",
+    "lastLogin": "2019-01-04T11:29:20.277Z",
+    "lastUpdated": "2019-01-04T11:29:20.277Z",
+    "passwordChanged": "2019-01-04T11:29:20.277Z",
+    "profile": {
+      "firstName": "Adolph",
+      "lastName": "Jast",
+      "email": "Adolph_Jast68@kiwi.com",
+      "employeeNumber": "294549552",
+      "mobilePhone": "316-791-9490",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Kshlerinstad",
+      "kb_team_membership": ["Home", "Outdoors", "Movies", "Music"],
+      "manager": "Tara Bauch",
+      "kb_jobPositionLevel": "Senior Program Designer",
+      "department": "Garden"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "e8723a4d-3386-4c4d-96c4-2a99cff8fd71",
+    "status": "active",
+    "created": "2019-01-02T09:58:48.981Z",
+    "activated": "2019-01-02T09:58:48.981Z",
+    "statusChanged": "2019-01-02T09:58:48.981Z",
+    "lastLogin": "2019-01-02T09:58:48.981Z",
+    "lastUpdated": "2019-01-02T09:58:48.981Z",
+    "passwordChanged": "2019-01-02T09:58:48.981Z",
+    "profile": {
+      "firstName": "Rollin",
+      "lastName": "Howe",
+      "email": "Rollin_Howe@kiwi.com",
+      "employeeNumber": "454140076",
+      "mobilePhone": "979.428.8151 x97688",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Josiahshire",
+      "kb_team_membership": ["Garden", "Music", "Jewelery"],
+      "manager": "Billy Kuhn",
+      "kb_jobPositionLevel": "Customer Operations Officer",
+      "department": "Jewelery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "bc1e8d9e-8d26-451f-8436-18c934b26fbf",
+    "status": "active",
+    "created": "2019-02-10T08:37:32.859Z",
+    "activated": "2019-02-10T08:37:32.859Z",
+    "statusChanged": "2019-02-10T08:37:32.859Z",
+    "lastLogin": "2019-02-10T08:37:32.859Z",
+    "lastUpdated": "2019-02-10T08:37:32.859Z",
+    "passwordChanged": "2019-02-10T08:37:32.859Z",
+    "profile": {
+      "firstName": "Jacynthe",
+      "lastName": "McLaughlin",
+      "email": "Jacynthe_McLaughlin67@kiwi.com",
+      "employeeNumber": "263681108",
+      "mobilePhone": "(597) 312-4575 x9085",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Ricehaven",
+      "kb_team_membership": [],
+      "manager": "Reina Glover",
+      "kb_jobPositionLevel": "Chief Directives Strategist",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "1cce1365-911c-48e8-8295-5512d596b16e",
+    "status": "active",
+    "created": "2019-01-31T22:41:36.583Z",
+    "activated": "2019-01-31T22:41:36.583Z",
+    "statusChanged": "2019-01-31T22:41:36.583Z",
+    "lastLogin": "2019-01-31T22:41:36.583Z",
+    "lastUpdated": "2019-01-31T22:41:36.583Z",
+    "passwordChanged": "2019-01-31T22:41:36.583Z",
+    "profile": {
+      "firstName": "Berenice",
+      "lastName": "Wintheiser",
+      "email": "Berenice39@kiwi.com",
+      "employeeNumber": "454766939",
+      "mobilePhone": "133.961.5108 x757",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "North Keeley",
+      "kb_team_membership": ["Kids", "Outdoors", "Movies"],
+      "manager": "Maye Wunsch",
+      "kb_jobPositionLevel": "Legacy Applications Liaison",
+      "department": "Computers"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "dc890d90-ae6b-42d4-8fdb-f103bebb3b6f",
+    "status": "active",
+    "created": "2019-04-07T02:40:35.947Z",
+    "activated": "2019-04-07T02:40:35.947Z",
+    "statusChanged": "2019-04-07T02:40:35.947Z",
+    "lastLogin": "2019-04-07T02:40:35.947Z",
+    "lastUpdated": "2019-04-07T02:40:35.947Z",
+    "passwordChanged": "2019-04-07T02:40:35.947Z",
+    "profile": {
+      "firstName": "Cyril",
+      "lastName": "Quitzon",
+      "email": "Cyril.Quitzon45@kiwi.com",
+      "employeeNumber": "762303423",
+      "mobilePhone": "632.493.1810 x85520",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Arnulfomouth",
+      "kb_team_membership": ["Games", "Clothing", "Computers"],
+      "manager": "Emma O'Hara",
+      "kb_jobPositionLevel": "Lead Research Engineer",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "0596d117-1938-4d1e-865d-8f34ccd68c19",
+    "status": "active",
+    "created": "2018-08-31T22:02:26.280Z",
+    "activated": "2018-08-31T22:02:26.280Z",
+    "statusChanged": "2018-08-31T22:02:26.280Z",
+    "lastLogin": "2018-08-31T22:02:26.280Z",
+    "lastUpdated": "2018-08-31T22:02:26.280Z",
+    "passwordChanged": "2018-08-31T22:02:26.280Z",
+    "profile": {
+      "firstName": "Melba",
+      "lastName": "Glover",
+      "email": "Melba_Glover@kiwi.com",
+      "employeeNumber": "293911354",
+      "mobilePhone": "117.011.8908 x1637",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Shawnatown",
+      "kb_team_membership": ["Computers", "Books", "Shoes"],
+      "manager": "Francisca Goodwin",
+      "kb_jobPositionLevel": "Lead Response Architect",
+      "department": "Jewelery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "7c7ed357-1a5a-4791-ba4e-825a76c57292",
+    "status": "active",
+    "created": "2019-05-14T23:16:07.664Z",
+    "activated": "2019-05-14T23:16:07.664Z",
+    "statusChanged": "2019-05-14T23:16:07.664Z",
+    "lastLogin": "2019-05-14T23:16:07.664Z",
+    "lastUpdated": "2019-05-14T23:16:07.664Z",
+    "passwordChanged": "2019-05-14T23:16:07.664Z",
+    "profile": {
+      "firstName": "Gracie",
+      "lastName": "Willms",
+      "email": "Gracie42@kiwi.com",
+      "employeeNumber": "773748099",
+      "mobilePhone": "277.181.6003 x9839",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Darrickbury",
+      "kb_team_membership": ["Clothing", "Health", "Industrial", "Clothing"],
+      "manager": "Benedict Miller",
+      "kb_jobPositionLevel": "Lead Research Engineer",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "939c3bed-8dde-4800-be25-a6744fa8ec24",
+    "status": "active",
+    "created": "2018-07-21T11:25:51.837Z",
+    "activated": "2018-07-21T11:25:51.837Z",
+    "statusChanged": "2018-07-21T11:25:51.837Z",
+    "lastLogin": "2018-07-21T11:25:51.837Z",
+    "lastUpdated": "2018-07-21T11:25:51.837Z",
+    "passwordChanged": "2018-07-21T11:25:51.837Z",
+    "profile": {
+      "firstName": "Curt",
+      "lastName": "Nikolaus",
+      "email": "Curt43@kiwi.com",
+      "employeeNumber": "911981510",
+      "mobilePhone": "470.608.4469 x37387",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Edytheville",
+      "kb_team_membership": ["Outdoors", "Outdoors", "Home", "Outdoors"],
+      "manager": "Cecile Runolfsdottir",
+      "kb_jobPositionLevel": "Investor Response Strategist",
+      "department": "Sports"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "f8bba3c3-3d2c-4b2b-818f-fde03063d6be",
+    "status": "active",
+    "created": "2018-09-03T22:15:03.860Z",
+    "activated": "2018-09-03T22:15:03.860Z",
+    "statusChanged": "2018-09-03T22:15:03.860Z",
+    "lastLogin": "2018-09-03T22:15:03.860Z",
+    "lastUpdated": "2018-09-03T22:15:03.860Z",
+    "passwordChanged": "2018-09-03T22:15:03.860Z",
+    "profile": {
+      "firstName": "Abdiel",
+      "lastName": "Marks",
+      "email": "Abdiel36@kiwi.com",
+      "employeeNumber": "753227418",
+      "mobilePhone": "145-331-6287 x2594",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Alexistown",
+      "kb_team_membership": ["Computers", "Grocery", "Kids"],
+      "manager": "Enid Leannon",
+      "kb_jobPositionLevel": "International Mobility Developer",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "39d729c0-e355-42dc-a160-9544941dcf64",
+    "status": "active",
+    "created": "2019-02-27T07:01:11.022Z",
+    "activated": "2019-02-27T07:01:11.022Z",
+    "statusChanged": "2019-02-27T07:01:11.022Z",
+    "lastLogin": "2019-02-27T07:01:11.022Z",
+    "lastUpdated": "2019-02-27T07:01:11.022Z",
+    "passwordChanged": "2019-02-27T07:01:11.022Z",
+    "profile": {
+      "firstName": "Allene",
+      "lastName": "Hilll",
+      "email": "Allene_Hilll24@kiwi.com",
+      "employeeNumber": "572121290",
+      "mobilePhone": "099-023-4220",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Arno",
+      "kb_team_membership": ["Home", "Beauty"],
+      "manager": "Felix Wiza",
+      "kb_jobPositionLevel": "Direct Creative Developer",
+      "department": "Garden"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "cb1b2cde-1794-4af1-962b-43687971fa4b",
+    "status": "active",
+    "created": "2018-10-27T05:20:47.332Z",
+    "activated": "2018-10-27T05:20:47.332Z",
+    "statusChanged": "2018-10-27T05:20:47.332Z",
+    "lastLogin": "2018-10-27T05:20:47.332Z",
+    "lastUpdated": "2018-10-27T05:20:47.332Z",
+    "passwordChanged": "2018-10-27T05:20:47.332Z",
+    "profile": {
+      "firstName": "Simeon",
+      "lastName": "Auer",
+      "email": "Simeon7@kiwi.com",
+      "employeeNumber": "633741691",
+      "mobilePhone": "475.420.1097 x22110",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Alethabury",
+      "kb_team_membership": ["Garden", "Home", "Health", "Health", "Jewelery"],
+      "manager": "Alberta Bradtke",
+      "kb_jobPositionLevel": "Internal Research Planner",
+      "department": "Health"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "7213a024-cd84-437b-b12b-73b4e8634124",
+    "status": "active",
+    "created": "2018-07-02T16:59:13.854Z",
+    "activated": "2018-07-02T16:59:13.854Z",
+    "statusChanged": "2018-07-02T16:59:13.854Z",
+    "lastLogin": "2018-07-02T16:59:13.854Z",
+    "lastUpdated": "2018-07-02T16:59:13.854Z",
+    "passwordChanged": "2018-07-02T16:59:13.854Z",
+    "profile": {
+      "firstName": "Carmen",
+      "lastName": "Rowe",
+      "email": "Carmen.Rowe@kiwi.com",
+      "employeeNumber": "697574894",
+      "mobilePhone": "1-208-799-4606 x120",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Boscofort",
+      "kb_team_membership": ["Computers"],
+      "manager": "Raina Bartoletti",
+      "kb_jobPositionLevel": "Principal Configuration Assistant",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "019f3921-0efc-4101-9bcf-1b42e1df3cb4",
+    "status": "active",
+    "created": "2018-07-13T22:09:32.287Z",
+    "activated": "2018-07-13T22:09:32.287Z",
+    "statusChanged": "2018-07-13T22:09:32.287Z",
+    "lastLogin": "2018-07-13T22:09:32.287Z",
+    "lastUpdated": "2018-07-13T22:09:32.287Z",
+    "passwordChanged": "2018-07-13T22:09:32.287Z",
+    "profile": {
+      "firstName": "Kira",
+      "lastName": "Koepp",
+      "email": "Kira98@kiwi.com",
+      "employeeNumber": "862106600",
+      "mobilePhone": "118-798-9498",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Minniehaven",
+      "kb_team_membership": [
+        "Garden",
+        "Garden",
+        "Computers",
+        "Outdoors",
+        "Baby"
+      ],
+      "manager": "Brennon Rutherford",
+      "kb_jobPositionLevel": "Central Brand Manager",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "ba39cc8f-d106-4ad0-9227-4420b72f8461",
+    "status": "active",
+    "created": "2018-08-11T00:07:51.974Z",
+    "activated": "2018-08-11T00:07:51.974Z",
+    "statusChanged": "2018-08-11T00:07:51.974Z",
+    "lastLogin": "2018-08-11T00:07:51.974Z",
+    "lastUpdated": "2018-08-11T00:07:51.974Z",
+    "passwordChanged": "2018-08-11T00:07:51.974Z",
+    "profile": {
+      "firstName": "Agustin",
+      "lastName": "Jast",
+      "email": "Agustin_Jast12@kiwi.com",
+      "employeeNumber": "259763010",
+      "mobilePhone": "264.828.5775 x373",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Darlenechester",
+      "kb_team_membership": [
+        "Garden",
+        "Industrial",
+        "Sports",
+        "Outdoors",
+        "Health"
+      ],
+      "manager": "Francesca Labadie",
+      "kb_jobPositionLevel": "Product Quality Director",
+      "department": "Garden"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "2fad2b22-8d8a-411b-82ae-363092cf5960",
+    "status": "active",
+    "created": "2018-10-23T05:29:42.524Z",
+    "activated": "2018-10-23T05:29:42.524Z",
+    "statusChanged": "2018-10-23T05:29:42.524Z",
+    "lastLogin": "2018-10-23T05:29:42.524Z",
+    "lastUpdated": "2018-10-23T05:29:42.524Z",
+    "passwordChanged": "2018-10-23T05:29:42.524Z",
+    "profile": {
+      "firstName": "Judd",
+      "lastName": "Koepp",
+      "email": "Judd.Koepp92@kiwi.com",
+      "employeeNumber": "86135709",
+      "mobilePhone": "144-045-0334 x198",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "West Ewald",
+      "kb_team_membership": ["Games", "Music", "Health"],
+      "manager": "Colin Upton",
+      "kb_jobPositionLevel": "Lead Solutions Consultant",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "af6d210b-12bc-41e8-9d9d-edb3331b6c53",
+    "status": "active",
+    "created": "2018-11-29T16:30:03.559Z",
+    "activated": "2018-11-29T16:30:03.559Z",
+    "statusChanged": "2018-11-29T16:30:03.559Z",
+    "lastLogin": "2018-11-29T16:30:03.559Z",
+    "lastUpdated": "2018-11-29T16:30:03.559Z",
+    "passwordChanged": "2018-11-29T16:30:03.559Z",
+    "profile": {
+      "firstName": "Daron",
+      "lastName": "Grimes",
+      "email": "Daron.Grimes@kiwi.com",
+      "employeeNumber": "709124513",
+      "mobilePhone": "(081) 938-8464 x9711",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Fabianhaven",
+      "kb_team_membership": ["Jewelery", "Outdoors", "Tools"],
+      "manager": "Mabel Nikolaus",
+      "kb_jobPositionLevel": "Global Metrics Associate",
+      "department": "Clothing"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "4a88d29d-f712-45ad-a559-27e851ffc595",
+    "status": "active",
+    "created": "2019-03-25T08:44:52.035Z",
+    "activated": "2019-03-25T08:44:52.035Z",
+    "statusChanged": "2019-03-25T08:44:52.035Z",
+    "lastLogin": "2019-03-25T08:44:52.035Z",
+    "lastUpdated": "2019-03-25T08:44:52.035Z",
+    "passwordChanged": "2019-03-25T08:44:52.035Z",
+    "profile": {
+      "firstName": "Kaleb",
+      "lastName": "Stoltenberg",
+      "email": "Kaleb15@kiwi.com",
+      "employeeNumber": "807519332",
+      "mobilePhone": "485-334-6273 x7840",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Marcosville",
+      "kb_team_membership": ["Shoes", "Kids", "Automotive", "Jewelery", "Kids"],
+      "manager": "Trevor Erdman",
+      "kb_jobPositionLevel": "Forward Usability Facilitator",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "f8000a1b-439b-4668-a662-ce41a38acc0e",
+    "status": "active",
+    "created": "2018-10-27T08:57:04.872Z",
+    "activated": "2018-10-27T08:57:04.872Z",
+    "statusChanged": "2018-10-27T08:57:04.872Z",
+    "lastLogin": "2018-10-27T08:57:04.872Z",
+    "lastUpdated": "2018-10-27T08:57:04.872Z",
+    "passwordChanged": "2018-10-27T08:57:04.872Z",
+    "profile": {
+      "firstName": "Rowland",
+      "lastName": "Luettgen",
+      "email": "Rowland87@kiwi.com",
+      "employeeNumber": "44464682",
+      "mobilePhone": "134.824.2832 x998",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "New Carleybury",
+      "kb_team_membership": ["Grocery", "Jewelery"],
+      "manager": "Candice Hamill",
+      "kb_jobPositionLevel": "Human Optimization Planner",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "0abf2e39-981f-4fd7-bea3-18bb8c02d069",
+    "status": "active",
+    "created": "2018-10-17T02:01:01.143Z",
+    "activated": "2018-10-17T02:01:01.143Z",
+    "statusChanged": "2018-10-17T02:01:01.143Z",
+    "lastLogin": "2018-10-17T02:01:01.143Z",
+    "lastUpdated": "2018-10-17T02:01:01.143Z",
+    "passwordChanged": "2018-10-17T02:01:01.143Z",
+    "profile": {
+      "firstName": "Gordon",
+      "lastName": "Jaskolski",
+      "email": "Gordon.Jaskolski@kiwi.com",
+      "employeeNumber": "237288051",
+      "mobilePhone": "1-475-819-8454 x487",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Kingview",
+      "kb_team_membership": [
+        "Beauty",
+        "Industrial",
+        "Grocery",
+        "Health",
+        "Outdoors"
+      ],
+      "manager": "Liliane Stark",
+      "kb_jobPositionLevel": "Direct Program Engineer",
+      "department": "Industrial"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "2898d0d6-ae2a-490b-8973-972416b4ef88",
+    "status": "active",
+    "created": "2018-09-14T05:43:45.856Z",
+    "activated": "2018-09-14T05:43:45.856Z",
+    "statusChanged": "2018-09-14T05:43:45.856Z",
+    "lastLogin": "2018-09-14T05:43:45.856Z",
+    "lastUpdated": "2018-09-14T05:43:45.856Z",
+    "passwordChanged": "2018-09-14T05:43:45.856Z",
+    "profile": {
+      "firstName": "Sarina",
+      "lastName": "Bartoletti",
+      "email": "Sarina6@kiwi.com",
+      "employeeNumber": "182337127",
+      "mobilePhone": "100.269.2471",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Ulisesland",
+      "kb_team_membership": ["Computers", "Grocery", "Industrial"],
+      "manager": "Kira Streich",
+      "kb_jobPositionLevel": "Lead Functionality Representative",
+      "department": "Clothing"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "8f8e4772-e725-427a-9ebb-8fc63dae879d",
+    "status": "active",
+    "created": "2019-02-02T14:07:54.025Z",
+    "activated": "2019-02-02T14:07:54.025Z",
+    "statusChanged": "2019-02-02T14:07:54.025Z",
+    "lastLogin": "2019-02-02T14:07:54.025Z",
+    "lastUpdated": "2019-02-02T14:07:54.025Z",
+    "passwordChanged": "2019-02-02T14:07:54.025Z",
+    "profile": {
+      "firstName": "Zachariah",
+      "lastName": "Cassin",
+      "email": "Zachariah_Cassin53@kiwi.com",
+      "employeeNumber": "538897577",
+      "mobilePhone": "(214) 309-9672 x21965",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Beahanchester",
+      "kb_team_membership": ["Beauty", "Shoes"],
+      "manager": "Robyn Bauch",
+      "kb_jobPositionLevel": "Product Applications Liaison",
+      "department": "Clothing"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "a90aaf74-0b8b-4e44-8484-9a5dd2d6a86c",
+    "status": "active",
+    "created": "2019-04-23T04:31:40.667Z",
+    "activated": "2019-04-23T04:31:40.667Z",
+    "statusChanged": "2019-04-23T04:31:40.667Z",
+    "lastLogin": "2019-04-23T04:31:40.667Z",
+    "lastUpdated": "2019-04-23T04:31:40.667Z",
+    "passwordChanged": "2019-04-23T04:31:40.667Z",
+    "profile": {
+      "firstName": "Hosea",
+      "lastName": "Denesik",
+      "email": "Hosea51@kiwi.com",
+      "employeeNumber": "430560462",
+      "mobilePhone": "1-285-276-4227 x09331",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Xandermouth",
+      "kb_team_membership": [
+        "Electronics",
+        "Sports",
+        "Health",
+        "Automotive",
+        "Baby"
+      ],
+      "manager": "Asa Spinka",
+      "kb_jobPositionLevel": "Corporate Security Officer",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "ec44f46c-3724-4c43-8596-8e532b1e3136",
+    "status": "active",
+    "created": "2018-08-17T06:43:49.488Z",
+    "activated": "2018-08-17T06:43:49.488Z",
+    "statusChanged": "2018-08-17T06:43:49.488Z",
+    "lastLogin": "2018-08-17T06:43:49.488Z",
+    "lastUpdated": "2018-08-17T06:43:49.488Z",
+    "passwordChanged": "2018-08-17T06:43:49.488Z",
+    "profile": {
+      "firstName": "Mariam",
+      "lastName": "Kshlerin",
+      "email": "Mariam.Kshlerin@kiwi.com",
+      "employeeNumber": "277437065",
+      "mobilePhone": "787-111-9821 x65106",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Port Elliot",
+      "kb_team_membership": [
+        "Electronics",
+        "Jewelery",
+        "Jewelery",
+        "Baby",
+        "Computers"
+      ],
+      "manager": "Norberto Pacocha",
+      "kb_jobPositionLevel": "Investor Paradigm Supervisor",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "dd68929a-fdfc-48fc-82a7-8c7001c24297",
+    "status": "active",
+    "created": "2018-08-01T11:31:01.527Z",
+    "activated": "2018-08-01T11:31:01.527Z",
+    "statusChanged": "2018-08-01T11:31:01.527Z",
+    "lastLogin": "2018-08-01T11:31:01.527Z",
+    "lastUpdated": "2018-08-01T11:31:01.527Z",
+    "passwordChanged": "2018-08-01T11:31:01.527Z",
+    "profile": {
+      "firstName": "Eulah",
+      "lastName": "Orn",
+      "email": "Eulah.Orn21@kiwi.com",
+      "employeeNumber": "409753871",
+      "mobilePhone": "(171) 897-4561",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Uriahview",
+      "kb_team_membership": ["Outdoors", "Home", "Clothing", "Tools"],
+      "manager": "Norene Bayer",
+      "kb_jobPositionLevel": "District Response Associate",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "aa8d791c-bf81-4ad3-9024-ca2b9e4f4b2a",
+    "status": "active",
+    "created": "2018-09-03T04:17:54.352Z",
+    "activated": "2018-09-03T04:17:54.352Z",
+    "statusChanged": "2018-09-03T04:17:54.352Z",
+    "lastLogin": "2018-09-03T04:17:54.352Z",
+    "lastUpdated": "2018-09-03T04:17:54.352Z",
+    "passwordChanged": "2018-09-03T04:17:54.352Z",
+    "profile": {
+      "firstName": "Princess",
+      "lastName": "Lubowitz",
+      "email": "Princess.Lubowitz78@kiwi.com",
+      "employeeNumber": "561588670",
+      "mobilePhone": "301.056.7933",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "West Martaborough",
+      "kb_team_membership": ["Garden", "Garden", "Tools", "Home"],
+      "manager": "Drew Beer",
+      "kb_jobPositionLevel": "National Integration Architect",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "ac32b72e-3982-457b-8039-fe8a9af73559",
+    "status": "active",
+    "created": "2019-04-28T05:07:19.278Z",
+    "activated": "2019-04-28T05:07:19.278Z",
+    "statusChanged": "2019-04-28T05:07:19.278Z",
+    "lastLogin": "2019-04-28T05:07:19.278Z",
+    "lastUpdated": "2019-04-28T05:07:19.278Z",
+    "passwordChanged": "2019-04-28T05:07:19.278Z",
+    "profile": {
+      "firstName": "Elta",
+      "lastName": "Nitzsche",
+      "email": "Elta.Nitzsche14@kiwi.com",
+      "employeeNumber": "208441312",
+      "mobilePhone": "1-037-193-5065 x37372",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "West Helmer",
+      "kb_team_membership": [
+        "Movies",
+        "Electronics",
+        "Clothing",
+        "Beauty",
+        "Music"
+      ],
+      "manager": "Marcelle Quitzon",
+      "kb_jobPositionLevel": "District Implementation Representative",
+      "department": "Health"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "671666bc-7765-44ff-8520-6ec0b9098795",
+    "status": "active",
+    "created": "2018-06-20T21:09:58.769Z",
+    "activated": "2018-06-20T21:09:58.769Z",
+    "statusChanged": "2018-06-20T21:09:58.769Z",
+    "lastLogin": "2018-06-20T21:09:58.769Z",
+    "lastUpdated": "2018-06-20T21:09:58.769Z",
+    "passwordChanged": "2018-06-20T21:09:58.769Z",
+    "profile": {
+      "firstName": "Harrison",
+      "lastName": "Trantow",
+      "email": "Harrison41@kiwi.com",
+      "employeeNumber": "877123928",
+      "mobilePhone": "210.049.4726",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "North Alden",
+      "kb_team_membership": ["Outdoors", "Movies", "Health"],
+      "manager": "Jerrell Bauch",
+      "kb_jobPositionLevel": "Future Operations Representative",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "e780177f-8cd7-478b-854a-4b7b165a2768",
+    "status": "active",
+    "created": "2019-04-14T06:08:55.280Z",
+    "activated": "2019-04-14T06:08:55.280Z",
+    "statusChanged": "2019-04-14T06:08:55.280Z",
+    "lastLogin": "2019-04-14T06:08:55.280Z",
+    "lastUpdated": "2019-04-14T06:08:55.280Z",
+    "passwordChanged": "2019-04-14T06:08:55.280Z",
+    "profile": {
+      "firstName": "Fanny",
+      "lastName": "Greenholt",
+      "email": "Fanny_Greenholt@kiwi.com",
+      "employeeNumber": "951130225",
+      "mobilePhone": "1-223-035-7876",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Gleasonchester",
+      "kb_team_membership": [
+        "Computers",
+        "Computers",
+        "Electronics",
+        "Computers"
+      ],
+      "manager": "Dedrick Conn",
+      "kb_jobPositionLevel": "Future Accounts Architect",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "555b5d5e-d2bf-4f71-b3d7-d0a5660fc5eb",
+    "status": "active",
+    "created": "2018-09-18T20:38:43.993Z",
+    "activated": "2018-09-18T20:38:43.993Z",
+    "statusChanged": "2018-09-18T20:38:43.993Z",
+    "lastLogin": "2018-09-18T20:38:43.993Z",
+    "lastUpdated": "2018-09-18T20:38:43.993Z",
+    "passwordChanged": "2018-09-18T20:38:43.993Z",
+    "profile": {
+      "firstName": "Kavon",
+      "lastName": "Price",
+      "email": "Kavon39@kiwi.com",
+      "employeeNumber": "572746363",
+      "mobilePhone": "975-073-1388 x014",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Smithshire",
+      "kb_team_membership": [],
+      "manager": "Arden Miller",
+      "kb_jobPositionLevel": "Senior Program Administrator",
+      "department": "Industrial"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "7ba5e15d-2a6a-4bbb-b7c4-7456c7e0e5b0",
+    "status": "active",
+    "created": "2018-10-07T02:34:51.780Z",
+    "activated": "2018-10-07T02:34:51.780Z",
+    "statusChanged": "2018-10-07T02:34:51.780Z",
+    "lastLogin": "2018-10-07T02:34:51.780Z",
+    "lastUpdated": "2018-10-07T02:34:51.780Z",
+    "passwordChanged": "2018-10-07T02:34:51.780Z",
+    "profile": {
+      "firstName": "Sarina",
+      "lastName": "Bernhard",
+      "email": "Sarina.Bernhard58@kiwi.com",
+      "employeeNumber": "106567367",
+      "mobilePhone": "533-659-5501",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Port Constantinview",
+      "kb_team_membership": ["Health", "Kids", "Computers", "Music"],
+      "manager": "Laurence Kemmer",
+      "kb_jobPositionLevel": "Lead Marketing Engineer",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "1a2e67db-f265-45ef-82eb-aac7b8828914",
+    "status": "active",
+    "created": "2018-08-10T13:57:04.559Z",
+    "activated": "2018-08-10T13:57:04.559Z",
+    "statusChanged": "2018-08-10T13:57:04.559Z",
+    "lastLogin": "2018-08-10T13:57:04.559Z",
+    "lastUpdated": "2018-08-10T13:57:04.559Z",
+    "passwordChanged": "2018-08-10T13:57:04.559Z",
+    "profile": {
+      "firstName": "Jamarcus",
+      "lastName": "Corkery",
+      "email": "Jamarcus60@kiwi.com",
+      "employeeNumber": "922441412",
+      "mobilePhone": "(673) 980-1318",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Stromanhaven",
+      "kb_team_membership": ["Clothing"],
+      "manager": "Wilma Von",
+      "kb_jobPositionLevel": "Dynamic Response Agent",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5374e063-5a8a-41b8-95a1-a8a53f70ed69",
+    "status": "active",
+    "created": "2018-08-02T04:18:49.244Z",
+    "activated": "2018-08-02T04:18:49.244Z",
+    "statusChanged": "2018-08-02T04:18:49.244Z",
+    "lastLogin": "2018-08-02T04:18:49.244Z",
+    "lastUpdated": "2018-08-02T04:18:49.244Z",
+    "passwordChanged": "2018-08-02T04:18:49.244Z",
+    "profile": {
+      "firstName": "Karlie",
+      "lastName": "Beahan",
+      "email": "Karlie82@kiwi.com",
+      "employeeNumber": "104909083",
+      "mobilePhone": "900-937-5855 x09888",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Hershelmouth",
+      "kb_team_membership": ["Games", "Garden"],
+      "manager": "Phyllis Towne",
+      "kb_jobPositionLevel": "Human Configuration Manager",
+      "department": "Baby"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "174b2808-c85a-4b6d-9a84-1bceb09332f6",
+    "status": "active",
+    "created": "2018-12-04T17:05:16.677Z",
+    "activated": "2018-12-04T17:05:16.677Z",
+    "statusChanged": "2018-12-04T17:05:16.677Z",
+    "lastLogin": "2018-12-04T17:05:16.677Z",
+    "lastUpdated": "2018-12-04T17:05:16.677Z",
+    "passwordChanged": "2018-12-04T17:05:16.677Z",
+    "profile": {
+      "firstName": "Roselyn",
+      "lastName": "Herzog",
+      "email": "Roselyn11@kiwi.com",
+      "employeeNumber": "833952273",
+      "mobilePhone": "(740) 349-8376",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Lake Irwinside",
+      "kb_team_membership": ["Shoes", "Health", "Games", "Home"],
+      "manager": "Fleta Hamill",
+      "kb_jobPositionLevel": "International Program Producer",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "b1b1f541-0727-4a7b-b366-14a0b99aeeda",
+    "status": "active",
+    "created": "2018-09-09T03:16:05.805Z",
+    "activated": "2018-09-09T03:16:05.805Z",
+    "statusChanged": "2018-09-09T03:16:05.805Z",
+    "lastLogin": "2018-09-09T03:16:05.805Z",
+    "lastUpdated": "2018-09-09T03:16:05.805Z",
+    "passwordChanged": "2018-09-09T03:16:05.805Z",
+    "profile": {
+      "firstName": "Mariano",
+      "lastName": "Kertzmann",
+      "email": "Mariano_Kertzmann@kiwi.com",
+      "employeeNumber": "943417491",
+      "mobilePhone": "244-647-5413 x537",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "North Johnathon",
+      "kb_team_membership": ["Grocery", "Grocery"],
+      "manager": "Shane Von",
+      "kb_jobPositionLevel": "Dynamic Brand Planner",
+      "department": "Industrial"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "dc27a8a9-b47d-47c4-b76c-ec8f046df62f",
+    "status": "active",
+    "created": "2018-08-19T04:33:47.730Z",
+    "activated": "2018-08-19T04:33:47.730Z",
+    "statusChanged": "2018-08-19T04:33:47.730Z",
+    "lastLogin": "2018-08-19T04:33:47.730Z",
+    "lastUpdated": "2018-08-19T04:33:47.730Z",
+    "passwordChanged": "2018-08-19T04:33:47.730Z",
+    "profile": {
+      "firstName": "Edwina",
+      "lastName": "Jones",
+      "email": "Edwina_Jones@kiwi.com",
+      "employeeNumber": "825010209",
+      "mobilePhone": "316.896.0452 x42445",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Ruthland",
+      "kb_team_membership": ["Beauty", "Health", "Jewelery"],
+      "manager": "Napoleon Feest",
+      "kb_jobPositionLevel": "Investor Assurance Planner",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "2c5972ef-f6e1-4f8c-9f23-5f02edd16ce2",
+    "status": "active",
+    "created": "2018-10-28T22:36:49.224Z",
+    "activated": "2018-10-28T22:36:49.224Z",
+    "statusChanged": "2018-10-28T22:36:49.224Z",
+    "lastLogin": "2018-10-28T22:36:49.224Z",
+    "lastUpdated": "2018-10-28T22:36:49.224Z",
+    "passwordChanged": "2018-10-28T22:36:49.224Z",
+    "profile": {
+      "firstName": "Kiel",
+      "lastName": "Kuphal",
+      "email": "Kiel93@kiwi.com",
+      "employeeNumber": "957545657",
+      "mobilePhone": "232.480.5935",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Port Paytonton",
+      "kb_team_membership": ["Garden", "Beauty", "Games", "Home", "Music"],
+      "manager": "Garrison Brakus",
+      "kb_jobPositionLevel": "Central Assurance Officer",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "8e9a3fbb-9702-42a5-8243-c87220a6b73a",
+    "status": "active",
+    "created": "2019-01-24T18:59:53.390Z",
+    "activated": "2019-01-24T18:59:53.390Z",
+    "statusChanged": "2019-01-24T18:59:53.390Z",
+    "lastLogin": "2019-01-24T18:59:53.390Z",
+    "lastUpdated": "2019-01-24T18:59:53.390Z",
+    "passwordChanged": "2019-01-24T18:59:53.390Z",
+    "profile": {
+      "firstName": "Josianne",
+      "lastName": "Wiegand",
+      "email": "Josianne62@kiwi.com",
+      "employeeNumber": "79748159",
+      "mobilePhone": "1-301-216-0206 x499",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Leuschkemouth",
+      "kb_team_membership": ["Movies"],
+      "manager": "Eladio Yost",
+      "kb_jobPositionLevel": "Central Identity Coordinator",
+      "department": "Health"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d0aedab8-4161-42dc-9aa7-a06d2f37b89d",
+    "status": "active",
+    "created": "2019-06-05T18:24:18.722Z",
+    "activated": "2019-06-05T18:24:18.722Z",
+    "statusChanged": "2019-06-05T18:24:18.722Z",
+    "lastLogin": "2019-06-05T18:24:18.722Z",
+    "lastUpdated": "2019-06-05T18:24:18.722Z",
+    "passwordChanged": "2019-06-05T18:24:18.722Z",
+    "profile": {
+      "firstName": "Bart",
+      "lastName": "Skiles",
+      "email": "Bart.Skiles@kiwi.com",
+      "employeeNumber": "515809973",
+      "mobilePhone": "1-040-747-7103",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Baileymouth",
+      "kb_team_membership": [],
+      "manager": "Wilhelm Dach",
+      "kb_jobPositionLevel": "Future Integration Associate",
+      "department": "Jewelery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "37de3d49-9307-4f58-b8d8-9bc1f1e3ac06",
+    "status": "active",
+    "created": "2019-05-11T11:11:51.325Z",
+    "activated": "2019-05-11T11:11:51.325Z",
+    "statusChanged": "2019-05-11T11:11:51.325Z",
+    "lastLogin": "2019-05-11T11:11:51.325Z",
+    "lastUpdated": "2019-05-11T11:11:51.325Z",
+    "passwordChanged": "2019-05-11T11:11:51.325Z",
+    "profile": {
+      "firstName": "Bartholome",
+      "lastName": "Wiza",
+      "email": "Bartholome27@kiwi.com",
+      "employeeNumber": "792067526",
+      "mobilePhone": "(109) 870-7710 x999",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Tremaynemouth",
+      "kb_team_membership": ["Industrial", "Shoes", "Outdoors"],
+      "manager": "Jeff Gutmann",
+      "kb_jobPositionLevel": "Central Security Agent",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "21f59675-b988-4bd3-9c45-3a2dc3e0ce25",
+    "status": "active",
+    "created": "2018-08-04T12:05:04.231Z",
+    "activated": "2018-08-04T12:05:04.231Z",
+    "statusChanged": "2018-08-04T12:05:04.231Z",
+    "lastLogin": "2018-08-04T12:05:04.231Z",
+    "lastUpdated": "2018-08-04T12:05:04.231Z",
+    "passwordChanged": "2018-08-04T12:05:04.231Z",
+    "profile": {
+      "firstName": "Devon",
+      "lastName": "Mayert",
+      "email": "Devon_Mayert@kiwi.com",
+      "employeeNumber": "433372603",
+      "mobilePhone": "(027) 572-7203 x815",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Maryjaneburgh",
+      "kb_team_membership": ["Games", "Clothing", "Home", "Beauty", "Outdoors"],
+      "manager": "Nadia Johns",
+      "kb_jobPositionLevel": "Central Functionality Orchestrator",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "093f17ee-16b7-4b39-b82a-fda22c3c4741",
+    "status": "active",
+    "created": "2018-12-28T04:56:16.146Z",
+    "activated": "2018-12-28T04:56:16.146Z",
+    "statusChanged": "2018-12-28T04:56:16.146Z",
+    "lastLogin": "2018-12-28T04:56:16.146Z",
+    "lastUpdated": "2018-12-28T04:56:16.146Z",
+    "passwordChanged": "2018-12-28T04:56:16.146Z",
+    "profile": {
+      "firstName": "Jacky",
+      "lastName": "Stroman",
+      "email": "Jacky97@kiwi.com",
+      "employeeNumber": "548586457",
+      "mobilePhone": "(159) 501-5075",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Okunevamouth",
+      "kb_team_membership": ["Music", "Home", "Shoes"],
+      "manager": "Eladio Klein",
+      "kb_jobPositionLevel": "Human Factors Administrator",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d22e249c-6ed4-421d-b2ff-b33653b7eff9",
+    "status": "active",
+    "created": "2018-12-27T18:37:42.119Z",
+    "activated": "2018-12-27T18:37:42.119Z",
+    "statusChanged": "2018-12-27T18:37:42.119Z",
+    "lastLogin": "2018-12-27T18:37:42.119Z",
+    "lastUpdated": "2018-12-27T18:37:42.119Z",
+    "passwordChanged": "2018-12-27T18:37:42.119Z",
+    "profile": {
+      "firstName": "Justus",
+      "lastName": "Carroll",
+      "email": "Justus40@kiwi.com",
+      "employeeNumber": "314187118",
+      "mobilePhone": "(502) 145-5912",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Litzyburgh",
+      "kb_team_membership": ["Games", "Grocery", "Toys", "Tools", "Beauty"],
+      "manager": "Maxwell Erdman",
+      "kb_jobPositionLevel": "Forward Implementation Technician",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d9f3d796-0208-45b9-9a1a-ce51d27da29b",
+    "status": "active",
+    "created": "2019-03-19T00:26:30.361Z",
+    "activated": "2019-03-19T00:26:30.361Z",
+    "statusChanged": "2019-03-19T00:26:30.361Z",
+    "lastLogin": "2019-03-19T00:26:30.361Z",
+    "lastUpdated": "2019-03-19T00:26:30.361Z",
+    "passwordChanged": "2019-03-19T00:26:30.361Z",
+    "profile": {
+      "firstName": "Brandyn",
+      "lastName": "Sporer",
+      "email": "Brandyn_Sporer@kiwi.com",
+      "employeeNumber": "333248296",
+      "mobilePhone": "(261) 824-2348 x5168",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Schneiderburgh",
+      "kb_team_membership": ["Grocery", "Clothing"],
+      "manager": "Joelle Davis",
+      "kb_jobPositionLevel": "Human Optimization Orchestrator",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "1b7c7541-421b-4aea-a1f2-5a1f5fb1e139",
+    "status": "active",
+    "created": "2019-03-26T22:26:01.187Z",
+    "activated": "2019-03-26T22:26:01.187Z",
+    "statusChanged": "2019-03-26T22:26:01.187Z",
+    "lastLogin": "2019-03-26T22:26:01.187Z",
+    "lastUpdated": "2019-03-26T22:26:01.187Z",
+    "passwordChanged": "2019-03-26T22:26:01.187Z",
+    "profile": {
+      "firstName": "Dianna",
+      "lastName": "Conroy",
+      "email": "Dianna45@kiwi.com",
+      "employeeNumber": "689659863",
+      "mobilePhone": "(877) 148-7404 x677",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Caseyfurt",
+      "kb_team_membership": ["Music", "Shoes"],
+      "manager": "Uriah Frami",
+      "kb_jobPositionLevel": "Senior Factors Producer",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "31bf0e0c-fb7c-4a8d-bd01-704fadeed3a6",
+    "status": "active",
+    "created": "2018-12-02T09:45:11.434Z",
+    "activated": "2018-12-02T09:45:11.434Z",
+    "statusChanged": "2018-12-02T09:45:11.434Z",
+    "lastLogin": "2018-12-02T09:45:11.434Z",
+    "lastUpdated": "2018-12-02T09:45:11.434Z",
+    "passwordChanged": "2018-12-02T09:45:11.434Z",
+    "profile": {
+      "firstName": "Daniela",
+      "lastName": "Crooks",
+      "email": "Daniela_Crooks22@kiwi.com",
+      "employeeNumber": "776189723",
+      "mobilePhone": "(958) 235-5893",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "West Lilyan",
+      "kb_team_membership": ["Health", "Tools", "Tools", "Kids"],
+      "manager": "Lizeth Ratke",
+      "kb_jobPositionLevel": "Internal Factors Developer",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "1a9fb427-96ec-4437-9bee-abb924e7c142",
+    "status": "active",
+    "created": "2018-09-18T04:47:12.248Z",
+    "activated": "2018-09-18T04:47:12.248Z",
+    "statusChanged": "2018-09-18T04:47:12.248Z",
+    "lastLogin": "2018-09-18T04:47:12.248Z",
+    "lastUpdated": "2018-09-18T04:47:12.248Z",
+    "passwordChanged": "2018-09-18T04:47:12.248Z",
+    "profile": {
+      "firstName": "Rasheed",
+      "lastName": "Mraz",
+      "email": "Rasheed59@kiwi.com",
+      "employeeNumber": "155567187",
+      "mobilePhone": "(415) 537-8054 x9941",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "South Milford",
+      "kb_team_membership": ["Computers", "Music", "Tools", "Beauty"],
+      "manager": "Tiara Fahey",
+      "kb_jobPositionLevel": "Legacy Identity Associate",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "8f2d8308-b7f2-4bc8-af4e-a4eaa0d8a2cf",
+    "status": "active",
+    "created": "2019-01-03T15:21:24.575Z",
+    "activated": "2019-01-03T15:21:24.575Z",
+    "statusChanged": "2019-01-03T15:21:24.575Z",
+    "lastLogin": "2019-01-03T15:21:24.575Z",
+    "lastUpdated": "2019-01-03T15:21:24.575Z",
+    "passwordChanged": "2019-01-03T15:21:24.575Z",
+    "profile": {
+      "firstName": "Kayden",
+      "lastName": "Braun",
+      "email": "Kayden_Braun@kiwi.com",
+      "employeeNumber": "327587251",
+      "mobilePhone": "438-415-4052 x4783",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "East Solonmouth",
+      "kb_team_membership": [
+        "Movies",
+        "Computers",
+        "Shoes",
+        "Computers",
+        "Kids"
+      ],
+      "manager": "Savanna Bogan",
+      "kb_jobPositionLevel": "District Tactics Consultant",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "1bd9f22a-0073-476f-94a1-499c72a96625",
+    "status": "active",
+    "created": "2019-05-02T22:06:30.299Z",
+    "activated": "2019-05-02T22:06:30.299Z",
+    "statusChanged": "2019-05-02T22:06:30.299Z",
+    "lastLogin": "2019-05-02T22:06:30.299Z",
+    "lastUpdated": "2019-05-02T22:06:30.299Z",
+    "passwordChanged": "2019-05-02T22:06:30.299Z",
+    "profile": {
+      "firstName": "Nia",
+      "lastName": "Swift",
+      "email": "Nia36@kiwi.com",
+      "employeeNumber": "182314035",
+      "mobilePhone": "(567) 392-4419 x78388",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Rathberg",
+      "kb_team_membership": ["Toys", "Music"],
+      "manager": "Dana Sanford",
+      "kb_jobPositionLevel": "Dynamic Research Orchestrator",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5eab8f69-594e-4bc6-b09f-16baaf7fbf85",
+    "status": "active",
+    "created": "2018-08-12T13:09:29.843Z",
+    "activated": "2018-08-12T13:09:29.843Z",
+    "statusChanged": "2018-08-12T13:09:29.843Z",
+    "lastLogin": "2018-08-12T13:09:29.843Z",
+    "lastUpdated": "2018-08-12T13:09:29.843Z",
+    "passwordChanged": "2018-08-12T13:09:29.843Z",
+    "profile": {
+      "firstName": "Jennyfer",
+      "lastName": "Dickinson",
+      "email": "Jennyfer41@kiwi.com",
+      "employeeNumber": "631646777",
+      "mobilePhone": "1-682-327-5339",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Port Joesphton",
+      "kb_team_membership": ["Books"],
+      "manager": "Luigi Nitzsche",
+      "kb_jobPositionLevel": "Lead Markets Administrator",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "72ad4a00-0592-4b94-bd78-ce57c3069b44",
+    "status": "active",
+    "created": "2019-02-07T13:49:50.602Z",
+    "activated": "2019-02-07T13:49:50.602Z",
+    "statusChanged": "2019-02-07T13:49:50.602Z",
+    "lastLogin": "2019-02-07T13:49:50.602Z",
+    "lastUpdated": "2019-02-07T13:49:50.602Z",
+    "passwordChanged": "2019-02-07T13:49:50.602Z",
+    "profile": {
+      "firstName": "Johathan",
+      "lastName": "Stamm",
+      "email": "Johathan1@kiwi.com",
+      "employeeNumber": "614127833",
+      "mobilePhone": "014.079.9939 x3587",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Lebsackmouth",
+      "kb_team_membership": ["Home", "Games"],
+      "manager": "Madalyn Muller",
+      "kb_jobPositionLevel": "Future Communications Orchestrator",
+      "department": "Baby"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "c68a19c0-3966-4bf9-a3bc-532218799a98",
+    "status": "active",
+    "created": "2018-10-27T17:32:43.349Z",
+    "activated": "2018-10-27T17:32:43.349Z",
+    "statusChanged": "2018-10-27T17:32:43.349Z",
+    "lastLogin": "2018-10-27T17:32:43.349Z",
+    "lastUpdated": "2018-10-27T17:32:43.349Z",
+    "passwordChanged": "2018-10-27T17:32:43.349Z",
+    "profile": {
+      "firstName": "Annabel",
+      "lastName": "Bahringer",
+      "email": "Annabel.Bahringer15@kiwi.com",
+      "employeeNumber": "69491160",
+      "mobilePhone": "(680) 806-6495 x1931",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Tremaynehaven",
+      "kb_team_membership": ["Sports", "Baby", "Kids", "Beauty"],
+      "manager": "Matt Rohan",
+      "kb_jobPositionLevel": "Investor Division Technician",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "6ba24653-5aee-48eb-a546-ddac927f4c2b",
+    "status": "active",
+    "created": "2019-05-21T11:22:53.002Z",
+    "activated": "2019-05-21T11:22:53.002Z",
+    "statusChanged": "2019-05-21T11:22:53.002Z",
+    "lastLogin": "2019-05-21T11:22:53.002Z",
+    "lastUpdated": "2019-05-21T11:22:53.002Z",
+    "passwordChanged": "2019-05-21T11:22:53.002Z",
+    "profile": {
+      "firstName": "Corene",
+      "lastName": "Kreiger",
+      "email": "Corene.Kreiger@kiwi.com",
+      "employeeNumber": "589078023",
+      "mobilePhone": "(197) 777-6364 x5202",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Jerdeland",
+      "kb_team_membership": [
+        "Music",
+        "Electronics",
+        "Health",
+        "Grocery",
+        "Baby"
+      ],
+      "manager": "Tressa Schimmel",
+      "kb_jobPositionLevel": "Investor Integration Strategist",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "f0a9997d-3353-48d3-8a69-ae469208b13e",
+    "status": "active",
+    "created": "2018-09-25T02:22:37.165Z",
+    "activated": "2018-09-25T02:22:37.165Z",
+    "statusChanged": "2018-09-25T02:22:37.165Z",
+    "lastLogin": "2018-09-25T02:22:37.165Z",
+    "lastUpdated": "2018-09-25T02:22:37.165Z",
+    "passwordChanged": "2018-09-25T02:22:37.165Z",
+    "profile": {
+      "firstName": "Dannie",
+      "lastName": "Moore",
+      "email": "Dannie.Moore@kiwi.com",
+      "employeeNumber": "121829062",
+      "mobilePhone": "180.617.8797",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Myrticechester",
+      "kb_team_membership": [
+        "Jewelery",
+        "Industrial",
+        "Automotive",
+        "Clothing",
+        "Games"
+      ],
+      "manager": "Jacques Johnston",
+      "kb_jobPositionLevel": "Product Interactions Manager",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "07e5b22c-1a28-4ead-8eec-648dfeae71d7",
+    "status": "active",
+    "created": "2018-06-28T11:23:19.448Z",
+    "activated": "2018-06-28T11:23:19.448Z",
+    "statusChanged": "2018-06-28T11:23:19.448Z",
+    "lastLogin": "2018-06-28T11:23:19.448Z",
+    "lastUpdated": "2018-06-28T11:23:19.448Z",
+    "passwordChanged": "2018-06-28T11:23:19.448Z",
+    "profile": {
+      "firstName": "Deontae",
+      "lastName": "Robel",
+      "email": "Deontae_Robel@kiwi.com",
+      "employeeNumber": "565226825",
+      "mobilePhone": "1-961-682-0911",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "West Nola",
+      "kb_team_membership": [],
+      "manager": "Gladys Daniel",
+      "kb_jobPositionLevel": "Corporate Response Associate",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "8c5c8a5e-c391-4c28-bdf1-c7482b044a0f",
+    "status": "active",
+    "created": "2018-09-02T17:47:32.093Z",
+    "activated": "2018-09-02T17:47:32.093Z",
+    "statusChanged": "2018-09-02T17:47:32.093Z",
+    "lastLogin": "2018-09-02T17:47:32.093Z",
+    "lastUpdated": "2018-09-02T17:47:32.093Z",
+    "passwordChanged": "2018-09-02T17:47:32.093Z",
+    "profile": {
+      "firstName": "Kamille",
+      "lastName": "Tillman",
+      "email": "Kamille_Tillman72@kiwi.com",
+      "employeeNumber": "32796380",
+      "mobilePhone": "1-241-480-1491 x550",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Bashirianbury",
+      "kb_team_membership": ["Shoes", "Home", "Grocery"],
+      "manager": "Zoe Paucek",
+      "kb_jobPositionLevel": "Legacy Markets Facilitator",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "d8f882e2-7bd1-4b71-b1a2-a60ac61fe37c",
+    "status": "active",
+    "created": "2019-01-17T01:49:00.028Z",
+    "activated": "2019-01-17T01:49:00.028Z",
+    "statusChanged": "2019-01-17T01:49:00.028Z",
+    "lastLogin": "2019-01-17T01:49:00.028Z",
+    "lastUpdated": "2019-01-17T01:49:00.028Z",
+    "passwordChanged": "2019-01-17T01:49:00.028Z",
+    "profile": {
+      "firstName": "Priscilla",
+      "lastName": "Zemlak",
+      "email": "Priscilla.Zemlak@kiwi.com",
+      "employeeNumber": "655961236",
+      "mobilePhone": "1-612-607-0565",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Riceland",
+      "kb_team_membership": ["Garden"],
+      "manager": "Ruth Schinner",
+      "kb_jobPositionLevel": "Regional Operations Manager",
+      "department": "Toys"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "fb13e85d-1543-4980-9b9c-670792527de2",
+    "status": "active",
+    "created": "2019-03-22T05:19:22.007Z",
+    "activated": "2019-03-22T05:19:22.007Z",
+    "statusChanged": "2019-03-22T05:19:22.007Z",
+    "lastLogin": "2019-03-22T05:19:22.007Z",
+    "lastUpdated": "2019-03-22T05:19:22.007Z",
+    "passwordChanged": "2019-03-22T05:19:22.007Z",
+    "profile": {
+      "firstName": "Nadia",
+      "lastName": "Rutherford",
+      "email": "Nadia64@kiwi.com",
+      "employeeNumber": "935280634",
+      "mobilePhone": "500.707.8059",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Boyerland",
+      "kb_team_membership": ["Health", "Tools", "Books", "Computers"],
+      "manager": "Isadore Conroy",
+      "kb_jobPositionLevel": "Product Paradigm Liaison",
+      "department": "Beauty"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "6ed05886-d072-49a8-afb0-9c73116f9607",
+    "status": "active",
+    "created": "2018-08-07T07:43:45.720Z",
+    "activated": "2018-08-07T07:43:45.720Z",
+    "statusChanged": "2018-08-07T07:43:45.720Z",
+    "lastLogin": "2018-08-07T07:43:45.720Z",
+    "lastUpdated": "2018-08-07T07:43:45.720Z",
+    "passwordChanged": "2018-08-07T07:43:45.720Z",
+    "profile": {
+      "firstName": "Dejon",
+      "lastName": "Cummings",
+      "email": "Dejon.Cummings70@kiwi.com",
+      "employeeNumber": "643786283",
+      "mobilePhone": "227.857.3613 x375",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "East Al",
+      "kb_team_membership": [
+        "Automotive",
+        "Sports",
+        "Outdoors",
+        "Toys",
+        "Automotive"
+      ],
+      "manager": "Crawford Bednar",
+      "kb_jobPositionLevel": "Chief Solutions Strategist",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5f6f4397-2948-4932-bb8f-e4ea43738e20",
+    "status": "active",
+    "created": "2019-05-23T11:26:26.809Z",
+    "activated": "2019-05-23T11:26:26.809Z",
+    "statusChanged": "2019-05-23T11:26:26.809Z",
+    "lastLogin": "2019-05-23T11:26:26.809Z",
+    "lastUpdated": "2019-05-23T11:26:26.809Z",
+    "passwordChanged": "2019-05-23T11:26:26.809Z",
+    "profile": {
+      "firstName": "Edgardo",
+      "lastName": "Mante",
+      "email": "Edgardo87@kiwi.com",
+      "employeeNumber": "817548290",
+      "mobilePhone": "1-614-829-2642",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Genovevamouth",
+      "kb_team_membership": [],
+      "manager": "Kian Crist",
+      "kb_jobPositionLevel": "International Operations Assistant",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "6c6558fa-ab8f-4c8e-875c-880487bf88fa",
+    "status": "active",
+    "created": "2019-02-16T05:03:33.653Z",
+    "activated": "2019-02-16T05:03:33.653Z",
+    "statusChanged": "2019-02-16T05:03:33.653Z",
+    "lastLogin": "2019-02-16T05:03:33.653Z",
+    "lastUpdated": "2019-02-16T05:03:33.653Z",
+    "passwordChanged": "2019-02-16T05:03:33.653Z",
+    "profile": {
+      "firstName": "Leola",
+      "lastName": "Dickinson",
+      "email": "Leola_Dickinson@kiwi.com",
+      "employeeNumber": "597884782",
+      "mobilePhone": "(179) 798-7523 x220",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Oswaldochester",
+      "kb_team_membership": [],
+      "manager": "Clemens Lynch",
+      "kb_jobPositionLevel": "Dynamic Functionality Designer",
+      "department": "Clothing"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "c8f88849-f503-4772-8344-129a20a32bf0",
+    "status": "active",
+    "created": "2019-03-13T11:56:10.221Z",
+    "activated": "2019-03-13T11:56:10.221Z",
+    "statusChanged": "2019-03-13T11:56:10.221Z",
+    "lastLogin": "2019-03-13T11:56:10.221Z",
+    "lastUpdated": "2019-03-13T11:56:10.221Z",
+    "passwordChanged": "2019-03-13T11:56:10.221Z",
+    "profile": {
+      "firstName": "Peter",
+      "lastName": "Koepp",
+      "email": "Peter49@kiwi.com",
+      "employeeNumber": "685961643",
+      "mobilePhone": "555.763.2118 x56388",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "East Maurine",
+      "kb_team_membership": ["Outdoors"],
+      "manager": "Esperanza Kohler",
+      "kb_jobPositionLevel": "Corporate Creative Consultant",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "16c120dd-0f57-4667-9d0e-ef2ceae1da92",
+    "status": "active",
+    "created": "2018-07-14T10:55:27.595Z",
+    "activated": "2018-07-14T10:55:27.595Z",
+    "statusChanged": "2018-07-14T10:55:27.595Z",
+    "lastLogin": "2018-07-14T10:55:27.595Z",
+    "lastUpdated": "2018-07-14T10:55:27.595Z",
+    "passwordChanged": "2018-07-14T10:55:27.595Z",
+    "profile": {
+      "firstName": "Keaton",
+      "lastName": "Gleichner",
+      "email": "Keaton_Gleichner@kiwi.com",
+      "employeeNumber": "355761163",
+      "mobilePhone": "645.764.0289",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "South Fosterport",
+      "kb_team_membership": ["Beauty", "Computers"],
+      "manager": "Tobin Jacobson",
+      "kb_jobPositionLevel": "Central Accounts Orchestrator",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "7ffac46a-3d6c-4d09-9738-5306840de46e",
+    "status": "active",
+    "created": "2018-09-23T21:08:47.579Z",
+    "activated": "2018-09-23T21:08:47.579Z",
+    "statusChanged": "2018-09-23T21:08:47.579Z",
+    "lastLogin": "2018-09-23T21:08:47.579Z",
+    "lastUpdated": "2018-09-23T21:08:47.579Z",
+    "passwordChanged": "2018-09-23T21:08:47.579Z",
+    "profile": {
+      "firstName": "Destiney",
+      "lastName": "Hills",
+      "email": "Destiney77@kiwi.com",
+      "employeeNumber": "767791258",
+      "mobilePhone": "160-884-0464",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Anais",
+      "kb_team_membership": ["Home", "Clothing", "Shoes"],
+      "manager": "Marcelina Friesen",
+      "kb_jobPositionLevel": "Direct Accountability Strategist",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "398a49e8-e08f-4061-a4b6-5a78b5a4a1d6",
+    "status": "active",
+    "created": "2018-10-14T01:13:42.070Z",
+    "activated": "2018-10-14T01:13:42.070Z",
+    "statusChanged": "2018-10-14T01:13:42.070Z",
+    "lastLogin": "2018-10-14T01:13:42.070Z",
+    "lastUpdated": "2018-10-14T01:13:42.070Z",
+    "passwordChanged": "2018-10-14T01:13:42.070Z",
+    "profile": {
+      "firstName": "Bernhard",
+      "lastName": "McDermott",
+      "email": "Bernhard.McDermott@kiwi.com",
+      "employeeNumber": "227397671",
+      "mobilePhone": "(761) 442-7763 x5209",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Urielhaven",
+      "kb_team_membership": ["Kids", "Music"],
+      "manager": "Claud McClure",
+      "kb_jobPositionLevel": "Direct Division Analyst",
+      "department": "Home"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "36f8cec5-174c-4b0f-bc9d-061d06f39063",
+    "status": "active",
+    "created": "2018-06-10T14:00:43.258Z",
+    "activated": "2018-06-10T14:00:43.258Z",
+    "statusChanged": "2018-06-10T14:00:43.258Z",
+    "lastLogin": "2018-06-10T14:00:43.258Z",
+    "lastUpdated": "2018-06-10T14:00:43.258Z",
+    "passwordChanged": "2018-06-10T14:00:43.258Z",
+    "profile": {
+      "firstName": "Isaias",
+      "lastName": "Eichmann",
+      "email": "Isaias_Eichmann@kiwi.com",
+      "employeeNumber": "106776342",
+      "mobilePhone": "1-624-088-5655 x388",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Port Tiastad",
+      "kb_team_membership": [],
+      "manager": "Nico Jenkins",
+      "kb_jobPositionLevel": "Dynamic Program Director",
+      "department": "Sports"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "97c63e02-e620-43a9-a9df-66c2753fa017",
+    "status": "active",
+    "created": "2018-06-20T03:04:30.850Z",
+    "activated": "2018-06-20T03:04:30.850Z",
+    "statusChanged": "2018-06-20T03:04:30.850Z",
+    "lastLogin": "2018-06-20T03:04:30.850Z",
+    "lastUpdated": "2018-06-20T03:04:30.850Z",
+    "passwordChanged": "2018-06-20T03:04:30.850Z",
+    "profile": {
+      "firstName": "Minerva",
+      "lastName": "Schinner",
+      "email": "Minerva_Schinner@kiwi.com",
+      "employeeNumber": "693717580",
+      "mobilePhone": "(935) 498-1603",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Clotildehaven",
+      "kb_team_membership": ["Kids"],
+      "manager": "Sylvia Murphy",
+      "kb_jobPositionLevel": "Direct Mobility Technician",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "659edd40-e079-4a1b-a47f-d79900b1e547",
+    "status": "active",
+    "created": "2019-01-13T14:02:06.801Z",
+    "activated": "2019-01-13T14:02:06.801Z",
+    "statusChanged": "2019-01-13T14:02:06.801Z",
+    "lastLogin": "2019-01-13T14:02:06.801Z",
+    "lastUpdated": "2019-01-13T14:02:06.801Z",
+    "passwordChanged": "2019-01-13T14:02:06.801Z",
+    "profile": {
+      "firstName": "Damion",
+      "lastName": "Lemke",
+      "email": "Damion96@kiwi.com",
+      "employeeNumber": "95569993",
+      "mobilePhone": "350.900.7873 x062",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "South Lionelmouth",
+      "kb_team_membership": ["Garden"],
+      "manager": "Taya Gutkowski",
+      "kb_jobPositionLevel": "Direct Group Engineer",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "7c671af1-1a46-4aa3-9962-2ef4857b98ac",
+    "status": "active",
+    "created": "2018-12-06T15:38:34.720Z",
+    "activated": "2018-12-06T15:38:34.720Z",
+    "statusChanged": "2018-12-06T15:38:34.720Z",
+    "lastLogin": "2018-12-06T15:38:34.720Z",
+    "lastUpdated": "2018-12-06T15:38:34.720Z",
+    "passwordChanged": "2018-12-06T15:38:34.720Z",
+    "profile": {
+      "firstName": "Burnice",
+      "lastName": "Kris",
+      "email": "Burnice.Kris37@kiwi.com",
+      "employeeNumber": "253552109",
+      "mobilePhone": "(126) 767-3915 x4604",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Lake Justonmouth",
+      "kb_team_membership": ["Outdoors"],
+      "manager": "Carmel Green",
+      "kb_jobPositionLevel": "Principal Functionality Designer",
+      "department": "Electronics"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "202b0474-17d7-428b-9f2d-3ede4d4c6a5f",
+    "status": "active",
+    "created": "2019-01-07T20:36:07.521Z",
+    "activated": "2019-01-07T20:36:07.521Z",
+    "statusChanged": "2019-01-07T20:36:07.521Z",
+    "lastLogin": "2019-01-07T20:36:07.521Z",
+    "lastUpdated": "2019-01-07T20:36:07.521Z",
+    "passwordChanged": "2019-01-07T20:36:07.521Z",
+    "profile": {
+      "firstName": "Jovan",
+      "lastName": "Veum",
+      "email": "Jovan.Veum85@kiwi.com",
+      "employeeNumber": "14957201",
+      "mobilePhone": "917-939-0193",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "DuBuqueville",
+      "kb_team_membership": ["Automotive", "Kids", "Jewelery"],
+      "manager": "Alec Donnelly",
+      "kb_jobPositionLevel": "Lead Security Architect",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "7339fcc0-dd19-4410-b844-efb7cb434538",
+    "status": "active",
+    "created": "2019-01-17T19:45:39.692Z",
+    "activated": "2019-01-17T19:45:39.692Z",
+    "statusChanged": "2019-01-17T19:45:39.692Z",
+    "lastLogin": "2019-01-17T19:45:39.692Z",
+    "lastUpdated": "2019-01-17T19:45:39.692Z",
+    "passwordChanged": "2019-01-17T19:45:39.692Z",
+    "profile": {
+      "firstName": "Bessie",
+      "lastName": "Marquardt",
+      "email": "Bessie_Marquardt@kiwi.com",
+      "employeeNumber": "463375417",
+      "mobilePhone": "276.408.2779 x6943",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Walshview",
+      "kb_team_membership": ["Movies", "Home", "Tools", "Movies"],
+      "manager": "Damaris Rippin",
+      "kb_jobPositionLevel": "National Brand Consultant",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "07f09fd3-3d7c-44e3-ba2a-58c72c5670fa",
+    "status": "active",
+    "created": "2018-09-07T20:21:44.862Z",
+    "activated": "2018-09-07T20:21:44.862Z",
+    "statusChanged": "2018-09-07T20:21:44.862Z",
+    "lastLogin": "2018-09-07T20:21:44.862Z",
+    "lastUpdated": "2018-09-07T20:21:44.862Z",
+    "passwordChanged": "2018-09-07T20:21:44.862Z",
+    "profile": {
+      "firstName": "Gino",
+      "lastName": "Murphy",
+      "email": "Gino_Murphy70@kiwi.com",
+      "employeeNumber": "669629676",
+      "mobilePhone": "(843) 252-2649 x408",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "West Giuseppe",
+      "kb_team_membership": ["Industrial", "Toys", "Sports"],
+      "manager": "Brannon Weissnat",
+      "kb_jobPositionLevel": "Human Communications Associate",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5bb9dc09-6ecb-4c02-a62c-8b3a9a054210",
+    "status": "active",
+    "created": "2019-02-19T17:26:48.317Z",
+    "activated": "2019-02-19T17:26:48.317Z",
+    "statusChanged": "2019-02-19T17:26:48.317Z",
+    "lastLogin": "2019-02-19T17:26:48.317Z",
+    "lastUpdated": "2019-02-19T17:26:48.317Z",
+    "passwordChanged": "2019-02-19T17:26:48.317Z",
+    "profile": {
+      "firstName": "Christelle",
+      "lastName": "King",
+      "email": "Christelle_King76@kiwi.com",
+      "employeeNumber": "166019213",
+      "mobilePhone": "(164) 723-2208 x39069",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "New Dereck",
+      "kb_team_membership": [
+        "Games",
+        "Industrial",
+        "Garden",
+        "Tools",
+        "Outdoors"
+      ],
+      "manager": "Carlo Renner",
+      "kb_jobPositionLevel": "National Communications Liaison",
+      "department": "Health"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "05900644-839e-4b7c-98bb-7478b0b62874",
+    "status": "active",
+    "created": "2019-05-24T13:21:38.621Z",
+    "activated": "2019-05-24T13:21:38.621Z",
+    "statusChanged": "2019-05-24T13:21:38.621Z",
+    "lastLogin": "2019-05-24T13:21:38.621Z",
+    "lastUpdated": "2019-05-24T13:21:38.621Z",
+    "passwordChanged": "2019-05-24T13:21:38.621Z",
+    "profile": {
+      "firstName": "Kristin",
+      "lastName": "Lueilwitz",
+      "email": "Kristin_Lueilwitz@kiwi.com",
+      "employeeNumber": "843545265",
+      "mobilePhone": "1-298-241-4064 x341",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "West Hailieton",
+      "kb_team_membership": ["Shoes", "Music", "Health"],
+      "manager": "Evans Farrell",
+      "kb_jobPositionLevel": "Legacy Interactions Executive",
+      "department": "Health"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "c9abf312-0eae-4d81-8c5c-8fc859e9ee06",
+    "status": "active",
+    "created": "2019-04-21T23:41:56.927Z",
+    "activated": "2019-04-21T23:41:56.927Z",
+    "statusChanged": "2019-04-21T23:41:56.927Z",
+    "lastLogin": "2019-04-21T23:41:56.927Z",
+    "lastUpdated": "2019-04-21T23:41:56.927Z",
+    "passwordChanged": "2019-04-21T23:41:56.927Z",
+    "profile": {
+      "firstName": "Reymundo",
+      "lastName": "Sporer",
+      "email": "Reymundo.Sporer87@kiwi.com",
+      "employeeNumber": "553219794",
+      "mobilePhone": "627.450.5304 x0807",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Port Abdullahmouth",
+      "kb_team_membership": ["Health", "Garden", "Baby"],
+      "manager": "Dayne Ledner",
+      "kb_jobPositionLevel": "Human Factors Assistant",
+      "department": "Home"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "eef69824-401c-483f-9c79-f42d3e05afeb",
+    "status": "active",
+    "created": "2018-10-11T12:17:50.302Z",
+    "activated": "2018-10-11T12:17:50.302Z",
+    "statusChanged": "2018-10-11T12:17:50.302Z",
+    "lastLogin": "2018-10-11T12:17:50.302Z",
+    "lastUpdated": "2018-10-11T12:17:50.302Z",
+    "passwordChanged": "2018-10-11T12:17:50.302Z",
+    "profile": {
+      "firstName": "Barry",
+      "lastName": "Harris",
+      "email": "Barry_Harris@kiwi.com",
+      "employeeNumber": "301335321",
+      "mobilePhone": "(128) 950-4388",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "East Ashleighside",
+      "kb_team_membership": [],
+      "manager": "Rosanna Hane",
+      "kb_jobPositionLevel": "Internal Functionality Analyst",
+      "department": "Movies"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "8039dec9-5925-4de4-b75a-bc45565c22be",
+    "status": "active",
+    "created": "2018-11-19T07:57:24.355Z",
+    "activated": "2018-11-19T07:57:24.355Z",
+    "statusChanged": "2018-11-19T07:57:24.355Z",
+    "lastLogin": "2018-11-19T07:57:24.355Z",
+    "lastUpdated": "2018-11-19T07:57:24.355Z",
+    "passwordChanged": "2018-11-19T07:57:24.355Z",
+    "profile": {
+      "firstName": "Ocie",
+      "lastName": "O'Keefe",
+      "email": "Ocie.OKeefe99@kiwi.com",
+      "employeeNumber": "940934595",
+      "mobilePhone": "100.603.2204",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Caroltown",
+      "kb_team_membership": ["Baby", "Music"],
+      "manager": "Aylin Gottlieb",
+      "kb_jobPositionLevel": "Dynamic Creative Designer",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "263c1ea9-b346-46f6-8bf7-30bdea2cfe9d",
+    "status": "active",
+    "created": "2018-12-18T08:21:27.747Z",
+    "activated": "2018-12-18T08:21:27.747Z",
+    "statusChanged": "2018-12-18T08:21:27.747Z",
+    "lastLogin": "2018-12-18T08:21:27.747Z",
+    "lastUpdated": "2018-12-18T08:21:27.747Z",
+    "passwordChanged": "2018-12-18T08:21:27.747Z",
+    "profile": {
+      "firstName": "Lauryn",
+      "lastName": "Weissnat",
+      "email": "Lauryn88@kiwi.com",
+      "employeeNumber": "855992853",
+      "mobilePhone": "(802) 799-6522",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "North Russel",
+      "kb_team_membership": ["Baby", "Computers", "Grocery"],
+      "manager": "Susan Wuckert",
+      "kb_jobPositionLevel": "Investor Creative Facilitator",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "fbd45ee3-c558-4692-82bb-7749da713f23",
+    "status": "active",
+    "created": "2018-06-16T08:32:28.519Z",
+    "activated": "2018-06-16T08:32:28.519Z",
+    "statusChanged": "2018-06-16T08:32:28.519Z",
+    "lastLogin": "2018-06-16T08:32:28.519Z",
+    "lastUpdated": "2018-06-16T08:32:28.519Z",
+    "passwordChanged": "2018-06-16T08:32:28.519Z",
+    "profile": {
+      "firstName": "Jay",
+      "lastName": "Kautzer",
+      "email": "Jay.Kautzer91@kiwi.com",
+      "employeeNumber": "664353065",
+      "mobilePhone": "(286) 207-0188 x0871",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Harleyport",
+      "kb_team_membership": ["Baby", "Jewelery"],
+      "manager": "Martine Goyette",
+      "kb_jobPositionLevel": "Principal Paradigm Analyst",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "2a03968b-b2f6-42b7-88df-a94a9e535b81",
+    "status": "active",
+    "created": "2018-10-14T01:46:17.216Z",
+    "activated": "2018-10-14T01:46:17.216Z",
+    "statusChanged": "2018-10-14T01:46:17.216Z",
+    "lastLogin": "2018-10-14T01:46:17.216Z",
+    "lastUpdated": "2018-10-14T01:46:17.216Z",
+    "passwordChanged": "2018-10-14T01:46:17.216Z",
+    "profile": {
+      "firstName": "Rasheed",
+      "lastName": "Swift",
+      "email": "Rasheed32@kiwi.com",
+      "employeeNumber": "770089465",
+      "mobilePhone": "1-843-837-1380",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Port Harryland",
+      "kb_team_membership": ["Books", "Books", "Electronics", "Games"],
+      "manager": "Princess Jerde",
+      "kb_jobPositionLevel": "Forward Group Architect",
+      "department": "Books"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "cc53ad1f-1627-40a8-9f25-bf1e7c1da31c",
+    "status": "active",
+    "created": "2019-02-18T14:30:44.435Z",
+    "activated": "2019-02-18T14:30:44.435Z",
+    "statusChanged": "2019-02-18T14:30:44.435Z",
+    "lastLogin": "2019-02-18T14:30:44.435Z",
+    "lastUpdated": "2019-02-18T14:30:44.435Z",
+    "passwordChanged": "2019-02-18T14:30:44.435Z",
+    "profile": {
+      "firstName": "Emelie",
+      "lastName": "Weissnat",
+      "email": "Emelie80@kiwi.com",
+      "employeeNumber": "759060003",
+      "mobilePhone": "(030) 012-7377",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "New Shanellestad",
+      "kb_team_membership": [
+        "Grocery",
+        "Tools",
+        "Automotive",
+        "Jewelery",
+        "Health"
+      ],
+      "manager": "Allison Yost",
+      "kb_jobPositionLevel": "Central Optimization Administrator",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "6dc10289-4315-4cc5-883b-571fe35a6d22",
+    "status": "active",
+    "created": "2018-11-12T04:33:05.623Z",
+    "activated": "2018-11-12T04:33:05.623Z",
+    "statusChanged": "2018-11-12T04:33:05.623Z",
+    "lastLogin": "2018-11-12T04:33:05.623Z",
+    "lastUpdated": "2018-11-12T04:33:05.623Z",
+    "passwordChanged": "2018-11-12T04:33:05.623Z",
+    "profile": {
+      "firstName": "Judd",
+      "lastName": "Reichert",
+      "email": "Judd.Reichert@kiwi.com",
+      "employeeNumber": "892284950",
+      "mobilePhone": "(216) 665-1619",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Port Nyahtown",
+      "kb_team_membership": [],
+      "manager": "Maia Blick",
+      "kb_jobPositionLevel": "International Communications Assistant",
+      "department": "Home"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "b1fe8bd1-2521-462d-8083-cf2c0622e01f",
+    "status": "active",
+    "created": "2018-10-02T01:58:44.502Z",
+    "activated": "2018-10-02T01:58:44.502Z",
+    "statusChanged": "2018-10-02T01:58:44.502Z",
+    "lastLogin": "2018-10-02T01:58:44.502Z",
+    "lastUpdated": "2018-10-02T01:58:44.502Z",
+    "passwordChanged": "2018-10-02T01:58:44.502Z",
+    "profile": {
+      "firstName": "Vida",
+      "lastName": "Hermiston",
+      "email": "Vida20@kiwi.com",
+      "employeeNumber": "620614743",
+      "mobilePhone": "(852) 428-2564",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Kobyberg",
+      "kb_team_membership": ["Clothing", "Electronics", "Beauty"],
+      "manager": "Wanda Gorczany",
+      "kb_jobPositionLevel": "Dynamic Markets Agent",
+      "department": "Sports"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "fac04651-3ab0-4db6-83d0-0b9e5bbfa9d7",
+    "status": "active",
+    "created": "2018-12-27T22:48:51.855Z",
+    "activated": "2018-12-27T22:48:51.855Z",
+    "statusChanged": "2018-12-27T22:48:51.855Z",
+    "lastLogin": "2018-12-27T22:48:51.855Z",
+    "lastUpdated": "2018-12-27T22:48:51.855Z",
+    "passwordChanged": "2018-12-27T22:48:51.855Z",
+    "profile": {
+      "firstName": "Alyson",
+      "lastName": "D'Amore",
+      "email": "Alyson55@kiwi.com",
+      "employeeNumber": "104028707",
+      "mobilePhone": "804-341-1646",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Port Adolfo",
+      "kb_team_membership": ["Garden"],
+      "manager": "Marlen Crona",
+      "kb_jobPositionLevel": "Future Operations Supervisor",
+      "department": "Movies"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "8881f5b7-42a1-4ba4-a585-5f3977c4819c",
+    "status": "active",
+    "created": "2018-08-21T06:38:37.439Z",
+    "activated": "2018-08-21T06:38:37.439Z",
+    "statusChanged": "2018-08-21T06:38:37.439Z",
+    "lastLogin": "2018-08-21T06:38:37.439Z",
+    "lastUpdated": "2018-08-21T06:38:37.439Z",
+    "passwordChanged": "2018-08-21T06:38:37.439Z",
+    "profile": {
+      "firstName": "Sallie",
+      "lastName": "Beatty",
+      "email": "Sallie.Beatty19@kiwi.com",
+      "employeeNumber": "622178137",
+      "mobilePhone": "773-689-5711 x9486",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Schummside",
+      "kb_team_membership": ["Kids", "Garden"],
+      "manager": "Reinhold Renner",
+      "kb_jobPositionLevel": "National Division Agent",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "30841819-fb66-4980-8898-c89534016b53",
+    "status": "active",
+    "created": "2019-03-10T04:25:31.104Z",
+    "activated": "2019-03-10T04:25:31.104Z",
+    "statusChanged": "2019-03-10T04:25:31.104Z",
+    "lastLogin": "2019-03-10T04:25:31.104Z",
+    "lastUpdated": "2019-03-10T04:25:31.104Z",
+    "passwordChanged": "2019-03-10T04:25:31.104Z",
+    "profile": {
+      "firstName": "Jamison",
+      "lastName": "Renner",
+      "email": "Jamison86@kiwi.com",
+      "employeeNumber": "512511047",
+      "mobilePhone": "1-965-791-6274",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "East Vincent",
+      "kb_team_membership": ["Home", "Garden", "Outdoors"],
+      "manager": "Marcelle Nolan",
+      "kb_jobPositionLevel": "Legacy Infrastructure Planner",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "0a01c908-9a4d-4526-a6d3-a8a0ff271598",
+    "status": "active",
+    "created": "2018-07-16T02:51:51.987Z",
+    "activated": "2018-07-16T02:51:51.987Z",
+    "statusChanged": "2018-07-16T02:51:51.987Z",
+    "lastLogin": "2018-07-16T02:51:51.987Z",
+    "lastUpdated": "2018-07-16T02:51:51.987Z",
+    "passwordChanged": "2018-07-16T02:51:51.987Z",
+    "profile": {
+      "firstName": "Reggie",
+      "lastName": "Nienow",
+      "email": "Reggie29@kiwi.com",
+      "employeeNumber": "991362791",
+      "mobilePhone": "(886) 626-2676 x83503",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Wildermanville",
+      "kb_team_membership": [],
+      "manager": "Tamara Vandervort",
+      "kb_jobPositionLevel": "Corporate Assurance Manager",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "a2bac116-63af-4e6b-8e8e-724528d0545a",
+    "status": "active",
+    "created": "2019-04-12T21:34:56.234Z",
+    "activated": "2019-04-12T21:34:56.234Z",
+    "statusChanged": "2019-04-12T21:34:56.234Z",
+    "lastLogin": "2019-04-12T21:34:56.234Z",
+    "lastUpdated": "2019-04-12T21:34:56.234Z",
+    "passwordChanged": "2019-04-12T21:34:56.234Z",
+    "profile": {
+      "firstName": "Gilda",
+      "lastName": "Murray",
+      "email": "Gilda.Murray70@kiwi.com",
+      "employeeNumber": "680738791",
+      "mobilePhone": "1-259-532-2134 x4069",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Tyshawnport",
+      "kb_team_membership": ["Shoes"],
+      "manager": "Wilber Lockman",
+      "kb_jobPositionLevel": "Lead Branding Assistant",
+      "department": "Music"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "50e7ff07-ed05-43dd-afb9-8e69c365834a",
+    "status": "active",
+    "created": "2019-01-11T07:17:35.552Z",
+    "activated": "2019-01-11T07:17:35.552Z",
+    "statusChanged": "2019-01-11T07:17:35.552Z",
+    "lastLogin": "2019-01-11T07:17:35.552Z",
+    "lastUpdated": "2019-01-11T07:17:35.552Z",
+    "passwordChanged": "2019-01-11T07:17:35.552Z",
+    "profile": {
+      "firstName": "Haylie",
+      "lastName": "Kling",
+      "email": "Haylie97@kiwi.com",
+      "employeeNumber": "260154374",
+      "mobilePhone": "414-896-7837",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "O'Konborough",
+      "kb_team_membership": [
+        "Clothing",
+        "Outdoors",
+        "Tools",
+        "Garden",
+        "Garden"
+      ],
+      "manager": "Luella Flatley",
+      "kb_jobPositionLevel": "Central Communications Executive",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "7cbf395d-bde3-4da7-a2ae-ae0d380fbc4a",
+    "status": "active",
+    "created": "2018-08-30T21:11:14.774Z",
+    "activated": "2018-08-30T21:11:14.774Z",
+    "statusChanged": "2018-08-30T21:11:14.774Z",
+    "lastLogin": "2018-08-30T21:11:14.774Z",
+    "lastUpdated": "2018-08-30T21:11:14.774Z",
+    "passwordChanged": "2018-08-30T21:11:14.774Z",
+    "profile": {
+      "firstName": "Shad",
+      "lastName": "Feest",
+      "email": "Shad.Feest8@kiwi.com",
+      "employeeNumber": "192881335",
+      "mobilePhone": "540-375-4881 x770",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Rohanside",
+      "kb_team_membership": ["Outdoors", "Books", "Computers", "Books", "Kids"],
+      "manager": "Enola Osinski",
+      "kb_jobPositionLevel": "Dynamic Response Developer",
+      "department": "Kids"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "f852c3f9-29e0-40cc-a917-b1749cc8c65a",
+    "status": "active",
+    "created": "2019-01-03T23:01:16.997Z",
+    "activated": "2019-01-03T23:01:16.997Z",
+    "statusChanged": "2019-01-03T23:01:16.997Z",
+    "lastLogin": "2019-01-03T23:01:16.997Z",
+    "lastUpdated": "2019-01-03T23:01:16.997Z",
+    "passwordChanged": "2019-01-03T23:01:16.997Z",
+    "profile": {
+      "firstName": "Claudie",
+      "lastName": "Brekke",
+      "email": "Claudie.Brekke@kiwi.com",
+      "employeeNumber": "274630481",
+      "mobilePhone": "1-210-165-2982 x558",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Brooklynside",
+      "kb_team_membership": ["Garden", "Jewelery"],
+      "manager": "Pink Murray",
+      "kb_jobPositionLevel": "Customer Applications Architect",
+      "department": "Industrial"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "6ba7bd38-f31a-4fe7-8c7e-44796acf7a45",
+    "status": "active",
+    "created": "2019-04-14T01:29:33.762Z",
+    "activated": "2019-04-14T01:29:33.762Z",
+    "statusChanged": "2019-04-14T01:29:33.762Z",
+    "lastLogin": "2019-04-14T01:29:33.762Z",
+    "lastUpdated": "2019-04-14T01:29:33.762Z",
+    "passwordChanged": "2019-04-14T01:29:33.762Z",
+    "profile": {
+      "firstName": "Llewellyn",
+      "lastName": "Blanda",
+      "email": "Llewellyn.Blanda23@kiwi.com",
+      "employeeNumber": "680689657",
+      "mobilePhone": "1-101-713-9032 x8322",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Marilieville",
+      "kb_team_membership": [],
+      "manager": "Marilyne Feest",
+      "kb_jobPositionLevel": "Senior Applications Architect",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "c345db61-07ab-4a2e-b614-17c8a865930f",
+    "status": "active",
+    "created": "2019-03-19T09:53:07.488Z",
+    "activated": "2019-03-19T09:53:07.488Z",
+    "statusChanged": "2019-03-19T09:53:07.488Z",
+    "lastLogin": "2019-03-19T09:53:07.488Z",
+    "lastUpdated": "2019-03-19T09:53:07.488Z",
+    "passwordChanged": "2019-03-19T09:53:07.488Z",
+    "profile": {
+      "firstName": "Bobbie",
+      "lastName": "Bradtke",
+      "email": "Bobbie_Bradtke@kiwi.com",
+      "employeeNumber": "93528257",
+      "mobilePhone": "1-844-116-6591 x08267",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Starkfurt",
+      "kb_team_membership": [],
+      "manager": "Wilfred Goyette",
+      "kb_jobPositionLevel": "Lead Configuration Representative",
+      "department": "Computers"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "e66f174c-c837-4610-9d92-86b6de131c8f",
+    "status": "active",
+    "created": "2019-03-07T08:26:26.657Z",
+    "activated": "2019-03-07T08:26:26.657Z",
+    "statusChanged": "2019-03-07T08:26:26.657Z",
+    "lastLogin": "2019-03-07T08:26:26.657Z",
+    "lastUpdated": "2019-03-07T08:26:26.657Z",
+    "passwordChanged": "2019-03-07T08:26:26.657Z",
+    "profile": {
+      "firstName": "Aditya",
+      "lastName": "Feest",
+      "email": "Aditya_Feest@kiwi.com",
+      "employeeNumber": "528604427",
+      "mobilePhone": "468-958-8450 x273",
+      "kb_is_vendor": false,
+      "kb_place_of_work": "Sheridanborough",
+      "kb_team_membership": ["Sports", "Movies", "Home", "Toys"],
+      "manager": "Micah Howell",
+      "kb_jobPositionLevel": "Global Intranet Producer",
+      "department": "Tools"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "99622fe8-a970-46ef-abdd-0ce0ce8ac9b1",
+    "status": "active",
+    "created": "2019-05-31T17:34:09.870Z",
+    "activated": "2019-05-31T17:34:09.870Z",
+    "statusChanged": "2019-05-31T17:34:09.870Z",
+    "lastLogin": "2019-05-31T17:34:09.870Z",
+    "lastUpdated": "2019-05-31T17:34:09.870Z",
+    "passwordChanged": "2019-05-31T17:34:09.870Z",
+    "profile": {
+      "firstName": "Pascale",
+      "lastName": "Bosco",
+      "email": "Pascale.Bosco@kiwi.com",
+      "employeeNumber": "887510081",
+      "mobilePhone": "734.144.5586 x80482",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Gorczanybury",
+      "kb_team_membership": [
+        "Electronics",
+        "Computers",
+        "Beauty",
+        "Outdoors",
+        "Outdoors"
+      ],
+      "manager": "Horace Bartoletti",
+      "kb_jobPositionLevel": "Regional Optimization Technician",
+      "department": "Games"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "946283f2-677a-43f4-9ef4-394c9094d5bb",
+    "status": "active",
+    "created": "2019-04-28T14:17:20.822Z",
+    "activated": "2019-04-28T14:17:20.822Z",
+    "statusChanged": "2019-04-28T14:17:20.822Z",
+    "lastLogin": "2019-04-28T14:17:20.822Z",
+    "lastUpdated": "2019-04-28T14:17:20.822Z",
+    "passwordChanged": "2019-04-28T14:17:20.822Z",
+    "profile": {
+      "firstName": "Enola",
+      "lastName": "Aufderhar",
+      "email": "Enola_Aufderhar3@kiwi.com",
+      "employeeNumber": "234023612",
+      "mobilePhone": "717.420.6424 x8848",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Ottilieborough",
+      "kb_team_membership": ["Outdoors", "Movies", "Jewelery", "Games"],
+      "manager": "Stanton Zieme",
+      "kb_jobPositionLevel": "Customer Functionality Strategist",
+      "department": "Grocery"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "c857667d-0ce8-44d0-ba3e-d68719e7125e",
+    "status": "active",
+    "created": "2018-07-11T09:30:46.241Z",
+    "activated": "2018-07-11T09:30:46.241Z",
+    "statusChanged": "2018-07-11T09:30:46.241Z",
+    "lastLogin": "2018-07-11T09:30:46.241Z",
+    "lastUpdated": "2018-07-11T09:30:46.241Z",
+    "passwordChanged": "2018-07-11T09:30:46.241Z",
+    "profile": {
+      "firstName": "Ana",
+      "lastName": "Blick",
+      "email": "Ana.Blick79@kiwi.com",
+      "employeeNumber": "751062412",
+      "mobilePhone": "(942) 201-3078 x8825",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Weimannside",
+      "kb_team_membership": [],
+      "manager": "Ford Nicolas",
+      "kb_jobPositionLevel": "Investor Division Officer",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5083cda5-0cb9-416b-aeaf-9d5f5372e471",
+    "status": "active",
+    "created": "2019-02-03T16:28:55.008Z",
+    "activated": "2019-02-03T16:28:55.008Z",
+    "statusChanged": "2019-02-03T16:28:55.008Z",
+    "lastLogin": "2019-02-03T16:28:55.008Z",
+    "lastUpdated": "2019-02-03T16:28:55.008Z",
+    "passwordChanged": "2019-02-03T16:28:55.008Z",
+    "profile": {
+      "firstName": "Ellen",
+      "lastName": "Breitenberg",
+      "email": "Ellen8@kiwi.com",
+      "employeeNumber": "537956096",
+      "mobilePhone": "330.646.8710",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Port Jarvis",
+      "kb_team_membership": [],
+      "manager": "Morgan Glover",
+      "kb_jobPositionLevel": "Human Metrics Architect",
+      "department": "Automotive"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "9ff07fe9-8601-4967-b6bb-add5fe861208",
+    "status": "active",
+    "created": "2018-08-20T21:51:22.253Z",
+    "activated": "2018-08-20T21:51:22.253Z",
+    "statusChanged": "2018-08-20T21:51:22.253Z",
+    "lastLogin": "2018-08-20T21:51:22.253Z",
+    "lastUpdated": "2018-08-20T21:51:22.253Z",
+    "passwordChanged": "2018-08-20T21:51:22.253Z",
+    "profile": {
+      "firstName": "Shane",
+      "lastName": "Boyer",
+      "email": "Shane27@kiwi.com",
+      "employeeNumber": "276622038",
+      "mobilePhone": "(791) 237-6466 x611",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Keiramouth",
+      "kb_team_membership": [],
+      "manager": "Marcus Metz",
+      "kb_jobPositionLevel": "District Interactions Facilitator",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "5d560bf5-a879-43b0-982a-2af00454b42e",
+    "status": "active",
+    "created": "2018-09-19T02:26:58.919Z",
+    "activated": "2018-09-19T02:26:58.919Z",
+    "statusChanged": "2018-09-19T02:26:58.919Z",
+    "lastLogin": "2018-09-19T02:26:58.919Z",
+    "lastUpdated": "2018-09-19T02:26:58.919Z",
+    "passwordChanged": "2018-09-19T02:26:58.919Z",
+    "profile": {
+      "firstName": "Maryjane",
+      "lastName": "Effertz",
+      "email": "Maryjane61@kiwi.com",
+      "employeeNumber": "315157314",
+      "mobilePhone": "415.262.3242 x0517",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "South Estel",
+      "kb_team_membership": ["Books", "Grocery"],
+      "manager": "Valentine Rau",
+      "kb_jobPositionLevel": "Human Factors Executive",
+      "department": "Outdoors"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "49900139-7715-45a9-9029-2fb258420e9b",
+    "status": "active",
+    "created": "2018-12-01T07:49:40.199Z",
+    "activated": "2018-12-01T07:49:40.199Z",
+    "statusChanged": "2018-12-01T07:49:40.199Z",
+    "lastLogin": "2018-12-01T07:49:40.199Z",
+    "lastUpdated": "2018-12-01T07:49:40.199Z",
+    "passwordChanged": "2018-12-01T07:49:40.199Z",
+    "profile": {
+      "firstName": "Wilfrid",
+      "lastName": "Bednar",
+      "email": "Wilfrid_Bednar41@kiwi.com",
+      "employeeNumber": "794618254",
+      "mobilePhone": "(717) 292-7351",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "Willville",
+      "kb_team_membership": ["Tools", "Beauty"],
+      "manager": "Jedediah Kertzmann",
+      "kb_jobPositionLevel": "Global Solutions Engineer",
+      "department": "Shoes"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "79b86b10-c57c-4665-a901-d2d4697069ae",
+    "status": "active",
+    "created": "2018-07-08T09:43:51.573Z",
+    "activated": "2018-07-08T09:43:51.573Z",
+    "statusChanged": "2018-07-08T09:43:51.573Z",
+    "lastLogin": "2018-07-08T09:43:51.573Z",
+    "lastUpdated": "2018-07-08T09:43:51.573Z",
+    "passwordChanged": "2018-07-08T09:43:51.573Z",
+    "profile": {
+      "firstName": "Jeramy",
+      "lastName": "Grant",
+      "email": "Jeramy51@kiwi.com",
+      "employeeNumber": "432382937",
+      "mobilePhone": "1-776-846-9460",
+      "kb_is_vendor": true,
+      "kb_place_of_work": "North Pedro",
+      "kb_team_membership": ["Movies", "Garden", "Home", "Movies", "Baby"],
+      "manager": "Ross Gleichner",
+      "kb_jobPositionLevel": "Principal Communications Developer",
+      "department": "Sports"
+    },
+    "credentials": {
+      "password": {},
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  }
+]
