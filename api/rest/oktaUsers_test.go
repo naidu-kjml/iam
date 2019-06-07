@@ -50,7 +50,7 @@ func TestMissingQuery(t *testing.T) {
 	assert.Equal(t, 400, response.Code, "Returns 400 when entering wrong email")
 
 	responseBody := response.Body.String()
-	assert.Equal(t, "Missing email\n", responseBody, "Returns correct body")
+	assert.Equal(t, "missing email\n", responseBody, "Returns correct body")
 	s.AssertNotCalled(t, "GetUser")
 	s.AssertNotCalled(t, "AddPermissions")
 }
@@ -63,7 +63,7 @@ func TestWrongEmail(t *testing.T) {
 	assert.Equal(t, 400, response.Code, "Returns 400 when entering wrong email")
 
 	responseBody := response.Body.String()
-	assert.Equal(t, "Invalid email\n", responseBody, "Returns correct body")
+	assert.Equal(t, "invalid email\n", responseBody, "Returns correct body")
 	s.AssertNotCalled(t, "GetUser")
 	s.AssertNotCalled(t, "AddPermissions")
 }
@@ -81,9 +81,9 @@ func TestMissingUserAgent(t *testing.T) {
 	s.AssertNotCalled(t, "AddPermissions")
 }
 
-func TestHappyPath(t *testing.T) {
+func TestHappyPathWithPermissions(t *testing.T) {
 	// Success response
-	request, _ := http.NewRequest("GET", "/?email=test@test.com", nil)
+	request, _ := http.NewRequest("GET", "/?email=test@test.com&permissions=true", nil)
 	request.Header.Set("User-Agent", "testservice")
 	response := httptest.NewRecorder()
 	router, s := createFakeRouter()
@@ -92,13 +92,42 @@ func TestHappyPath(t *testing.T) {
 
 	router.ServeHTTP(response, request)
 	assert.Equal(t, 200, response.Code, "Returns 200 on success")
-	jsonUser, _ := json.Marshal(testUser)
-	responseJSON := response.Body.String()
+
+	responseJSON := response.Body.Bytes()
+	var responseUser okta.User
+	_ = json.Unmarshal(responseJSON, &responseUser)
 
 	// For some reason response adds a extra line break
-	assert.Equal(t, string(jsonUser)+"\n", responseJSON, "Returns correct body")
+	assert.Equal(t, testUser, responseUser, "Returns correct body")
 	s.AssertNumberOfCalls(t, "GetUser", 1)
 	s.AssertNumberOfCalls(t, "AddPermissions", 1)
+}
+
+func TestHappyPathNoPermissions(t *testing.T) {
+	// Success response
+	request, _ := http.NewRequest("GET", "/?email=test@test.com&permissions=false", nil)
+	request.Header.Set("User-Agent", "testservice")
+	response := httptest.NewRecorder()
+	router, s := createFakeRouter()
+	s.On("GetUser", "test@test.com").Return(testUser, nil)
+	s.On("AddPermissions", &testUser, "TESTSERVICE").Return(nil)
+
+	router.ServeHTTP(response, request)
+	assert.Equal(t, 200, response.Code, "Returns 200 on success")
+
+	responseJSON := response.Body.Bytes()
+	var responseMap map[string]interface{}
+	_ = json.Unmarshal(responseJSON, &responseMap)
+
+	var expectedUser map[string]interface{}
+	str, _ := json.Marshal(testUser)
+	_ = json.Unmarshal(str, &expectedUser)
+	delete(expectedUser, "permissions")
+
+	// For some reason response adds a extra line break
+	assert.Equal(t, expectedUser, responseMap, "Returns correct body")
+	s.AssertNumberOfCalls(t, "GetUser", 1)
+	s.AssertNumberOfCalls(t, "AddPermissions", 0)
 }
 
 func TestControllerFailurePath(t *testing.T) {

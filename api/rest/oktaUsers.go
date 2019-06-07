@@ -1,6 +1,7 @@
 package rest
 
 import (
+	"errors"
 	"log"
 	"net/http"
 	"net/mail"
@@ -23,21 +24,13 @@ type userDataService interface {
 // getOktaUserByEmail looks up an Okta user by email
 func getOktaUserByEmail(client userDataService) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-		var values, err = url.ParseQuery(r.URL.RawQuery)
-		if err != nil {
-			http.Error(w, "Bad request", http.StatusBadRequest)
+		params, paramErr := validateUsersParams(r.URL.RawQuery)
+		if paramErr != nil {
+			http.Error(w, paramErr.Error(), http.StatusBadRequest)
 			return
 		}
-		var email = values.Get("email")
-		if email == "" {
-			http.Error(w, "Missing email", http.StatusBadRequest)
-			return
-		}
-		_, err = mail.ParseAddress(email)
-		if err != nil {
-			http.Error(w, "Invalid email", http.StatusBadRequest)
-			return
-		}
+		email := params["email"]
+		permissions := params["permissions"] == "true"
 
 		service, err := security.GetService(r.Header.Get("User-Agent"))
 		if err != nil {
@@ -55,9 +48,12 @@ func getOktaUserByEmail(client userDataService) httprouter.Handle {
 			return
 		}
 
-		if err = client.AddPermissions(&oktaUser, service.Name); err != nil {
-			log.Println("[ERROR]", err.Error())
-			raven.CaptureError(err, nil)
+		if permissions {
+			permErr := client.AddPermissions(&oktaUser, service.Name)
+			if permErr != nil {
+				log.Println("[ERROR]", permErr.Error())
+				raven.CaptureError(permErr, nil)
+			}
 		}
 		oktaUser.OktaID = ""           // OktaID is used only internally
 		oktaUser.GroupMembership = nil // GroupMembership is used only internally
@@ -65,9 +61,53 @@ func getOktaUserByEmail(client userDataService) httprouter.Handle {
 		w.Header().Set("Content-Type", "application/json")
 		je := json.NewEncoder(w)
 
-		if err := je.Encode(oktaUser); err != nil {
+		mapUser, err := formatUser(&oktaUser, permissions)
+		if err != nil {
+			http.Error(w, "Internal error", http.StatusInternalServerError)
+			return
+		}
+
+		if err := je.Encode(mapUser); err != nil {
 			log.Println("[ERROR]", err.Error())
 			raven.CaptureError(err, nil)
 		}
 	}
+}
+
+// validateUsersParams validates query parameters for the users endpoint.
+func validateUsersParams(rawQuery string) (map[string]string, error) {
+	values, err := url.ParseQuery(rawQuery)
+	if err != nil {
+		return nil, errors.New("invalid query string")
+	}
+
+	params := map[string]string{
+		"email":       values.Get("email"),
+		"permissions": values.Get("permissions"),
+	}
+
+	if params["email"] == "" {
+		return nil, errors.New("missing email")
+	}
+	if _, err := mail.ParseAddress(params["email"]); err != nil {
+		return nil, errors.New("invalid email")
+	}
+
+	return params, nil
+}
+
+// formatUser converts the given user to map and keeps or removes the
+// permissions field based on the withPermissions parameter.
+func formatUser(s *okta.User, withPermissions bool) (map[string]interface{}, error) {
+	str, err := json.Marshal(s)
+	if err != nil {
+		return nil, err
+	}
+
+	var m map[string]interface{}
+	err = json.Unmarshal(str, &m)
+	if !withPermissions {
+		delete(m, "permissions")
+	}
+	return m, err
 }

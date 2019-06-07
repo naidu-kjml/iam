@@ -126,7 +126,7 @@ func main() {
 	secretManager := createSecretManager(vaultConfig)
 
 	// Datadog tracer
-	if datadogConfig.Environment != "" {
+	if datadogConfig.AgentHost != "" {
 		tracer.Start(
 			tracer.WithServiceName("kiwi-iam"),
 			tracer.WithGlobalTag("env", datadogConfig.Environment),
