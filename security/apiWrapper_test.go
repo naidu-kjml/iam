@@ -112,7 +112,7 @@ func TestHappyPathCheckAuth(t *testing.T) {
 	assert.Error(t, err, "Should error on missing Authorization header")
 	m.AssertNotCalled(t, "Incr")
 
-	req.Header.Set("Authorization", "valid token")
+	req.Header.Set("Authorization", "Bearer valid token")
 	m.On("Incr", "incoming.requests", []string{"service-name:servicename", "service-environment:environment"})
 	err = checkAuth(req, s, m)
 	assert.NoError(t, err, "Should not error on valid request token")

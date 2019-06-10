@@ -115,6 +115,14 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClien
 	if token != requestToken {
 		return api.Error{Message: "Unauthorized: incorrect token", Code: 401}
 	}
+	// Track old authentication format
+	if !strings.Contains(r.Header.Get("Authorization"), "Bearer") {
+		metricClient.Incr(
+			"incoming.old-authentication",
+			monitoring.Tag("service-name", service.Name),
+			monitoring.Tag("service-environment", service.Environment),
+		)
+	}
 	metricClient.Incr(
 		"incoming.requests",
 		monitoring.Tag("service-name", service.Name),
