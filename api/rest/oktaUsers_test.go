@@ -105,29 +105,37 @@ func TestHappyPathWithPermissions(t *testing.T) {
 
 func TestHappyPathNoPermissions(t *testing.T) {
 	// Success response
-	request, _ := http.NewRequest("GET", "/?email=test@test.com&permissions=false", nil)
-	request.Header.Set("User-Agent", "testservice")
-	response := httptest.NewRecorder()
-	router, s := createFakeRouter()
-	s.On("GetUser", "test@test.com").Return(testUser, nil)
-	s.On("AddPermissions", &testUser, "TESTSERVICE").Return(nil)
+	urls := []string{
+		"/?email=test@test.com&permissions=false",
+		"/?email=test@test.com", // default value of permissions is false
+	}
 
-	router.ServeHTTP(response, request)
-	assert.Equal(t, 200, response.Code, "Returns 200 on success")
+	for _, url := range urls {
+		request, _ := http.NewRequest("GET", url, nil)
+		request.Header.Set("User-Agent", "testservice")
+		response := httptest.NewRecorder()
 
-	responseJSON := response.Body.Bytes()
-	var responseMap map[string]interface{}
-	_ = json.Unmarshal(responseJSON, &responseMap)
+		router, s := createFakeRouter()
+		s.On("GetUser", "test@test.com").Return(testUser, nil)
+		s.On("AddPermissions", &testUser, "TESTSERVICE").Return(nil)
 
-	var expectedUser map[string]interface{}
-	str, _ := json.Marshal(testUser)
-	_ = json.Unmarshal(str, &expectedUser)
-	delete(expectedUser, "permissions")
+		router.ServeHTTP(response, request)
+		assert.Equal(t, 200, response.Code, "Returns 200 on success")
 
-	// For some reason response adds a extra line break
-	assert.Equal(t, expectedUser, responseMap, "Returns correct body")
-	s.AssertNumberOfCalls(t, "GetUser", 1)
-	s.AssertNumberOfCalls(t, "AddPermissions", 0)
+		responseJSON := response.Body.Bytes()
+		var responseMap map[string]interface{}
+		_ = json.Unmarshal(responseJSON, &responseMap)
+
+		var expectedUser map[string]interface{}
+		str, _ := json.Marshal(testUser)
+		_ = json.Unmarshal(str, &expectedUser)
+		delete(expectedUser, "permissions")
+
+		// For some reason response adds a extra line break
+		assert.Equal(t, expectedUser, responseMap, "Returns correct body")
+		s.AssertNumberOfCalls(t, "GetUser", 1)
+		s.AssertNumberOfCalls(t, "AddPermissions", 0)
+	}
 }
 
 func TestControllerFailurePath(t *testing.T) {
