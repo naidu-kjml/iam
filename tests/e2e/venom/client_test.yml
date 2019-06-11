@@ -13,8 +13,18 @@ testcases:
       - type: http
         method: GET
         url: "{{.url}}/v1/user?email=cached@test.kiwi"
+        headers:
+          User-Agent: "Venom/0 (Kiwi.com test)"
         assertions:
           - "result.body ShouldEqual 'Authorization header with token is mandatory\n'"
+          - result.statuscode ShouldEqual 401
+  - name: Test missing user agent
+    steps:
+      - type: http
+        method: GET
+        url: "{{.url}}/v1/user?email=cached@test.kiwi"
+        assertions:
+          - "result.body ShouldEqual 'user agent string is not compliant with Kiwi RFC-22\n'"
           - result.statuscode ShouldEqual 401
   - name: Test getting missing user
     steps:
@@ -22,7 +32,7 @@ testcases:
         method: GET
         url: "{{.url}}/v1/user?email=test@tester.kiwi"
         headers:
-          User-Agent: Venom
+          User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
         assertions:
           - "result.body ShouldEqual 'User test@tester.kiwi not found\n'"
@@ -33,7 +43,7 @@ testcases:
         method: GET
         url: "{{.url}}/v1/user?email=cached@tester.kiwi"
         headers:
-          User-Agent: Venom
+          User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
         assertions:
           - result.bodyjson.firstname ShouldEqual Test
@@ -53,7 +63,7 @@ testcases:
         method: GET
         url: "{{.url}}/v1/user?email=cached@tester.kiwi&permissions=true"
         headers:
-          User-Agent: Venom
+          User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
         assertions:
           - result.bodyjson.firstname ShouldEqual Test
@@ -73,7 +83,7 @@ testcases:
         method: GET
         url: "{{.url}}/v1/user?email=cached@tester.kiwi"
         headers:
-          User-Agent: Venom
+          User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "testtoken"
         assertions:
           - result.bodyjson.firstname ShouldEqual Test
@@ -93,7 +103,7 @@ testcases:
         method: GET
         url: "{{.url}}/v1/user?email=fetched@tester.kiwi"
         headers:
-          User-Agent: Venom
+          User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
         assertions:
           - result.bodyjson.firstname ShouldEqual Test
@@ -113,7 +123,7 @@ testcases:
         method: GET
         url: "{{.url}}/v1/teams"
         headers:
-          User-Agent: Venom
+          User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
         assertions:
           - result.bodyjson.engineering ShouldEqual 2

@@ -42,7 +42,7 @@ func (m Mapper) GetTokenName(serviceName, environment string) (string, error) {
 	for _, service := range m.config.Mappings {
 		if strings.EqualFold(serviceName, service.Name) {
 			if environment == "" {
-				return service.TokenBase, nil
+				return "", errors.New("environment must be specified")
 			}
 			if stringInSlice(environment, service.AllowedEnvironments) {
 				return service.TokenBase + "_" + strings.ToUpper(environment), nil

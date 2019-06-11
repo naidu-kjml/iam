@@ -39,12 +39,10 @@ func (m *mockedMetricsService) Incr(serviceName string, tags ...string) {
 
 func TestGetService(t *testing.T) {
 	tests := map[string][]string{
-		"balkan":                            {"BALKAN", ""},
-		"BALKAN/4704b82 (Kiwi.com sandbox)": {"BALKAN", "sandbox"},
-		"balkan/1.42.1 (Kiwi.com sandbox)":  {"balkan", "sandbox"},
-		"balkan-graphql/1.42.1":             {"BALKAN-GRAPHQL", ""},
-		"balkan_graphql/1.42.1":             {"BALKAN_GRAPHQL", ""},
-		"balkan graphql/1.42.1":             {"BALKAN_GRAPHQL", ""},
+		"BALKAN/4704b82 (Kiwi.com sandbox)":    {"BALKAN", "sandbox"},
+		"balkan/1.42.1 (Kiwi.com sandbox)":     {"balkan", "sandbox"},
+		"balkan-graphql/1.42.1 (Kiwi.com dev)": {"balkan-graphql", "dev"},
+		"balkan_graphql/1.42.1 (Kiwi.com dev)": {"balkan_graphql", "dev"},
 	}
 
 	for test, expected := range tests {
@@ -54,10 +52,18 @@ func TestGetService(t *testing.T) {
 		assert.NoError(t, err)
 	}
 
-	res, err := GetService("")
-	assert.Equal(t, "", res.Name)
-	assert.Equal(t, "", res.Environment)
-	assert.Error(t, err)
+	invalidUAs := []string{
+		"balkan",
+		"balkan graphql/1.42.1 (Kiwi.com test)",
+		"",
+	}
+
+	for _, ua := range invalidUAs {
+		res, err := GetService(ua)
+		assert.Equal(t, "", res.Name)
+		assert.Equal(t, "", res.Environment)
+		assert.Error(t, err)
+	}
 }
 
 func TestCheckServiceName(t *testing.T) {

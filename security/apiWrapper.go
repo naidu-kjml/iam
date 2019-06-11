@@ -45,8 +45,6 @@ const (
 	serviceNamePattern string = `^[\w\s-]+`
 )
 
-var serviceNameRe = regexp.MustCompile(serviceNamePattern)
-
 // It's important to add $ in order to match the whole string
 var checkServiceNameRe = regexp.MustCompile(serviceNamePattern + "$")
 
@@ -69,23 +67,10 @@ type Service struct {
 // GetService returns the service name and environment based on the given user agent
 func GetService(incomingUserAgent string) (Service, error) {
 	ua, err := useragent.Parse(incomingUserAgent)
-
-	if err == nil {
-		return Service{ua.Name, ua.Environment}, nil
+	if err != nil {
+		return Service{}, err
 	}
-	// Log is temp. This should be pushed to Datadog when possible
-	log.Printf("User agent [%v] failed: [%v]", incomingUserAgent, err)
-
-	// This block should be removed after all services adhere to RFC 22
-	service := serviceNameRe.FindString(incomingUserAgent)
-	if service == "" {
-		return Service{}, errors.New("no service found")
-	}
-
-	service = strings.ToUpper(service)
-	service = strings.ReplaceAll(service, " ", "_")
-
-	return Service{service, ""}, nil
+	return Service{ua.Name, ua.Environment}, nil
 }
 
 // checkAuth checks if user has proper token + user agent
@@ -95,7 +80,7 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClien
 
 	service, err := GetService(userAgent)
 	if err != nil {
-		return api.Error{Message: "User-Agent header mandatory", Code: 401}
+		return api.Error{Message: err.Error(), Code: 401}
 	}
 
 	if requestToken == "" {

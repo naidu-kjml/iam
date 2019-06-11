@@ -92,11 +92,11 @@ func TestMissingUserAgent(t *testing.T) {
 func TestHappyPathWithPermissions(t *testing.T) {
 	// Success response
 	request, _ := http.NewRequest("GET", "/?email=test@test.com&permissions=true", nil)
-	request.Header.Set("User-Agent", "testservice")
+	request.Header.Set("User-Agent", "service/0 (Kiwi.com test)")
 	response := httptest.NewRecorder()
 	router, s := createFakeRouter()
 	s.On("GetUser", "test@test.com").Return(testUser, nil)
-	s.On("AddPermissions", &testUser, "TESTSERVICE").Return(nil)
+	s.On("AddPermissions", &testUser, "service").Return(nil)
 
 	router.ServeHTTP(response, request)
 	assert.Equal(t, 200, response.Code, "Returns 200 on success")
@@ -120,12 +120,12 @@ func TestHappyPathNoPermissions(t *testing.T) {
 
 	for _, url := range urls {
 		request, _ := http.NewRequest("GET", url, nil)
-		request.Header.Set("User-Agent", "testservice")
+		request.Header.Set("User-Agent", "service/0 (Kiwi.com test)")
 		response := httptest.NewRecorder()
 
 		router, s := createFakeRouter()
 		s.On("GetUser", "test@test.com").Return(testUser, nil)
-		s.On("AddPermissions", &testUser, "TESTSERVICE").Return(nil)
+		s.On("AddPermissions", &testUser, "service").Return(nil)
 
 		router.ServeHTTP(response, request)
 		assert.Equal(t, 200, response.Code, "Returns 200 on success")
@@ -148,7 +148,7 @@ func TestHappyPathNoPermissions(t *testing.T) {
 
 func TestControllerFailurePath(t *testing.T) {
 	request, _ := http.NewRequest("GET", "/?email=bs@test.com", nil)
-	request.Header.Set("User-Agent", "testservice")
+	request.Header.Set("User-Agent", "service/0 (Kiwi.com test)")
 	response := httptest.NewRecorder()
 	router, s := createFakeRouter()
 
@@ -164,7 +164,7 @@ func TestControllerFailurePath(t *testing.T) {
 
 func TestNotFoundPath(t *testing.T) {
 	request, _ := http.NewRequest("GET", "/?email=notfound@test.com", nil)
-	request.Header.Set("User-Agent", "testservice")
+	request.Header.Set("User-Agent", "service/0 (Kiwi.com test)")
 	response := httptest.NewRecorder()
 	router, s := createFakeRouter()
 

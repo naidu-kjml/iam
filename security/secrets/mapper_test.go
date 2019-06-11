@@ -26,7 +26,7 @@ func TestGetTokenName(t *testing.T) {
 
 	tests := [][]string{
 		{"BALKAN_PRODUCTION", "Balkan", "Production"},
-		{"BALKAN", "balkan", ""},
+		{"", "balkan", ""},
 		{"NEST_PRODUCTION", "TRANSACTIONAL_MESSAGING_-_NEST_APP", "production"},
 		{"", "Balkan", "notsimondev"},
 		{"", "unknown", "whatever"},
