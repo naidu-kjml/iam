@@ -45,6 +45,26 @@ testcases:
           - result.bodyjson.teammembership.teammembership2 ShouldEqual "Engineering/Content + CS Systems"
           - result.bodyjson.teammembership.teammembership3 ShouldEqual "Engineering/Content + CS Systems/CS systems"
           - result.bodyjson.teammembership.teammembership4 ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
+          - result.bodyjson ShouldNotContainKey permissions
+          - result.statuscode ShouldEqual 200
+  - name: Test getting existing user with permissions
+    steps:
+      - type: http
+        method: GET
+        url: "{{.url}}/v1/user?email=cached@tester.kiwi&permissions=true"
+        headers:
+          User-Agent: Venom
+          authorization: "Bearer testtoken"
+        assertions:
+          - result.bodyjson.firstname ShouldEqual Test
+          - result.bodyjson.lastname ShouldEqual Cached
+          - result.bodyjson.location ShouldEqual Praha
+          - result.bodyjson.position ShouldEqual Janitor
+          - result.bodyjson.department ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
+          - result.bodyjson.teammembership.teammembership1 ShouldEqual "Engineering"
+          - result.bodyjson.teammembership.teammembership2 ShouldEqual "Engineering/Content + CS Systems"
+          - result.bodyjson.teammembership.teammembership3 ShouldEqual "Engineering/Content + CS Systems/CS systems"
+          - result.bodyjson.teammembership.teammembership4 ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
           - result.bodyjson.permissions.permissions0 ShouldEqual credit-card:create
           - result.statuscode ShouldEqual 200
   - name: Test getting existing user with deprecated token scheme
@@ -65,7 +85,7 @@ testcases:
           - result.bodyjson.teammembership.teammembership2 ShouldEqual "Engineering/Content + CS Systems"
           - result.bodyjson.teammembership.teammembership3 ShouldEqual "Engineering/Content + CS Systems/CS systems"
           - result.bodyjson.teammembership.teammembership4 ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
-          - result.bodyjson.permissions.permissions0 ShouldEqual credit-card:create
+          - result.bodyjson ShouldNotContainKey permissions
           - result.statuscode ShouldEqual 200
   - name: Test getting existing non-cached user
     steps:
@@ -85,7 +105,7 @@ testcases:
           - result.bodyjson.teammembership.teammembership2 ShouldEqual "Engineering/Content + CS Systems"
           - result.bodyjson.teammembership.teammembership3 ShouldEqual "Engineering/Content + CS Systems/CS systems"
           - result.bodyjson.teammembership.teammembership4 ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
-          - result.bodyjson.permissions.permissions0 ShouldEqual credit-card:create
+          - result.bodyjson ShouldNotContainKey permissions
           - result.statuscode ShouldEqual 200
   - name: Test GET /v1/teams
     steps:
