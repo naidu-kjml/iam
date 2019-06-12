@@ -1,4 +1,4 @@
-FROM golang:1.12.4-alpine
+FROM golang:1.12.6-alpine
 
 RUN apk add --no-cache git~=2.20 autoconf libtool curl gcc musl-dev
 
