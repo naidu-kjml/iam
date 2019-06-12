@@ -9,6 +9,8 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+
+	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
 )
 
@@ -35,9 +37,15 @@ func (u *userService) AddPermissions(user *okta.User, service string) error {
 
 func createFakeRouter() (*httprouter.Router, *userService) {
 	s := &userService{}
+	tracer, _ := monitoring.CreateNewTracingService(monitoring.TracerOptions{
+		ServiceName: "kiwi-iam",
+		Environment: "test",
+		Port:        "8126",
+		Host:        "test",
+	})
 
 	router := httprouter.New()
-	router.GET("/", getOktaUserByEmail(s))
+	router.GET("/", getOktaUserByEmail(s, tracer))
 	return router, s
 }
 

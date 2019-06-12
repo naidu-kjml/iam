@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/julienschmidt/httprouter"
+	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/security"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
@@ -24,7 +25,8 @@ func CreateRouter(
 	serviceName string,
 	oktaClient *okta.Client,
 	secretManager secrets.SecretManager,
-	metricClient metricService) *tracingRouter.Router {
+	metricClient metricService,
+	tracer *monitoring.Tracer) *tracingRouter.Router {
 	router := tracingRouter.New(tracingRouter.WithServiceName(serviceName))
 
 	router.Handler(
@@ -52,7 +54,7 @@ func CreateRouter(
 	}
 
 	// App routes
-	addEndpoint("/v1/user", getOktaUserByEmail(oktaClient))
+	addEndpoint("/v1/user", getOktaUserByEmail(oktaClient, tracer))
 
 	addEndpoint("/v1/teams", getTeams(oktaClient))
 

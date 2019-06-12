@@ -14,7 +14,6 @@ import (
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
-	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 func fillCache(client *okta.Client) {
@@ -126,12 +125,12 @@ func main() {
 	secretManager := createSecretManager(vaultConfig)
 
 	// Datadog tracer
-	if datadogConfig.AgentHost != "" {
-		tracer.Start(
-			tracer.WithServiceName("kiwi-iam"),
-			tracer.WithGlobalTag("env", datadogConfig.Environment),
-		)
-	}
+	tracer, _ := monitoring.CreateNewTracingService(monitoring.TracerOptions{
+		ServiceName: "kiwi-iam",
+		Environment: iamConfig.Environment,
+		Port:        "8126",
+		Host:        datadogConfig.AgentHost,
+	})
 
 	// Metrics initialization
 	metricClient, metricErr := monitoring.CreateNewMetricService(monitoring.MetricSettings{
@@ -163,7 +162,7 @@ func main() {
 		Metrics:     metricClient,
 	})
 
-	router := restAPI.CreateRouter("kiwi-iam.http.router", oktaClient, secretManager, metricClient)
+	router := restAPI.CreateRouter("kiwi-iam.http.router", oktaClient, secretManager, metricClient, tracer)
 
 	// 0.0.0.0 is specified to allow listening in Docker
 	var address = "0.0.0.0"

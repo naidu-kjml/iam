@@ -10,6 +10,7 @@ import (
 	"github.com/getsentry/raven-go"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/julienschmidt/httprouter"
+	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/security"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"
 )
@@ -22,7 +23,7 @@ type userDataService interface {
 }
 
 // getOktaUserByEmail looks up an Okta user by email
-func getOktaUserByEmail(client userDataService) httprouter.Handle {
+func getOktaUserByEmail(client userDataService, tracer *monitoring.Tracer) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		params, paramErr := validateUsersParams(r.URL.RawQuery)
 		if paramErr != nil {
@@ -32,13 +33,21 @@ func getOktaUserByEmail(client userDataService) httprouter.Handle {
 		email := params["email"]
 		permissions := params["permissions"] == "true"
 
-		service, err := security.GetService(r.Header.Get("User-Agent"))
-		if err != nil {
+		service, getServiceErr := security.GetService(r.Header.Get("User-Agent"))
+		if getServiceErr != nil {
 			http.Error(w, "Invalid user agent", http.StatusBadRequest)
 			return
 		}
 
-		oktaUser, err := client.GetUser(email)
+		// getUser just wraps GetUser in tracing
+		getUser := func() (okta.User, error) {
+			span, _ := tracer.StartSpanWithContext(r.Context(), "user-data", "okta-controller", "http")
+			defer tracer.FinishSpan(span)
+			oktaUser, err := client.GetUser(email)
+
+			return oktaUser, err
+		}
+		oktaUser, err := getUser()
 		if err == okta.ErrUserNotFound {
 			http.Error(w, "User "+email+" not found", http.StatusNotFound)
 			return
@@ -48,8 +57,17 @@ func getOktaUserByEmail(client userDataService) httprouter.Handle {
 			return
 		}
 
-		if permissions {
+		// addPermissions just wraps AddPermissions with tracing
+		addPermissions := func() error {
+			span, _ := tracer.StartSpanWithContext(r.Context(), "permissions", "okta-controller", "http")
+			defer tracer.FinishSpan(span)
 			permErr := client.AddPermissions(&oktaUser, service.Name)
+
+			return permErr
+		}
+
+		if permissions {
+			permErr := addPermissions()
 			if permErr != nil {
 				log.Println("[ERROR]", permErr.Error())
 				raven.CaptureError(permErr, nil)
