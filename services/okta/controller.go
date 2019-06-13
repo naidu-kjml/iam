@@ -6,6 +6,7 @@ import (
 	"strings"
 	"time"
 
+	"gitlab.skypicker.com/platform/security/iam/config/cfg"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
@@ -63,7 +64,7 @@ func (c *Client) GetUser(email string) (User, error) {
 			return User{}, fetchErr
 		}
 
-		cacheErr := c.cache.Set(user.Email, user, time.Minute*10)
+		cacheErr := c.cache.Set(user.Email, user, cfg.Expirations.User)
 		if cacheErr != nil {
 			raven.CaptureError(cacheErr, nil)
 		}
@@ -205,7 +206,7 @@ func (c *Client) SyncGroups() {
 
 	}
 
-	if err = c.cache.Set("groups-sync-timestamp", syncStart, 0); err != nil {
+	if err = c.cache.Set("groups-sync-timestamp", syncStart, cfg.Expirations.GroupsLastSync); err != nil {
 		log.Println("Error while caching last synchronization time ", err)
 		raven.CaptureError(err, nil)
 	}

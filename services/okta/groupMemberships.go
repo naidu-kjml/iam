@@ -3,6 +3,7 @@ package okta
 import (
 	"strings"
 
+	"gitlab.skypicker.com/platform/security/iam/config/cfg"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 )
 
@@ -87,7 +88,7 @@ func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
 			cachedGroupMemberships[groupParts[1]][userid] = true
 		}
 
-		if err := c.cache.Set(serviceName, cachedGroupMemberships, 0); err != nil {
+		if err := c.cache.Set(serviceName, cachedGroupMemberships, cfg.Expirations.GroupMemberships); err != nil {
 			return err
 		}
 	}

@@ -1,6 +1,10 @@
 package okta
 
-import "time"
+import (
+	"time"
+
+	"gitlab.skypicker.com/platform/security/iam/config/cfg"
+)
 
 type cache interface {
 	Set(key string, value interface{}, ttl time.Duration) error
@@ -15,6 +19,6 @@ func cacheTeams(cache cache, users []User) (int, error) {
 		}
 	}
 
-	err := cache.Set("teams", teams, 0)
+	err := cache.Set("teams", teams, cfg.Expirations.Teams)
 	return len(teams), err
 }

@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/getsentry/raven-go"
+	"gitlab.skypicker.com/platform/security/iam/config/cfg"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 )
 
@@ -107,7 +108,7 @@ func (c *Client) getUserGroups(user *User) ([]Group, error) {
 		}
 		user.GroupMembership = groups
 
-		cacheErr := c.cache.Set(user.Email, user, 15*time.Minute)
+		cacheErr := c.cache.Set(user.Email, user, cfg.Expirations.User)
 		if cacheErr != nil {
 			raven.CaptureError(cacheErr, nil)
 		}
