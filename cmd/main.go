@@ -56,17 +56,11 @@ func syncVault(client *secrets.VaultManager) {
 }
 
 func createSecretManager(vault cfg.VaultConfig) secrets.SecretManager {
-	tokenConfig, err := secrets.CreateNewConfigurationMapper()
-	if err != nil {
-		panic(err)
-	}
-
 	// Load data from Vault and set them if possible
 	vaultClient, vaultErr := secrets.CreateNewVaultClient(
 		vault.Address,
 		vault.Token,
 		vault.Namespace,
-		tokenConfig,
 	)
 	if vaultErr == nil {
 		// This sync needs to happen synchronously
@@ -84,7 +78,7 @@ func createSecretManager(vault cfg.VaultConfig) secrets.SecretManager {
 
 	log.Println("Vault integration disabled: ", vaultErr)
 
-	localSecretManager := secrets.CreateNewLocalSecretManager(tokenConfig)
+	localSecretManager := secrets.CreateNewLocalSecretManager()
 
 	return localSecretManager
 }

@@ -8,13 +8,11 @@ import (
 )
 
 // LocalSecretManager is just a struct
-type LocalSecretManager struct {
-	TokenMapper *Mapper
-}
+type LocalSecretManager struct{}
 
 // CreateNewLocalSecretManager creates a new secret manager hooked up to Viper
-func CreateNewLocalSecretManager(m *Mapper) *LocalSecretManager {
-	return &LocalSecretManager{m}
+func CreateNewLocalSecretManager() *LocalSecretManager {
+	return &LocalSecretManager{}
 }
 
 // GetAppToken gets the token from Viper

@@ -26,14 +26,13 @@ type localStorage struct {
 type VaultManager struct {
 	client    *vault.Client
 	storage   localStorage
-	mapper    *Mapper
 	namespace string
 }
 
 var requiredPrefix = "/secret"
 
 // CreateNewVaultClient create a new client to connect to Vault
-func CreateNewVaultClient(address, token, namespace string, mapper *Mapper) (*VaultManager, error) {
+func CreateNewVaultClient(address, token, namespace string) (*VaultManager, error) {
 	if address == "" {
 		return nil, errors.New("missing Vault address")
 	}
@@ -54,7 +53,7 @@ func CreateNewVaultClient(address, token, namespace string, mapper *Mapper) (*Va
 
 	client.SetNamespace(namespace)
 
-	return &VaultManager{client: client, namespace: namespace, mapper: mapper}, nil
+	return &VaultManager{client: client, namespace: namespace}, nil
 }
 
 // SyncAppTokens syncs all the available tokens from Vault and saves them to local state
