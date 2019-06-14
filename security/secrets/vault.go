@@ -9,6 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"strings"
 
 	vault "github.com/hashicorp/vault/api"
 )
@@ -81,10 +82,7 @@ func (s *VaultManager) SyncAppTokens() error {
 
 // GetAppToken gets a token used by an outside service
 func (s *VaultManager) GetAppToken(app, environment string) (string, error) {
-	tokenName, err := s.mapper.GetTokenName(app, environment)
-	if err != nil {
-		return "", err
-	}
+	tokenName := strings.ToUpper(app) + "_" + strings.ToUpper(environment)
 	data := s.storage.tokens[tokenName]
 
 	if data == "" {

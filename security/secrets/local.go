@@ -2,6 +2,7 @@ package secrets
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/spf13/viper"
 )
@@ -18,11 +19,7 @@ func CreateNewLocalSecretManager(m *Mapper) *LocalSecretManager {
 
 // GetAppToken gets the token from Viper
 func (s LocalSecretManager) GetAppToken(app, environment string) (string, error) {
-	tokenName, err := s.TokenMapper.GetTokenName(app, environment)
-	if err != nil {
-		return "", err
-	}
-
+	tokenName := strings.ToUpper(app) + "_" + strings.ToUpper(environment)
 	token := viper.GetString("TOKEN_" + tokenName)
 
 	if token == "" {
