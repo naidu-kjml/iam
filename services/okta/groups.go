@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/getsentry/raven-go"
-	"gitlab.skypicker.com/platform/security/iam/config/cfg"
+	cfg "gitlab.skypicker.com/platform/security/iam/config"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 )
 

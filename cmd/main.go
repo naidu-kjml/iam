@@ -7,7 +7,7 @@ import (
 	"time"
 
 	restAPI "gitlab.skypicker.com/platform/security/iam/api/rest"
-	"gitlab.skypicker.com/platform/security/iam/config/cfg"
+	cfg "gitlab.skypicker.com/platform/security/iam/config"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gitlab.skypicker.com/platform/security/iam/services/okta"

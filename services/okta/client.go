@@ -1,7 +1,7 @@
 package okta
 
 import (
-	"gitlab.skypicker.com/platform/security/iam/config/cfg"
+	cfg "gitlab.skypicker.com/platform/security/iam/config"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 	"golang.org/x/sync/singleflight"

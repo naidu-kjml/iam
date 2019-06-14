@@ -3,7 +3,7 @@ package okta
 import (
 	"strings"
 
-	"gitlab.skypicker.com/platform/security/iam/config/cfg"
+	cfg "gitlab.skypicker.com/platform/security/iam/config"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 )
 
