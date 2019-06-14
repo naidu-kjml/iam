@@ -1,0 +1,27 @@
+syntax = "proto3";
+package kiwi.iam.user.v1;
+
+service KiwiIAM {
+    rpc User(UserRequest) returns (UserResponse);
+    rpc SayHello(PingMessage) returns (PingMessage);
+}
+
+message UserRequest {
+    string email = 1;
+}
+
+message UserResponse {
+    int32 employeeNumber = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string position = 4;
+    string department = 5;
+    string location = 6;
+    bool isVendor = 7;
+    string manager = 8;
+    repeated string teamMembership = 9;
+}
+
+message PingMessage {
+    string greeting = 1;
+}
