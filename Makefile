@@ -68,3 +68,6 @@ coala:
 	docker run -ti -v "$(shell pwd)":/app --workdir=/app coala/base:0.11 coala -n -j 4
 
 -include ./tests/e2e/e2e.mk
+
+proto:
+	protoc --go_out=plugins=grpc:. ./api/grpc/v1/iam.proto
