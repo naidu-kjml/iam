@@ -70,8 +70,8 @@ func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
 
 	for _, membership := range memberships {
 		// iam-serviceName:rule
-		groupParts := strings.SplitAfterN(membership.GroupName, ":", 2)
-		serviceName := groupMembershipPrefix + strings.Replace(strings.TrimRight(groupParts[0], ":"), iamGroupPrefix, "", 1)
+		groupParts := strings.SplitAfterN(membership.GroupName, ".", 2)
+		serviceName := groupMembershipPrefix + strings.Replace(strings.TrimRight(groupParts[0], "."), iamGroupPrefix, "", 1)
 
 		err := c.cache.Get(serviceName, &cachedGroupMemberships)
 		if err != nil {

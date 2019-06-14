@@ -75,7 +75,7 @@ testcases:
           - result.bodyjson.teammembership.teammembership2 ShouldEqual "Engineering/Content + CS Systems"
           - result.bodyjson.teammembership.teammembership3 ShouldEqual "Engineering/Content + CS Systems/CS systems"
           - result.bodyjson.teammembership.teammembership4 ShouldEqual "Engineering/Content + CS Systems/CS systems/CS Systems Frontend"
-          - result.bodyjson.permissions.permissions0 ShouldEqual credit-card:create
+          - result.bodyjson.permissions.permissions0 ShouldEqual credit-card.create
           - result.statuscode ShouldEqual 200
   - name: Test getting existing user with deprecated token scheme
     steps:
