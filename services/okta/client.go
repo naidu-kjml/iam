@@ -1,15 +1,25 @@
 package okta
 
 import (
+	"time"
+
 	cfg "gitlab.skypicker.com/platform/security/iam/config"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 	"golang.org/x/sync/singleflight"
 )
 
+// Cacher contains methods needed from a cache
+type Cacher interface {
+	Get(key string, value interface{}) error
+	Set(key string, value interface{}, ttl time.Duration) error
+	Del(key string) error
+	MSet(pairs map[string]interface{}, ttl time.Duration) error
+}
+
 // ClientOpts contains options to create an Okta client
 type ClientOpts struct {
-	Cache       *storage.RedisCache
+	Cache       Cacher
 	LockManager *storage.LockManager
 	BaseURL     string
 	AuthToken   string
@@ -20,7 +30,7 @@ type ClientOpts struct {
 // Client represent an Okta client
 type Client struct {
 	group     singleflight.Group
-	cache     *storage.RedisCache
+	cache     Cacher
 	lock      *storage.LockManager
 	baseURL   string
 	authToken string

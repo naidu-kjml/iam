@@ -1,8 +1,11 @@
 package okta
 
 import (
+	"errors"
+	"regexp"
 	"strings"
 
+	"github.com/getsentry/raven-go"
 	cfg "gitlab.skypicker.com/platform/security/iam/config"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 )
@@ -65,10 +68,18 @@ func (c *Client) fetchGroupMemberships(groups []Group) ([]GroupMembership, error
 	return groupMemberships, nil
 }
 
+var groupPattern = regexp.MustCompile(`^iam-[\w-]+\.([\w-]+\.?)+$`)
+
 func (c *Client) updateGroupMemberships(memberships []GroupMembership) error {
 	cachedGroupMemberships := make(map[string]map[string]bool)
 
 	for _, membership := range memberships {
+		if !groupPattern.Match([]byte(membership.GroupName)) {
+			formatErr := errors.New("group name has incorrect format: " + membership.GroupName)
+			raven.CaptureError(formatErr, nil)
+			return formatErr
+		}
+
 		// iam-serviceName:rule
 		groupParts := strings.SplitAfterN(membership.GroupName, ".", 2)
 		serviceName := groupMembershipPrefix + strings.Replace(strings.TrimRight(groupParts[0], "."), iamGroupPrefix, "", 1)
