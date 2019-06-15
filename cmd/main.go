@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"time"
 
+	grpcAPI "gitlab.skypicker.com/platform/security/iam/api/grpc"
+	pb "gitlab.skypicker.com/platform/security/iam/api/grpc/v1"
 	restAPI "gitlab.skypicker.com/platform/security/iam/api/rest"
 	cfg "gitlab.skypicker.com/platform/security/iam/config"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
@@ -14,6 +16,7 @@ import (
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
+	"google.golang.org/grpc"
 )
 
 func fillCache(client *okta.Client) {
@@ -177,7 +180,27 @@ func main() {
 	}
 
 	log.Println("🚀 Golang server starting on " + serveAddr)
-	if err := server.ListenAndServe(); err != nil {
-		log.Fatal(err.Error())
+	go server.ListenAndServe()
+
+	// GRPC Init
+
+	// Create listener
+	grpcAddress := net.JoinHostPort(address, "7777")
+	lis, err := net.Listen("tcp", grpcAddress)
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+
+	s, _ := grpcAPI.CreateServer(oktaClient)
+
+	grpcServer := grpc.NewServer()
+
+	pb.RegisterKiwiIAMServer(grpcServer, s)
+
+	log.Printf("GRPC server listening on %s", grpcAddress)
+
+	// start the server
+	if err := grpcServer.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %s", err)
 	}
 }

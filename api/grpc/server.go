@@ -3,24 +3,38 @@ package grpc
 import (
 	"context"
 	"log"
+	"strconv"
 
+	"gitlab.skypicker.com/platform/security/iam/services/okta"
 	pb "gitlab.skypicker.com/platform/security/iam/api/grpc/v1"
 )
 
+type userDataService interface {
+	GetUser(string) (okta.User, error)
+	AddPermissions(*okta.User, string) error
+}
+
 type Server struct {
+	userService userDataService
+}
+
+func CreateServer(userServiceClient userDataService) (*Server, error) {
+	return &Server{userService: userServiceClient}, nil
 }
 
 func (s *Server) User(ctx context.Context, in *pb.UserRequest) (*pb.UserResponse, error) {
 	log.Println("Hi")
+	user, _ := s.userService.GetUser(in.Email)
+	employeNumber, _ := strconv.ParseInt(user.EmployeeNumber, 10, 64)
 
 	return &pb.UserResponse{
-		EmployeeNumber: 1234,
-		FirstName:      "Test",
-		LastName:       "Tester",
-		Position:       "QA Tester",
-		Department:     "tst",
-		Location:       "Hell",
-		Manager:        "Satan",
-		TeamMembership: []string{"test", "hi"},
+		EmployeeNumber: employeNumber,
+		FirstName:      user.FirstName,
+		LastName:       user.LastName,
+		Position:       user.Position,
+		Department:     user.Department,
+		Location:       user.Location,
+		Manager:        user.Manager,
+		TeamMembership: user.TeamMembership,
 	}, nil
 }

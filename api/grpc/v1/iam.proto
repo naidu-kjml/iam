@@ -10,7 +10,7 @@ message UserRequest {
 }
 
 message UserResponse {
-    int32 employeeNumber = 1;
+    int64 employeeNumber = 1;
     string firstName = 2;
     string lastName = 3;
     string position = 4;
