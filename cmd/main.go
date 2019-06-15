@@ -17,6 +17,7 @@ import (
 
 	"github.com/getsentry/raven-go"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 func fillCache(client *okta.Client) {
@@ -194,6 +195,7 @@ func main() {
 	s, _ := grpcAPI.CreateServer(oktaClient)
 
 	grpcServer := grpc.NewServer()
+	reflection.Register(grpcServer)
 
 	pb.RegisterKiwiIAMServer(grpcServer, s)
 
