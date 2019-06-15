@@ -3,7 +3,6 @@ package kiwi.iam.user.v1;
 
 service KiwiIAM {
     rpc User(UserRequest) returns (UserResponse);
-    rpc SayHello(PingMessage) returns (PingMessage);
 }
 
 message UserRequest {
@@ -20,8 +19,4 @@ message UserResponse {
     bool isVendor = 7;
     string manager = 8;
     repeated string teamMembership = 9;
-}
-
-message PingMessage {
-    string greeting = 1;
 }
