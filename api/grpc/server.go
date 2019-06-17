@@ -14,14 +14,17 @@ type userDataService interface {
 	AddPermissions(*okta.User, string) error
 }
 
+// Server is an instance of the GRPC server struct which includes all dependencies
 type Server struct {
 	userService userDataService
 }
 
+// CreateServer creates a new Server struct and assigns all dependencies to it
 func CreateServer(userServiceClient userDataService) (*Server, error) {
 	return &Server{userService: userServiceClient}, nil
 }
 
+// User returns a single user based on email
 func (s *Server) User(ctx context.Context, in *pb.UserRequest) (*pb.UserResponse, error) {
 	log.Println("Hi")
 	user, _ := s.userService.GetUser(in.Email)
