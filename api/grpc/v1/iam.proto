@@ -11,12 +11,13 @@ message UserRequest {
 
 message UserResponse {
     int64 employeeNumber = 1;
-    string firstName = 2;
-    string lastName = 3;
-    string position = 4;
-    string department = 5;
-    string location = 6;
-    bool isVendor = 7;
-    string manager = 8;
-    repeated string teamMembership = 9;
+    string email = 2;
+    string firstName = 3;
+    string lastName = 4;
+    string position = 5;
+    string department = 6;
+    string location = 7;
+    bool isVendor = 8;
+    string manager = 9;
+    repeated string teamMembership = 10;
 }

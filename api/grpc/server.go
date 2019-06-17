@@ -5,8 +5,8 @@ import (
 	"log"
 	"strconv"
 
-	"gitlab.skypicker.com/platform/security/iam/services/okta"
 	pb "gitlab.skypicker.com/platform/security/iam/api/grpc/v1"
+	"gitlab.skypicker.com/platform/security/iam/services/okta"
 )
 
 type userDataService interface {
@@ -29,6 +29,7 @@ func (s *Server) User(ctx context.Context, in *pb.UserRequest) (*pb.UserResponse
 
 	return &pb.UserResponse{
 		EmployeeNumber: employeNumber,
+		Email:          user.Email,
 		FirstName:      user.FirstName,
 		LastName:       user.LastName,
 		Position:       user.Position,
