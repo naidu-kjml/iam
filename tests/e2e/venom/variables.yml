@@ -2,4 +2,4 @@
 url: "{{.IAM_URL}}"
 serviceName: "kiwi.iam.user.v1.KiwiIAM"
 httpPort: "8080"
-grpcPort: "7777"
+grpcPort: "8090"

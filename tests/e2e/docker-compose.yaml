@@ -28,10 +28,10 @@ services:
       - datadog_mock
     expose:
       - 8080
-      - 7777
+      - 8090
     ports:
       - 127.0.0.1:8080:8080
-      - 127.0.0.1:7777:7777
+      - 127.0.0.1:8090:8090
     depends_on:
       - nginx
       - redis

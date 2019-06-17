@@ -16,6 +16,9 @@ import (
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
+	// AppEngine is added manually due to issues with go.mod
+	// https://skypicker.slack.com/archives/CA154LA5T/p1560781760024700
+	_ "google.golang.org/appengine"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -180,13 +183,13 @@ func main() {
 		go fillCache(oktaClient)
 	}
 
-	log.Println("🚀 Golang server starting on " + serveAddr)
-	go server.ListenAndServe()
+	log.Println("🚀 REST server starting on " + serveAddr)
+	go func() { _ = server.ListenAndServe() }()
 
 	// GRPC Init
 
 	// Create listener
-	grpcAddress := net.JoinHostPort(address, "7777")
+	grpcAddress := net.JoinHostPort(address, iamConfig.GRPCPort)
 	lis, err := net.Listen("tcp", grpcAddress)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
@@ -199,7 +202,7 @@ func main() {
 
 	pb.RegisterKiwiIAMServer(grpcServer, s)
 
-	log.Printf("GRPC server listening on %s", grpcAddress)
+	log.Printf("🚀 GRPC server listening on %s", grpcAddress)
 
 	// start the server
 	if err := grpcServer.Serve(lis); err != nil {

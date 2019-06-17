@@ -21,6 +21,7 @@ func InitEnv() {
 	// default value, or they are specified on .env.yaml. So to make sure all envs
 	// are retrieved, we set all defaults here.
 	viper.SetDefault("PORT", "8080")
+	viper.SetDefault("GRPC_PORT", "8090")
 	viper.SetDefault("SERVE_PATH", "/")
 	// Environment used for sentry, user agent, datadog. Removes user syncing if set to dev.
 	viper.SetDefault("APP_ENV", "")
@@ -68,6 +69,7 @@ func LoadConfigs(configStructs ...interface{}) error {
 // ServiceConfig stores configuration values for the IAM service.
 type ServiceConfig struct {
 	Port         string `mapstructure:"PORT"`
+	GRPCPort     string `mapstructure:"GRPC_PORT"`
 	UseLocalhost bool   `mapstructure:"USE_LOCALHOST"`
 	Environment  string `mapstructure:"APP_ENV"`
 	Release      string `mapstructure:"SENTRY_RELEASE"`

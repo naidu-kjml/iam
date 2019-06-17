@@ -2,6 +2,7 @@ package grpc
 
 import (
 	"context"
+	"errors"
 	"strconv"
 
 	pb "gitlab.skypicker.com/platform/security/iam/api/grpc/v1"
@@ -29,7 +30,10 @@ func (s *Server) User(ctx context.Context, in *pb.UserRequest) (*pb.UserResponse
 	if userErr != nil {
 		return &pb.UserResponse{}, userErr
 	}
-	employeNumber, _ := strconv.ParseInt(user.EmployeeNumber, 10, 64)
+	employeNumber, intErr := strconv.ParseInt(user.EmployeeNumber, 10, 64)
+	if intErr != nil {
+		return &pb.UserResponse{}, errors.New("unexpected server error")
+	}
 
 	return &pb.UserResponse{
 		EmployeeNumber: employeNumber,
