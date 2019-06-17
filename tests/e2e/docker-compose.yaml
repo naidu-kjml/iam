@@ -28,8 +28,10 @@ services:
       - datadog_mock
     expose:
       - 8080
+      - 7777
     ports:
-      - "8080:8080"
+      - 127.0.0.1:8080:8080
+      - 127.0.0.1:7777:7777
     depends_on:
       - nginx
       - redis
@@ -39,7 +41,7 @@ services:
     build:
       context: ./venom
     environment:
-      IAM_URL: http://kiwi-iam:8080
+      IAM_URL: kiwi-iam
     links:
       - kiwi-iam:kiwi-iam
     depends_on:

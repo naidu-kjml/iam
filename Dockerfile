@@ -21,6 +21,7 @@ COPY --from=builder /app/.env.yaml .env.yaml
 COPY --from=builder /app/.well-known .well-known/
 COPY --from=builder /app/config config/
 EXPOSE 8080
+EXPOSE 7777
 
 USER nobody
 ENTRYPOINT ./main

@@ -1,0 +1,10 @@
+name: Test grpc
+testcases:
+  - name: Returns correct result for valid request
+    steps:
+      - type: exec
+        script: |-
+          grpcurl -plaintext -d '{"email": "cached@tester.kiwi"}' {{.url}}:{{.grpcPort}} {{.serviceName}}/User
+        assertions:
+          - result.code ShouldEqual 0
+          - result.systemoutjson.lastname ShouldEqual Cached

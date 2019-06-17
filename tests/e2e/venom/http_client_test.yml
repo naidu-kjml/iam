@@ -1,10 +1,10 @@
-name: Basic functionality
+name: HTTP Server Tests
 testcases:
   - name: Test that server responds correctly to hello world
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/"
+        url: "http://{{.url}}:{{.httpPort}}/"
         assertions:
           - result.body ShouldEqual 42
           - result.statuscode ShouldEqual 200
@@ -12,7 +12,7 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=cached@test.kiwi"
+        url: "http://{{.url}}:{{.httpPort}}/v1/user?email=cached@test.kiwi"
         headers:
           User-Agent: "Venom/0 (Kiwi.com test)"
         assertions:
@@ -22,7 +22,7 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=cached@test.kiwi"
+        url: "http://{{.url}}:{{.httpPort}}/v1/user?email=cached@test.kiwi"
         assertions:
           - "result.body ShouldEqual 'user agent string is not compliant with Kiwi RFC-22\n'"
           - result.statuscode ShouldEqual 401
@@ -30,7 +30,7 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=test@tester.kiwi"
+        url: "http://{{.url}}:{{.httpPort}}/v1/user?email=test@tester.kiwi"
         headers:
           User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
@@ -41,7 +41,7 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=cached@tester.kiwi"
+        url: "http://{{.url}}:{{.httpPort}}/v1/user?email=cached@tester.kiwi"
         headers:
           User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
@@ -61,7 +61,7 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=cached@tester.kiwi&permissions=true"
+        url: "http://{{.url}}:{{.httpPort}}/v1/user?email=cached@tester.kiwi&permissions=true"
         headers:
           User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
@@ -81,7 +81,7 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=cached@tester.kiwi"
+        url: "http://{{.url}}:{{.httpPort}}/v1/user?email=cached@tester.kiwi"
         headers:
           User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "testtoken"
@@ -101,7 +101,7 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/user?email=fetched@tester.kiwi"
+        url: "http://{{.url}}:{{.httpPort}}/v1/user?email=fetched@tester.kiwi"
         headers:
           User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
@@ -121,7 +121,7 @@ testcases:
     steps:
       - type: http
         method: GET
-        url: "{{.url}}/v1/teams"
+        url: "http://{{.url}}:{{.httpPort}}/v1/teams"
         headers:
           User-Agent: "Venom/0 (Kiwi.com test)"
           authorization: "Bearer testtoken"
