@@ -2,7 +2,6 @@ package grpc
 
 import (
 	"context"
-	"log"
 	"strconv"
 
 	pb "gitlab.skypicker.com/platform/security/iam/api/grpc/v1"
@@ -26,8 +25,10 @@ func CreateServer(userServiceClient userDataService) (*Server, error) {
 
 // User returns a single user based on email
 func (s *Server) User(ctx context.Context, in *pb.UserRequest) (*pb.UserResponse, error) {
-	log.Println("Hi")
-	user, _ := s.userService.GetUser(in.Email)
+	user, userErr := s.userService.GetUser(in.Email)
+	if userErr != nil {
+		return &pb.UserResponse{}, userErr
+	}
 	employeNumber, _ := strconv.ParseInt(user.EmployeeNumber, 10, 64)
 
 	return &pb.UserResponse{

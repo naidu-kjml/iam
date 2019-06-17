@@ -8,3 +8,12 @@ testcases:
         assertions:
           - result.code ShouldEqual 0
           - result.systemoutjson.lastname ShouldEqual Cached
+  - name: Returns error for invalid request
+    steps:
+      - type: exec
+        script: |-
+          grpcurl -plaintext -d '{"email": "cach@tester.kiwi"}' {{.url}}:{{.grpcPort}} {{.serviceName}}/User
+        assertions:
+          - result.code ShouldEqual 1
+          - result.systemerr ShouldContainSubstring ERROR
+          - result.systemerr ShouldContainSubstring "user not found"
