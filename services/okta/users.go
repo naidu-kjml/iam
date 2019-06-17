@@ -101,7 +101,7 @@ func (c *Client) fetchAllUsers() ([]User, error) {
 	}
 
 	for _, response := range responses {
-		jsonErr := response.JSON(&resources)
+		jsonErr := json.UnmarshalFromString(response, &resources)
 		if jsonErr != nil {
 			return nil, jsonErr
 		}

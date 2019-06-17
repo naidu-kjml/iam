@@ -1,6 +1,7 @@
 package okta
 
 import (
+	"bytes"
 	"io"
 	"log"
 	"net/http"
@@ -32,6 +33,15 @@ type Request struct {
 // retrieved data
 type Response struct {
 	*http.Response
+}
+
+// String reads data from HTTP response and returns it in the form of a string.
+func (res Response) String() (string, error) {
+	defer res.Body.Close()
+
+	buf := new(bytes.Buffer)
+	_, err := buf.ReadFrom(res.Body)
+	return buf.String(), err
 }
 
 // JSON retrieves data from HTTP response and store it in the struct pointed by

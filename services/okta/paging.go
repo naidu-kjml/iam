@@ -23,8 +23,8 @@ func (c *Client) fetchResource(url string) (*Response, error) {
 	return httpResponse, nil
 }
 
-func (c *Client) fetchPagedResource(url string) ([]Response, error) {
-	var responses []Response
+func (c *Client) fetchPagedResource(url string) ([]string, error) {
+	var responses []string
 	hasNext := true
 
 	for hasNext {
@@ -45,7 +45,11 @@ func (c *Client) fetchPagedResource(url string) ([]Response, error) {
 			}
 		}
 
-		responses = append(responses, *response)
+		str, err := response.String()
+		if err != nil {
+			return nil, err
+		}
+		responses = append(responses, str)
 	}
 
 	return responses, nil

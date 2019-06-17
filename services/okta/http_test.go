@@ -1,6 +1,7 @@
 package okta
 
 import (
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -21,12 +22,27 @@ type BodyMock struct {
 func (b *BodyMock) Read(p []byte) (int, error) {
 	copy(p, b.Value)
 
-	return len(p), nil
+	return len(b.Value), io.EOF
 }
 
 func (b *BodyMock) Close() error {
 	b.Called()
 	return nil
+}
+
+func TestString(t *testing.T) {
+	var body = BodyMock{Value: `{ "message": "this is a test" }`}
+	body.On("Close").Return()
+
+	res := Response{
+		&http.Response{Body: &body},
+	}
+	expected := `{ "message": "this is a test" }`
+	actual, err := res.String()
+
+	assert.NoError(t, err)
+	body.AssertNumberOfCalls(t, "Close", 1)
+	assert.Equal(t, expected, actual)
 }
 
 func TestJSON(t *testing.T) {
