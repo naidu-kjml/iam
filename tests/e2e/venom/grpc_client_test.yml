@@ -2,18 +2,26 @@ name: Test grpc
 testcases:
   - name: Returns correct result for valid request
     steps:
-      - type: exec
-        script: |-
-          grpcurl -plaintext -d '{"email": "cached@tester.kiwi"}' {{.url}}:{{.grpcPort}} {{.serviceName}}/User
+      - type: grpc
+        url: {{.url}}:{{.grpcPort}}
+        plaintext: true
+        data:
+          email: "cached@tester.kiwi"
+        service:  {{.serviceName}}
+        method: User
         assertions:
           - result.code ShouldEqual 0
           - result.systemoutjson.lastname ShouldEqual Cached
-  - name: Returns error for invalid request
+  - name: Returns correct result for valid request
     steps:
-      - type: exec
-        script: |-
-          grpcurl -plaintext -d '{"email": "cach@tester.kiwi"}' {{.url}}:{{.grpcPort}} {{.serviceName}}/User
+      - type: grpc
+        url: {{.url}}:{{.grpcPort}}
+        plaintext: true
+        data:
+          email: "bull@tester.kiwi"
+        service:  {{.serviceName}}
+        method: User
         assertions:
-          - result.code ShouldEqual 1
-          - result.systemerr ShouldContainSubstring ERROR
+          - result.code ShouldEqual 2
+          - result.systemerr ShouldContainSubstring "code = Unknown"
           - result.systemerr ShouldContainSubstring "user not found"
