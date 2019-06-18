@@ -47,6 +47,7 @@ func syncVault(client *secrets.VaultManager) {
 
 	if err != nil {
 		log.Println("[ERROR] failed to sync tokens with Vault: ", err)
+		raven.CaptureError(err, nil)
 	}
 
 	ticker := time.NewTicker(time.Minute * 10)
@@ -58,6 +59,7 @@ func syncVault(client *secrets.VaultManager) {
 
 		if err != nil {
 			log.Println("[ERROR] failed to sync tokens with Vault: ", err)
+			raven.CaptureError(err, nil)
 		}
 	}
 }

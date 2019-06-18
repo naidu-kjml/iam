@@ -7,6 +7,7 @@ import (
 	"time"
 
 	cfg "gitlab.skypicker.com/platform/security/iam/config"
+	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/storage"
 
 	"github.com/getsentry/raven-go"
@@ -176,6 +177,7 @@ func (c *Client) SyncUsers() {
 		return
 	}
 	log.Println("Cached", nTeams, "teams")
+	c.metrics.Incr("successful.sync", monitoring.Tag("type", "users"))
 }
 
 // SyncGroups gets all groups from Okta and saves them into cache.
@@ -211,6 +213,7 @@ func (c *Client) SyncGroups() {
 		raven.CaptureError(err, nil)
 	}
 	log.Println("Cached", len(groupMemberships), "group memberships")
+	c.metrics.Incr("successful.sync", monitoring.Tag("type", "groups"))
 }
 
 func (c *Client) getLastSyncTime() string {
