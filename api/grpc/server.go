@@ -28,11 +28,11 @@ func CreateServer(userServiceClient userDataService) (*Server, error) {
 func (s *Server) User(ctx context.Context, in *pb.UserRequest) (*pb.UserResponse, error) {
 	user, userErr := s.userService.GetUser(in.Email)
 	if userErr != nil {
-		return &pb.UserResponse{}, userErr
+		return nil, userErr
 	}
 	employeNumber, intErr := strconv.ParseInt(user.EmployeeNumber, 10, 64)
 	if intErr != nil {
-		return &pb.UserResponse{}, errors.New("unexpected server error")
+		return nil, errors.New("unexpected server error")
 	}
 
 	return &pb.UserResponse{
