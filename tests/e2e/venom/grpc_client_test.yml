@@ -11,8 +11,9 @@ testcases:
         method: User
         assertions:
           - result.code ShouldEqual 0
+          - result.systemoutjson.email ShouldEqual cached@tester.kiwi
           - result.systemoutjson.lastname ShouldEqual Cached
-  - name: Returns correct result for valid request
+  - name: Returns error for missing user
     steps:
       - type: grpc
         url: {{.url}}:{{.grpcPort}}
