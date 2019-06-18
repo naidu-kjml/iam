@@ -78,7 +78,7 @@ func createSecretManager(vault cfg.VaultConfig) secrets.SecretManager {
 			panic(err)
 		}
 
-		go syncVault(vaultClient)
+		go capturePanic(func() { syncVault(vaultClient) })
 
 		return vaultClient
 	}
@@ -102,6 +102,24 @@ func initErrorTracking(sentry cfg.SentryConfig) {
 
 	raven.SetEnvironment(sentry.Environment)
 	raven.SetRelease(sentry.Release)
+}
+
+func capturePanic(f func()) {
+	defer func() {
+		if err := recover(); err != nil {
+			log.Println(err)
+
+			if e, ok := err.(error); ok {
+				raven.CaptureError(e, nil)
+			}
+
+			if m, ok := err.(string); ok {
+				raven.CaptureMessage(m, nil)
+			}
+		}
+	}()
+
+	f()
 }
 
 func main() {
@@ -180,11 +198,11 @@ func main() {
 	}
 
 	if iamConfig.Environment != "dev" {
-		go fillCache(oktaClient)
+		go capturePanic(func() { fillCache(oktaClient) })
 	}
 
 	log.Println("🚀 REST server starting on " + serveAddr)
-	go func() { _ = server.ListenAndServe() }()
+	go capturePanic(func() { _ = server.ListenAndServe() })
 
 	// GRPC Init
 
