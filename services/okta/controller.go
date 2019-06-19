@@ -182,6 +182,12 @@ func (c *Client) SyncUsers() {
 
 // SyncGroups gets all groups from Okta and saves them into cache.
 func (c *Client) SyncGroups() {
+	lockErr := c.lock.Create("sync_groups")
+	if lockErr == storage.ErrLockExists {
+		log.Println("Aborted, groups were already fetched")
+		return
+	}
+	defer c.lock.Delete("sync_groups")
 	syncStart := time.Now().UTC()
 
 	groups, err := c.fetchGroups("", c.getLastSyncTime())
