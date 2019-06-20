@@ -1,25 +1,19 @@
-package security
+package rest
 
 import (
-	"errors"
 	"log"
 	"net/http"
-	"regexp"
+
 	"strings"
 
 	"github.com/julienschmidt/httprouter"
-	"gitlab.skypicker.com/go/packages/useragent"
+
 	"gitlab.skypicker.com/platform/security/iam/api"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
+	"gitlab.skypicker.com/platform/security/iam/security"
 	"gitlab.skypicker.com/platform/security/iam/security/secrets"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
-
-type metricService interface {
-	// Incr increments by 1 a metric identified by name.
-	// tags should be in format name:value and can be created with Tag function to escape the values
-	Incr(string, ...string)
-}
 
 // AuthWrapper wraps a router to validate the authentication token
 func AuthWrapper(h httprouter.Handle, secretManager secrets.SecretManager, metricClient metricService) httprouter.Handle {
@@ -41,44 +35,12 @@ func AuthWrapper(h httprouter.Handle, secretManager secrets.SecretManager, metri
 	}
 }
 
-const (
-	serviceNamePattern string = `^[\w\s-]+`
-)
-
-// It's important to add $ in order to match the whole string
-var checkServiceNameRe = regexp.MustCompile(serviceNamePattern + "$")
-
-// CheckServiceName returns if the given service name contains expected characters only
-func CheckServiceName(service string) error {
-	safe := checkServiceNameRe.MatchString(service)
-	if !safe {
-		return errors.New("service name has to match " + serviceNamePattern + "$")
-	}
-
-	return nil
-}
-
-// Service holds the requesting service's name and environment
-type Service struct {
-	Name        string
-	Environment string
-}
-
-// GetService returns the service name and environment based on the given user agent
-func GetService(incomingUserAgent string) (Service, error) {
-	ua, err := useragent.Parse(incomingUserAgent)
-	if err != nil {
-		return Service{}, err
-	}
-	return Service{ua.Name, ua.Environment}, nil
-}
-
 // checkAuth checks if user has proper token + user agent
 func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClient metricService) error {
 	requestToken := getToken(r.Header.Get("Authorization"))
 	userAgent := r.Header.Get("User-Agent")
 
-	service, err := GetService(userAgent)
+	service, err := security.GetService(userAgent)
 	if err != nil {
 		return api.Error{Message: err.Error(), Code: 401}
 	}
@@ -92,14 +54,12 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClien
 		span.SetTag("service-name", service.Name)
 	}
 
-	token, err := secretManager.GetAppToken(service.Name, service.Environment)
-	if err != nil {
-		return api.Error{Message: "Unauthorized: " + err.Error(), Code: 401}
+	tokenErr := security.VerifyToken(secretManager, service, requestToken)
+
+	if tokenErr != nil {
+		return api.Error{Message: "Unauthorized: " + tokenErr.Error(), Code: 401}
 	}
 
-	if token != requestToken {
-		return api.Error{Message: "Unauthorized: incorrect token", Code: 401}
-	}
 	// Track old authentication format
 	if !strings.Contains(r.Header.Get("Authorization"), "Bearer") {
 		metricClient.Incr(

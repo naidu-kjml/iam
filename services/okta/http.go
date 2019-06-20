@@ -11,7 +11,7 @@ import (
 
 	"github.com/getsentry/raven-go"
 	jsoniter "github.com/json-iterator/go"
-	"gitlab.skypicker.com/go/packages/useragent"
+	"gitlab.skypicker.com/go/useragent"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
 )
 

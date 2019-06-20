@@ -27,7 +27,7 @@ require (
 	github.com/stretchr/objx v0.2.0 // indirect
 	github.com/stretchr/testify v1.3.0
 	github.com/tinylib/msgp v1.1.0 // indirect
-	gitlab.skypicker.com/go/packages v0.0.0-20190522131407-60d9fce13798
+	gitlab.skypicker.com/go/useragent v0.0.0-20190606110251-a66a2603332e
 	golang.org/x/net v0.0.0-20190619160351-b5b0513f8c1b // indirect
 	golang.org/x/sync v0.0.0-20190425150253-112230192c58
 	golang.org/x/sys v0.0.0-20190620070312-6f217b454f45 // indirect
