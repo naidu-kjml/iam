@@ -1,16 +1,22 @@
-[markdown]
+[all]
+indent_size = 4
+use_spaces = yes
+max_line_length = 120
+max_lines_per_file = 1000
+
+[all.markdown]
 files = *.md
 bears = MarkdownBear
 
-[filenames]
+[all.filenames]
 files = ./**/*.go
 bears = FilenameBear
 file_naming_convention = snake
 
-[yaml]
+[all.yaml]
 bears = YAMLLintBear
 
-[commit]
+[all.commit]
 bears = GitCommitBear
 shortlog_length = 72
 shortlog_trailing_period = no
