@@ -30,7 +30,7 @@ require (
 	gitlab.skypicker.com/go/useragent v0.0.0-20190606110251-a66a2603332e
 	golang.org/x/net v0.0.0-20190620200240-3b0461eec859 // indirect
 	golang.org/x/sync v0.0.0-20190425150253-112230192c58
-	golang.org/x/sys v0.0.0-20190620070312-6f217b454f45 // indirect
+	golang.org/x/sys v0.0.0-20190621160403-943d5127bdb0 // indirect
 	google.golang.org/appengine v1.6.1
 	google.golang.org/genproto v0.0.0-20190620150310-6af8c5fc6601 // indirect
 	google.golang.org/grpc v1.21.1
