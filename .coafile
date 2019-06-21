@@ -3,7 +3,7 @@ files = *.md
 bears = MarkdownBear
 
 [filenames]
-files = *.go
+files = ./**/*.go
 bears = FilenameBear
 file_naming_convention = snake
 
