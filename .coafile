@@ -2,6 +2,11 @@
 files = *.md
 bears = MarkdownBear
 
+[filenames]
+files = *.go
+bears = FilenameBear
+file_naming_convention = snake
+
 [yaml]
 bears = YAMLLintBear
 
