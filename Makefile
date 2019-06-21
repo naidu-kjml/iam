@@ -66,7 +66,7 @@ endif
 	$(call log_success,Linting with golangci-lint succeeded!)
 
 coala:
-	docker run -ti -v "$(shell pwd)":/app --workdir=/app coala/base:0.11 coala -n -j 4
+	docker run -v "$(shell pwd)":/app -v /tmp/coala-cache:/cache --workdir=/app coala/base:0.11 coala -a -n -j 4
 
 -include ./tests/e2e/e2e.mk
 
