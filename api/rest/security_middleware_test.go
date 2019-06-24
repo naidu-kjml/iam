@@ -76,16 +76,3 @@ func TestHappyPathCheckAuth(t *testing.T) {
 	assert.NoError(t, err, "Should not error on valid request token")
 	m.AssertNumberOfCalls(t, "Incr", 1)
 }
-
-func TestGetToken(t *testing.T) {
-	tests := map[string]string{
-		"Bearer token":        "token",
-		"token":               "token",
-		"Bearer Bearer token": "Bearer token",
-	}
-
-	for test, expected := range tests {
-		actual := getToken(test)
-		assert.Equal(t, expected, actual)
-	}
-}

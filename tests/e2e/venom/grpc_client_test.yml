@@ -1,10 +1,42 @@
 name: Test grpc
 testcases:
+  - name: Rejects bad service-agent
+    steps:
+      - type: grpc
+        url: {{.url}}:{{.grpcPort}}
+        plaintext: true
+        headers:
+          service-agent: "Venom/0 (Kiwtest)"
+        data:
+          email: "cached@tester.kiwi"
+        service:  {{.serviceName}}
+        method: User
+        assertions:
+          - result.code ShouldEqual 16
+          - result.systemerr ShouldContainSubstring "invalid service-agent"
+  - name: Rejects bad token
+    steps:
+      - type: grpc
+        url: {{.url}}:{{.grpcPort}}
+        plaintext: true
+        headers:
+          service-agent: "Venom/0 (Kiwi.com test)"
+          authorization: "Bearer tesoken"
+        data:
+          email: "cached@tester.kiwi"
+        service:  {{.serviceName}}
+        method: User
+        assertions:
+          - result.code ShouldEqual 16
+          - result.systemerr ShouldContainSubstring "invalid token"
   - name: Returns correct result for valid request
     steps:
       - type: grpc
         url: {{.url}}:{{.grpcPort}}
         plaintext: true
+        headers:
+          service-agent: "Venom/0 (Kiwi.com test)"
+          authorization: "Bearer testtoken"
         data:
           email: "cached@tester.kiwi"
         service:  {{.serviceName}}
@@ -20,6 +52,9 @@ testcases:
         plaintext: true
         data:
           email: "bull@tester.kiwi"
+        headers:
+          service-agent: "Venom/0 (Kiwi.com test)"
+          authorization: "Bearer testtoken"
         service:  {{.serviceName}}
         method: User
         assertions:

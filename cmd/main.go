@@ -217,7 +217,7 @@ func main() {
 
 	s, _ := grpcAPI.CreateServer(oktaClient)
 
-	grpcServer := grpc.NewServer()
+	grpcServer := grpc.NewServer(grpc.UnaryInterceptor(grpcAPI.UnarySecurityWrapper(secretManager)))
 	reflection.Register(grpcServer)
 
 	pb.RegisterKiwiIAMServer(grpcServer, s)

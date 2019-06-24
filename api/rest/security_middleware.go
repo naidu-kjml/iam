@@ -37,7 +37,7 @@ func AuthWrapper(h httprouter.Handle, secretManager secrets.SecretManager, metri
 
 // checkAuth checks if user has proper token + user agent
 func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClient metricService) error {
-	requestToken := getToken(r.Header.Get("Authorization"))
+	requestToken := security.GetToken(r.Header.Get("Authorization"))
 	userAgent := r.Header.Get("User-Agent")
 
 	service, err := security.GetService(userAgent)
@@ -75,8 +75,4 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClien
 	)
 
 	return nil
-}
-
-func getToken(authorization string) string {
-	return strings.Replace(authorization, "Bearer ", "", 1)
 }
