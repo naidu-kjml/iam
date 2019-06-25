@@ -4,8 +4,6 @@ import (
 	"log"
 	"net/http"
 
-	"strings"
-
 	"github.com/julienschmidt/httprouter"
 
 	"gitlab.skypicker.com/platform/security/iam/api"
@@ -37,16 +35,15 @@ func AuthWrapper(h httprouter.Handle, secretManager secrets.SecretManager, metri
 
 // checkAuth checks if user has proper token + user agent
 func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClient metricService) error {
-	requestToken := security.GetToken(r.Header.Get("Authorization"))
+	requestToken, err := security.GetToken(r.Header.Get("Authorization"))
+	if err != nil {
+		return api.Error{Message: "Use the Bearer {token} authorization scheme", Code: 401}
+	}
 	userAgent := r.Header.Get("User-Agent")
 
 	service, err := security.GetService(userAgent)
 	if err != nil {
 		return api.Error{Message: err.Error(), Code: 401}
-	}
-
-	if requestToken == "" {
-		return api.Error{Message: "Authorization header with token is mandatory", Code: 401}
 	}
 
 	if span, ok := tracer.SpanFromContext(r.Context()); ok {
@@ -60,14 +57,6 @@ func checkAuth(r *http.Request, secretManager secrets.SecretManager, metricClien
 		return api.Error{Message: "Unauthorized: " + tokenErr.Error(), Code: 401}
 	}
 
-	// Track old authentication format
-	if !strings.Contains(r.Header.Get("Authorization"), "Bearer") {
-		metricClient.Incr(
-			"incoming.old-authentication",
-			monitoring.Tag("service-name", service.Name),
-			monitoring.Tag("service-environment", service.Environment),
-		)
-	}
 	metricClient.Incr(
 		"incoming.requests",
 		monitoring.Tag("service-name", service.Name),

@@ -48,7 +48,11 @@ func UnarySecurityWrapper(secretManager secrets.SecretManager) grpc.UnaryServerI
 			return nil, errInvalidToken
 		}
 
-		token := security.GetToken(md[metadataAuthorization][0])
+		token, err := security.GetToken(md[metadataAuthorization][0])
+		if err != nil {
+			return nil, errInvalidToken
+		}
+
 		tokenErr := security.VerifyToken(secretManager, service, token)
 		if tokenErr != nil {
 			log.Println(tokenErr)

@@ -14,14 +14,29 @@ testcases:
         assertions:
           - result.code ShouldEqual 16
           - result.systemerr ShouldContainSubstring "invalid service-agent"
-  - name: Rejects bad token
+  - name: Rejects invalid auth scheme
     steps:
       - type: grpc
         url: {{.url}}:{{.grpcPort}}
         plaintext: true
         headers:
           service-agent: "Venom/0 (Kiwi.com test)"
-          authorization: "Bearer tesoken"
+          authorization: "invalidtesttoken"
+        data:
+          email: "cached@tester.kiwi"
+        service:  {{.serviceName}}
+        method: User
+        assertions:
+          - result.code ShouldEqual 16
+          - result.systemerr ShouldContainSubstring "invalid token"
+  - name: Rejects invalid token
+    steps:
+      - type: grpc
+        url: {{.url}}:{{.grpcPort}}
+        plaintext: true
+        headers:
+          service-agent: "Venom/0 (Kiwi.com test)"
+          authorization: "Bearer invalidtesttoken"
         data:
           email: "cached@tester.kiwi"
         service:  {{.serviceName}}

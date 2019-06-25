@@ -55,6 +55,11 @@ func TestUnhappyPathCheckAuth(t *testing.T) {
 
 	req.Header.Set("Authorization", "invalid token")
 	err = checkAuth(req, s, m)
+	assert.Error(t, err, "Should error on invalid token schema")
+	m.AssertNotCalled(t, "Incr")
+
+	req.Header.Set("Authorization", "Bearer invalid token")
+	err = checkAuth(req, s, m)
 	assert.Error(t, err, "Should error on invalid token")
 	m.AssertNotCalled(t, "Incr")
 }

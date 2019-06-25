@@ -12,8 +12,11 @@ var (
 
 // VerifyToken accepts a token and a service struct and verifies if this token is accepted
 func VerifyToken(secretManager secrets.SecretManager, service Service, requestToken string) error {
-	token, err := secretManager.GetAppToken(service.Name, service.Environment)
+	if requestToken == "" {
+		return errUnathorised
+	}
 
+	token, err := secretManager.GetAppToken(service.Name, service.Environment)
 	if err != nil {
 		return err
 	}
