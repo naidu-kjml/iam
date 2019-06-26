@@ -104,7 +104,7 @@ func (c *Client) AddPermissions(user *User, service string) error {
 			return err
 		}
 
-		groupPrefix := iamGroupPrefix + strings.ToLower(service) + ":"
+		groupPrefix := iamGroupPrefix + strings.ToLower(service) + "."
 
 		for _, group := range groups {
 			if strings.HasPrefix(group.Name, groupPrefix) {
