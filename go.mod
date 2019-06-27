@@ -32,7 +32,7 @@ require (
 	golang.org/x/sync v0.0.0-20190425150253-112230192c58
 	golang.org/x/sys v0.0.0-20190626160404-e07cf5db2756 // indirect
 	google.golang.org/appengine v1.6.1
-	google.golang.org/genproto v0.0.0-20190620150310-6af8c5fc6601 // indirect
+	google.golang.org/genproto v0.0.0-20190627210355-eb59cef1c072 // indirect
 	google.golang.org/grpc v1.21.1
 	gopkg.in/DataDog/dd-trace-go.v1 v1.15.0
 )
