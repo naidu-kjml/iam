@@ -28,7 +28,7 @@ require (
 	github.com/stretchr/testify v1.3.0
 	github.com/tinylib/msgp v1.1.0 // indirect
 	gitlab.skypicker.com/go/useragent v0.0.0-20190606110251-a66a2603332e
-	golang.org/x/net v0.0.0-20190620200240-3b0461eec859 // indirect
+	golang.org/x/net v0.0.0-20190628190343-da137c7871d7 // indirect
 	golang.org/x/sync v0.0.0-20190425150253-112230192c58
 	golang.org/x/sys v0.0.0-20190627060349-04f50cda93cb // indirect
 	google.golang.org/appengine v1.6.1
