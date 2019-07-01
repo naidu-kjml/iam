@@ -38,6 +38,10 @@ func (c *Client) GetUser(email string) (User, error) {
 	var user User
 	err := c.cache.Get(email, &user)
 	if err == nil {
+		// User email is not specified only in case the user was not found.
+		if user.Email == "" {
+			return User{}, ErrUserNotFound
+		}
 		// Cache hit
 		return user, nil
 	}
@@ -62,6 +66,10 @@ func (c *Client) GetUser(email string) (User, error) {
 
 		user, fetchErr := c.fetchUser(email)
 		if fetchErr != nil {
+			if fetchErr == ErrUserNotFound {
+				cacheErr := c.cache.Set(email, User{}, cfg.Expirations.User)
+				raven.CaptureError(cacheErr, nil)
+			}
 			return User{}, fetchErr
 		}
 
