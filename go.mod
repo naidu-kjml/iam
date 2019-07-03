@@ -33,6 +33,6 @@ require (
 	golang.org/x/sys v0.0.0-20190627060349-04f50cda93cb // indirect
 	google.golang.org/appengine v1.6.1
 	google.golang.org/genproto v0.0.0-20190627210355-eb59cef1c072 // indirect
-	google.golang.org/grpc v1.21.1
+	google.golang.org/grpc v1.22.0
 	gopkg.in/DataDog/dd-trace-go.v1 v1.15.0
 )
