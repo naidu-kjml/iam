@@ -88,8 +88,7 @@ func (c *RedisCache) Del(key string) error {
 	if shouldUseRedisBackup(err) {
 		log.Println("Redis down using inMemory DEL")
 		raven.CaptureMessage("Redis down using inMemory DEL", nil)
-		c.backup.Del(key)
-		return nil
+		_ = c.backup.Del(key)
 	}
 	return err
 }

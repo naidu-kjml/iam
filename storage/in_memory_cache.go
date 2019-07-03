@@ -31,7 +31,7 @@ func (c InMemoryCache) Get(key string, value interface{}) error {
 			return json.Unmarshal(data.value, &value)
 		}
 		// Item is expired
-		c.Del(key)
+		_ = c.Del(key)
 	}
 
 	return ErrNotFound
@@ -58,9 +58,10 @@ func (c InMemoryCache) Set(key string, value interface{}, ttl time.Duration) err
 }
 
 // Del deletes an item from cache
-func (c InMemoryCache) Del(key string) {
+func (c InMemoryCache) Del(key string) error {
 	lowerKey := strings.ToLower(key)
 	delete(c, lowerKey)
+	return nil
 }
 
 // MSet writes items to cache in bulk

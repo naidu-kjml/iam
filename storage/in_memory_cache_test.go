@@ -22,7 +22,7 @@ func TestInMemoryCache(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, "test-value", value)
 
-	cache.Del("key")
+	_ = cache.Del("key")
 	err = cache.Get("key", &value)
 	assert.Equal(t, ErrNotFound, err)
 }

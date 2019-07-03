@@ -2,33 +2,14 @@ package okta
 
 import (
 	"testing"
-	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
+	"gitlab.skypicker.com/platform/security/iam/storage"
 )
 
-type MockCache struct {
-	mock.Mock
-}
-
-func (c *MockCache) Get(key string, value interface{}) error {
-	return nil
-}
-func (c *MockCache) Set(key string, value interface{}, ttl time.Duration) error {
-	return nil
-}
-func (c *MockCache) Del(key string) error {
-	return nil
-}
-func (c *MockCache) MSet(pairs map[string]interface{}, ttl time.Duration) error {
-	return nil
-}
-
 func TestGroupMemberships(t *testing.T) {
-	cache := &MockCache{}
 	client := NewClient(ClientOpts{
-		Cache: cache,
+		Cache: storage.NewInMemoryCache(),
 	})
 
 	tests := []struct {
