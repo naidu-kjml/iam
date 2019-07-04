@@ -8,7 +8,7 @@ import (
 )
 
 func TestGroupMemberships(t *testing.T) {
-	client := NewClient(ClientOpts{
+	client := NewClient(&ClientOpts{
 		Cache: storage.NewInMemoryCache(),
 	})
 

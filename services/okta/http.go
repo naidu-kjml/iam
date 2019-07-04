@@ -9,9 +9,7 @@ import (
 	"path"
 	"time"
 
-	"github.com/getsentry/raven-go"
 	jsoniter "github.com/json-iterator/go"
-	"gitlab.skypicker.com/go/useragent"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
 )
 
@@ -55,35 +53,28 @@ func (res Response) JSON(body interface{}) error {
 	return json.NewDecoder(res.Body).Decode(&body)
 }
 
-// fetch makes an HTTP request and returns response
-func (c *Client) fetch(req Request) (*Response, error) {
-	log.Println(req.Method, req.URL)
-	httpReq, err := http.NewRequest(req.Method, req.URL, req.Body)
+// defaultFetcher returns a function to send HTTP requests response, this
+// wrapper is used to set the userAgent, and metrics client package wide.
+func defaultFetcher(userAgent string, metrics *monitoring.Metrics) func(req Request) (*Response, error) {
+	return func(req Request) (*Response, error) {
+		log.Println(req.Method, req.URL)
 
-	ua := useragent.UserAgent{
-		Name:        "kiwi-iam",
-		Environment: c.iamConfig.Environment,
-		Version:     c.iamConfig.Release,
-	}
-	uaString, uaErr := ua.Format()
-	if uaErr != nil {
-		log.Println("[ERR]", uaErr)
-		raven.CaptureError(uaErr, nil)
-	}
+		httpReq, err := http.NewRequest(req.Method, req.URL, req.Body)
+		if err != nil {
+			return nil, err
+		}
 
-	httpReq.Header.Set("User-Agent", uaString)
-	httpReq.Header.Set("Authorization", req.Token)
-	if err != nil {
-		return nil, err
-	}
+		httpReq.Header.Set("User-Agent", userAgent)
+		httpReq.Header.Set("Authorization", req.Token)
 
-	c.metrics.Incr("outgoing.requests", monitoring.Tag("url", req.URL))
-	httpRes, err := httpClient.Do(httpReq)
-	if err != nil {
-		return nil, err
-	}
+		metrics.Incr("outgoing.requests", monitoring.Tag("url", req.URL))
+		httpRes, err := httpClient.Do(httpReq)
+		if err != nil {
+			return nil, err
+		}
 
-	return &Response{httpRes}, nil
+		return &Response{httpRes}, nil
+	}
 }
 
 // joinURL parses and joins a base URL to a path safely

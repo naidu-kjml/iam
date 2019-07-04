@@ -113,7 +113,7 @@ func TestFetch(t *testing.T) {
 	ts := httptest.NewServer(mockHandler(t))
 	defer ts.Close()
 
-	c := NewClient(ClientOpts{
+	c := NewClient(&ClientOpts{
 		IAMConfig: &cfg.ServiceConfig{
 			Environment: "test",
 			Release:     "version",

@@ -174,7 +174,7 @@ func main() {
 		storageConfig.LockExpiration,
 	)
 	oktaToken, _ := secretManager.GetSetting("OKTA_TOKEN")
-	oktaClient := okta.NewClient(okta.ClientOpts{
+	oktaClient := okta.NewClient(&okta.ClientOpts{
 		BaseURL:     oktaConfig.URL,
 		AuthToken:   oktaToken,
 		Cache:       cache,
