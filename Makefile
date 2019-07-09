@@ -31,13 +31,8 @@ test:
 
 go-mod-tidy:
 	$(call log_info,Check that go.mod and go.sum don't contain any unnecessary dependency)
-	$(eval TMPDIR=$(shell mktemp -d))
-	cp -f go.mod $(TMPDIR)
-	cp -f go.sum $(TMPDIR)
 	go mod tidy -v
-	diff -u $(TMPDIR)/go.mod go.mod
-	diff -u $(TMPDIR)/go.sum go.sum
-	rm -rf $(TMPDIR)
+	git diff-index --quiet HEAD || echo "Go mod tidy failed. Please run it locally"
 	$(call log_success,Go mod check succeeded!)
 
 test/ci:
