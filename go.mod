@@ -7,7 +7,7 @@ require (
 	github.com/certifi/gocertifi v0.0.0-20190513150117-d2eda7129713 // indirect
 	github.com/getsentry/raven-go v0.2.0
 	github.com/go-redis/redis v6.15.3+incompatible
-	github.com/golang/protobuf v1.3.1
+	github.com/golang/protobuf v1.3.2
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.1 // indirect
 	github.com/hashicorp/go-retryablehttp v0.5.4 // indirect
