@@ -23,7 +23,7 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-func fillCache(client *okta.Client) {
+func syncOkta(client *okta.Client) {
 	log.Println("Start caching users")
 	client.SyncUsers()
 	log.Println("Start caching groups")
@@ -59,6 +59,32 @@ func syncVault(client *secrets.VaultManager) {
 
 		if err != nil {
 			log.Println("[ERROR] failed to sync tokens with Vault: ", err)
+			raven.CaptureError(err, nil)
+		}
+	}
+}
+
+// Cacher contains methods needed from a cache
+type Cacher interface {
+	Del(key string) error
+}
+
+func clearGroupsLastSync(cache Cacher) {
+	log.Println("Clearing GroupLastSync")
+	err := cache.Del("groups-sync-timestamp")
+	if err != nil {
+		log.Println("[ERROR] failed to delete GroupsLastSync from cache: ", err)
+		raven.CaptureError(err, nil)
+	}
+
+	ticker := time.NewTicker(time.Hour * 24)
+	defer ticker.Stop()
+
+	for tick := range ticker.C {
+		log.Println("Clearing GroupLastSync", tick.Round(time.Second))
+		err = cache.Del("groups-sync-timestamp")
+		if err != nil {
+			log.Println("[ERROR] failed to delete GroupsLastSync from cache: ", err)
 			raven.CaptureError(err, nil)
 		}
 	}
@@ -200,7 +226,8 @@ func main() {
 	}
 
 	if iamConfig.Environment != "dev" {
-		go capturePanic(func() { fillCache(oktaClient) })
+		go capturePanic(func() { clearGroupsLastSync(cache) })
+		go capturePanic(func() { syncOkta(oktaClient) })
 	}
 
 	log.Println("🚀 REST server starting on " + serveAddr)
