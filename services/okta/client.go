@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/getsentry/raven-go"
-	"gitlab.skypicker.com/go/useragent"
+	"github.com/kiwicom/go-useragent"
 	cfg "gitlab.skypicker.com/platform/security/iam/config"
 	"gitlab.skypicker.com/platform/security/iam/monitoring"
 	"gitlab.skypicker.com/platform/security/iam/storage"

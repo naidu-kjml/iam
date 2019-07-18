@@ -8,8 +8,6 @@
 
 ## Usage
 
-This project uses some of our own custom Go packages. If you encounter issues please consult <https://gitlab.skypicker.com/go/packages#usage>.
-
 Create `.env.yaml` file and set environment variables. Check `.env-sample.yaml`
 to see all the possible variables.
 
@@ -64,6 +62,6 @@ The following structure is expected:
 
 ## Contributing
 
-- Run `make test/ci`, `make lint`, and [`make e2e`](tests/e2e/README.md)  before pushing changes.
+- Run `make test/ci`, `make lint`, and [`make e2e`](tests/e2e/README.md) before pushing changes.
 - Commit messages should be at most 72 characters long.
 - Commit messages should start with the scope of the changes introduced by the commit.

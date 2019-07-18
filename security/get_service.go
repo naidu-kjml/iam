@@ -4,7 +4,7 @@ import (
 	"errors"
 	"regexp"
 
-	"gitlab.skypicker.com/go/useragent"
+	"github.com/kiwicom/go-useragent"
 )
 
 const (
