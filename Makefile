@@ -32,12 +32,10 @@ test:
 go-mod-tidy:
 	$(call log_info,Check that go.mod and go.sum don't contain any unnecessary dependency)
 	go mod tidy -v
-	git diff-index --quiet HEAD || echo "Go mod tidy failed. Please run it locally"
+	git diff-index --quiet HEAD
 	$(call log_success,Go mod check succeeded!)
 
-test/ci:
-	make test
-	make go-mod-tidy
+test/ci: test go-mod-tidy
 
 test/watch:
 	reflex --start-service -r '\.go$$' make test
