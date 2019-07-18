@@ -1,10 +1,4 @@
-# Governant
-
-| What          | Where                                                             |
-| ------------- | ----------------------------------------------------------------- |
-| Documentation | Not yet                                                           |
-| Discussion    | [#proj-kiwi-iam](https://skypicker.slack.com/messages/CE7KLCKCP/) |
-| Maintainer    | [@simon](https://gitlab.skypicker.com/simon.prochazka/)           |
+# Kiwi IAM
 
 ## Usage
 
