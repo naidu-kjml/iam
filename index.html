@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.57.0" />
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Kiwi IAM documentation</title>
+    
+
+
+
+
+
+
+
+
+<link href='/iam/styles/screen.min.effe22ccbf96cbbaaf00a2e507f631d3322b75caa57a23f93c11e3e6085a1b93.css' rel="stylesheet" media="screen" integrity="sha256-7/4izL&#43;Wy7qvAKLlB/Yx0zIrdcqleiP5PBHj5ghaG5M=" />
+<link href='/iam/styles/print.min.37fed562cbce32487e14eddeaa39b2e79a3881ecb2baef830072d78b6fe0c70d.css' rel="stylesheet" media="print" integrity="sha256-N/7VYsvOMkh&#43;FO3eqjmy55o4geyyuu&#43;DAHLXi2/gxw0=" />
+
+
+    
+
+
+
+
+
+
+<script src='/iam/js/all.js'></script>
+
+    
+</head>
+<body class="index" data-languages="">
+    <a href="#" id="nav-button">
+        <span>
+        NAV
+        <img src='/iam/images/navbar.png'/>
+      </span>
+    </a>
+    <div class="toc-wrapper">
+        
+         <img src='/iam/images/logo.png' class="logo" />
+         
+        
+        <div class="search">
+            <input type="search" class="search" id="input-search" placeholder='Search'>
+        </div>
+        <ul class="search-results"></ul>
+        
+        
+    <ul id="toc" class="toc-list-h1">
+        
+        
+            <li>
+                <a href="#kiwi-iam" class="toc-h1 toc-link" data-title="Kiwi IAM">Kiwi IAM</a>
+                
+            </li>
+        
+            <li>
+                <a href="#api-service" class="toc-h1 toc-link" data-title="API service">API service</a>
+                
+            </li>
+        
+    </ul>
+
+         
+        
+        
+    </div>
+    <div class="page-wrapper">
+        <div class="dark-box"></div>
+        <div class="content">
+            
+    
+        
+
+<h1 id="kiwi-iam">Kiwi IAM</h1>
+
+<p>Kiwi IAM is a RBAC (Role based access control) app made for the needs of Kiwi. The aim is to simplify securing apps by providing all the relevant libraries and infrastructure.</p>
+
+<p><strong>Features:</strong></p>
+
+<ul>
+<li>Serving a permission list of the user</li>
+<li>Caching Okta provider (Okta has a rate limit of 600 req/s)</li>
+<li>Serving Okta user profile for apps that need to use user data</li>
+</ul>
+
+<h1 id="api-service">API service</h1>
+
+<p>API service is responsible for handling communication with Okta.</p>
+
+<p><img src="https://g.gravizo.com/svg?
+@startuml;
+== Happy path ==;
+Router -&gt; Controller : Request from client for test@test.com;
+Controller -&gt; Cache : Request test@test.com from Cache;
+Cache -&gt; Controller : Cache hit;
+Controller -&gt; Router : Return profile of test@test.com to client;
+== Unhappy path ==;
+Router -&gt; Controller : Request from client for test@test.com;
+Controller -&gt; Cache : Request test@test.com from Cache;
+Cache -&gt; Controller : Profile not found;
+Controller -&gt; OktaAPI : Request test@test.com from Okta;
+OktaAPI -&gt; Controller : Return test@test.com to Controller;
+Controller --&gt; Cache : Send data from test@test.com to be saved in Cache;
+Controller -&gt; Router : Return data for test@test.com to client;
+@enduml;" alt="Alt text" /></p>
+
+    
+
+        </div>
+        <div class="dark-box">
+            
+        </div>
+    </div>
+    
+</body>
+</html>
