@@ -26,7 +26,7 @@ endef
 
 lint:
 	$(call log_info, Running golangci-lint)
-	golangci-lint run
+	golangci-lint run internal/...
 	$(call log_success,Linting with golangci-lint succeeded!)
 
 go-mod-tidy:
