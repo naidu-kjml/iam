@@ -21,7 +21,6 @@ require (
 	github.com/spf13/viper v1.6.2
 	github.com/stretchr/objx v0.2.0 // indirect
 	github.com/stretchr/testify v1.5.1
-	github.com/tinylib/msgp v1.1.0 // indirect
 	golang.org/x/net v0.0.0-20200226121028-0de0cce0169b // indirect
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
 	golang.org/x/sys v0.0.0-20200409092240-59c9f1ba88fa // indirect
@@ -29,6 +28,6 @@ require (
 	google.golang.org/appengine v1.6.5
 	google.golang.org/genproto v0.0.0-20190927181202-20e1ac93f88c // indirect
 	google.golang.org/grpc v1.25.1
-	gopkg.in/DataDog/dd-trace-go.v1 v1.22.0
+	gopkg.in/DataDog/dd-trace-go.v1 v1.25.0
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 )
